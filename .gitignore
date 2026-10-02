@@ -1,0 +1,61 @@
+# Unity generated folders (at the project root)
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emory[Cc]aptures/
+/[Rr]ecordings/
+
+# Visual Studio, VS Code and JetBrains Rider local state
+/.vs/
+/.vscode/
+/.idea/
+/.fleet/
+/ExportedObj/
+/.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.pidb
+*.booproj
+*.svd
+*.opendb
+*.VC.db
+*.DotSettings.user
+*.csproj.user
+
+# Unity / IDE generated root files
+/*.pidb.meta
+/*.pdb
+/*.mdb
+/*.pdb.meta
+/*.mdb.meta
+/sysinfo.txt
+/*.stacktrace
+/crash.dmp
+
+# Operating system and editor temporary files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+Thumbs.db.meta
+Desktop.ini
+Desktop.ini.meta
+$RECYCLE.BIN/
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Assets, their .meta files, Packages and ProjectSettings remain versioned.
