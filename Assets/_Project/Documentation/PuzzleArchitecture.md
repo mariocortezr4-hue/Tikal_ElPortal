@@ -2,7 +2,7 @@
 
 ## Objetivo y límites
 
-El framework modela ciclos de vida y descubrimientos de una sesión. No conoce teclas, escenas, puertas, HUD, guardado ni gestores globales. Los cinco puzzles de Level01 tienen definiciones de datos. El primer mural ya utiliza el framework en Zone01; sus reglas concretas se documentan en [Level01_Puzzle01_Mural.md](Level01_Puzzle01_Mural.md). Los puzzles 02–05 conservan únicamente sus definiciones.
+El framework modela ciclos de vida y descubrimientos de una sesión. No conoce teclas, escenas, puertas, HUD, guardado ni gestores globales. Los cinco puzzles de Level01 tienen definiciones de datos. El primer mural ya utiliza el framework en Zone01; sus reglas concretas se documentan en [Level01_Puzzle01_Mural.md](Level01_Puzzle01_Mural.md). El segundo puzzle utiliza el mismo framework en Zone02; véase [Level01_Puzzle02_Guardians.md](Level01_Puzzle02_Guardians.md). Los puzzles 03–05 conservan únicamente sus definiciones.
 
 ## Estado y ciclo de vida
 
@@ -51,7 +51,7 @@ En `Data/Puzzles` existen las cinco definiciones:
 - `level01.glyph_gallery`
 - `level01.revelation`
 
-En `Data/Clues` hay cinco pistas. La del mural utiliza el ID estable `level01.clue01`, título provisional «El camino» y texto provisional «El camino verdadero no siempre está delante de ti.». Las otras cuatro mantienen IDs terminados en `.clue` y texto `[PLACEHOLDER]`. Ninguna revela controles del comando oculto; la narrativa sigue siendo provisional. Los IDs actuales se deben conservar para futuras referencias de progreso. No existe consumidor nuevo de SecretCommand.
+En `Data/Clues` hay cinco pistas. La del mural utiliza el ID estable `level01.clue01`, título provisional «El camino» y texto provisional «El camino verdadero no siempre está delante de ti.». La pista de guardianes utiliza `level01.clue02`, título «El origen» y texto provisional «Todo camino recuerda dónde comenzó.». Las otras tres mantienen IDs terminados en `.clue` y texto `[PLACEHOLDER]`. Ninguna revela controles del comando oculto; la narrativa sigue siendo provisional. Los IDs actuales se deben conservar para futuras referencias de progreso. No existe consumidor nuevo de SecretCommand.
 
 ## Testing y demostración POO
 
