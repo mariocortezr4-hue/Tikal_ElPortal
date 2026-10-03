@@ -9,6 +9,10 @@ namespace Tikal.Puzzles.Level01
         [SerializeField] private int[] _solution = new int[3];
         [SerializeField] private DestinationMarker[] _destinations = new DestinationMarker[3];
         private bool _valid;
+        public event System.Action<PathGuardiansPuzzle> AlignmentChanged;
+        public bool IsGuardianAligned(int index) => _valid && index>=0 && index<3 && _guardians[index].isActiveAndEnabled && !_guardians[index].IsRotating && _guardians[index].CurrentOrientation==_solution[index];
+        private void Start() => NotifyAlignment(null);
+        private void NotifyAlignment(PathGuardian _) => AlignmentChanged?.Invoke(this);
         public int AlignedCount
         {
             get
@@ -27,12 +31,12 @@ namespace Tikal.Puzzles.Level01
         {
             _valid=ValidConfiguration();
             if(!_valid) { Debug.LogError("Guardians require three unique symbols, guardians, matching destinations and valid solution indices.",this); return; }
-            foreach(var fragment in _guardians) fragment.RotationFinished+=CheckSolution;
+            foreach(var fragment in _guardians) { fragment.RotationFinished+=CheckSolution; fragment.RotationStarted+=NotifyAlignment; }
             CheckSolution(null);
         }
         private void OnDisable()
         {
-            if(_guardians!=null) foreach(var fragment in _guardians) if(fragment!=null) fragment.RotationFinished-=CheckSolution;
+            if(_guardians!=null) foreach(var fragment in _guardians) if(fragment!=null) { fragment.RotationFinished-=CheckSolution; fragment.RotationStarted-=NotifyAlignment; }
         }
         private bool ValidConfiguration()
         {
@@ -60,6 +64,7 @@ namespace Tikal.Puzzles.Level01
         }
         private void CheckSolution(PathGuardian changed)
         {
+            NotifyAlignment(changed);
             if(!_valid||State!=PuzzleState.Active||!isActiveAndEnabled) return;
             if(changed!=null) RotationCount++;
             for(int i=0;i<3;i++)
@@ -76,6 +81,7 @@ namespace Tikal.Puzzles.Level01
         {
             foreach(var fragment in _guardians) fragment.ResetOrientation();
             RotationCount=0; _solvedSeconds=0;
+            NotifyAlignment(null);
         }
     }
 }

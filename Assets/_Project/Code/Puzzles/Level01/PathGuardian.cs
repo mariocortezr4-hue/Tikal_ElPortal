@@ -23,6 +23,7 @@ namespace Tikal.Puzzles.Level01
         public string InteractionText => "Girar";
         public event Action<PathGuardian> OrientationChanged;
         public event Action<PathGuardian> RotationFinished;
+        public event Action<PathGuardian> RotationStarted;
         private void Awake() => ResetOrientation();
         public void Interact() { if(CanInteract) _puzzle.Rotate(this); }
         // Owner is the only authority that starts a turn. Index commits at its end.
@@ -33,6 +34,7 @@ namespace Tikal.Puzzles.Level01
             _targetOrientation=(CurrentOrientation+1)%4;
             _elapsed=0;
             IsRotating=true;
+            RotationStarted?.Invoke(this);
             int version=++_rotationVersion;
             _rotation=StartCoroutine(Animate(version));
             return true;

@@ -14,7 +14,7 @@ La nariz, los ojos y la ceja blockout hacen legible la dirección frontal de cad
 
 La duración es 0,35 segundos, con interpolación suave y ajuste absoluto de la rotación final. El índice se confirma al terminar el giro; peticiones adicionales durante ese movimiento se ignoran. Una sola coroutine activa por pieza y un token de cancelación impiden continuaciones antiguas. Desactivar una pieza cancela la rotación y conserva el último índice confirmado. El collider de interacción permanece fijo en el soporte, mientras rota el cuerpo visual.
 
-El puzzle empieza Available. La primera interacción comienza Active y realiza el giro. Solo tres guardianes correctos, activos y sin movimientos pendientes permiten llamar al `TrySolve()` protegido. Uno o dos alineados no bastan. Solved es terminal y bloquea todas las piezas. Reset durante Active cancela movimientos y devuelve el conjunto a su configuración inicial.
+El puzzle empieza Available con A correctamente alineado, sin resolver. A mantiene su interacción: si el jugador lo gira, puede recuperar su orientación dando la vuelta al ciclo. La primera interacción comienza Active y realiza el giro. Solo tres guardianes correctos, activos y sin movimientos pendientes permiten llamar al `TrySolve()` protegido. Uno o dos alineados no bastan. Solved es terminal y bloquea todas las piezas. Reset durante Active cancela movimientos y devuelve el conjunto a su configuración inicial.
 
 ## Distribución espacial y solución
 
@@ -24,13 +24,13 @@ Orientaciones: 0 = norte (+Z), 1 = este (+X), 2 = sur (−Z), 3 = oeste (−X), 
 
 | Guardián / símbolo | Posición X,Z | Marcador X,Z | Inicial | Objetivo | Giros mínimos |
 | --- | --- | --- | --- | --- | --- |
-| A / círculo dividido | 32,5; 8 | 26,5; 8 | 1 | 3 / oeste | 2 |
+| A / círculo dividido | 32,5; 8 | 26,5; 8 | 3 | 3 / oeste | 0 |
 | B / contorno triangular | 34,5; 11 | 37; 11 | 0 | 1 / este | 1 |
-| C / seis trazos radiales | 31; 16 | 31; 4 | 3 | 2 / sur | 3 |
+| C / seis trazos radiales | 31; 16 | 31; 4 | 0 | 2 / sur | 2 |
 
-Configuración inicial **[1,0,3]**, solución **[3,1,2]**: seis giros mínimos. No hay aleatorización. Las tres direcciones finales difieren; las orientaciones oeste/sur insinúan de forma discreta la región de procedencia, sin señalar una puerta ni revelar otra mecánica.
+Configuración inicial **[3,0,0]**, solución **[3,1,2]**, **MinimumTurns = 3**: A correcto, B a un giro y C a dos. No hay aleatorización. Las tres direcciones finales difieren; las orientaciones oeste/sur insinúan de forma discreta la región de procedencia, sin señalar una puerta ni revelar otra mecánica.
 
-Cambiar índices, posiciones o símbolos requiere mantener la correspondencia visual y espacial. La prueba de authoring comprueba que la dirección cardinal de cada solución apunta al marcador que comparte su forma y que no existe un obstáculo sólido entre ambos. El tercer par está desplazado lateralmente para evitar que otro guardián tape su destino. La identidad posterior no indica una segunda dirección frontal: únicamente el rostro y la nariz definen hacia dónde mira el monolito. Los puntos de observación e interacción permanecen fuera del corredor central X≈29.
+Cambiar índices, posiciones o símbolos requiere mantener la correspondencia visual y espacial. La prueba de authoring también comprueba líneas de visión libres desde el acceso central (X=29, Z=12) al ejemplo A y su destino. Los símbolos de destino se amplían al 125 %, se elevan a 1,8 m sobre su base y se repiten detrás, manteniendo sus posiciones y formas. La prueba de authoring comprueba que la dirección cardinal de cada solución apunta al marcador que comparte su forma y que no existe un obstáculo sólido entre ambos. El tercer par está desplazado lateralmente para evitar que otro guardián tape su destino. La identidad posterior no indica una segunda dirección frontal: únicamente el rostro y la nariz definen hacia dónde mira el monolito. Los puntos de observación e interacción permanecen fuera del corredor central X≈29.
 
 ## Feedback y recompensa
 
@@ -48,11 +48,11 @@ Se reutiliza la única instancia de `ClueDiscoveryPresenter`: DESCUBRIMIENTO, t�
 
 ## Dificultad y métricas
 
-Objetivo humano provisional: dificultad media-baja, 45–120 segundos. Debe requerir más observación espacial que el mural, sin frustración ni búsqueda oculta. Estos tiempos y la claridad del concepto deben verificarse con personas; los tests automatizados no miden comprensión humana.
+Objetivo humano revisado: observador 20–40 segundos; jugador nuevo 30–75 segundos. El mecanismo debe enseñar su lógica mediante un ejemplo espacial, sin frustración ni búsqueda oculta. Estos tiempos y la claridad del concepto deben verificarse con personas; los tests automatizados no miden comprensión humana.
 
 `RotationCount` registra giros completados; `ElapsedSeconds` mide tiempo de juego escalado desde la primera interacción hasta Solve; `AlignedCount` expone cuántos guardianes están correctos y quietos. No se muestran como puntuación, no ajustan dificultad y no revelan la solución en la UI del jugador. Reset empieza otro intento. En Editor/Development Build se registra `GUARDIANS_METRICS` al resolver.
 
-La prueba determinista utiliza seis giros mínimos: 2,1 segundos de animación secuencial, sin contar observación, desplazamiento o selección. El tiempo 0,00 que puede registrar la fase de solución del test se debe al avance manual de la interpolación dentro de un mismo frame y no representa una experiencia humana. La primera rotación se comprueba aparte dejando avanzar frames reales de Unity.
+La prueba determinista utiliza tres giros mínimos: 1,05 segundos de animación secuencial, sin contar observación, desplazamiento o selección. El tiempo 0,00 que puede registrar la fase de solución del test se debe al avance manual de la interpolación dentro de un mismo frame y no representa una experiencia humana. La primera rotación se comprueba aparte dejando avanzar frames reales de Unity.
 
 ## Pruebas y regresiones
 
@@ -70,14 +70,24 @@ Solo Puzzle02. Se mantienen las clases concretas de elementos independientes del
 
 ## Resultado del checkpoint
 
-- GuardiansValidation: 223 comprobaciones aprobadas, Unity batchmode código 0.
-- PuzzleFrameworkValidation: 70 comprobaciones aprobadas.
+- GuardiansValidation: 293 comprobaciones aprobadas, Unity batchmode código 0.
+- PuzzleFrameworkValidation: 71 comprobaciones aprobadas.
 - MuralValidation: 267 comprobaciones aprobadas.
 - InteractionValidation/Input/Player/Dynamic Prompts: aprobados.
 - ExplorerFeelValidation: aprobado.
 - Level01Validation: aprobado, incluyendo navegación física hasta Zone05, montículo local de Zone02, puerta y backtracking.
 - Todos los procesos de la validación final terminaron con código 0, sin errores C#, Missing Scripts, referencias críticas rotas o assertions fallidas.
-- Métricas deterministas: seis giros, 2,1 segundos de animación secuencial, alineación 0 → 1 → 2 → 3. Dificultad y ritmo humano todavía no medidos.
-- La revisión por IDs serializados no encontró bloques existentes eliminados; el único bloque existente cambiado es la lista de hijos del PuzzleAnchor de Zone02. El resto corresponde a objetos añadidos.
-- Incidencia del entorno: el primer proceso de regresión previo al merge pasó sus comprobaciones, pero quedó bloqueado al cerrar Unity. Se detuvo únicamente ese proceso batchmode, se repitió toda la validación y las repeticiones terminaron correctamente con código 0.
+- Métricas deterministas: tres giros, 1,05 segundos de animación secuencial, alineación inicial 1/3 y progresión hasta 3/3. Dificultad y ritmo humano todavía no medidos.
+- La revisión por IDs serializados no encontró bloques existentes eliminados; los cambios de escena de esta pasada se limitan a orientaciones iniciales, tallas de los marcadores y referencias/hijos para el feedback de Zone02. Los objetos y rutas de las otras zonas se conservan.
+- Incidencia histórica del checkpoint inicial: el primer proceso de regresión previo al merge pasó sus comprobaciones, pero quedó bloqueado al cerrar Unity. Se detuvo únicamente ese proceso batchmode, se repitió toda la validación y las repeticiones terminaron correctamente con código 0.
 - Warnings conocidos: UAC0009 preexistentes por DEVELOPMENT_BUILD en componentes de debug; avisos Git LF/CRLF. No se modificaron esos componentes ni la configuración Git.
+
+## Pasada de simplificación UX
+
+El reto principal del nivel será relacionar las pistas, por lo que se reduce la manipulación mínima de seis a tres giros sin sustituir la mecánica. Guardian A mira al marcador del círculo desde el inicio y ofrece un ejemplo visual silencioso: observar su símbolo, comparar el destino y reconocer la dirección. B y C requieren todavía acciones diferentes; no es posible completar con un único giro.
+
+`GuardiansAlignmentFeedback` controla seis marcas grabadas: una en cada pedestal fijo y tres en la superficie de la piedra central existente. La emisión tenue refleja cada alineación discreta sin mostrar números, checks, instrucciones ni texto flotante. La presentación se actualiza por `AlignmentChanged`, en respuesta al inicio/final del giro y al reset, sin polling por frame ni material clonado. Se utiliza MaterialPropertyBlock sobre un material URP propio de estas marcas.
+
+Al entrar, únicamente la marca A está activa, tanto en el pedestal como en la piedra central. Durante un giro se apaga la marca de esa pieza hasta confirmar el siguiente índice. El sistema puede representar 0/3, 1/3, 2/3 y 3/3; las tres activas acompañan la luz cálida final ya existente. Reset vuelve al ejemplo inicial con una activa. La base PuzzleBase, el ciclo discreto y la duración de 0,35 segundos se conservan.
+
+Clue02 y el Input System permanecen sin cambios. La prueba final verifica indicadores reales mediante sus bloques de material, incluyendo la inicialización tras Awake/Start, el giro del ejemplo, reset y la solución mínima. La claridad y los tiempos humanos siguen pendientes de playtest.

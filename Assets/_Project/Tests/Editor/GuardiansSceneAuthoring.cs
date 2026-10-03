@@ -30,12 +30,64 @@ namespace Tikal.Tests.Editor
             try
             {
                 var scene=EditorSceneManager.OpenScene("Assets/_Project/Scenes/Levels/Level01_SecretEntrance.unity");
+                var puzzle=scene.GetRootGameObjects().SelectMany(g=>g.GetComponentsInChildren<PathGuardiansPuzzle>(true)).Single();
+                var ps=new SerializedObject(puzzle);var refs=ps.FindProperty("_guardians");var answers=ps.FindProperty("_solution");var fs=new SerializedObject(puzzle.GetComponent<GuardiansAlignmentFeedback>());
+                for(int i=0;i<3;i++)
+                {
+                    var guardian=(PathGuardian)refs.GetArrayElementAtIndex(i).objectReferenceValue;
+                    bool aligned=new SerializedObject(guardian).FindProperty("_initialOrientation").intValue==answers.GetArrayElementAtIndex(i).intValue;
+                    var block=new MaterialPropertyBlock();block.SetColor("_EmissionColor",aligned?new Color(.8f,.48f,.12f):Color.black);
+                    foreach(string field in new[]{"_individualMarks","_centralMarks"})((Renderer)fs.FindProperty(field).GetArrayElementAtIndex(i).objectReferenceValue).SetPropertyBlock(block);
+                }
                 var camera=new GameObject("Temporary guardian preview").AddComponent<Camera>();camera.transform.position=new Vector3(25,8,2);camera.transform.LookAt(new Vector3(32,1.5f,10));camera.fieldOfView=65;
                 var target=new RenderTexture(1440,1000,24);target.Create();
                 for(int i=0;i<2;i++)UnityEngine.Rendering.RenderPipeline.SubmitRenderRequest(camera,new UnityEngine.Rendering.Universal.UniversalRenderPipeline.SingleCameraRequest {destination=target});
                 RenderTexture.active=target;var image=new Texture2D(1440,1000,TextureFormat.RGB24,false);image.ReadPixels(new Rect(0,0,1440,1000),0,0);image.Apply();System.IO.File.WriteAllBytes(System.IO.Path.Combine(System.IO.Path.GetTempPath(),"TikalGuardiansOverview.png"),image.EncodeToPNG());
                 RenderTexture.active=null;UnityEngine.Object.DestroyImmediate(image);target.Release();UnityEngine.Object.DestroyImmediate(target);UnityEngine.Object.DestroyImmediate(camera.gameObject);
                 if(Application.isBatchMode)EditorApplication.Exit(0);
+            }
+            catch(Exception e){Debug.LogException(e);if(Application.isBatchMode)EditorApplication.Exit(1);}
+        }
+        [MenuItem("Tikal/Authoring/Polish guardians UX")]
+        public static void Polish()
+        {
+            try
+            {
+                if(!Application.isBatchMode&&!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())return;
+                var scene=EditorSceneManager.OpenScene("Assets/_Project/Scenes/Levels/Level01_SecretEntrance.unity");
+                var puzzle=scene.GetRootGameObjects().SelectMany(g=>g.GetComponentsInChildren<PathGuardiansPuzzle>(true)).Single();
+                var pieces=puzzle.GetComponentsInChildren<PathGuardian>().OrderBy(g=>g.name).ToArray();int[] initial={3,0,0};
+                string path="Assets/_Project/Art/Materials/Level01/GuardiansAlignment.mat";
+                var material=AssetDatabase.LoadAssetAtPath<Material>(path);
+                if(material==null)
+                {
+                    material=new Material(Shader.Find("Universal Render Pipeline/Lit"));material.SetColor("_BaseColor",new Color(.38f,.27f,.12f));material.EnableKeyword("_EMISSION");material.SetColor("_EmissionColor",Color.black);AssetDatabase.CreateAsset(material,path);
+                }
+                var individual=new Renderer[3];var central=new Renderer[3];
+                var focal=puzzle.transform.Find("Central neutral stone");
+                for(int i=0;i<3;i++)
+                {
+                    Set(pieces[i],"_initialOrientation",initial[i]);pieces[i].transform.Find("Rotation pivot").localRotation=Quaternion.Euler(0,initial[i]*90,0);
+                    var engraving=pieces[i].transform.Find("Pedestal alignment engraving");
+                    if(engraving==null) engraving=Cube("Pedestal alignment engraving",pieces[i].transform,new Vector3(0,.175f,.48f),new Vector3(.55f,.025f,.07f),material).transform;
+                    individual[i]=engraving.GetComponent<Renderer>();
+                    var centralName="Progress engraving "+(char)('A'+i);var mark=focal.Find(centralName);
+                    if(mark==null)mark=Cube(centralName,focal,new Vector3((i-1)*.4f,.272f,0),new Vector3(.22f,.025f,.42f),material).transform;
+                    central[i]=mark.GetComponent<Renderer>();
+                }
+                var feedback=puzzle.GetComponent<GuardiansAlignmentFeedback>();if(feedback==null)feedback=puzzle.gameObject.AddComponent<GuardiansAlignmentFeedback>();
+                Set(feedback,"_puzzle",puzzle);Set(feedback,"_individualMarks",individual.Cast<UnityEngine.Object>().ToArray());Set(feedback,"_centralMarks",central.Cast<UnityEngine.Object>().ToArray());
+                var carving=AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Art/Materials/Level01/MuralCarving.mat");
+                foreach(var marker in puzzle.GetComponentsInChildren<DestinationMarker>())
+                {
+                    var glyph=marker.transform.Find("Matching abstract symbol");glyph.localPosition=new Vector3(0,1.8f,.18f);glyph.localScale=Vector3.one*1.25f;
+                    var rear=marker.transform.Find("Rear matching symbol");
+                    if(rear==null){rear=Child("Rear matching symbol",marker.transform,new Vector3(0,1.8f,-.18f)).transform;rear.localRotation=Quaternion.Euler(0,180,0);Symbol(rear,marker.Symbol,carving);}
+                    rear.localScale=Vector3.one*1.25f;
+                }
+                // Authored preview mirrors runtime initial feedback without changing shared material.
+                var block=new MaterialPropertyBlock();for(int i=0;i<3;i++){block.SetColor("_EmissionColor",i==0?new Color(.8f,.48f,.12f):Color.black);individual[i].SetPropertyBlock(block);central[i].SetPropertyBlock(block);}
+                EditorSceneManager.SaveScene(scene);AssetDatabase.SaveAssets();Debug.Log("TIKAL_GUARDIANS_POLISHED");if(Application.isBatchMode)EditorApplication.Exit(0);
             }
             catch(Exception e){Debug.LogException(e);if(Application.isBatchMode)EditorApplication.Exit(1);}
         }
