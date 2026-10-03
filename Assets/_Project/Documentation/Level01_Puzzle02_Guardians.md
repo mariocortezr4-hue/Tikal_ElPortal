@@ -2,7 +2,7 @@
 
 ## Concepto y observación
 
-Tres monolitos tienen formas geométricas distintas talladas en su frente, repetidas en su cara posterior para que la identidad pueda observarse aunque inicialmente estén de espaldas al acceso. Tres piedras ambientales repiten exactamente esas formas. El jugador observa las coincidencias y gira cada guardián hasta que su rostro mira hacia su marcador correspondiente. No hay instrucciones escritas, flechas ni significados históricos atribuidos a las formas.
+Tres monolitos tienen formas geométricas distintas talladas en su frente, repetidas en su cara posterior para que la identidad pueda observarse aunque inicialmente estén de espaldas al acceso. Tres piedras ambientales repiten exactamente esas formas. El jugador observa las coincidencias y gira cada guardián hasta que su rostro mira hacia su marcador correspondiente. Una inscripción opcional cercana ofrece ayuda sin revelar la solución. No hay flechas ni significados históricos atribuidos a las formas.
 
 La nariz, los ojos y la ceja blockout hacen legible la dirección frontal de cada monolito. Los símbolos se distinguen por forma, utilizando el mismo material de relieve: círculo dividido, contorno triangular y seis trazos radiales. Son referencias abstractas provisionales que deberán sustituirse por assets culturalmente revisados.
 
@@ -91,3 +91,7 @@ El reto principal del nivel será relacionar las pistas, por lo que se reduce la
 Al entrar, únicamente la marca A está activa, tanto en el pedestal como en la piedra central. Durante un giro se apaga la marca de esa pieza hasta confirmar el siguiente índice. El sistema puede representar 0/3, 1/3, 2/3 y 3/3; las tres activas acompañan la luz cálida final ya existente. Reset vuelve al ejemplo inicial con una activa. La base PuzzleBase, el ciclo discreto y la duración de 0,35 segundos se conservan.
 
 Clue02 y el Input System permanecen sin cambios. La prueba final verifica indicadores reales mediante sus bloques de material, incluyendo la inicialización tras Awake/Start, el giro del ejemplo, reset y la solución mínima. La claridad y los tiempos humanos siguen pendientes de playtest.
+
+## Inscripción opcional de ayuda
+
+Una piedra provisional de Zone02 muestra **Debes ordenar el patrón.** al interactuar con **Leer**, usando los bindings dinámicos E/X/□ existentes. ReadableInscription contiene título, texto y solicitud semántica; InscriptionPresenter escucha y presenta durante cinco segundos en el Canvas existente. Leer no bloquea movimiento, no registra ninguna pista ni cambia Puzzle02. Modelo y texto son provisionales en español; no representan escritura maya auténtica. InscriptionValidation comprueba los tres dispositivos, comandos secretos sin efecto y cierre automático. Esta pasada se integra a develop después de superar las regresiones.
