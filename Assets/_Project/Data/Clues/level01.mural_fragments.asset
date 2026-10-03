@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692cb493818978f4eb5199fd2f66703d, type: 3}
   m_Name: level01.mural_fragments
   m_EditorClassIdentifier: Assembly-CSharp::Tikal.Puzzles.Clues.ClueDefinition
-  _id: level01.mural_fragments.clue
-  _title: '[PLACEHOLDER] Pista provisional 1'
-  _description: '[PLACEHOLDER] Sin contenido narrativo definitivo.'
+  _id: level01.clue01
+  _title: El camino
+  _description: "El camino verdadero no siempre est\xE1 delante de ti."
   _order: 1
