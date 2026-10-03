@@ -58,7 +58,7 @@ namespace Tikal.Tests.Editor
                 {
                     Require(AssetDatabase.LoadAssetAtPath<PuzzleDefinition>("Assets/_Project/Data/Puzzles/"+id+".asset").Id==id,"Stable Level01 definition "+id);
                     var clue=AssetDatabase.LoadAssetAtPath<ClueDefinition>("Assets/_Project/Data/Clues/"+id+".asset");
-                    Require(clue.Id==id+".clue"&&clue.Title.Contains("PLACEHOLDER")&&clue.Description.Contains("PLACEHOLDER"),"Explicit provisional clue "+id);
+                    Require(id=="level01.mural_fragments" ? clue.Id=="level01.clue01"&&clue.Title=="El camino"&&clue.Description=="El camino verdadero no siempre está delante de ti." : clue.Id==id+".clue"&&clue.Title.Contains("PLACEHOLDER")&&clue.Description.Contains("PLACEHOLDER"),"Provisional clue contract "+id);
                 }
                 Require(typeof(PuzzleBase).IsAbstract&&typeof(PuzzleBase).BaseType==typeof(MonoBehaviour),"Abstract MonoBehaviour independent of interaction inheritance");
                 Require(typeof(PuzzleBase).GetProperty("State").SetMethod==null&&typeof(PuzzleBase).GetMethod("TrySolve",BindingFlags.Instance|BindingFlags.NonPublic).IsFamily,"State read-only and solve protected");
