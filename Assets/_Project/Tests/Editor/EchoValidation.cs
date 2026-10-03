@@ -93,6 +93,8 @@ namespace Tikal.Tests.Editor
         static void Tick()
         {
             EditorApplication.QueuePlayerLoopUpdate();if(EditorApplication.timeSinceStartup<deadline)return;
+            // Cold Editor startup can delay coroutine frames; wait for the real playback completion with a bounded timeout.
+            if(stage<=2&&source.IsPlaying&&EditorApplication.timeSinceStartup<deadline+15)return;
             try
             {
                 if(stage<=2)
