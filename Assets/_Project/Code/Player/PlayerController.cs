@@ -56,7 +56,8 @@ namespace Tikal.Player
                 return;
             _look.Tick(_input.Look, _input.LookMode, Time.deltaTime);
             _movement.Tick(_input.Move, _input.SprintHeld, _input.CrouchHeld, Time.deltaTime);
-            _look.SetEyeHeight(_movement.EyeHeight);
+            _look.SetEyeHeight(_movement.EyeHeight, _movement.MaximumEyeHeight, Time.deltaTime);
+            _look.TickSprintFeedback(_movement.IsSprinting, Time.deltaTime);
         }
 
         /// <summary>Allows a future pause flow to gate gameplay and release the cursor without disabling Global.</summary>

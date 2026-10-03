@@ -124,8 +124,10 @@ MonoBehaviour:
   _crouchSpeed: 2
   _acceleration: 28
   _deceleration: 32
-  _airControl: 0.35
+  _airControl: 0.7
   _jumpHeight: 1.2
+  _coyoteTime: 0.1
+  _jumpBuffer: 0.12
   _gravity: -24
   _groundStickSpeed: 2
   _terminalFallSpeed: 55
@@ -140,6 +142,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   _headroomClearance: 0.03
+  _cameraSafetyMargin: 0.1
 --- !u!114 &4599501197520941180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +160,12 @@ MonoBehaviour:
   _rateSensitivity: 150
   _minimumPitch: -89
   _maximumPitch: 89
+  _invertY: 0
+  _crouchCameraTransitionSpeed: 14
+  _enableSprintFov: 1
+  _normalFov: 75
+  _sprintFov: 78
+  _fovTransitionSpeed: 10
 --- !u!114 &5760296363396632337
 MonoBehaviour:
   m_ObjectHideFlags: 0
