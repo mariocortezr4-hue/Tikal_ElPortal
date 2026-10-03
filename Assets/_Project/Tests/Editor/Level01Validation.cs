@@ -26,7 +26,8 @@ namespace Tikal.Tests.Editor
         static InteractionPromptPresenter presenter;
         static Keyboard keyboard;
         static Gamepad pad;
-        static float elapsed,distance;
+        static float elapsed,distance,maxVerticalStep;
+        static int airborneFrames,maxAirborneFrames;
         static MethodInfo Method(Type type,string name)=>type.GetMethod(name,BindingFlags.Instance|BindingFlags.NonPublic);
         static Level01Validation()=>EditorApplication.playModeStateChanged+=State;
         [MenuItem("Tikal/Tests/Level 01 physical round trip")] public static void Run()
@@ -46,6 +47,7 @@ namespace Tikal.Tests.Editor
                 }
                 )Require(root.Find(group)!=null,"Hierarchy "+group);
                 var env=root.Find("Environment");
+                ValidateEnvironment(env);
                 for(int i=1;i<=5;i++)
                 {
                     var zone=env.Cast<Transform>().Single(t=>t.name.StartsWith("Zone0"+i));
@@ -136,7 +138,10 @@ namespace Tikal.Tests.Editor
             var delta=movement.transform.position-before;
             delta.y=0;
             distance+=delta.magnitude;
-            RequireSilent(movement.transform.position.y>-.1f&&movement.transform.position.y<.5f,"Player stayed on walkable floor");
+            RequireSilent(movement.transform.position.y>-.55f&&movement.transform.position.y<3f,"Player stayed within terrain elevation range");
+            maxVerticalStep=Mathf.Max(maxVerticalStep,Mathf.Abs(movement.transform.position.y-before.y));
+            airborneFrames=movement.IsGrounded?0:airborneFrames+1;maxAirborneFrames=Mathf.Max(maxAirborneFrames,airborneFrames);
+            RequireSilent(airborneFrames<=8,"Grounded remained stable on traversable slopes");
             Refresh();
         }
         static void RequireSilent(bool valid,string message)
@@ -157,6 +162,7 @@ namespace Tikal.Tests.Editor
             }
             for(int i=0;i<12;i++)Step(Vector2.zero,false);
             RequireSilent(Vector2.Distance(new Vector2(x,z),new Vector2(movement.transform.position.x,movement.transform.position.z))<.5f,"Settled at waypoint "+target+" actual "+movement.transform.position);
+            RequireSilent(movement.IsGrounded,"Grounded at waypoint "+target);
         }
         static void Aim(Vector3 point)
         {
@@ -172,6 +178,22 @@ namespace Tikal.Tests.Editor
             InputSystem.QueueStateEvent(keyboard,new KeyboardState());
             InputSystem.Update();
             Refresh();
+        }
+        static void ValidateEnvironment(Transform env)
+        {
+            foreach(var name in new[]{"Terrain","Vegetation_Blockout","Ruins_Blockout","NaturalBoundaries"})Require(env.Find(name)!=null,"Environmental hierarchy: "+name);
+            var surfaces=env.Find("Terrain").GetComponentsInChildren<MeshFilter>();
+            Require(surfaces.Length==11,"Eleven connected terrain surfaces");
+            float min=float.MaxValue,max=float.MinValue,maxSlope=0;
+            foreach(var filter in surfaces){Require(filter.GetComponent<MeshCollider>().sharedMesh==filter.sharedMesh,"Surface collider matches mesh");var mesh=filter.sharedMesh;foreach(var p in mesh.vertices){min=Mathf.Min(min,p.y);max=Mathf.Max(max,p.y);}var vertices=mesh.vertices;var triangles=mesh.triangles;for(int i=0;i<triangles.Length;i+=3){var normal=Vector3.Cross(vertices[triangles[i+1]]-vertices[triangles[i]],vertices[triangles[i+2]]-vertices[triangles[i]]).normalized;maxSlope=Mathf.Max(maxSlope,Vector3.Angle(normal,Vector3.up));}}
+            Require(maxSlope<45,"Playable terrain slope below CharacterController limit");
+            Debug.Log($"LEVEL01_ENVIRONMENT terrainMin={min:F2}m terrainMax={max:F2}m maxSurfaceSlope={maxSlope:F2}deg");
+            var masses=env.Find("Vegetation_Blockout").GetComponentsInChildren<MeshRenderer>();Require(masses.Length==68&&env.Find("Vegetation_Blockout").GetComponentsInChildren<Collider>().Length==0,"68 non-colliding vegetation masses");
+            Require(env.Find("NaturalBoundaries").GetComponentsInChildren<MeshCollider>().Length==42,"Natural shell retains solid terrain collision");
+            Require(env.Find("NaturalBoundaries").GetComponentsInChildren<MonoBehaviour>().Length==0,"No new runtime boundary behaviors");
+            foreach(var renderer in env.GetComponentsInChildren<MeshRenderer>().Where(r=>r.name=="Boundary"||r.name=="SolidBoundary"||r.name=="ThresholdBoundary"))Require(!renderer.enabled&&renderer.GetComponent<Collider>().enabled,"Hidden safety boundary still collides");
+            Physics.SyncTransforms();
+            foreach(var pair in new[]{new[]{new Vector3(0,2.02f,12),new Vector3(29,1.92f,39)},new[]{new Vector3(29,2.82f,12),new Vector3(0,3.22f,39)},new[]{new Vector3(0,2.22f,67),new Vector3(29,2.82f,12)}}){var delta=pair[1]-pair[0];Require(Physics.RaycastAll(pair[0],delta.normalized,delta.magnitude).Any(hit=>hit.collider.GetComponent<Renderer>()!=null&&hit.collider.GetComponent<Renderer>().enabled),"Visible geometry blocks non-adjacent zone sightline");}
         }
         static void Validate()
         {
@@ -237,10 +259,12 @@ namespace Tikal.Tests.Editor
                 Follow(0,0);
                 elapsed=distance=0;
                 Follow(0,12);
+                var savedDistance=distance;var savedTime=elapsed;Follow(-5.8f,14);Require(movement.transform.position.y>.9f,"Ceremonial platform steps traversable without jump");Follow(0,12);distance=savedDistance;elapsed=savedTime;
                 Debug.Log($"LEVEL01_METRIC Door_Zone01 distance={distance:F2}m time={elapsed:F2}s");
                 float lastD=distance,lastT=elapsed;
                 Follow(29,12);
                 Require(true,"Zone02 accessible");
+                savedDistance=distance;savedTime=elapsed;Follow(24,12);Follow(24,8);Require(movement.transform.position.y>1.9f,"Zone02 local mound uphill reachable");Follow(24,12);Follow(29,12);distance=savedDistance;elapsed=savedTime;
                 Debug.Log($"LEVEL01_METRIC Zone01_Zone02 distance={distance-lastD:F2}m time={elapsed-lastT:F2}s");
                 lastD=distance;
                 lastT=elapsed;
@@ -251,6 +275,7 @@ namespace Tikal.Tests.Editor
                 lastT=elapsed;
                 Follow(0,39);
                 Require(true,"Zone04 accessible");
+                savedDistance=distance;savedTime=elapsed;Follow(-6,39);Require(movement.transform.position.y>1.9f,"Gallery terrace local elevation reachable");Follow(0,39);distance=savedDistance;elapsed=savedTime;
                 Debug.Log($"LEVEL01_METRIC Zone03_Zone04 distance={distance-lastD:F2}m time={elapsed-lastT:F2}s");
                 lastD=distance;
                 lastT=elapsed;
@@ -258,7 +283,7 @@ namespace Tikal.Tests.Editor
                 Require(true,"Zone05 accessible");
                 Debug.Log($"LEVEL01_METRIC Zone04_Zone05 distance={distance-lastD:F2}m time={elapsed-lastT:F2}s");
                 Follow(0,74);
-                Require(movement.transform.position.y>.1f,"Low terminal dais traversable without jump");
+                Require(movement.transform.position.y>.7f,"Low terminal dais traversable without jump");
                 Require(Physics.Raycast(new Vector3(0,1.5f,74),Vector3.forward,5),"Terminal chamber solid, no exit");
                 Debug.Log($"LEVEL01_METRIC Door_terminal distance={distance:F2}m walking={elapsed:F2}s");
                 elapsed=distance=0;
@@ -286,6 +311,8 @@ namespace Tikal.Tests.Editor
                 Follow(-6,-10);
                 Follow(0,-10);
                 Require(true,"Returned to spawn through same reversible geometry");
+                Debug.Log($"LEVEL01_TERRAIN maxVerticalFrameStep={maxVerticalStep:F3}m maxAirborneFrames={maxAirborneFrames}");
+                Require(maxVerticalStep<.35f,"No large vertical discontinuity on ramps or 0.2m steps");
             }
             finally
             {
