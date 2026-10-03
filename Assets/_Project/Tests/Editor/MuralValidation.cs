@@ -43,7 +43,7 @@ namespace Tikal.Tests.Editor
                 var scene=EditorSceneManager.OpenScene("Assets/_Project/Scenes/Levels/Level01_SecretEntrance.unity");
                 var components=scene.GetRootGameObjects().SelectMany(g=>g.GetComponentsInChildren<Component>(true)).ToArray();
                 Require(components.All(c=>c!=null),"No Missing Scripts");DynamicPromptValidation.ValidateScene(components);
-                Require(components.OfType<MuralFragmentsPuzzle>().Count()==1,"Only puzzle 01 installed");
+                Require(components.OfType<MuralFragmentsPuzzle>().Count()==1,"Exactly one mural installed");
                 puzzle=components.OfType<MuralFragmentsPuzzle>().Single();
                 var so=new SerializedObject(puzzle);var refs=so.FindProperty("_fragments");var answers=so.FindProperty("_solution");
                 Require(refs.arraySize==4&&answers.arraySize==4,"Exactly four authored fragments and solution entries");
@@ -59,7 +59,7 @@ namespace Tikal.Tests.Editor
                 }
                 Require(puzzle.transform.parent.name=="PuzzleAnchor"&&puzzle.transform.parent.parent.name=="Zone01_MuralFragments","Installed at existing Zone01 anchor");
                 tracker=components.OfType<ClueTracker>().Single();discovery=components.OfType<ClueDiscoveryPresenter>().Single();
-                var reward=new SerializedObject(components.OfType<PuzzleClueReward>().Single());
+                var reward=new SerializedObject(puzzle.GetComponent<PuzzleClueReward>());
                 Require(reward.FindProperty("_puzzle").objectReferenceValue==puzzle&&reward.FindProperty("_tracker").objectReferenceValue==tracker,"Reward composed outside PuzzleBase");
                 var clue=(ClueDefinition)reward.FindProperty("_clue").objectReferenceValue;
                 Require(clue.Id=="level01.clue01"&&clue.Title=="El camino"&&clue.Description=="El camino verdadero no siempre está delante de ti.","Clue01 narrative contract");
@@ -198,7 +198,7 @@ namespace Tikal.Tests.Editor
             Require(tracker.Count==1&&tracker.HasClue("level01.clue01"),"Clue01 awarded once");
             foreach(var f in pieces){int n=f.CurrentOrientation;for(int j=0;j<10;j++)f.Interact();Require(!f.CanInteract&&!f.IsRotating&&f.CurrentOrientation==n,"Solved fragment locked "+f.name);}
             Require(!puzzle.ResetPuzzle()&&!puzzle.BeginPuzzle()&&solves==1,"Terminal solution cannot reset or begin twice");
-            var reward=UnityEngine.Object.FindAnyObjectByType<PuzzleClueReward>();reward.enabled=false;reward.enabled=true;
+            var reward=puzzle.GetComponent<PuzzleClueReward>();reward.enabled=false;reward.enabled=true;
             var clue=AssetDatabase.LoadAssetAtPath<ClueDefinition>("Assets/_Project/Data/Clues/level01.mural_fragments.asset");
             Require(!tracker.Discover(clue)&&tracker.Count==1,"Reward catch-up and repeated discovery do not duplicate");
             var ds=new SerializedObject(discovery);var panel=(GameObject)ds.FindProperty("_panel").objectReferenceValue;
