@@ -12,6 +12,7 @@ namespace Tikal.Input
         private bool _callbacksSubscribed;
 
         public InputAction InteractAction => _actions == null ? null : _actions.Player.Interact;
+        public InputAction JournalAction => _actions == null ? null : _actions.Global.Journal;
         public bool GameplayEnabled => _actions != null && _actions.Player.enabled;
 
         public Vector2 Move => GameplayEnabled ? _actions.Player.Move.ReadValue<Vector2>() : Vector2.zero;
@@ -25,6 +26,7 @@ namespace Tikal.Input
         public event Action InteractPressed;
         public event Action SecretCommandPressed;
         public event Action PausePressed;
+        public event Action JournalPressed;
 
         private void Awake()
         {
@@ -69,7 +71,7 @@ namespace Tikal.Input
                 _actions.Player.Enable();
         }
 
-        /// <summary>Disables player actions while leaving global pause available.</summary>
+        /// <summary>Disables player actions while leaving global pause and journal available.</summary>
         public void DisableGameplay()
         {
             if (_actions != null && _actions.Player.enabled)
@@ -85,6 +87,7 @@ namespace Tikal.Input
             _actions.Player.Interact.performed += OnInteractPerformed;
             _actions.Player.SecretCommand.performed += OnSecretCommandPerformed;
             _actions.Global.Pause.performed += OnPausePerformed;
+            _actions.Global.Journal.performed += OnJournalPerformed;
             _callbacksSubscribed = true;
         }
 
@@ -97,12 +100,14 @@ namespace Tikal.Input
             _actions.Player.Interact.performed -= OnInteractPerformed;
             _actions.Player.SecretCommand.performed -= OnSecretCommandPerformed;
             _actions.Global.Pause.performed -= OnPausePerformed;
+            _actions.Global.Journal.performed -= OnJournalPerformed;
             _callbacksSubscribed = false;
         }
 
         private void OnJumpPerformed(InputAction.CallbackContext context) => JumpPressed?.Invoke();
         private void OnInteractPerformed(InputAction.CallbackContext context) => InteractPressed?.Invoke();
         private void OnSecretCommandPerformed(InputAction.CallbackContext context) => SecretCommandPressed?.Invoke();
+        private void OnJournalPerformed(InputAction.CallbackContext context) => JournalPressed?.Invoke();
         private void OnPausePerformed(InputAction.CallbackContext context) => PausePressed?.Invoke();
     }
 }

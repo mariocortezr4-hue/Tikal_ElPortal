@@ -656,6 +656,16 @@ namespace Tikal.Input
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Journal"",
+                    ""type"": ""Button"",
+                    ""id"": ""bcf8f8ad-122b-49c0-aedb-663288ea0006"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -678,6 +688,28 @@ namespace Tikal.Input
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe0efbea-ec63-43c5-9eb9-0fdbd04bea03"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Journal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""023f54b7-1282-4c65-aa5b-9f03af589b6e"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Journal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -734,6 +766,7 @@ namespace Tikal.Input
             // Global
             m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
             m_Global_Pause = m_Global.FindAction("Pause", throwIfNotFound: true);
+            m_Global_Journal = m_Global.FindAction("Journal", throwIfNotFound: true);
         }
 
         ~@TikalInputActions()
@@ -1130,6 +1163,7 @@ namespace Tikal.Input
         private readonly InputActionMap m_Global;
         private List<IGlobalActions> m_GlobalActionsCallbackInterfaces = new List<IGlobalActions>();
         private readonly InputAction m_Global_Pause;
+        private readonly InputAction m_Global_Journal;
         /// <summary>
         /// Provides access to input actions defined in input action map "Global".
         /// </summary>
@@ -1145,6 +1179,10 @@ namespace Tikal.Input
             /// Provides access to the underlying input action "Global/Pause".
             /// </summary>
             public InputAction @Pause => m_Wrapper.m_Global_Pause;
+            /// <summary>
+            /// Provides access to the underlying input action "Global/Journal".
+            /// </summary>
+            public InputAction @Journal => m_Wrapper.m_Global_Journal;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1174,6 +1212,9 @@ namespace Tikal.Input
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Journal.started += instance.OnJournal;
+                @Journal.performed += instance.OnJournal;
+                @Journal.canceled += instance.OnJournal;
             }
 
             /// <summary>
@@ -1188,6 +1229,9 @@ namespace Tikal.Input
                 @Pause.started -= instance.OnPause;
                 @Pause.performed -= instance.OnPause;
                 @Pause.canceled -= instance.OnPause;
+                @Journal.started -= instance.OnJournal;
+                @Journal.performed -= instance.OnJournal;
+                @Journal.canceled -= instance.OnJournal;
             }
 
             /// <summary>
@@ -1368,6 +1412,13 @@ namespace Tikal.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnPause(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Journal" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnJournal(InputAction.CallbackContext context);
         }
     }
 }

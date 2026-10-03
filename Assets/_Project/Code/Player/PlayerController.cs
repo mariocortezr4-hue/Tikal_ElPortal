@@ -14,6 +14,7 @@ namespace Tikal.Player
         private IPlayerInputReader _input;
         private bool _jumpSubscribed;
         private bool _gameplayActive;
+        public bool GameplayActive => _gameplayActive;
 
         private void Awake()
         {

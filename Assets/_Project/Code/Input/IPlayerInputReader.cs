@@ -16,6 +16,7 @@ namespace Tikal.Input
         event Action InteractPressed;
         event Action SecretCommandPressed;
         event Action PausePressed;
+        event Action JournalPressed;
 
         void EnableGameplay();
         void DisableGameplay();
