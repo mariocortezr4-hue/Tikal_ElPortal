@@ -7,6 +7,7 @@ namespace Tikal.Input
     {
         Vector2 Move { get; }
         Vector2 Look { get; }
+        LookInputMode LookMode { get; }
         bool SprintHeld { get; }
         bool CrouchHeld { get; }
 

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 namespace Tikal.Input
 {
@@ -14,6 +15,8 @@ namespace Tikal.Input
 
         public Vector2 Move => GameplayEnabled ? _actions.Player.Move.ReadValue<Vector2>() : Vector2.zero;
         public Vector2 Look => GameplayEnabled ? _actions.Player.Look.ReadValue<Vector2>() : Vector2.zero;
+        public LookInputMode LookMode => _actions != null && _actions.Player.Look.activeControl is DeltaControl
+            ? LookInputMode.Delta : LookInputMode.Rate;
         public bool SprintHeld => GameplayEnabled && _actions.Player.Sprint.IsPressed();
         public bool CrouchHeld => GameplayEnabled && _actions.Player.Crouch.IsPressed();
 
