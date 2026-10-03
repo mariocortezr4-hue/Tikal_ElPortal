@@ -2,7 +2,7 @@
 
 ## Objetivo y límites
 
-El framework modela ciclos de vida y descubrimientos de una sesión. No conoce teclas, escenas, puertas, HUD, guardado ni gestores globales. Los cinco puzzles de Level01 tienen definiciones de datos. El primer mural ya utiliza el framework en Zone01; sus reglas concretas se documentan en [Level01_Puzzle01_Mural.md](Level01_Puzzle01_Mural.md). El segundo puzzle utiliza el mismo framework en Zone02; véase [Level01_Puzzle02_Guardians.md](Level01_Puzzle02_Guardians.md). Los puzzles 03–05 conservan únicamente sus definiciones.
+El framework modela ciclos de vida y descubrimientos de una sesión. No conoce teclas, escenas, puertas, HUD, guardado ni gestores globales. Los cinco puzzles de Level01 tienen definiciones de datos. El primer mural ya utiliza el framework en Zone01; sus reglas concretas se documentan en [Level01_Puzzle01_Mural.md](Level01_Puzzle01_Mural.md). El segundo puzzle utiliza el mismo framework en Zone02; véase [Level01_Puzzle02_Guardians.md](Level01_Puzzle02_Guardians.md). El tercero utiliza el mismo framework en Zone03; véase Level01_Puzzle03_Echo.md. Los puzzles 04–05 conservan únicamente sus definiciones.
 
 ## Estado y ciclo de vida
 
@@ -72,7 +72,7 @@ Para el jurado: PuzzleBase representa **abstracción**; los derivados muestran *
 5. Añadir PuzzleClueReward solo si debe otorgar una pista, con tracker y asset explícitos.
 6. Probar intentos inválidos, resolución repetida, reset permitido y aislamiento entre instancias.
 
-No se han implementado acertijos reales, condiciones de victoria, guardado ni HUD final.
+Los tres puzzles de Level01 reutilizan este ciclo de vida; no se añadieron condiciones de victoria, guardado ni HUD final.
 
 ## Validación del checkpoint
 

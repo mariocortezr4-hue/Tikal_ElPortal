@@ -270,6 +270,25 @@ namespace Tikal.Tests.Editor
                 lastT=elapsed;
                 Follow(29,39);
                 Require(true,"Zone03 accessible");
+                var echo=UnityEngine.Object.FindAnyObjectByType<Tikal.Puzzles.Level01.EchoSequencePuzzle>();
+                if(echo!=null)
+                {
+                    savedDistance=distance;savedTime=elapsed;
+                    Follow(29.5f,37);
+                    var inscription=UnityEngine.Object.FindObjectsByType<Tikal.Interaction.ReadableInscription>().Single(r=>r.Text=="Escucha. Después, devuelve el eco.");
+                    Aim(inscription.GetComponentInChildren<Collider>().bounds.center);Require(ReferenceEquals(interaction.CurrentInteractable,inscription),"Echo inscription reachable by physical traversal");
+                    Follow(30,39);Follow(30,41.6f);Follow(33,41.6f);
+                    var source=UnityEngine.Object.FindAnyObjectByType<Tikal.Puzzles.Level01.EchoSource>();Aim(source.transform.position+Vector3.up*1.2f);Require(ReferenceEquals(interaction.CurrentInteractable,source),"EchoSource reachable around existing alcove divider");
+                    Follow(31.5f,41.6f);Follow(31.5f,43.2f);
+                    var stones=UnityEngine.Object.FindObjectsByType<Tikal.Puzzles.Level01.EchoStone>().OrderBy(s=>s.Note).ToArray();
+                    Aim(stones[0].transform.position+Vector3.up*.8f);Require(ReferenceEquals(interaction.CurrentInteractable,stones[0]),"Stone A physically reachable");
+                    Follow(31.5f,41.6f);Follow(33,41.6f);Follow(35,41.2f);
+                    Aim(stones[2].transform.position+Vector3.up*1.2f);Require(ReferenceEquals(interaction.CurrentInteractable,stones[2]),"Stone C physically reachable");
+                    Follow(34.1f,41.2f);Follow(34.1f,43.4f);Follow(34.7f,43.4f);
+                    Aim(stones[1].transform.position+Vector3.up*.8f);Require(ReferenceEquals(interaction.CurrentInteractable,stones[1]),"Stone B physically reachable");
+                    Follow(34.1f,43.4f);Follow(34.1f,41.2f);Follow(33,41.6f);Follow(30,41.6f);Follow(29,39);
+                    camera.transform.localRotation=Quaternion.identity;distance=savedDistance;elapsed=savedTime;
+                }
                 Debug.Log($"LEVEL01_METRIC Zone02_Zone03 distance={distance-lastD:F2}m time={elapsed-lastT:F2}s");
                 lastD=distance;
                 lastT=elapsed;
