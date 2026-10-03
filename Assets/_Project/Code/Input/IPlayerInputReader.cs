@@ -5,6 +5,7 @@ namespace Tikal.Input
 {
     public interface IPlayerInputReader
     {
+        bool GameplayEnabled { get; }
         Vector2 Move { get; }
         Vector2 Look { get; }
         LookInputMode LookMode { get; }

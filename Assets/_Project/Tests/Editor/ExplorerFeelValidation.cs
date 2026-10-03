@@ -88,6 +88,12 @@ namespace Tikal.Tests.Editor
             }
         }
 
+        internal static void ValidateCurrentPlayer()
+        {
+            ValidateRuntime();
+            ValidateFeel();
+        }
+
         private static void ValidateRuntime()
         {
             var coordinator = UnityEngine.Object.FindAnyObjectByType<PlayerController>();
