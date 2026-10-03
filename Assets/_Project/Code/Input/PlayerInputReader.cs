@@ -11,6 +11,7 @@ namespace Tikal.Input
         private TikalInputActions _actions;
         private bool _callbacksSubscribed;
 
+        public InputAction InteractAction => _actions == null ? null : _actions.Player.Interact;
         public bool GameplayEnabled => _actions != null && _actions.Player.enabled;
 
         public Vector2 Move => GameplayEnabled ? _actions.Player.Move.ReadValue<Vector2>() : Vector2.zero;

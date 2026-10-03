@@ -50,8 +50,7 @@ namespace Tikal.Tests.Editor
                 foreach (var component in components.OfType<PlayerController>())
                     foreach (var field in new[] { "_inputReader", "_movement", "_look" })
                         Require(new SerializedObject(component).FindProperty(field).objectReferenceValue != null, "Explorer reference: " + field);
-                var prompt = components.OfType<InteractionDebugPrompt>().Single();
-                Require(new SerializedObject(prompt).FindProperty("_interaction").objectReferenceValue == player, "Development prompt observes interaction authority.");
+                DynamicPromptValidation.ValidateScene(components);
                 SessionState.SetBool(ActiveKey, true);
                 SessionState.SetInt(ResultKey, 1);
                 EditorApplication.EnterPlaymode();
@@ -66,6 +65,7 @@ namespace Tikal.Tests.Editor
             {
                 try
                 {
+                    DynamicPromptValidation.ValidateCurrentPrompts();
                     ValidateInteraction();
                     EditorSceneManager.LoadSceneInPlayMode("Assets/_Project/Scenes/Testing/PlayerMovementTest.unity", new LoadSceneParameters(LoadSceneMode.Single));
                     _regressionDeadline = EditorApplication.timeSinceStartup + 30;
