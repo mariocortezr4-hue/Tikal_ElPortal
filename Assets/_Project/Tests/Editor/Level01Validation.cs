@@ -321,6 +321,24 @@ namespace Tikal.Tests.Editor
                 Follow(0,67);
                 Require(true,"Zone05 accessible");
                 Debug.Log($"LEVEL01_METRIC Zone04_Zone05 distance={distance-lastD:F2}m time={elapsed-lastT:F2}s");
+                var revelation = UnityEngine.Object.FindAnyObjectByType<Tikal.Puzzles.Level01.RevelationPuzzle>();
+                if(revelation!=null)
+                {
+                    savedDistance=distance;savedTime=elapsed;
+                    Follow(0,68.5f);
+                    foreach(var stele in UnityEngine.Object.FindObjectsByType<Tikal.Puzzles.Level01.RevelationStele>().OrderBy(s=>s.transform.position.x))
+                    {
+                        Follow(stele.transform.position.x,68.5f);
+                        Aim(stele.GetComponentsInChildren<Renderer>().Single(r=>r.name=="Upright stele").bounds.center);
+                        Require(ReferenceEquals(interaction.CurrentInteractable,stele),"Revelation "+stele.name+" physically reachable without teleportation");
+                    }
+                    Follow(6,68.5f);
+                    var help=UnityEngine.Object.FindObjectsByType<Tikal.Interaction.ReadableInscription>().Single(r=>r.Text=="Lo que aparece al principio vuelve al final.");
+                    Aim(help.GetComponentInChildren<Collider>().bounds.center);
+                    Require(ReferenceEquals(interaction.CurrentInteractable,help),"Revelation help physically reachable");
+                    Follow(0,68.5f);camera.transform.localRotation=Quaternion.identity;
+                    distance=savedDistance;elapsed=savedTime;
+                }
                 Follow(0,74);
                 Require(movement.transform.position.y>.7f,"Low terminal dais traversable without jump");
                 Require(Physics.Raycast(new Vector3(0,1.5f,74),Vector3.forward,5),"Terminal chamber solid, no exit");
