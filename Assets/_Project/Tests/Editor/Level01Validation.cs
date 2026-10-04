@@ -123,12 +123,12 @@ namespace Tikal.Tests.Editor
             InputSystem.QueueStateEvent(pad,new GamepadState
             {
                 leftStick=move
-            }
+            }.WithButton(GamepadButton.LeftStick,sprint)
             );
-            InputSystem.QueueStateEvent(keyboard,sprint?new KeyboardState(Key.LeftShift):new KeyboardState());
+            InputSystem.QueueStateEvent(keyboard,new KeyboardState());
             InputSystem.Update();
             var before=movement.transform.position;
-            movement.Tick(reader.Move,reader.SprintHeld,false,.02f);
+            movement.Tick(reader.Move,reader.SprintRequested,false,.02f);
             Method(typeof(Door),"Tick").Invoke(door,new object[]
             {
                 .02f
@@ -158,7 +158,8 @@ namespace Tikal.Tests.Editor
                 delta.y=0;
                 if(delta.magnitude<.18f)break;
                 RequireSilent(elapsed-start<40,"Traversal blocked near "+movement.transform.position+" toward "+target);
-                Step(new Vector2(delta.x,delta.z).normalized,sprint && delta.magnitude>1.2f);
+                // Brake with the analog stick near a waypoint; sprint ends when processed Move reaches neutral.
+                Step(new Vector2(delta.x,delta.z).normalized*Mathf.Clamp01(delta.magnitude),sprint && delta.magnitude>1.2f);
             }
             for(int i=0;i<12;i++)Step(Vector2.zero,false);
             RequireSilent(Vector2.Distance(new Vector2(x,z),new Vector2(movement.transform.position.x,movement.transform.position.z))<.5f,"Settled at waypoint "+target+" actual "+movement.transform.position);

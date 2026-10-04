@@ -10,6 +10,7 @@ namespace Tikal.Input
         Vector2 Look { get; }
         LookInputMode LookMode { get; }
         bool SprintHeld { get; }
+        bool SprintRequested { get; }
         bool CrouchHeld { get; }
 
         event Action JumpPressed;

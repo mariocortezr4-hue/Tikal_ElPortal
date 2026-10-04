@@ -56,7 +56,7 @@ namespace Tikal.Player
             if (!_gameplayActive)
                 return;
             _look.Tick(_input.Look, _input.LookMode, Time.deltaTime);
-            _movement.Tick(_input.Move, _input.SprintHeld, _input.CrouchHeld, Time.deltaTime);
+            _movement.Tick(_input.Move, _input.SprintRequested, _input.CrouchHeld, Time.deltaTime);
             _look.SetEyeHeight(_movement.EyeHeight, _movement.MaximumEyeHeight, Time.deltaTime);
             _look.TickSprintFeedback(_movement.IsSprinting, Time.deltaTime);
         }

@@ -388,7 +388,7 @@ namespace Tikal.Tests.Editor
             for (var frame = 0; frame < frames; frame++)
             {
                 look.Tick(input.Look, input.LookMode, StepTime);
-                movement.Tick(input.Move, input.SprintHeld, input.CrouchHeld, StepTime);
+                movement.Tick(input.Move, input.SprintRequested, input.CrouchHeld, StepTime);
                 look.SetEyeHeight(movement.EyeHeight, movement.MaximumEyeHeight, StepTime);
                 look.TickSprintFeedback(movement.IsSprinting, StepTime);
             }
