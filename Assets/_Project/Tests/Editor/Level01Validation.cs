@@ -92,7 +92,7 @@ namespace Tikal.Tests.Editor
                 {
                     Validate();
                     SessionState.SetInt(Result,0);
-                    Debug.Log("TIKAL_LEVEL01_VALIDATION_PASSED: real collider traversal, five zones, no jumps or teleportation, return, conventional Door, dynamic prompts, SecretCommand no effect.");
+                    Debug.Log("TIKAL_LEVEL01_VALIDATION_PASSED: real collider traversal, five zones, no jumps or teleportation, return, conventional Door, dynamic prompts, separate secret input facing away; original Door unchanged.");
                 }
                 catch(Exception e)
                 {
@@ -171,6 +171,14 @@ namespace Tikal.Tests.Editor
             Refresh();
         }
         static TMP_Text Label()=> (TMP_Text)new SerializedObject(presenter).FindProperty("_label").objectReferenceValue;
+        static void SendSecretFacingAway(Action send)
+        {
+            var rotation=camera.transform.rotation;
+            camera.transform.rotation=Quaternion.LookRotation(-camera.transform.forward,Vector3.up);
+            send();
+            camera.transform.rotation=rotation;
+            Refresh();
+        }
         static void Press(Key key)
         {
             InputSystem.QueueStateEvent(keyboard,new KeyboardState(key));
@@ -190,7 +198,9 @@ namespace Tikal.Tests.Editor
             Require(maxSlope<45,"Playable terrain slope below CharacterController limit");
             Debug.Log($"LEVEL01_ENVIRONMENT terrainMin={min:F2}m terrainMax={max:F2}m maxSurfaceSlope={maxSlope:F2}deg");
             var masses=env.Find("Vegetation_Blockout").GetComponentsInChildren<MeshRenderer>();Require(masses.Length==68&&env.Find("Vegetation_Blockout").GetComponentsInChildren<Collider>().Length==0,"68 non-colliding vegetation masses");
-            Require(env.Find("NaturalBoundaries").GetComponentsInChildren<MeshCollider>().Length==42,"Natural shell retains solid terrain collision");
+            var shell=env.Find("NaturalBoundaries").GetComponentsInChildren<MeshCollider>();
+            Require(shell.Length==43&&shell.All(c=>c.enabled&&!c.isTrigger&&c.sharedMesh==c.GetComponent<MeshFilter>().sharedMesh),"Natural shell preserves original collision plus split eastern shoulder");
+            Require(shell.Single(c=>c.name=="Revelation eastern rock shoulder").sharedMesh==shell.Single(c=>c.name=="Talud_73").sharedMesh,"Split shoulder retains the original own rock mesh");
             Require(env.Find("NaturalBoundaries").GetComponentsInChildren<MonoBehaviour>().Length==0,"No new runtime boundary behaviors");
             foreach(var renderer in env.GetComponentsInChildren<MeshRenderer>().Where(r=>r.name=="Boundary"||r.name=="SolidBoundary"||r.name=="ThresholdBoundary"))Require(!renderer.enabled&&renderer.GetComponent<Collider>().enabled,"Hidden safety boundary still collides");
             Physics.SyncTransforms();
@@ -238,18 +248,18 @@ namespace Tikal.Tests.Editor
                 Press(Key.H);
                 Require(Label().text.Contains("E")&&Label().text.Contains("Abrir"),"Keyboard E Abrir prompt");
                 var original=door.State;
-                Press(Key.G);
-                Require(door.State==original&&Label().text.Contains("Abrir"),"G has no gameplay or prompt effect");
-                InputSystem.QueueStateEvent(pad,new GamepadState().WithButton(GamepadButton.North));
+                SendSecretFacingAway(()=>Press(Key.G));
+                Require(door.State==original&&Label().text.Contains("Abrir"),"Secret facing away has no gameplay or prompt effect");
+                SendSecretFacingAway(()=>{InputSystem.QueueStateEvent(pad,new GamepadState().WithButton(GamepadButton.North));InputSystem.Update();});
                 InputSystem.Update();
                 Refresh();
-                Require(door.State==original&&Label().text.Contains("X"),"Xbox Y inert; X prompt");
+                Require(door.State==original&&Label().text.Contains("X"),"Xbox Y facing away inert; X prompt");
                 InputSystem.QueueStateEvent(pad,new GamepadState());
                 InputSystem.Update();
-                InputSystem.QueueStateEvent(ps,new GamepadState().WithButton(GamepadButton.North));
+                SendSecretFacingAway(()=>{InputSystem.QueueStateEvent(ps,new GamepadState().WithButton(GamepadButton.North));InputSystem.Update();});
                 InputSystem.Update();
                 Refresh();
-                Require(door.State==original&&Label().text.Contains("□"),"PlayStation triangle inert; square prompt");
+                Require(door.State==original&&Label().text.Contains("□"),"PlayStation triangle facing away inert; square prompt");
                 InputSystem.QueueStateEvent(ps,new GamepadState());
                 InputSystem.Update();
                 Press(Key.E);
@@ -357,8 +367,8 @@ namespace Tikal.Tests.Editor
                 Require(ReferenceEquals(interaction.CurrentInteractable,door),"Physical return and reacquire original Door");
                 Press(Key.H);
                 Require(Label().text.Contains("Cerrar"),"Contextual close prompt on return");
-                Press(Key.G);
-                Require(door.State==Door.DoorState.Open,"Secret remains inert on return");
+                SendSecretFacingAway(()=>Press(Key.G));
+                Require(door.State==Door.DoorState.Open,"Secret facing away remains inert on return");
                 Press(Key.E);
                 for(int i=0;i<45;i++)Step(Vector2.zero,false);
                 Require(door.State==Door.DoorState.Closed,"Original Door closes normally after round trip");

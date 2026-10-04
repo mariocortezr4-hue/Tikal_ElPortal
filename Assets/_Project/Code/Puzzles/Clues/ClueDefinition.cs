@@ -1,6 +1,7 @@
 using UnityEngine;
 namespace Tikal.Puzzles.Clues
 {
+    public enum ClueSemanticContent { Narrative, SecretCommand }
     [CreateAssetMenu(menuName = "Tikal/Puzzles/Clue Definition")]
     public sealed class ClueDefinition : ScriptableObject
     {
@@ -8,6 +9,8 @@ namespace Tikal.Puzzles.Clues
         [SerializeField] private string _title;
         [SerializeField, TextArea] private string _description;
         [SerializeField] private int _order;
+        [SerializeField] private ClueSemanticContent _semanticContent;
+        public ClueSemanticContent SemanticContent => _semanticContent;
         public string Id => _id;
         public string Title => _title;
         public string Description => _description;

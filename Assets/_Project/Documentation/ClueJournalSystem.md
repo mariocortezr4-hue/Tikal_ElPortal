@@ -84,3 +84,9 @@ No se modifican main, Packages ni ProjectSettings. No hay Puzzle04, Pause Menu, 
 - Snapshot no escribe archivos y restaurar IDs no genera notificaciones nuevas.
 - Se preservan por separado el estado previo del coordinador PlayerController, el mapa Player y el cursor al cerrar el diario.
 - Warnings preexistentes: UAC0009 en componentes de debug y avisos Git LF/CRLF. Unity también registra avisos de extensiones de exportación WindowsStandalone/WebGL; no se ejecutó ni se verificó un build exportable en esta tarea.
+
+## Extensión: La llave
+
+`ClueDefinition` mantiene `Narrative` como valor predeterminado y permite `ClueSemanticContent.SecretCommand`. `ClueDiscoveryPresenter` y `ClueJournalPresenter` usan `CluePresentation` e `InputPromptResolver` para mostrar el binding actual de la acción semántica.
+
+`ActiveDeviceChanged` refresca también el cuerpo del Journal abierto. La pista conserva un único ID (`level01.clue05`) aunque cambie entre Keyboard, Xbox, PlayStation o gamepad genérico.

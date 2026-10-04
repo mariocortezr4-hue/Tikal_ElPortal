@@ -50,7 +50,7 @@ namespace Tikal.UI
         }
         private void OnDiscovered(ClueDefinition _){if(IsOpen)Refresh();}
         private void OnRestored(){if(IsOpen)Refresh();}
-        private void OnDeviceChanged(InputDeviceFamily _){if(IsOpen)RefreshHint();}
+        private void OnDeviceChanged(InputDeviceFamily _){if(IsOpen){Refresh();RefreshHint();}}
         private void RefreshHint()
         {
             var control=InputPromptResolver.Resolve(_inputReader.JournalAction,_devices.ActiveDevice).DisplayText;
@@ -64,7 +64,7 @@ namespace Tikal.UI
             foreach(var clue in _tracker.DiscoveredClues.OrderBy(c=>c.Order))
             {
                 if(text.Length>0)text.Append("\n\n\n");
-                text.Append((clue.Title??string.Empty).ToUpperInvariant()).Append("\n\n").Append(clue.Description);
+                text.Append((clue.Title??string.Empty).ToUpperInvariant()).Append("\n\n").Append(CluePresentation.Description(clue,_inputReader,_devices));
             }
             _content.text=text.ToString();
         }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: level01.glyph_gallery
   m_EditorClassIdentifier: Assembly-CSharp::Tikal.Puzzles.PuzzleDefinition
   _id: level01.glyph_gallery
-  _displayName: "Galer\xEDa de glifos"
+  _displayName: "Alineaci\xF3n visual"

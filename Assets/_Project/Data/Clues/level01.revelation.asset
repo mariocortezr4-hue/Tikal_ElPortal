@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: level01.revelation
   m_EditorClassIdentifier: Assembly-CSharp::Tikal.Puzzles.Clues.ClueDefinition
   _id: level01.clue05
-  _title: El ciclo
-  _description: El inicio es el final.
+  _title: La llave
+  _description: Ya conoces la llave.
   _order: 5
+  _semanticContent: 1

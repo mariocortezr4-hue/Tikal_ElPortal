@@ -5,7 +5,7 @@ namespace Tikal.Puzzles.Level01
     [DisallowMultipleComponent]
     public sealed class RevelationMonument : MonoBehaviour
     {
-        [SerializeField] private RevelationPuzzle _puzzle;
+        [SerializeField] private PuzzleBase _puzzle;
         [SerializeField] private Transform _panel;
         [SerializeField] private Renderer _interior;
         private Vector3 _closedPosition;

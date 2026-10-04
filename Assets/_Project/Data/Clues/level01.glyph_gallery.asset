@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: level01.glyph_gallery
   m_EditorClassIdentifier: Assembly-CSharp::Tikal.Puzzles.Clues.ClueDefinition
   _id: level01.clue04
-  _title: "El s\xE9ptimo lugar"
-  _description: "La respuesta ocupa el s\xE9ptimo lugar entre las letras."
+  _title: La mirada
+  _description: No todo se revela desde cualquier lugar.
   _order: 4
+  _semanticContent: 0
