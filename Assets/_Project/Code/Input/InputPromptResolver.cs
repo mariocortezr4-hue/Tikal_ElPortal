@@ -29,6 +29,8 @@ namespace Tikal.Input
         }
         private static string FaceButtonText(string control, InputDeviceFamily family)
         {
+            if (string.Equals(control, "select", StringComparison.OrdinalIgnoreCase))
+                return family == InputDeviceFamily.Xbox ? "View" : family == InputDeviceFamily.PlayStation ? "Share" : "Select";
             if (string.Equals(control, "buttonWest", StringComparison.OrdinalIgnoreCase))
                 return family == InputDeviceFamily.Xbox ? "X" : family == InputDeviceFamily.PlayStation ? "□" : "Botón oeste";
             if (string.Equals(control, "buttonNorth", StringComparison.OrdinalIgnoreCase))

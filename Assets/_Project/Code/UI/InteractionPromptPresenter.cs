@@ -73,7 +73,7 @@ namespace Tikal.UI
         {
             var target = _interaction.CurrentInteractable;
             var owner = target as Object;
-            var visible = owner != null && target.CanInteract && !string.IsNullOrEmpty(_control.DisplayText);
+            var visible = _inputReader.GameplayEnabled && owner != null && target.CanInteract && !string.IsNullOrEmpty(_control.DisplayText);
             var text = visible ? target.InteractionText : null;
             if (!controlChanged && ReferenceEquals(target, _lastTarget) && text == _lastText && visible == _lastVisible) return;
             _lastTarget = target;
