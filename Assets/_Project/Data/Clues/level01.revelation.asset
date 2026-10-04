@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692cb493818978f4eb5199fd2f66703d, type: 3}
   m_Name: level01.revelation
   m_EditorClassIdentifier: Assembly-CSharp::Tikal.Puzzles.Clues.ClueDefinition
-  _id: level01.revelation.clue
-  _title: '[PLACEHOLDER] Pista provisional 5'
-  _description: '[PLACEHOLDER] Sin contenido narrativo definitivo.'
+  _id: level01.clue05
+  _title: El ciclo
+  _description: El inicio es el final.
   _order: 5
