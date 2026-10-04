@@ -89,7 +89,7 @@ namespace Tikal.Tests.Editor
                 var list=new SerializedObject(all.OfType<InscriptionPresenter>().Single()).FindProperty("_inscriptions");
                 Require(Enumerable.Range(0,list.arraySize).Any(i=>list.GetArrayElementAtIndex(i).objectReferenceValue==inscription),"Help inscription registered without clue");
                 Require(all.OfType<Canvas>().Count()==1 && all.OfType<ReticlePresenter>().Count()==1 && all.OfType<ClueDiscoveryPresenter>().Count()==1,"Existing HUD retained");
-                Require(!all.Any(c=>System.Text.RegularExpressions.Regex.IsMatch(c.GetType().Name,"Victory|Defeat|LevelComplete|FalsePath")),"No final outcome or false path components");
+                Require(all.OfType<Tikal.Core.LevelOutcomeController>().All(c=>c.State==Tikal.Core.LevelOutcome.Playing),"Revelation does not automatically finish the level");
                 SessionState.SetInt(Count, checks);
                 SessionState.SetInt(Result, 1);
                 SessionState.SetBool(Active, true);
