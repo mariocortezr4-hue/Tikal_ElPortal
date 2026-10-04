@@ -91,7 +91,7 @@ namespace Tikal.Tests.Editor
                 var asset = AssetDatabase.LoadAssetAtPath<InputActionAsset>("Assets/_Project/Input/TikalInputActions.inputactions");
                 var sprint = asset.FindAction("Player/Sprint", true);
                 Require(sprint.bindings.Any(binding => binding.path == "<Keyboard>/leftShift") &&
-                    sprint.bindings.Any(binding => binding.path == "<Gamepad>/rightStickPress"), "Existing semantic Sprint bindings preserved (Shift / R3)");
+                    sprint.bindings.Any(binding => binding.path == "<Gamepad>/leftStickPress"), "Existing semantic Sprint bindings preserved (Shift / L3)");
                 Require(asset.FindAction("Player/Interact").bindings.Any(binding => binding.path == "<Keyboard>/e") &&
                     asset.FindAction("Player/SecretCommand").bindings.Any(binding => binding.path == "<Keyboard>/g"), "E/G unchanged");
                 SessionState.SetInt(Count, checks);
@@ -187,7 +187,7 @@ namespace Tikal.Tests.Editor
         static void Keys(params Key[] keys) { InputSystem.QueueStateEvent(keyboard, new KeyboardState(keys)); InputSystem.Update(); }
         static void Pad(Gamepad pad, float move, bool sprint = false, GamepadButton? extra = null)
         {
-            var state = new GamepadState { leftStick = new Vector2(0, move) }.WithButton(GamepadButton.RightStick, sprint);
+            var state = new GamepadState { leftStick = new Vector2(0, move) }.WithButton(GamepadButton.LeftStick, sprint);
             if (extra.HasValue) state = state.WithButton(extra.Value);
             InputSystem.QueueStateEvent(pad, state);
             InputSystem.Update();
@@ -213,9 +213,9 @@ namespace Tikal.Tests.Editor
                 Neutral();
                 var pad = pads[index];
                 string label = families[index].ToString();
-                InputSystem.QueueStateEvent(pad, new GamepadState { leftStick = new Vector2(0, .8f) }.WithButton(GamepadButton.LeftStick));
+                InputSystem.QueueStateEvent(pad, new GamepadState { leftStick = new Vector2(0, .8f) }.WithButton(GamepadButton.RightStick));
                 InputSystem.Update();
-                Require(!reader.SprintRequested && !reader.GamepadSprintLatched, label + " leftStickPress does not activate sprint");
+                Require(!reader.SprintRequested && !reader.GamepadSprintLatched, label + " rightStickPress does not activate sprint");
                 Pad(pad, .8f);
                 Pad(pad, .8f, true);
                 Require(manager.ActiveDevice == families[index] && reader.GamepadSprintLatched && reader.SprintRequested, label + " moving + SprintPressed activates latch");
