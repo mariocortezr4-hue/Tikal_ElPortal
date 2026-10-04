@@ -290,7 +290,7 @@ namespace Tikal.Input
                 {
                     ""name"": """",
                     ""id"": ""2d642dc9-e031-4dcc-9109-96ecdde2a7bc"",
-                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
