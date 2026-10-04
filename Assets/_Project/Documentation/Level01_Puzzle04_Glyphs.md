@@ -93,8 +93,8 @@ Dynamic Prompts continues to show E / Xbox X / PlayStation square with Activar.
 Journal continues J / View / Share, gates gameplay and restores cursor state.
 Dot/Cross/None remains stable; the reticle gains no puzzle-specific state.
 
-Gamepad sprint now uses rightStickPress: Xbox RS, PlayStation R3 and Generic
-Gamepad right-stick click. Left-stick click does not activate it. Keyboard Shift
+Gamepad sprint now uses leftStickPress: Xbox LS, PlayStation L3 and Generic
+Gamepad left-stick click. Right-stick click does not activate it. Keyboard Shift
 remains hold; the 0.15 processed Move threshold and latch resets are unchanged.
 
 ## Difficulty and validation

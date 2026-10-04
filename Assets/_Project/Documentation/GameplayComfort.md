@@ -4,9 +4,9 @@ Unity 6000.6.3f1 / Input System 1.20.0.
 
 ## Sprint
 
-Sprint uses Keyboard Left Shift and Gamepad rightStickPress.
-Xbox uses RS / Right Stick Press, PlayStation uses R3, and Generic Gamepad uses
-rightStickPress. leftStickPress does not activate Sprint. The action ID, keyboard
+Sprint uses Keyboard Left Shift and Gamepad leftStickPress.
+Xbox uses LS / Left Stick Press, PlayStation uses L3, and Generic Gamepad uses
+leftStickPress. rightStickPress does not activate Sprint. The action ID, keyboard
 binding, maps and other bindings remain unchanged; Unity regenerates the wrapper.
 
 PlayerInputReader resolves device-specific sprint intent. IPlayerInputReader
