@@ -296,6 +296,25 @@ namespace Tikal.Tests.Editor
                 Follow(0,39);
                 Require(true,"Zone04 accessible");
                 savedDistance=distance;savedTime=elapsed;Follow(-6,39);Require(movement.transform.position.y>1.9f,"Gallery terrace local elevation reachable");Follow(0,39);distance=savedDistance;elapsed=savedTime;
+                var glyph = UnityEngine.Object.FindAnyObjectByType<Tikal.Puzzles.Level01.GlyphSequencePuzzle>();
+                if(glyph!=null)
+                {
+                    savedDistance=distance;savedTime=elapsed;
+                    Follow(0,37.2f);
+                    foreach(var stone in UnityEngine.Object.FindObjectsByType<Tikal.Puzzles.Level01.GlyphStone>().OrderBy(s=>s.transform.position.x))
+                    {
+                        Follow(stone.transform.position.x,37.2f);
+                        Aim(((Renderer)new SerializedObject(stone).FindProperty("_visual").objectReferenceValue).bounds.center);
+                        Require(ReferenceEquals(interaction.CurrentInteractable,stone),"Glyph "+stone.SequenceValue+" reachable by physical traversal without teleportation");
+                    }
+                    Follow(0,37.2f);Follow(0,39);
+                    var readableGlyph=UnityEngine.Object.FindObjectsByType<Tikal.Interaction.ReadableInscription>().Single(r=>r.Text=="Cada marca sigue a la anterior.");
+                    Follow(2.8f,39);
+                    Aim(readableGlyph.GetComponentInChildren<Collider>().bounds.center);
+                    Require(ReferenceEquals(interaction.CurrentInteractable,readableGlyph),"Gallery guidance inscription physically reachable");
+                    Follow(0,39);
+                    camera.transform.localRotation=Quaternion.identity;distance=savedDistance;elapsed=savedTime;
+                }
                 Debug.Log($"LEVEL01_METRIC Zone03_Zone04 distance={distance-lastD:F2}m time={elapsed-lastT:F2}s");
                 lastD=distance;
                 lastT=elapsed;
