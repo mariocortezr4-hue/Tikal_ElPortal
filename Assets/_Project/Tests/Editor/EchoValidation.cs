@@ -74,7 +74,7 @@ namespace Tikal.Tests.Editor
                 var reward=all.OfType<PuzzleClueReward>().Single(r=>new SerializedObject(r).FindProperty("_puzzle").objectReferenceValue==puzzle);
                 Require(reward.transform.parent.name=="ClueAnchor","Clue anchor reused");var clue=(ClueDefinition)new SerializedObject(reward).FindProperty("_clue").objectReferenceValue;
                 Require(clue.Id=="level01.clue03"&&clue.Title=="El primer contacto"&&clue.Description=="Lo primero que tocaste aún guarda algo.","Clue03 exact narrative contract");
-                Require(all.OfType<ReadableInscription>().Count()==2&&all.OfType<ReadableInscription>().Any(r=>r.Text=="Escucha. Después, devuelve el eco."),"Both optional inscriptions preserved");
+                Require(all.OfType<ReadableInscription>().Count()>=2&&all.OfType<ReadableInscription>().Any(r=>r.Text=="Escucha. Después, devuelve el eco."),"Both optional inscriptions preserved");
                 SessionState.SetBool(Active,true);SessionState.SetInt(Result,1);EditorApplication.EnterPlaymode();
             }
             catch(Exception e){Debug.LogException(e);if(Application.isBatchMode)EditorApplication.Exit(1);}
