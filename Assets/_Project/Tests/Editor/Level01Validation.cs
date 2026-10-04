@@ -123,7 +123,7 @@ namespace Tikal.Tests.Editor
             InputSystem.QueueStateEvent(pad,new GamepadState
             {
                 leftStick=move
-            }.WithButton(GamepadButton.RightStick,sprint)
+            }.WithButton(GamepadButton.LeftStick,sprint)
             );
             InputSystem.QueueStateEvent(keyboard,new KeyboardState());
             InputSystem.Update();
