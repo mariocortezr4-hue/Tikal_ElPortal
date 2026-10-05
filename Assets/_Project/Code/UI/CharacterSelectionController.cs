@@ -15,8 +15,6 @@ namespace Tikal.UI
         [SerializeField] private TMP_Text _currentSelectionLabel;
         [SerializeField] private Button _confirmButton;
 
-        private readonly Color _selectedColor = new Color(.45f, .58f, .38f, 1f);
-        private readonly Color _idleColor = new Color(.12f, .14f, .12f, .92f);
         private GamePersistenceService _persistence;
         private GameProgressData _progress;
         private string _pendingCharacterId;
@@ -78,12 +76,16 @@ namespace Tikal.UI
         {
             var selected = CharacterCatalog.GetOrDefault(_pendingCharacterId);
             _pendingCharacterId = selected.Id;
+            var saved = CharacterCatalog.GetOrDefault(_progress.SelectedCharacterId);
             if (_currentSelectionLabel != null)
-                _currentSelectionLabel.text = "Seleccionado: " + selected.DisplayName;
-            if (_selectionFrames == null) return;
-            for (var index = 0; index < _selectionFrames.Length && index < CharacterCatalog.All.Count; index++)
-                if (_selectionFrames[index] != null)
-                    _selectionFrames[index].color = CharacterCatalog.All[index].Id == selected.Id ? _selectedColor : _idleColor;
+                _currentSelectionLabel.text = "ELECCIÓN: " + selected.DisplayName.ToUpperInvariant() + "   ·   GUARDADO: " + saved.DisplayName.ToUpperInvariant();
+            if (_characterButtons == null) return;
+            for (var index = 0; index < _characterButtons.Length && index < CharacterCatalog.All.Count; index++)
+            {
+                if (_characterButtons[index] == null) continue;
+                var visual = _characterButtons[index].GetComponent<MenuSelectableVisual>();
+                if (visual != null) visual.SetPersistent(CharacterCatalog.All[index].Id == saved.Id);
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using Tikal.Core;
+using Tikal.Input;
 using Tikal.Persistence;
 using Tikal.Player;
 using Tikal.UI;
@@ -135,6 +136,8 @@ namespace Tikal.Tests.Editor
             Require(components.All(component => component != null), "Main Menu has no Missing Scripts");
             Require(components.OfType<GameFlowController>().Count() == 1 && components.OfType<MainMenuController>().Count() == 1, "Main menu flow and UI controllers");
             Require(components.OfType<CharacterSelectionController>().Count() == 1, "Character selection controller exists");
+            Require(components.OfType<InputDeviceManager>().Count() == 1 && components.OfType<MenuControlHintsPresenter>().Count() == 1, "Device-aware menu hints use the shared input architecture");
+            Require(components.OfType<MenuSelectableVisual>().Count() >= components.OfType<Button>().Count(), "Menu buttons expose one authoritative focus visual");
             Require(components.OfType<EventSystem>().Count() == 1 && components.OfType<InputSystemUIInputModule>().Count() == 1, "Input System UI EventSystem");
             Require(components.OfType<Button>().Count(button => button.name == "Play") == 1, "Play button exists");
             Require(components.OfType<Button>().Any(button => button.name == "Character"), "Character menu button exists");
@@ -148,12 +151,19 @@ namespace Tikal.Tests.Editor
             var settingsBindings = new SerializedObject(settingsController);
             var camera = settingsBindings.FindProperty("_cameraMode").objectReferenceValue as TMPro.TMP_Dropdown;
             var reticle = settingsBindings.FindProperty("_reticleMode").objectReferenceValue as TMPro.TMP_Dropdown;
-            Require(camera != null && camera.template != null && camera.options.Select(option => option.text).SequenceEqual(new[] { "Primera Persona", "Tercera Persona" }), "Camera Mode dropdown is wired and selectable");
-            Require(reticle != null && reticle.template != null && reticle.options.Select(option => option.text).SequenceEqual(new[] { "Ninguno", "Punto", "Cruz" }), "Reticle dropdown is wired and selectable");
+            Require(camera != null && camera.template != null && camera.options.Select(option => option.text).SequenceEqual(new[] { "PRIMERA PERSONA", "TERCERA PERSONA" }), "Camera Mode dropdown is wired and selectable");
+            Require(reticle != null && reticle.template != null && reticle.options.Select(option => option.text).SequenceEqual(new[] { "NINGUNO", "PUNTO", "CRUZ" }), "Reticle dropdown is wired and selectable");
             Require(components.OfType<Button>().Single(button => button.name == "Level01").gameObject.activeSelf, "Level01 remains visible while locked");
             Require(new SerializedObject(components.OfType<MainMenuController>().Single()).FindProperty("_levelHint").objectReferenceValue != null, "Level availability hint is wired");
             var module = components.OfType<InputSystemUIInputModule>().Single();
             Require(module.move != null && module.submit != null && module.cancel != null, "Navigate Submit Cancel wired");
+            var actions = new TikalInputActions();
+            Require(InputPromptResolver.Resolve(actions.UI.Navigate, InputDeviceFamily.KeyboardMouse).DisplayText == "WASD / FLECHAS", "Keyboard navigation hint is semantic");
+            Require(InputPromptResolver.Resolve(actions.UI.Submit, InputDeviceFamily.Xbox).DisplayText == "A" &&
+                InputPromptResolver.Resolve(actions.UI.Cancel, InputDeviceFamily.PlayStation).DisplayText == "○", "Xbox and PlayStation submit/cancel hints resolve by family");
+            Require(InputPromptResolver.Resolve(actions.UI.Submit, InputDeviceFamily.GenericGamepad).DisplayText == "Botón sur" &&
+                InputPromptResolver.Resolve(actions.UI.Cancel, InputDeviceFamily.GenericGamepad).DisplayText == "Botón este", "Generic gamepad hints use safe semantic fallbacks");
+            actions.Dispose();
 
             var keyboard = InputSystem.AddDevice<Keyboard>();
             var xbox = InputSystem.AddDevice<XInputController>();

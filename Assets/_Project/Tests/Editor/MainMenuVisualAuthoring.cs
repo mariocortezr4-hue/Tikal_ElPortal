@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Tikal.Input;
 using Tikal.UI;
 using TMPro;
 using UnityEditor;
@@ -72,8 +73,9 @@ namespace Tikal.Tests.Editor
             top.transform.SetSiblingIndex(2);
 
             var title = Find(background, "Title").GetComponent<TMP_Text>();
-            title.text = "TIKAL\nEL PORTAL";
+            title.text = "<size=68><b>TIKAL</b></size>\n<size=37>EL PORTAL</size>";
             Style(title, 59, Gold, TextAlignmentOptions.Left);
+            title.characterSpacing = 9;
             Anchor(title.rectTransform, new Vector2(0, 1), new Vector2(95, -90), new Vector2(640, 160), new Vector2(0, 1));
             var eyebrow = Text("BrandEyebrow", background, "UNA AVENTURA EN LAS SOMBRAS", 16, Gold);
             Anchor(eyebrow.rectTransform, new Vector2(0, 1), new Vector2(97, -61), new Vector2(610, 24), new Vector2(0, 1));
@@ -82,9 +84,11 @@ namespace Tikal.Tests.Editor
 
             var main = Find(background, "Main");
             string[] names = { "Play", "Levels", "Character", "Cinematics", "Tutorial", "Settings", "Credits", "Quit" };
+            string[] labels = { null, "NIVELES", "PERSONAJE", "CINEMÁTICAS", "TUTORIAL", "CONFIGURACIÓN", "CRÉDITOS", "SALIR" };
             for (var i = 0; i < names.Length; i++)
             {
                 var button = Find(main, names[i]).GetComponent<Button>();
+                if (labels[i] != null) button.GetComponentInChildren<TMP_Text>().text = labels[i];
                 Anchor((RectTransform)button.transform, new Vector2(0, .5f), new Vector2(95, 145 - i * 61), new Vector2(430, 54), new Vector2(0, .5f));
                 StyleButton(button, i == 0);
             }
@@ -98,17 +102,21 @@ namespace Tikal.Tests.Editor
             Frame(accent.rectTransform, Vector2.zero, new Vector2(0, 1));
             accent.rectTransform.pivot = new Vector2(0, .5f);
             accent.rectTransform.sizeDelta = new Vector2(4, 0);
+            var cardKicker = Text("Kicker", journey.transform, "NIVEL 1", 14, Muted);
+            cardKicker.characterSpacing = 8;
+            Anchor(cardKicker.rectTransform, new Vector2(0, 1), new Vector2(28, -20), new Vector2(505, 24), new Vector2(0, 1));
             var cardHeading = Text("Heading", journey.transform, "LA ENTRADA SECRETA", 28, Gold);
-            Anchor(cardHeading.rectTransform, new Vector2(0, 1), new Vector2(28, -28), new Vector2(505, 44), new Vector2(0, 1));
+            cardHeading.fontStyle = FontStyles.Bold;
+            Anchor(cardHeading.rectTransform, new Vector2(0, 1), new Vector2(28, -48), new Vector2(505, 44), new Vector2(0, 1));
             var cardBody = Text("Body", journey.transform, "Explora las ruinas. Sigue las pistas.\nDescubre lo que duerme tras el portal.", 19, Ivory);
-            Anchor(cardBody.rectTransform, new Vector2(0, 1), new Vector2(28, -80), new Vector2(505, 72), new Vector2(0, 1));
+            Anchor(cardBody.rectTransform, new Vector2(0, 1), new Vector2(28, -94), new Vector2(505, 62), new Vector2(0, 1));
 
             DecoratePanel(Find(background, "Levels"), "LevelsTitle", "NIVELES");
             DecoratePanel(Find(background, "CharacterSelection"), "CharacterTitle", "PERSONAJE");
-            DecoratePanel(Find(background, "Cinematics"), "CinematicsTitle", "CINEMATICAS");
+            DecoratePanel(Find(background, "Cinematics"), "CinematicsTitle", "CINEMÁTICAS");
             DecoratePanel(Find(background, "Tutorial"), "TutorialTitle", "TUTORIAL");
-            DecoratePanel(Find(background, "Settings"), "SettingsTitle", "CONFIGURACION");
-            DecoratePanel(Find(background, "Credits"), "CreditsTitle", "CREDITOS");
+            DecoratePanel(Find(background, "Settings"), "SettingsTitle", "CONFIGURACIÓN");
+            DecoratePanel(Find(background, "Credits"), "CreditsTitle", "CRÉDITOS");
 
             PolishLevels(Find(background, "Levels"));
             var menu = root.GetComponent<MainMenuController>();
@@ -120,6 +128,8 @@ namespace Tikal.Tests.Editor
             PolishSimple(Find(background, "Tutorial"), "ReplayTutorial");
             PolishSettings(Find(background, "Settings"));
             PolishCredits(Find(background, "Credits"));
+            ConfigureNavigation(background);
+            SetupControlHints(root, background, menu);
 
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene)) throw new Exception("Failed to save " + ScenePath);
@@ -217,6 +227,36 @@ namespace Tikal.Tests.Editor
                 label.rectTransform.offsetMin = new Vector2(25, 0);
                 label.rectTransform.offsetMax = new Vector2(-18, 0);
             }
+            AttachSelectableVisual(button, image, label, primary, button.name.StartsWith("Character0", StringComparison.Ordinal));
+        }
+
+        static void AttachSelectableVisual(Selectable selectable, Graphic background, TMP_Text label, bool primary, bool persistent)
+        {
+            var focus = Image("FocusIndicator", selectable.transform, Gold);
+            Anchor(focus.rectTransform, new Vector2(0, .5f), new Vector2(0, 0), new Vector2(5, 32), new Vector2(0, .5f));
+            focus.gameObject.SetActive(false);
+            GameObject savedMarker = null;
+            if (persistent)
+            {
+                var saved = Text("SavedMarker", selectable.transform, "GUARDADO", 12, Gold);
+                saved.fontStyle = FontStyles.Bold;
+                saved.alignment = TextAlignmentOptions.Right;
+                Anchor(saved.rectTransform, new Vector2(1, 0), new Vector2(-16, 10), new Vector2(150, 22), new Vector2(1, 0));
+                var savedCheck = Image("SavedCheck", saved.transform, Gold);
+                Anchor(savedCheck.rectTransform, new Vector2(0, .5f), new Vector2(52, 0), new Vector2(7, 7), new Vector2(.5f, .5f));
+                savedMarker = saved.gameObject;
+            }
+            var visual = selectable.GetComponent<MenuSelectableVisual>() ?? selectable.gameObject.AddComponent<MenuSelectableVisual>();
+            visual.Configure(selectable, background, label, focus.gameObject, savedMarker, primary);
+        }
+
+        static void AttachControlVisual(Selectable selectable, TMP_Text label)
+        {
+            var focus = Image("FocusIndicator", selectable.transform, Gold);
+            Anchor(focus.rectTransform, new Vector2(0, .5f), new Vector2(-12, 0), new Vector2(5, 34), new Vector2(.5f, .5f));
+            focus.gameObject.SetActive(false);
+            var visual = selectable.GetComponent<MenuSelectableVisual>() ?? selectable.gameObject.AddComponent<MenuSelectableVisual>();
+            visual.Configure(selectable, null, label, focus.gameObject, null, false);
         }
 
         static void DecoratePanel(Transform panel, string titleName, string title)
@@ -244,7 +284,8 @@ namespace Tikal.Tests.Editor
             var level = Find(panel, "Level01").GetComponent<Button>();
             Anchor((RectTransform)level.transform, new Vector2(.5f, .5f), new Vector2(-450, 120), new Vector2(900, 72), new Vector2(0, .5f));
             StyleButton(level);
-            var hint = Text("LevelHint", panel, "Completa la introduccion y el tutorial para desbloquear el acceso.", 19, Muted);
+            level.GetComponentInChildren<TMP_Text>().text = "NIVEL 1   ·   LA ENTRADA SECRETA";
+            var hint = Text("LevelHint", panel, "Completa la introducción y el tutorial para desbloquear el acceso.", 19, Muted);
             Anchor(hint.rectTransform, new Vector2(.5f, .5f), new Vector2(-450, 40), new Vector2(900, 40), new Vector2(0, .5f));
         }
 
@@ -268,6 +309,8 @@ namespace Tikal.Tests.Editor
         static void PolishSimple(Transform panel, string buttonName)
         {
             var button = Find(panel, buttonName).GetComponent<Button>();
+            if (buttonName == "Intro") button.GetComponentInChildren<TMP_Text>().text = "REPETIR INTRODUCCIÓN";
+            else if (buttonName == "ReplayTutorial") button.GetComponentInChildren<TMP_Text>().text = "REPETIR TUTORIAL";
             Anchor((RectTransform)button.transform, new Vector2(.5f, .5f), new Vector2(-450, 85), new Vector2(700, 70), new Vector2(0, .5f));
             StyleButton(button);
         }
@@ -275,6 +318,7 @@ namespace Tikal.Tests.Editor
         static void PolishCredits(Transform panel)
         {
             var body = Find(panel, "CreditsBody").GetComponent<TMP_Text>();
+            body.text = "CRÉDITOS PROVISIONALES";
             Style(body, 23, Ivory, TextAlignmentOptions.Left);
             Anchor(body.rectTransform, new Vector2(.5f, .5f), new Vector2(-450, 110), new Vector2(900, 160), new Vector2(0, .5f));
         }
@@ -283,7 +327,7 @@ namespace Tikal.Tests.Editor
         {
             var audio = Text("AudioSection", panel, "AUDIO", 20, Gold);
             Anchor(audio.rectTransform, new Vector2(.5f, .5f), new Vector2(-490, 245), new Vector2(430, 35), new Vector2(0, .5f));
-            var controls = Text("ControlsSection", panel, "CONTROLES / GAMEPLAY", 20, Gold);
+            var controls = Text("ControlsSection", panel, "CONTROLES", 20, Gold);
             Anchor(controls.rectTransform, new Vector2(.5f, .5f), new Vector2(50, 245), new Vector2(450, 35), new Vector2(0, .5f));
             var interfaceHeader = Text("InterfaceSection", panel, "INTERFAZ", 20, Gold);
             Anchor(interfaceHeader.rectTransform, new Vector2(.5f, .5f), new Vector2(-490, -115), new Vector2(430, 35), new Vector2(0, .5f));
@@ -296,21 +340,26 @@ namespace Tikal.Tests.Editor
 
             var invert = Find(panel, "InvertY").GetComponent<Toggle>();
             Anchor((RectTransform)invert.transform, new Vector2(.5f, .5f), new Vector2(50, -35), new Vector2(430, 36), new Vector2(0, .5f));
-            invert.GetComponentInChildren<TMP_Text>().color = Ivory;
+            var invertLabel = invert.GetComponentInChildren<TMP_Text>();
+            invertLabel.text = "INVERTIR EJE Y";
+            invertLabel.color = Ivory;
             var box = Find(invert.transform, "Box").GetComponent<RectTransform>();
             Anchor(box, new Vector2(0, .5f), Vector2.zero, new Vector2(30, 30), new Vector2(0, .5f));
 
             var camera = EnsureDropdown(panel, "CameraMode");
-            ConfigureDropdown(camera, new[] { "Primera Persona", "Tercera Persona" }, 0);
-            PlaceDropdown(panel, camera, "Camera Mode", 50, -155);
+            ConfigureDropdown(camera, new[] { "PRIMERA PERSONA", "TERCERA PERSONA" }, 0);
+            PlaceDropdown(panel, camera, "MODO DE CÁMARA", 50, -155);
             var reticle = Find(panel, "Reticle").GetComponent<TMP_Dropdown>();
-            ConfigureDropdown(reticle, new[] { "Ninguno", "Punto", "Cruz" }, 1);
-            PlaceDropdown(panel, reticle, "Reticle", -490, -200);
+            ConfigureDropdown(reticle, new[] { "NINGUNO", "PUNTO", "CRUZ" }, 1);
+            PlaceDropdown(panel, reticle, "RETÍCULO", -490, -200);
 
             var controller = panel.GetComponent<SettingsMenuController>();
             var serialized = new SerializedObject(controller);
             serialized.FindProperty("_cameraMode").objectReferenceValue = camera;
             serialized.ApplyModifiedPropertiesWithoutUndo();
+            AttachControlVisual(invert, invertLabel);
+            AttachControlVisual(camera, camera.captionText);
+            AttachControlVisual(reticle, reticle.captionText);
         }
 
         static void PlaceSlider(Transform panel, string name, float x, float y)
@@ -318,14 +367,93 @@ namespace Tikal.Tests.Editor
             var slider = Find(panel, name).GetComponent<Slider>();
             Anchor((RectTransform)slider.transform, new Vector2(.5f, .5f), new Vector2(x, y), new Vector2(430, 24), new Vector2(0, .5f));
             var label = Find(panel, name + "Label").GetComponent<TMP_Text>();
-            if (name == "Master") label.text = "Master Volume";
-            else if (name == "Music") label.text = "Music Volume";
-            else if (name == "SFX") label.text = "SFX Volume";
+            if (name == "Master") label.text = "VOLUMEN GENERAL";
+            else if (name == "Music") label.text = "VOLUMEN DE MÚSICA";
+            else if (name == "SFX") label.text = "VOLUMEN DE EFECTOS";
+            else if (name == "Mouse") label.text = "SENSIBILIDAD DEL MOUSE";
+            else if (name == "Gamepad") label.text = "SENSIBILIDAD DEL GAMEPAD";
             Style(label, 19, Ivory, TextAlignmentOptions.Left);
             Anchor(label.rectTransform, new Vector2(.5f, .5f), new Vector2(x, y + 31), new Vector2(430, 26), new Vector2(0, .5f));
             Find(slider.transform, "Background").GetComponent<Image>().color = new Color(.15f, .23f, .26f);
             Find(slider.transform, "Background/Fill").GetComponent<Image>().color = Gold;
             Find(slider.transform, "Handle").GetComponent<Image>().color = Ivory;
+            AttachControlVisual(slider, label);
+        }
+
+        static void ConfigureNavigation(Transform background)
+        {
+            LinkVertical(Find(background, "Main"), new[] { "Play", "Levels", "Character", "Cinematics", "Tutorial", "Settings", "Credits", "Quit" });
+            LinkVertical(Find(background, "Levels"), new[] { "Level01", "Back" });
+            LinkVertical(Find(background, "Cinematics"), new[] { "Intro", "Back" });
+            LinkVertical(Find(background, "Tutorial"), new[] { "ReplayTutorial", "Back" });
+            LinkVertical(Find(background, "Credits"), new[] { "Back" });
+
+            var characters = Find(background, "CharacterSelection");
+            var c1 = Find(characters, "Character01").GetComponent<Selectable>();
+            var c2 = Find(characters, "Character02").GetComponent<Selectable>();
+            var c3 = Find(characters, "Character03").GetComponent<Selectable>();
+            var c4 = Find(characters, "Character04").GetComponent<Selectable>();
+            var confirm = Find(characters, "ConfirmCharacter").GetComponent<Selectable>();
+            var back = Find(characters, "Back").GetComponent<Selectable>();
+            Explicit(c1, c1, c3, c1, c2); Explicit(c2, c2, c4, c1, c2);
+            Explicit(c3, c1, confirm, c3, c4); Explicit(c4, c2, confirm, c3, c4);
+            Explicit(confirm, c3, back, confirm, confirm); Explicit(back, confirm, back, back, back);
+
+            var settings = Find(background, "Settings");
+            var master = Find(settings, "Master").GetComponent<Selectable>();
+            var music = Find(settings, "Music").GetComponent<Selectable>();
+            var sfx = Find(settings, "SFX").GetComponent<Selectable>();
+            var mouse = Find(settings, "Mouse").GetComponent<Selectable>();
+            var gamepad = Find(settings, "Gamepad").GetComponent<Selectable>();
+            var invert = Find(settings, "InvertY").GetComponent<Selectable>();
+            var camera = Find(settings, "CameraMode").GetComponent<Selectable>();
+            var reticle = Find(settings, "Reticle").GetComponent<Selectable>();
+            var settingsBack = Find(settings, "Back").GetComponent<Selectable>();
+            Explicit(master, master, music, master, mouse); Explicit(music, master, sfx, music, gamepad);
+            Explicit(sfx, music, reticle, sfx, invert); Explicit(reticle, sfx, settingsBack, reticle, camera);
+            Explicit(mouse, mouse, gamepad, master, mouse); Explicit(gamepad, mouse, invert, music, gamepad);
+            Explicit(invert, gamepad, camera, sfx, invert); Explicit(camera, invert, settingsBack, reticle, camera);
+            Explicit(settingsBack, reticle, settingsBack, settingsBack, settingsBack);
+        }
+
+        static void LinkVertical(Transform panel, string[] names)
+        {
+            var items = names.Select(name => Find(panel, name).GetComponent<Selectable>()).ToArray();
+            for (var index = 0; index < items.Length; index++)
+                Explicit(items[index], items[Mathf.Max(0, index - 1)], items[Mathf.Min(items.Length - 1, index + 1)], items[index], items[index]);
+        }
+
+        static void Explicit(Selectable selectable, Selectable up, Selectable down, Selectable left, Selectable right)
+        {
+            selectable.navigation = new Navigation
+            {
+                mode = Navigation.Mode.Explicit,
+                selectOnUp = up,
+                selectOnDown = down,
+                selectOnLeft = left,
+                selectOnRight = right
+            };
+        }
+
+        static void SetupControlHints(Transform root, Transform background, MainMenuController menu)
+        {
+            var devices = root.GetComponent<InputDeviceManager>() ?? root.gameObject.AddComponent<InputDeviceManager>();
+            var bar = Image("ControlHints", background, new Color(.01f, .025f, .04f, .88f));
+            Anchor(bar.rectTransform, new Vector2(1, 0), new Vector2(-64, 34), new Vector2(900, 48), new Vector2(1, 0));
+            var navigate = Text("Navigate", bar.transform, "WASD / FLECHAS  NAVEGAR", 16, Ivory);
+            var submit = Text("Submit", bar.transform, "ENTER  SELECCIONAR", 16, Ivory);
+            var cancel = Text("Cancel", bar.transform, "ESC  VOLVER", 16, Ivory);
+            Anchor(navigate.rectTransform, new Vector2(0, .5f), new Vector2(24, 0), new Vector2(330, 30), new Vector2(0, .5f));
+            Anchor(submit.rectTransform, new Vector2(.5f, .5f), new Vector2(-5, 0), new Vector2(280, 30), new Vector2(.5f, .5f));
+            Anchor(cancel.rectTransform, new Vector2(1, .5f), new Vector2(-24, 0), new Vector2(230, 30), new Vector2(1, .5f));
+            var presenter = root.GetComponent<MenuControlHintsPresenter>() ?? root.gameObject.AddComponent<MenuControlHintsPresenter>();
+            var serialized = new SerializedObject(presenter);
+            serialized.FindProperty("_devices").objectReferenceValue = devices;
+            serialized.FindProperty("_menu").objectReferenceValue = menu;
+            serialized.FindProperty("_navigateHint").objectReferenceValue = navigate;
+            serialized.FindProperty("_submitHint").objectReferenceValue = submit;
+            serialized.FindProperty("_cancelHint").objectReferenceValue = cancel;
+            serialized.ApplyModifiedPropertiesWithoutUndo();
         }
 
         static TMP_Dropdown EnsureDropdown(Transform panel, string name)

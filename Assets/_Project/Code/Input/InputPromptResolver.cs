@@ -8,6 +8,9 @@ namespace Tikal.Input
         public static InputPromptData Resolve(InputAction action, InputDeviceFamily family)
         {
             if (action == null || action.actionMap?.asset == null) return default;
+            if (string.Equals(action.name, "Navigate", StringComparison.Ordinal))
+                return new InputPromptData(family == InputDeviceFamily.KeyboardMouse
+                    ? "WASD / FLECHAS" : "STICK / CRUCETA", "<UI>/navigate");
             var schemeName = family == InputDeviceFamily.KeyboardMouse ? "KeyboardMouse" : "Gamepad";
             var schemes = action.actionMap.asset.controlSchemes;
             var group = string.Empty;

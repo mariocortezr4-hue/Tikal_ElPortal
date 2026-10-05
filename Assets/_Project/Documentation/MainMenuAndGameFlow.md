@@ -179,6 +179,12 @@ Menu scenes use the existing `UI` Action Map through `InputSystemUIInputModule`.
 
 Cancel returns from submenus to the Main Menu. It does not quit the game.
 
+### Dynamic Menu Navigation
+
+The current `EventSystem` selection is the single source of truth for keyboard and gamepad focus. Buttons and settings controls render a clear amber focus treatment, mouse hover transfers that same selection, and every panel falls back to its first active, interactable control when its preferred action is locked. Level01 stays visible but disabled until onboarding is complete, so Levels initially focuses VOLVER.
+
+The bottom control bar listens to `InputDeviceManager.ActiveDeviceChanged` and resolves semantic Navigate, Submit and Cancel prompts through `InputPromptResolver`. It updates without polling for Keyboard/Mouse, Xbox, PlayStation and generic gamepads; VOLVER is hidden on the root menu and shown in secondary panels. Character focus is temporary, while the persisted character keeps a separate GUARDADO marker until confirmation.
+
 ## Manual Editor Checklist
 
 A. `Tikal/Testing/Reset Local Progress` -> MainMenu shows JUGAR -> JUGAR -> Intro -> Tutorial -> Level01.
