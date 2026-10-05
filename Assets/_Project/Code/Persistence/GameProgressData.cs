@@ -12,6 +12,7 @@ namespace Tikal.Persistence
         [SerializeField] private bool _introSeen;
         [SerializeField] private bool _tutorialCompleted;
         [SerializeField] private string _currentLevelId;
+        [SerializeField] private string _selectedCharacterId;
         [SerializeField] private List<string> _unlockedLevels = new List<string>();
         [SerializeField] private List<string> _completedLevels = new List<string>();
 
@@ -19,6 +20,7 @@ namespace Tikal.Persistence
         public bool IntroSeen { get => _introSeen; set => _introSeen = value; }
         public bool TutorialCompleted { get => _tutorialCompleted; set => _tutorialCompleted = value; }
         public string CurrentLevelId { get => _currentLevelId; set => _currentLevelId = value ?? string.Empty; }
+        public string SelectedCharacterId { get => _selectedCharacterId; set => _selectedCharacterId = CharacterCatalog.IsValid(value) ? value : CharacterIds.Default; }
         public IReadOnlyList<string> UnlockedLevels => _unlockedLevels;
         public IReadOnlyList<string> CompletedLevels => _completedLevels;
 
@@ -29,7 +31,8 @@ namespace Tikal.Persistence
                 _hasStartedGame = false,
                 _introSeen = false,
                 _tutorialCompleted = false,
-                _currentLevelId = string.Empty
+                _currentLevelId = string.Empty,
+                _selectedCharacterId = CharacterIds.Default
             };
             data.UnlockLevel(GameSceneIds.Level01);
             return data;
@@ -47,6 +50,7 @@ namespace Tikal.Persistence
         public void Normalize()
         {
             _currentLevelId ??= string.Empty;
+            SelectedCharacterId = _selectedCharacterId;
             NormalizeList(_unlockedLevels);
             NormalizeList(_completedLevels);
             UnlockLevel(GameSceneIds.Level01);

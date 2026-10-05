@@ -56,17 +56,28 @@ namespace Tikal.Tests.Editor
                 var progress = service.LoadProgress();
                 Require(!progress.HasStartedGame && !progress.IntroSeen && !progress.TutorialCompleted, "Missing progress file gives first-run defaults");
                 Require(progress.IsLevelUnlocked(GameSceneIds.Level01) && !progress.IsLevelUnlocked(GameSceneIds.Level02), "Level01 default unlock without Level02");
+                Require(progress.SelectedCharacterId == CharacterIds.Default, "Default character is selected on first run");
+                Require(CharacterCatalog.All.Count == 4, "Four playable character ids are registered");
+                Require(CharacterCatalog.All.All(character => character.VisualPrefab == null), "Missing final character prefabs do not block catalog");
                 progress.HasStartedGame = true;
                 progress.IntroSeen = true;
                 progress.TutorialCompleted = true;
                 progress.CurrentLevelId = GameSceneIds.Level01;
+                progress.SelectedCharacterId = CharacterIds.Character02;
                 progress.UnlockLevel(GameSceneIds.Level01);
                 progress.CompleteLevel(GameSceneIds.Level01);
                 service.SaveProgress(progress);
                 var loaded = service.LoadProgress();
                 Require(loaded.HasStartedGame && loaded.IntroSeen && loaded.TutorialCompleted, "Progress booleans persist");
                 Require(loaded.CurrentLevelId == GameSceneIds.Level01, "CurrentLevel persists");
+                Require(loaded.SelectedCharacterId == CharacterIds.Character02, "Character02 selection persists");
                 Require(loaded.IsLevelUnlocked(GameSceneIds.Level01) && loaded.IsLevelCompleted(GameSceneIds.Level01), "Unlocked and completed levels persist");
+                loaded.SelectedCharacterId = CharacterIds.Character03;
+                service.SaveProgress(loaded);
+                Require(service.LoadProgress().SelectedCharacterId == CharacterIds.Character03, "Character03 selection persists");
+                loaded.SelectedCharacterId = CharacterIds.Character04;
+                service.SaveProgress(loaded);
+                Require(service.LoadProgress().SelectedCharacterId == CharacterIds.Character04, "Character04 selection persists");
 
                 var settings = service.LoadSettings();
                 Require(Mathf.Approximately(settings.MasterVolume, 1) && Mathf.Approximately(settings.MusicVolume, .8f) && Mathf.Approximately(settings.SfxVolume, 1), "Audio defaults");
@@ -83,12 +94,17 @@ namespace Tikal.Tests.Editor
                 Require(Mathf.Approximately(loadedSettings.MasterVolume, .5f) && Mathf.Approximately(loadedSettings.MusicVolume, .25f) && Mathf.Approximately(loadedSettings.SfxVolume, .75f), "Audio values persist");
                 Require(Mathf.Approximately(loadedSettings.MouseSensitivity, .2f) && Mathf.Approximately(loadedSettings.GamepadSensitivity, 180), "Sensitivity values persist");
                 Require(loadedSettings.InvertY && loadedSettings.ReticleMode == ReticleMode.Cross, "InvertY and ReticleMode persist");
-                Require(service.LoadProgress().CurrentLevelId == GameSceneIds.Level01, "Settings save does not alter progress");
+                var progressAfterSettings = service.LoadProgress();
+                Require(progressAfterSettings.CurrentLevelId == GameSceneIds.Level01, "Settings save does not alter progress current level");
+                Require(progressAfterSettings.SelectedCharacterId == CharacterIds.Character04, "Settings save does not alter selected character");
 
                 File.WriteAllText(service.ProgressPath, "{ invalid json");
                 Require(!service.LoadProgress().HasStartedGame, "Corrupt progress falls back safely");
                 File.WriteAllText(service.SettingsPath, "{ invalid json");
                 Require(service.LoadSettings().ReticleMode == ReticleMode.Dot, "Corrupt settings fall back safely");
+                var invalid = GameProgressData.CreateDefault();
+                invalid.SelectedCharacterId = "character.missing";
+                Require(invalid.SelectedCharacterId == CharacterIds.Default, "Invalid character id falls back to default");
             }
             finally
             {
@@ -110,9 +126,14 @@ namespace Tikal.Tests.Editor
             var components = main.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Component>(true)).ToArray();
             Require(components.All(component => component != null), "Main Menu has no Missing Scripts");
             Require(components.OfType<GameFlowController>().Count() == 1 && components.OfType<MainMenuController>().Count() == 1, "Main menu flow and UI controllers");
+            Require(components.OfType<CharacterSelectionController>().Count() == 1, "Character selection controller exists");
             Require(components.OfType<EventSystem>().Count() == 1 && components.OfType<InputSystemUIInputModule>().Count() == 1, "Input System UI EventSystem");
             Require(components.OfType<Button>().Count(button => button.name == "Play") == 1, "Play button exists");
+            Require(components.OfType<Button>().Any(button => button.name == "Character"), "Character menu button exists");
+            Require(new[] { "Character01", "Character02", "Character03", "Character04" }.All(name => components.OfType<Button>().Any(button => button.name == name)), "Character panel exposes four options");
             Require(components.OfType<Button>().Any(button => button.name == "Level01") && !components.OfType<Button>().Any(button => button.name == "IntroPlaceholder"), "Level Select does not expose Intro as a level");
+            Require(!components.OfType<Button>().Any(button => button.name == "TutorialPlaceholder"), "Level Select does not expose Tutorial as a level");
+            Require(components.OfType<Button>().Where(button => button.name == "Level02").All(button => !button.gameObject.activeInHierarchy), "Level02 is hidden until unlocked");
             Require(components.OfType<SettingsMenuController>().Count() == 1, "Settings controller exists");
             Require(components.OfType<Slider>().Count() >= 5 && components.OfType<Toggle>().Any() && components.OfType<TMPro.TMP_Dropdown>().Any(), "Settings controls exist");
             var module = components.OfType<InputSystemUIInputModule>().Single();
@@ -157,6 +178,13 @@ namespace Tikal.Tests.Editor
             Require(reticle.Mode == ReticleMode.Dot, "Reticle Dot applies");
             reticle.SetMode(ReticleMode.Cross);
             Require(reticle.Mode == ReticleMode.Cross, "Reticle Cross applies");
+            var visualRoot = new GameObject("characterVisualRoot").transform;
+            visualRoot.SetParent(lookRoot.transform, false);
+            var spawner = lookRoot.AddComponent<CharacterVisualSpawner>();
+            Set(spawner, "_characterVisualRoot", visualRoot);
+            spawner.Apply(CharacterIds.Character04);
+            spawner.Apply("character.missing");
+            Require(visualRoot.childCount == 0, "Missing final character prefab does not throw or spawn placeholders");
             UnityEngine.Object.DestroyImmediate(lookRoot);
             UnityEngine.Object.DestroyImmediate(reticle.gameObject);
         }

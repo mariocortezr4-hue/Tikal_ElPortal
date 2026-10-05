@@ -173,6 +173,7 @@ namespace Tikal.Tests.Editor
             var events = EventSystem(root.transform);
             var main = Panel("Main", background, true);
             var levels = Panel("Levels", background, false);
+            var character = Panel("CharacterSelection", background, false);
             var cinematics = Panel("Cinematics", background, false);
             var tutorial = Panel("Tutorial", background, false);
             var settings = Panel("Settings", background, false);
@@ -182,17 +183,47 @@ namespace Tikal.Tests.Editor
             var playText = play.GetComponentInChildren<TMP_Text>();
             var subtitle = Text("ContinueSubtitle", main, "", 18);
             Place(subtitle.rectTransform, 170, 32, 420);
-            var levelsButton = MenuButton(main, "Levels", "NIVELES", 110);
-            var cinematicsButton = MenuButton(main, "Cinematics", "CINEMATICAS", 45);
-            var tutorialButton = MenuButton(main, "Tutorial", "TUTORIAL", -20);
-            var settingsButton = MenuButton(main, "Settings", "CONFIGURACION", -85);
-            var creditsButton = MenuButton(main, "Credits", "CREDITOS", -150);
-            var quitButton = MenuButton(main, "Quit", "SALIR", -215);
+            var levelsButton = MenuButton(main, "Levels", "NIVELES", 105);
+            var characterButton = MenuButton(main, "Character", "PERSONAJE", 45);
+            var cinematicsButton = MenuButton(main, "Cinematics", "CINEMATICAS", -15);
+            var tutorialButton = MenuButton(main, "Tutorial", "TUTORIAL", -75);
+            var settingsButton = MenuButton(main, "Settings", "CONFIGURACION", -135);
+            var creditsButton = MenuButton(main, "Credits", "CREDITOS", -195);
+            var quitButton = MenuButton(main, "Quit", "SALIR", -255);
 
             Text("LevelsTitle", levels, "NIVELES", 32);
             var level01 = MenuButton(levels, "Level01", "Nivel 1 - La Entrada Secreta", 80, 460);
             var level02Row = MenuButton(levels, "Level02", "Nivel 2", 15, 460).gameObject;
             var levelsBack = BackButton(levels, -220);
+
+            Text("CharacterTitle", character, "PERSONAJE", 32);
+            var selectedCharacter = Text("SelectedCharacter", character, "Seleccionado: Personaje 1", 20);
+            Place(selectedCharacter.rectTransform, 150, 34, 460);
+            var character01 = CharacterButton(character, "Character01", "Personaje 1", -150, 70);
+            var character02 = CharacterButton(character, "Character02", "Personaje 2", -50, 70);
+            var character03 = CharacterButton(character, "Character03", "Personaje 3", 50, 70);
+            var character04 = CharacterButton(character, "Character04", "Personaje 4", 150, 70);
+            var confirmCharacter = MenuButton(character, "ConfirmCharacter", "CONFIRMAR", 0, 280);
+            Place((RectTransform)confirmCharacter.transform, -105, 48, 280);
+            var characterBack = BackButton(character, -220);
+            var characterController = character.gameObject.AddComponent<CharacterSelectionController>();
+            Set(characterController, "_characterButtons", new UnityEngine.Object[] { character01, character02, character03, character04 });
+            Set(characterController, "_characterLabels", new UnityEngine.Object[]
+            {
+                character01.GetComponentInChildren<TMP_Text>(),
+                character02.GetComponentInChildren<TMP_Text>(),
+                character03.GetComponentInChildren<TMP_Text>(),
+                character04.GetComponentInChildren<TMP_Text>()
+            });
+            Set(characterController, "_selectionFrames", new UnityEngine.Object[]
+            {
+                character01.GetComponent<Image>(),
+                character02.GetComponent<Image>(),
+                character03.GetComponent<Image>(),
+                character04.GetComponent<Image>()
+            });
+            Set(characterController, "_currentSelectionLabel", selectedCharacter);
+            Set(characterController, "_confirmButton", confirmCharacter);
 
             Text("CinematicsTitle", cinematics, "CINEMATICAS", 32);
             var intro = MenuButton(cinematics, "Intro", "Introduccion", 80, 360);
@@ -230,6 +261,7 @@ namespace Tikal.Tests.Editor
             Set(menu, "_eventSystem", events);
             Set(menu, "_mainPanel", main.gameObject);
             Set(menu, "_levelsPanel", levels.gameObject);
+            Set(menu, "_characterPanel", character.gameObject);
             Set(menu, "_cinematicsPanel", cinematics.gameObject);
             Set(menu, "_tutorialPanel", tutorial.gameObject);
             Set(menu, "_settingsPanel", settings.gameObject);
@@ -238,6 +270,7 @@ namespace Tikal.Tests.Editor
             Set(menu, "_continueSubtitle", subtitle);
             Set(menu, "_playButton", play);
             Set(menu, "_levelsButton", levelsButton);
+            Set(menu, "_characterButton", characterButton);
             Set(menu, "_cinematicsButton", cinematicsButton);
             Set(menu, "_tutorialButton", tutorialButton);
             Set(menu, "_settingsButton", settingsButton);
@@ -247,8 +280,9 @@ namespace Tikal.Tests.Editor
             Set(menu, "_level02Row", level02Row);
             Set(menu, "_introReplayButton", intro);
             Set(menu, "_tutorialReplayButton", replayTutorial);
-            Set(menu, "_backButtons", new UnityEngine.Object[] { levelsBack, cinematicsBack, tutorialBack, settingsBack, creditsBack });
+            Set(menu, "_backButtons", new UnityEngine.Object[] { levelsBack, characterBack, cinematicsBack, tutorialBack, settingsBack, creditsBack });
             Set(menu, "_settings", settingsController);
+            Set(menu, "_characterSelection", characterController);
             var cancel = root.AddComponent<MenuCancelRouter>();
             Set(cancel, "_menu", menu);
             EditorSceneManager.SaveScene(scene, MainMenuPath);
@@ -269,6 +303,16 @@ namespace Tikal.Tests.Editor
         }
 
         static Button BackButton(Transform parent, float y) => MenuButton(parent, "Back", "VOLVER", y, 260);
+
+        static Button CharacterButton(Transform parent, string name, string label, float x, float y)
+        {
+            var button = Button(name, parent, label);
+            var rect = (RectTransform)button.transform;
+            rect.anchorMin = rect.anchorMax = new Vector2(.5f, .5f);
+            rect.sizeDelta = new Vector2(180, 82);
+            rect.anchoredPosition = new Vector2(x, y);
+            return button;
+        }
 
         static Slider Slider(Transform parent, string name, string label, float y, float min, float max, float value)
         {
@@ -357,10 +401,9 @@ namespace Tikal.Tests.Editor
         {
             var desired = new[] { MainMenuPath, IntroPath, TutorialPath, Level01Path };
             var current = EditorBuildSettings.scenes.ToList();
-            foreach (var path in desired)
-                if (!current.Any(scene => scene.path == path))
-                    current.Add(new EditorBuildSettingsScene(path, true));
-            EditorBuildSettings.scenes = current.ToArray();
+            var ordered = desired.Select(path => new EditorBuildSettingsScene(path, true)).ToList();
+            ordered.AddRange(current.Where(scene => !desired.Contains(scene.path)));
+            EditorBuildSettings.scenes = ordered.ToArray();
         }
     }
 }

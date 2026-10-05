@@ -47,10 +47,13 @@ Replay Intro returns to Main Menu and does not send the player to Tutorial. Repl
 - `IntroSeen`
 - `TutorialCompleted`
 - `CurrentLevelId`
+- `SelectedCharacterId`
 - unlocked level IDs
 - completed level IDs
 
 Stable IDs live in `GameSceneIds`. Level01 is `level01.secret_entrance`; Level02 is prepared as `level02` but has no scene path yet.
+
+Character IDs live in `CharacterIds`. The default is `character.default`; `character.02`, `character.03` and `character.04` are registered for future playable characters.
 
 ## Settings Data
 
@@ -92,6 +95,7 @@ Implemented scene IDs:
 
 - JUGAR / CONTINUAR
 - NIVELES
+- PERSONAJE
 - CINEMATICAS
 - TUTORIAL
 - CONFIGURACION
@@ -99,6 +103,20 @@ Implemented scene IDs:
 - SALIR
 
 Level Select shows unlocked levels only. Intro and Tutorial are not shown as levels. Cinematics shows Intro only after it has been seen. Tutorial replay appears after tutorial completion.
+
+## Character Selection
+
+```text
+MainMenu
+-> CharacterSelection
+-> SelectedCharacterId
+-> future CharacterVisualSpawner
+-> CharacterVisualRoot
+```
+
+The Character panel stores the selected character in `GameProgressData.SelectedCharacterId`, not in settings. New installs use `character.default`. If a saved ID is no longer registered, progress falls back safely to `character.default`.
+
+All characters share the same gameplay architecture. Future models, rigs, animators, materials and animations should be attached as visual prefabs under `CharacterVisualRoot`; `CharacterVisualSpawner` is prepared to resolve `SelectedCharacterId` through `CharacterCatalog` without requiring prefabs in this feature.
 
 ## Settings
 
@@ -129,3 +147,5 @@ Cancel returns from submenus to the Main Menu. It does not quit the game.
 `MainMenuController` presents state and delegates to `GameFlowController`.
 
 `SettingsMenuController` edits settings and saves them through `GamePersistenceService`.
+
+`CharacterSelectionController` edits `SelectedCharacterId` and saves it through `GamePersistenceService`.

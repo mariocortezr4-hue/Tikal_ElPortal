@@ -15,6 +15,7 @@ namespace Tikal.UI
         [SerializeField] private EventSystem _eventSystem;
         [SerializeField] private GameObject _mainPanel;
         [SerializeField] private GameObject _levelsPanel;
+        [SerializeField] private GameObject _characterPanel;
         [SerializeField] private GameObject _cinematicsPanel;
         [SerializeField] private GameObject _tutorialPanel;
         [SerializeField] private GameObject _settingsPanel;
@@ -23,6 +24,7 @@ namespace Tikal.UI
         [SerializeField] private TMP_Text _continueSubtitle;
         [SerializeField] private Button _playButton;
         [SerializeField] private Button _levelsButton;
+        [SerializeField] private Button _characterButton;
         [SerializeField] private Button _cinematicsButton;
         [SerializeField] private Button _tutorialButton;
         [SerializeField] private Button _settingsButton;
@@ -34,18 +36,20 @@ namespace Tikal.UI
         [SerializeField] private Button _tutorialReplayButton;
         [SerializeField] private Button[] _backButtons;
         [SerializeField] private SettingsMenuController _settings;
+        [SerializeField] private CharacterSelectionController _characterSelection;
 
         private readonly List<GameObject> _panels = new List<GameObject>();
 
         private void Awake()
         {
-            _panels.AddRange(new[] { _mainPanel, _levelsPanel, _cinematicsPanel, _tutorialPanel, _settingsPanel, _creditsPanel });
+            _panels.AddRange(new[] { _mainPanel, _levelsPanel, _characterPanel, _cinematicsPanel, _tutorialPanel, _settingsPanel, _creditsPanel });
         }
 
         private void OnEnable()
         {
             _playButton.onClick.AddListener(_flow.PlayOrContinue);
             _levelsButton.onClick.AddListener(() => Show(_levelsPanel, _level01Button.gameObject));
+            _characterButton.onClick.AddListener(() => Show(_characterPanel, _characterSelection != null ? _characterSelection.FirstSelection : null));
             _cinematicsButton.onClick.AddListener(() => Show(_cinematicsPanel, _introReplayButton != null ? _introReplayButton.gameObject : null));
             _tutorialButton.onClick.AddListener(() => Show(_tutorialPanel, _tutorialReplayButton != null ? _tutorialReplayButton.gameObject : null));
             _settingsButton.onClick.AddListener(() => Show(_settingsPanel, _settings != null ? _settings.FirstSelection : null));
@@ -65,6 +69,7 @@ namespace Tikal.UI
         {
             _playButton.onClick.RemoveAllListeners();
             _levelsButton.onClick.RemoveAllListeners();
+            _characterButton.onClick.RemoveAllListeners();
             _cinematicsButton.onClick.RemoveAllListeners();
             _tutorialButton.onClick.RemoveAllListeners();
             _settingsButton.onClick.RemoveAllListeners();
