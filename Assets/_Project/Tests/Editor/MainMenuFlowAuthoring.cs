@@ -23,6 +23,9 @@ namespace Tikal.Tests.Editor
         const string TutorialPath = "Assets/_Project/Scenes/Core/TutorialPlaceholder.unity";
         const string Level01Path = "Assets/_Project/Scenes/Levels/Level01_SecretEntrance.unity";
 
+        [MenuItem("Tikal/Authoring/Generate Main Menu Flow")]
+        public static void RunFromMenu() => Run();
+
         static void Set(UnityEngine.Object target, string field, object value)
         {
             var so = new SerializedObject(target);

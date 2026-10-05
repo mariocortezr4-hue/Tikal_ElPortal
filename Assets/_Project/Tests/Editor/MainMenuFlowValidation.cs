@@ -22,6 +22,9 @@ namespace Tikal.Tests.Editor
     {
         static int _checks;
 
+        [MenuItem("Tikal/Validation/Validate Main Menu Flow")]
+        public static void RunFromMenu() => Run();
+
         static void Require(bool value, string message)
         {
             if (!value) throw new Exception("MainMenuFlow: " + message);
