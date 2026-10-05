@@ -31,6 +31,7 @@ namespace Tikal.UI
         [SerializeField] private Button _creditsButton;
         [SerializeField] private Button _quitButton;
         [SerializeField] private Button _level01Button;
+        [SerializeField] private TMP_Text _levelHint;
         [SerializeField] private GameObject _level02Row;
         [SerializeField] private Button _introReplayButton;
         [SerializeField] private Button _tutorialReplayButton;
@@ -94,11 +95,17 @@ namespace Tikal.UI
             var progress = _flow.Progress;
             _playLabel.text = _flow.PlayButtonLabel;
             _continueSubtitle.text = Subtitle(progress);
-            _level01Button.gameObject.SetActive(progress.IsLevelUnlocked(GameSceneIds.Level01));
+            _level01Button.gameObject.SetActive(true);
             _level01Button.interactable = _flow.CanLaunchLevel(GameSceneIds.Level01);
+            _level01Button.GetComponent<Image>().color = _level01Button.interactable
+                ? new Color(.86f, .62f, .27f) : new Color(.055f, .105f, .135f, .94f);
+            if (_levelHint != null)
+                _levelHint.text = _level01Button.interactable
+                    ? "La primera etapa de la expedicion esta disponible."
+                    : "Completa la introduccion y el tutorial para desbloquear el acceso.";
             if (_level02Row != null) _level02Row.SetActive(progress.IsLevelUnlocked(GameSceneIds.Level02));
-            if (_introReplayButton != null) _introReplayButton.gameObject.SetActive(progress.IntroSeen);
-            if (_tutorialReplayButton != null) _tutorialReplayButton.gameObject.SetActive(progress.TutorialCompleted);
+            if (_introReplayButton != null) _introReplayButton.interactable = progress.IntroSeen;
+            if (_tutorialReplayButton != null) _tutorialReplayButton.interactable = progress.TutorialCompleted;
         }
 
         private string Subtitle(GameProgressData progress)

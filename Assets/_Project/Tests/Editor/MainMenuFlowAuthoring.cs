@@ -144,6 +144,7 @@ namespace Tikal.Tests.Editor
                 Directory.CreateDirectory("Assets/_Project/Scenes/Menus");
                 Directory.CreateDirectory("Assets/_Project/Scenes/Core");
                 BuildMainMenu();
+                MainMenuVisualAuthoring.Apply();
                 BuildPlaceholder(IntroPath, "Intro Placeholder", "INTRO PLACEHOLDER", "Intro terminada", true);
                 BuildPlaceholder(TutorialPath, "Tutorial Placeholder", "TUTORIAL PLACEHOLDER", "Tutorial terminado", false);
                 RegisterScenes();

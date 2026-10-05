@@ -14,6 +14,7 @@ namespace Tikal.UI
         [SerializeField] private Slider _mouseSensitivity;
         [SerializeField] private Slider _gamepadSensitivity;
         [SerializeField] private Toggle _invertY;
+        [SerializeField] private TMP_Dropdown _cameraMode;
         [SerializeField] private TMP_Dropdown _reticleMode;
         [SerializeField] private ReticleSettings _previewReticle;
 
@@ -38,6 +39,7 @@ namespace Tikal.UI
             _mouseSensitivity.onValueChanged.AddListener(OnMouse);
             _gamepadSensitivity.onValueChanged.AddListener(OnGamepad);
             _invertY.onValueChanged.AddListener(OnInvert);
+            if (_cameraMode != null) _cameraMode.onValueChanged.AddListener(OnCameraMode);
             _reticleMode.onValueChanged.AddListener(OnReticle);
         }
 
@@ -49,6 +51,7 @@ namespace Tikal.UI
             _mouseSensitivity.onValueChanged.RemoveListener(OnMouse);
             _gamepadSensitivity.onValueChanged.RemoveListener(OnGamepad);
             _invertY.onValueChanged.RemoveListener(OnInvert);
+            if (_cameraMode != null) _cameraMode.onValueChanged.RemoveListener(OnCameraMode);
             _reticleMode.onValueChanged.RemoveListener(OnReticle);
         }
 
@@ -61,7 +64,13 @@ namespace Tikal.UI
             _mouseSensitivity.value = _settings.MouseSensitivity;
             _gamepadSensitivity.value = _settings.GamepadSensitivity;
             _invertY.isOn = _settings.InvertY;
-            _reticleMode.value = _settings.ReticleMode == ReticleMode.None ? 0 : _settings.ReticleMode == ReticleMode.Dot ? 1 : 2;
+            if (_cameraMode != null)
+            {
+                _cameraMode.SetValueWithoutNotify(_settings.CameraMode == CameraMode.ThirdPerson ? 1 : 0);
+                _cameraMode.RefreshShownValue();
+            }
+            _reticleMode.SetValueWithoutNotify(_settings.ReticleMode == ReticleMode.None ? 0 : _settings.ReticleMode == ReticleMode.Dot ? 1 : 2);
+            _reticleMode.RefreshShownValue();
             ApplyRuntime();
             _loading = false;
         }
@@ -72,6 +81,11 @@ namespace Tikal.UI
         private void OnMouse(float value) { _settings.MouseSensitivity = value; Save(); }
         private void OnGamepad(float value) { _settings.GamepadSensitivity = value; Save(); }
         private void OnInvert(bool value) { _settings.InvertY = value; Save(); }
+        private void OnCameraMode(int value)
+        {
+            _settings.CameraMode = value == 1 ? CameraMode.ThirdPerson : CameraMode.FirstPerson;
+            Save();
+        }
         private void OnReticle(int value)
         {
             _settings.ReticleMode = value == 0 ? ReticleMode.None : value == 1 ? ReticleMode.Dot : ReticleMode.Cross;

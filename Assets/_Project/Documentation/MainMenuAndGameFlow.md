@@ -100,6 +100,7 @@ Character IDs live in `CharacterIds`. The default is `character.default`; `chara
 - mouse sensitivity
 - gamepad sensitivity
 - invert Y
+- camera mode (FirstPerson by default, ThirdPerson selectable)
 - reticle mode
 - prepared graphics quality, display mode and resolution fields
 
@@ -128,7 +129,7 @@ Implemented scene IDs:
 
 ## Menu
 
-`MainMenu.unity` is authored as a functional placeholder with:
+`MainMenu.unity` uses a cinematic Tikal jungle and ruins backdrop, a vertical navigation column on the left, a journey card on the right, and dark stone panels with amber details for secondary menus. It contains:
 
 - JUGAR / CONTINUAR
 - NIVELES
@@ -139,7 +140,7 @@ Implemented scene IDs:
 - CREDITOS
 - SALIR
 
-Level Select shows unlocked levels only after onboarding is complete. Intro and Tutorial are not shown as levels. Cinematics shows Intro only after it has been seen. Tutorial replay appears after tutorial completion.
+Level Select keeps Level01 visible but disabled until onboarding is complete. Intro and Tutorial are not shown as levels. Their replay buttons remain visible but disabled until `IntroSeen` and `TutorialCompleted` respectively.
 
 ## Character Selection
 
@@ -165,9 +166,12 @@ The initial settings panel applies and saves:
 - Mouse Sensitivity
 - Gamepad Sensitivity
 - Invert Y
-- Reticle: None, Dot, Cross
+- Camera Mode: Primera Persona, Tercera Persona
+- Reticle: Ninguno, Punto, Cruz
 
-`PersistentSettingsApplier` can apply persisted settings in gameplay scenes. `PlayerLook.ApplySettings` updates sensitivity and invert Y. `ReticleSettings.SetMode` updates the existing reticle system.
+All eight values are stored in `tikal_settings.json` and loaded when Main Menu opens. Camera Mode currently stores a preference for future gameplay camera implementation; selecting ThirdPerson does not change the active player camera yet. The same settings service can be used later by an in-game settings panel. `PersistentSettingsApplier` applies existing gameplay settings. `PlayerLook.ApplySettings` updates sensitivity and invert Y. `ReticleSettings.SetMode` updates the existing reticle system.
+
+The visual pass is maintained by `Tikal/Authoring/Polish Existing Main Menu`. It edits the existing `MainMenu.unity` and can be run again without adding duplicate UI elements. `Generate Main Menu Flow` also applies this pass after generating the scene.
 
 ## UI Input
 
@@ -192,6 +196,8 @@ F. After onboarding -> Levels -> Level01 is available.
 G. Replay Intro -> MainMenu.
 
 H. Replay Tutorial -> MainMenu.
+
+I. Settings -> change Camera Mode and Reticle -> leave and reopen the menu -> both selections match the saved values. Audio, sensitivity and Invert Y should also retain their chosen values.
 
 ## Responsibilities
 

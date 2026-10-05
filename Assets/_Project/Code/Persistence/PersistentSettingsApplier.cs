@@ -11,6 +11,7 @@ namespace Tikal.Persistence
         [SerializeField] private PlayerLook _playerLook;
 
         private GamePersistenceService _service;
+        public CameraMode CameraMode { get; private set; } = Tikal.Persistence.CameraMode.FirstPerson;
 
         private void Awake()
         {
@@ -21,6 +22,7 @@ namespace Tikal.Persistence
         public void Apply(GameSettingsData settings)
         {
             settings ??= GameSettingsData.CreateDefault();
+            CameraMode = settings.CameraMode;
             AudioListener.volume = settings.MasterVolume;
             if (_reticleSettings != null) _reticleSettings.SetMode(settings.ReticleMode);
             if (_playerLook != null) _playerLook.ApplySettings(settings.MouseSensitivity, settings.GamepadSensitivity, settings.InvertY);

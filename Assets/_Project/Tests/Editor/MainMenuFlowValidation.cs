@@ -87,18 +87,21 @@ namespace Tikal.Tests.Editor
                 var settings = service.LoadSettings();
                 Require(Mathf.Approximately(settings.MasterVolume, 1) && Mathf.Approximately(settings.MusicVolume, .8f) && Mathf.Approximately(settings.SfxVolume, 1), "Audio defaults");
                 Require(Mathf.Approximately(settings.MouseSensitivity, .12f) && Mathf.Approximately(settings.GamepadSensitivity, 150), "Sensitivity defaults match current PlayerLook");
+                Require(settings.CameraMode == CameraMode.FirstPerson && settings.ReticleMode == ReticleMode.Dot, "Camera and reticle defaults");
                 settings.MasterVolume = .5f;
                 settings.MusicVolume = .25f;
                 settings.SfxVolume = .75f;
                 settings.MouseSensitivity = .2f;
                 settings.GamepadSensitivity = 180;
                 settings.InvertY = true;
+                settings.CameraMode = CameraMode.ThirdPerson;
                 settings.ReticleMode = ReticleMode.Cross;
                 service.SaveSettings(settings);
                 var loadedSettings = service.LoadSettings();
                 Require(Mathf.Approximately(loadedSettings.MasterVolume, .5f) && Mathf.Approximately(loadedSettings.MusicVolume, .25f) && Mathf.Approximately(loadedSettings.SfxVolume, .75f), "Audio values persist");
                 Require(Mathf.Approximately(loadedSettings.MouseSensitivity, .2f) && Mathf.Approximately(loadedSettings.GamepadSensitivity, 180), "Sensitivity values persist");
                 Require(loadedSettings.InvertY && loadedSettings.ReticleMode == ReticleMode.Cross, "InvertY and ReticleMode persist");
+                Require(loadedSettings.CameraMode == CameraMode.ThirdPerson, "CameraMode persists");
                 var progressAfterSettings = service.LoadProgress();
                 Require(progressAfterSettings.CurrentLevelId == GameSceneIds.Level01, "Settings save does not alter progress current level");
                 Require(progressAfterSettings.SelectedCharacterId == CharacterIds.Character04, "Settings save does not alter selected character");
@@ -106,7 +109,7 @@ namespace Tikal.Tests.Editor
                 File.WriteAllText(service.ProgressPath, "{ invalid json");
                 Require(!service.LoadProgress().HasStartedGame, "Corrupt progress falls back safely");
                 File.WriteAllText(service.SettingsPath, "{ invalid json");
-                Require(service.LoadSettings().ReticleMode == ReticleMode.Dot, "Corrupt settings fall back safely");
+                Require(service.LoadSettings().ReticleMode == ReticleMode.Dot && service.LoadSettings().CameraMode == CameraMode.FirstPerson, "Corrupt settings fall back safely");
                 var invalid = GameProgressData.CreateDefault();
                 invalid.SelectedCharacterId = "character.missing";
                 Require(invalid.SelectedCharacterId == CharacterIds.Default, "Invalid character id falls back to default");
@@ -141,6 +144,14 @@ namespace Tikal.Tests.Editor
             Require(components.OfType<Button>().Where(button => button.name == "Level02").All(button => !button.gameObject.activeInHierarchy), "Level02 is hidden until unlocked");
             Require(components.OfType<SettingsMenuController>().Count() == 1, "Settings controller exists");
             Require(components.OfType<Slider>().Count() >= 5 && components.OfType<Toggle>().Any() && components.OfType<TMPro.TMP_Dropdown>().Any(), "Settings controls exist");
+            var settingsController = components.OfType<SettingsMenuController>().Single();
+            var settingsBindings = new SerializedObject(settingsController);
+            var camera = settingsBindings.FindProperty("_cameraMode").objectReferenceValue as TMPro.TMP_Dropdown;
+            var reticle = settingsBindings.FindProperty("_reticleMode").objectReferenceValue as TMPro.TMP_Dropdown;
+            Require(camera != null && camera.template != null && camera.options.Select(option => option.text).SequenceEqual(new[] { "Primera Persona", "Tercera Persona" }), "Camera Mode dropdown is wired and selectable");
+            Require(reticle != null && reticle.template != null && reticle.options.Select(option => option.text).SequenceEqual(new[] { "Ninguno", "Punto", "Cruz" }), "Reticle dropdown is wired and selectable");
+            Require(components.OfType<Button>().Single(button => button.name == "Level01").gameObject.activeSelf, "Level01 remains visible while locked");
+            Require(new SerializedObject(components.OfType<MainMenuController>().Single()).FindProperty("_levelHint").objectReferenceValue != null, "Level availability hint is wired");
             var module = components.OfType<InputSystemUIInputModule>().Single();
             Require(module.move != null && module.submit != null && module.cancel != null, "Navigate Submit Cancel wired");
 

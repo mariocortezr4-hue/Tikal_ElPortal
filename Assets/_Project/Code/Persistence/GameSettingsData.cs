@@ -6,6 +6,7 @@ namespace Tikal.Persistence
 {
     public enum GraphicsQuality { Low, Medium, High }
     public enum DisplayMode { Windowed, Fullscreen }
+    public enum CameraMode { FirstPerson = 0, ThirdPerson = 1 }
 
     [Serializable]
     public sealed class GameSettingsData
@@ -16,6 +17,7 @@ namespace Tikal.Persistence
         [SerializeField, Min(0)] private float _mouseSensitivity = .12f;
         [SerializeField, Min(0)] private float _gamepadSensitivity = 150f;
         [SerializeField] private bool _invertY;
+        [SerializeField] private CameraMode _cameraMode = Tikal.Persistence.CameraMode.FirstPerson;
         [SerializeField] private ReticleMode _reticleMode = ReticleMode.Dot;
         [SerializeField] private GraphicsQuality _graphicsQuality = GraphicsQuality.Medium;
         [SerializeField] private DisplayMode _displayMode = DisplayMode.Fullscreen;
@@ -27,6 +29,7 @@ namespace Tikal.Persistence
         public float MouseSensitivity { get => _mouseSensitivity; set => _mouseSensitivity = Mathf.Max(0, value); }
         public float GamepadSensitivity { get => _gamepadSensitivity; set => _gamepadSensitivity = Mathf.Max(0, value); }
         public bool InvertY { get => _invertY; set => _invertY = value; }
+        public CameraMode CameraMode { get => _cameraMode; set => _cameraMode = value; }
         public Tikal.UI.ReticleMode ReticleMode { get => _reticleMode; set => _reticleMode = value; }
         public GraphicsQuality GraphicsQuality { get => _graphicsQuality; set => _graphicsQuality = value; }
         public DisplayMode DisplayMode { get => _displayMode; set => _displayMode = value; }
@@ -41,6 +44,8 @@ namespace Tikal.Persistence
             SfxVolume = _sfxVolume;
             MouseSensitivity = _mouseSensitivity <= 0 ? .12f : _mouseSensitivity;
             GamepadSensitivity = _gamepadSensitivity <= 0 ? 150f : _gamepadSensitivity;
+            if (_cameraMode != Tikal.Persistence.CameraMode.FirstPerson && _cameraMode != Tikal.Persistence.CameraMode.ThirdPerson)
+                _cameraMode = Tikal.Persistence.CameraMode.FirstPerson;
             if (_reticleMode != Tikal.UI.ReticleMode.None && _reticleMode != Tikal.UI.ReticleMode.Dot && _reticleMode != Tikal.UI.ReticleMode.Cross)
                 _reticleMode = Tikal.UI.ReticleMode.Dot;
             _resolution ??= string.Empty;
