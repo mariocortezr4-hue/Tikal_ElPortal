@@ -26,6 +26,9 @@ namespace Tikal.Player
 
         public bool IsConfigured => _cameraRoot != null;
         public float Pitch => _pitch;
+        public float MouseSensitivity => _deltaSensitivity;
+        public float GamepadSensitivity => _rateSensitivity;
+        public bool InvertY => _invertY;
 
         private void Awake()
         {
@@ -52,6 +55,13 @@ namespace Tikal.Player
             _pitch = Mathf.Clamp(_pitch + rotation.y * (_invertY ? 1f : -1f), _minimumPitch, _maximumPitch);
             transform.rotation = Quaternion.Euler(0, _yaw, 0);
             _cameraRoot.localRotation = Quaternion.Euler(_pitch, 0, 0);
+        }
+
+        public void ApplySettings(float mouseSensitivity, float gamepadSensitivity, bool invertY)
+        {
+            _deltaSensitivity = Mathf.Max(0, mouseSensitivity);
+            _rateSensitivity = Mathf.Max(0, gamepadSensitivity);
+            _invertY = invertY;
         }
 
         public void SetEyeHeight(float height, float maximumHeight, float deltaTime)
