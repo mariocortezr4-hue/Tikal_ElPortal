@@ -58,6 +58,7 @@ namespace Tikal.Tests.Editor
             {
                 var progress = service.LoadProgress();
                 Require(!progress.HasStartedGame && !progress.IntroSeen && !progress.TutorialCompleted, "Missing progress file gives first-run defaults");
+                Require(!progress.HasCompletedOnboarding, "Fresh progress has onboarding locked");
                 Require(progress.IsLevelUnlocked(GameSceneIds.Level01) && !progress.IsLevelUnlocked(GameSceneIds.Level02), "Level01 default unlock without Level02");
                 Require(progress.SelectedCharacterId == CharacterIds.Default, "Default character is selected on first run");
                 Require(CharacterCatalog.All.Count == 4, "Four playable character ids are registered");
@@ -72,6 +73,7 @@ namespace Tikal.Tests.Editor
                 service.SaveProgress(progress);
                 var loaded = service.LoadProgress();
                 Require(loaded.HasStartedGame && loaded.IntroSeen && loaded.TutorialCompleted, "Progress booleans persist");
+                Require(loaded.HasCompletedOnboarding, "Completed intro and tutorial unlock onboarding gate");
                 Require(loaded.CurrentLevelId == GameSceneIds.Level01, "CurrentLevel persists");
                 Require(loaded.SelectedCharacterId == CharacterIds.Character02, "Character02 selection persists");
                 Require(loaded.IsLevelUnlocked(GameSceneIds.Level01) && loaded.IsLevelCompleted(GameSceneIds.Level01), "Unlocked and completed levels persist");

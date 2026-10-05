@@ -21,6 +21,7 @@ namespace Tikal.Persistence
         public bool TutorialCompleted { get => _tutorialCompleted; set => _tutorialCompleted = value; }
         public string CurrentLevelId { get => _currentLevelId; set => _currentLevelId = value ?? string.Empty; }
         public string SelectedCharacterId { get => _selectedCharacterId; set => _selectedCharacterId = CharacterCatalog.IsValid(value) ? value : CharacterIds.Default; }
+        public bool HasCompletedOnboarding => _introSeen && _tutorialCompleted;
         public IReadOnlyList<string> UnlockedLevels => _unlockedLevels;
         public IReadOnlyList<string> CompletedLevels => _completedLevels;
 

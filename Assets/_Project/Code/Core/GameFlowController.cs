@@ -28,7 +28,19 @@ namespace Tikal.Core
         {
             if (!Progress.HasStartedGame)
             {
-                StartNewGame();
+                Progress.HasStartedGame = true;
+                if (string.IsNullOrWhiteSpace(Progress.CurrentLevelId)) Progress.CurrentLevelId = GameSceneIds.Level01;
+                Progress.UnlockLevel(GameSceneIds.Level01);
+                Persistence.SaveProgress(Progress);
+            }
+            if (!Progress.IntroSeen)
+            {
+                Load(GameSceneIds.Intro);
+                return;
+            }
+            if (!Progress.TutorialCompleted)
+            {
+                Load(GameSceneIds.Tutorial);
                 return;
             }
             LaunchLevel(string.IsNullOrWhiteSpace(Progress.CurrentLevelId) ? GameSceneIds.Level01 : Progress.CurrentLevelId);
@@ -59,9 +71,11 @@ namespace Tikal.Core
 
         public void LaunchLevel(string levelId)
         {
-            if (!Progress.IsLevelUnlocked(levelId)) return;
+            if (!CanLaunchLevel(levelId)) return;
             Load(levelId);
         }
+
+        public bool CanLaunchLevel(string levelId) => Progress.HasCompletedOnboarding && Progress.IsLevelUnlocked(levelId);
 
         public void CompleteIntro()
         {

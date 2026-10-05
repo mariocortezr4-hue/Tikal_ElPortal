@@ -93,11 +93,20 @@ namespace Tikal.UI
         {
             var progress = _flow.Progress;
             _playLabel.text = _flow.PlayButtonLabel;
-            _continueSubtitle.text = progress.HasStartedGame ? _flow.CurrentLevelTitle : string.Empty;
+            _continueSubtitle.text = Subtitle(progress);
             _level01Button.gameObject.SetActive(progress.IsLevelUnlocked(GameSceneIds.Level01));
+            _level01Button.interactable = _flow.CanLaunchLevel(GameSceneIds.Level01);
             if (_level02Row != null) _level02Row.SetActive(progress.IsLevelUnlocked(GameSceneIds.Level02));
             if (_introReplayButton != null) _introReplayButton.gameObject.SetActive(progress.IntroSeen);
             if (_tutorialReplayButton != null) _tutorialReplayButton.gameObject.SetActive(progress.TutorialCompleted);
+        }
+
+        private string Subtitle(GameProgressData progress)
+        {
+            if (!progress.HasStartedGame) return string.Empty;
+            if (!progress.IntroSeen) return "Introduccion pendiente";
+            if (!progress.TutorialCompleted) return "Tutorial pendiente";
+            return _flow.CurrentLevelTitle;
         }
 
         private void Show(GameObject panel, GameObject selection)

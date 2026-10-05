@@ -4,7 +4,7 @@ This milestone adds the base architecture for menu navigation, game flow and per
 
 ## First Run
 
-`GameProgressData.HasStartedGame == false`
+`GameProgressData.IntroSeen == false` routes to Intro. `GameProgressData.TutorialCompleted == false` routes to Tutorial. `HasStartedGame` is useful for menu labeling, but it is not the authority for entering Level01.
 
 ```text
 MainMenu
@@ -16,6 +16,43 @@ MainMenu
 The Play button displays `JUGAR`. Starting a new game marks the game as started, sets the current level to `level01.secret_entrance`, keeps Level01 unlocked, and loads Intro.
 
 Completing the intro in the initial flow sets `IntroSeen = true` and loads Tutorial. Completing the tutorial sets `TutorialCompleted = true`, keeps `CurrentLevelId = level01.secret_entrance`, and loads Level01.
+
+## First Run Onboarding Gate
+
+Fresh install:
+
+```text
+MainMenu
+-> IntroPlaceholder
+-> TutorialPlaceholder
+-> Level01_SecretEntrance
+```
+
+Interrupted Intro:
+
+```text
+MainMenu
+-> Continue
+-> IntroPlaceholder
+```
+
+Interrupted Tutorial:
+
+```text
+MainMenu
+-> Continue
+-> TutorialPlaceholder
+```
+
+Completed onboarding:
+
+```text
+MainMenu
+-> Continue
+-> CurrentLevel
+```
+
+Level Select cannot skip onboarding. Level01 may be visible as the known first level, but it is not interactable until both `IntroSeen` and `TutorialCompleted` are true.
 
 ## Returning Player
 
@@ -102,7 +139,7 @@ Implemented scene IDs:
 - CREDITOS
 - SALIR
 
-Level Select shows unlocked levels only. Intro and Tutorial are not shown as levels. Cinematics shows Intro only after it has been seen. Tutorial replay appears after tutorial completion.
+Level Select shows unlocked levels only after onboarding is complete. Intro and Tutorial are not shown as levels. Cinematics shows Intro only after it has been seen. Tutorial replay appears after tutorial completion.
 
 ## Character Selection
 
@@ -137,6 +174,24 @@ The initial settings panel applies and saves:
 Menu scenes use the existing `UI` Action Map through `InputSystemUIInputModule`. `Navigate`, `Submit`, `Cancel`, `Point`, `Click` and `ScrollWheel` are wired from `TikalInputActions`.
 
 Cancel returns from submenus to the Main Menu. It does not quit the game.
+
+## Manual Editor Checklist
+
+A. `Tikal/Testing/Reset Local Progress` -> MainMenu shows JUGAR -> JUGAR -> Intro -> Tutorial -> Level01.
+
+B. Reset -> JUGAR -> close during Intro -> return to MainMenu -> CONTINUAR -> Intro.
+
+C. Complete Intro -> close during Tutorial -> return to MainMenu -> CONTINUAR -> Tutorial.
+
+D. Before onboarding is complete -> Levels -> Level01 is not accessible.
+
+E. Complete onboarding -> MainMenu -> CONTINUAR -> Level01.
+
+F. After onboarding -> Levels -> Level01 is available.
+
+G. Replay Intro -> MainMenu.
+
+H. Replay Tutorial -> MainMenu.
 
 ## Responsibilities
 
