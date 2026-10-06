@@ -26,14 +26,39 @@ namespace Tikal.Tests.Editor
                 var expected = new[] { TutorialPromptAction.Move, TutorialPromptAction.Look, TutorialPromptAction.Jump, TutorialPromptAction.Crouch, TutorialPromptAction.Sprint, TutorialPromptAction.Interact };
                 Require(sequence.Steps.Select(step => step.PromptAction).SequenceEqual(expected), "Tutorial step order is Move, Look, Jump, Crouch, Sprint, Interact");
                 Require(!sequence.Steps.Select(step => step.PromptAction).Except(expected).Any(), "SecretCommand is not a tutorial step");
-                Require(components.OfType<TutorialExitGate>().Count() == 1, "Tutorial reuses one existing-style interactable exit gate");
+                Require(sequence.Steps.All(step => step != null && step.HasRequiredReferences), "Every tutorial step has its critical references");
+                Require(sequence.Steps.All(step => !string.IsNullOrWhiteSpace(step.Title) && !string.IsNullOrWhiteSpace(step.Instruction)), "Every control step has visible guidance");
+                var gate = components.OfType<TutorialExitGate>().Single();
+                Require(sequence.ExitGate == gate, "Sequence owns the final exit phase");
+                Require(gate.HasRequiredReferences, "Exit gate has its player, moving stone and trigger references");
+                Require(gate.GetComponent<BoxCollider>().isTrigger, "Exit gate uses an unambiguous trigger");
+                Require(!gate.ExitAvailable, "Exit gate starts locked until every control step is complete");
+                var jumpObstacle = components.OfType<Transform>().Single(item => item.name == "Jump root");
+                var crouchObstacle = components.OfType<Transform>().Single(item => item.name == "Low ruin lintel");
+                Require(gate.transform.position.z > jumpObstacle.position.z && gate.transform.position.z > crouchObstacle.position.z, "Exit gate is after the control route");
+                Require(components.OfType<Light>().Any(light => light.name == "Warm exit beacon"), "Exit route has a warm environmental beacon");
                 Require(components.OfType<PlayerInputReader>().Count() == 1 && components.OfType<InputDeviceManager>().Count() == 1, "Tutorial reuses Explorer input and device detection");
-                Require(components.OfType<TutorialPromptPresenter>().Count() == 1, "Tutorial owns one device-aware objective presenter");
+                var presenter = components.OfType<TutorialPromptPresenter>().Single();
+                Require(presenter.Sequence == sequence && presenter.HasRequiredReferences, "Prompt presenter is fully connected to the sequence and input services");
+                Require(presenter.RemainsActiveDuringFeedback, "Prompt presenter stays subscribed while objective and completion panels switch");
                 Require(SceneCatalog.Get(GameSceneIds.Tutorial).Path == ScenePath, "GameFlow tutorial id routes to TUT_ExplorerBasics");
+                Require(GameFlowController.GetTutorialCompletionDestination(false) == GameSceneIds.Level01, "First-run tutorial exit routes to Level01");
+                Require(GameFlowController.GetTutorialCompletionDestination(true) == GameSceneIds.MainMenu, "Tutorial replay exit routes to MainMenu");
                 var actions = new TikalInputActions();
                 Require(InputPromptResolver.Resolve(actions.Player.Move, InputDeviceFamily.KeyboardMouse).DisplayText == "WASD", "Keyboard movement prompt resolves from Move");
+                Require(InputPromptResolver.Resolve(actions.Player.Look, InputDeviceFamily.Xbox).DisplayText == "Right Stick", "Xbox look prompt resolves from Look");
+                RequirePrompt(actions.Player.Jump, InputDeviceFamily.KeyboardMouse, "<Keyboard>/space", "Space", "Keyboard jump");
+                RequirePrompt(actions.Player.Jump, InputDeviceFamily.Xbox, "<Gamepad>/buttonSouth", "A", "Xbox jump");
+                RequirePrompt(actions.Player.Jump, InputDeviceFamily.PlayStation, "<Gamepad>/buttonSouth", "×", "PlayStation jump");
+                RequirePrompt(actions.Player.Jump, InputDeviceFamily.GenericGamepad, "<Gamepad>/buttonSouth", "Botón sur", "Generic gamepad jump");
+                RequirePrompt(actions.Player.Crouch, InputDeviceFamily.KeyboardMouse, "<Keyboard>/leftCtrl", null, "Keyboard crouch");
+                RequirePrompt(actions.Player.Crouch, InputDeviceFamily.Xbox, "<Gamepad>/buttonEast", "B", "Xbox crouch");
+                RequirePrompt(actions.Player.Sprint, InputDeviceFamily.KeyboardMouse, "<Keyboard>/leftShift", null, "Keyboard sprint");
+                RequirePrompt(actions.Player.Sprint, InputDeviceFamily.Xbox, "<Gamepad>/leftStickPress", "LS", "Xbox sprint");
+                RequirePrompt(actions.Player.Sprint, InputDeviceFamily.PlayStation, "<Gamepad>/leftStickPress", "L3", "PlayStation sprint");
                 Require(InputPromptResolver.Resolve(actions.Player.Interact, InputDeviceFamily.Xbox).DisplayText == "X", "Xbox interaction prompt resolves from Interact");
                 Require(InputPromptResolver.Resolve(actions.Player.Interact, InputDeviceFamily.PlayStation).DisplayText == "□", "PlayStation interaction prompt resolves from Interact");
+                Require(InputPromptResolver.Resolve(actions.Player.Interact, InputDeviceFamily.GenericGamepad).DisplayText == "Botón oeste", "Generic interaction prompt resolves from Interact");
                 actions.Dispose();
                 Debug.Log("TIKAL_EXPLORER_TUTORIAL_VALIDATION_PASSED");
             }
@@ -43,6 +68,14 @@ namespace Tikal.Tests.Editor
         static void Require(bool condition, string message)
         {
             if (!condition) throw new InvalidOperationException("Explorer tutorial: " + message);
+        }
+
+        static void RequirePrompt(UnityEngine.InputSystem.InputAction action, InputDeviceFamily family, string path, string display, string label)
+        {
+            var prompt = InputPromptResolver.Resolve(action, family);
+            Require(prompt.ControlPath == path, label + " uses the expected Input System binding");
+            Require(!string.IsNullOrWhiteSpace(prompt.DisplayText), label + " has visible prompt text");
+            if (display != null) Require(prompt.DisplayText == display, label + " uses the expected device label");
         }
     }
 }

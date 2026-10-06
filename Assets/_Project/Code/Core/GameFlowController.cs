@@ -95,15 +95,18 @@ namespace Tikal.Core
             if (_tutorialReplayToMenu)
             {
                 _tutorialReplayToMenu = false;
-                Load(GameSceneIds.MainMenu);
+                Load(GetTutorialCompletionDestination(true));
                 return;
             }
             Progress.TutorialCompleted = true;
             Progress.CurrentLevelId = GameSceneIds.Level01;
             Progress.UnlockLevel(GameSceneIds.Level01);
             Persistence.SaveProgress(Progress);
-            Load(GameSceneIds.Level01);
+            Load(GetTutorialCompletionDestination(false));
         }
+
+        public static string GetTutorialCompletionDestination(bool replay) =>
+            replay ? GameSceneIds.MainMenu : GameSceneIds.Level01;
 
         public void CompleteLevel(string levelId)
         {

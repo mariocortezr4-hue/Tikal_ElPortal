@@ -17,6 +17,7 @@ namespace Tikal.Tutorial
         public string Instruction => _instruction;
         public TutorialPromptAction PromptAction => _promptAction;
         public TutorialStepState State { get; private set; }
+        public virtual bool HasRequiredReferences => true;
         public event Action<TutorialStep> Completed;
 
         internal void ActivateStep()
@@ -49,6 +50,7 @@ namespace Tikal.Tutorial
         [SerializeField, Min(.5f)] private float _requiredDistance = 4f;
         private Vector3 _previousPosition;
         private float _travelled;
+        public override bool HasRequiredReferences => _player != null;
         protected override void OnActivated() => _previousPosition = _player.position;
         protected override void OnStepTick(float deltaTime)
         {
@@ -69,6 +71,7 @@ namespace Tikal.Tutorial
         private float _lastYaw;
         private float _lastPitch;
         private float _turned;
+        public override bool HasRequiredReferences => _player != null && _look != null;
         protected override void OnActivated()
         {
             _lastYaw = _player.eulerAngles.y;
@@ -88,6 +91,7 @@ namespace Tikal.Tutorial
     public sealed class TutorialJumpStep : TutorialStep
     {
         [SerializeField] private PlayerInputReader _input;
+        public override bool HasRequiredReferences => _input != null;
         protected override void OnActivated() => _input.JumpPressed += OnJump;
         protected override void OnDeactivated() => _input.JumpPressed -= OnJump;
         private void OnJump() => Complete();
@@ -99,6 +103,7 @@ namespace Tikal.Tutorial
         [SerializeField] private PlayerMovement _movement;
         [SerializeField] private Transform _player;
         private bool _inside;
+        public override bool HasRequiredReferences => _movement != null && _player != null && GetComponent<BoxCollider>() != null;
         protected override void OnActivated() => _inside = false;
         protected override void OnStepTick(float deltaTime)
         {
@@ -115,6 +120,7 @@ namespace Tikal.Tutorial
         [SerializeField, Min(1)] private float _requiredDistance = 6f;
         private Vector3 _previousPosition;
         private float _travelled;
+        public override bool HasRequiredReferences => _player != null && _movement != null;
         protected override void OnActivated() => _previousPosition = _player.position;
         protected override void OnStepTick(float deltaTime)
         {
@@ -130,6 +136,7 @@ namespace Tikal.Tutorial
     public sealed class TutorialInteractStep : TutorialStep
     {
         [SerializeField] private TutorialExitGate _gate;
+        public override bool HasRequiredReferences => _gate != null;
         protected override void OnActivated()
         {
             _gate.Interacted += OnInteracted;

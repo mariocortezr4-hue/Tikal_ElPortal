@@ -14,12 +14,15 @@ The intended first play is two to four minutes. The route is a compact jungle-an
 4. **AGÁCHATE** — enter the low-passage trigger while physically crouched.
 5. **CORRE** — cover distance while the existing `PlayerMovement` reports sprinting.
 6. **INTERACTÚA** — use the existing `PlayerInteraction` flow on the exit stone.
+7. **CONTINÚA POR EL SENDERO** — cross the unlocked exit trigger after the six control steps.
+
+Each control step shows `✓ COMPLETADO` for 0.8 seconds and then presents the next objective automatically. The final interaction opens the stone passage; it does not finish the tutorial. A warm environmental beacon and highlighted path lead the player through the exit trigger, which is enabled only after all six control steps are complete.
 
 `SecretCommand` is deliberately absent from the tutorial and no secret control is displayed.
 
 ## Prompts and settings
 
-`TutorialPromptPresenter` listens to `InputDeviceManager.ActiveDeviceChanged` and obtains semantic control text through `InputPromptResolver` and the generated Input System actions. It supports Keyboard/Mouse, Xbox, PlayStation and generic gamepads without tutorial-specific physical-control logic.
+`TutorialPromptPresenter` listens to `InputDeviceManager.ActiveDeviceChanged` and obtains semantic control text through `InputPromptResolver` and the generated Input System actions. It supports Keyboard/Mouse, Xbox, PlayStation and generic gamepads without tutorial-specific physical-control logic. Device changes refresh the active prompt without resetting step progress, and the presenter remains active while its objective and completion panels alternate.
 
 The scene instantiates the existing Explorer prefab, interaction prompt and reticle prefab. `PersistentSettingsApplier` loads saved reticle, audio, sensitivity and invert-Y settings. Camera Mode remains a persisted preference; gameplay uses the existing functional first-person implementation until third-person runtime is built separately.
 
@@ -27,8 +30,8 @@ The scene instantiates the existing Explorer prefab, interaction prompt and reti
 
 `GameSceneIds.Tutorial` keeps its stable `tutorial` ID and now points at `Assets/_Project/Scenes/Tutorial/TUT_ExplorerBasics.unity`.
 
-- First run: Intro completion opens the tutorial. Completing the sixth step calls `GameFlowController.CompleteTutorial()`, records `TutorialCompleted`, sets `CurrentLevelId` to Level01, and loads `Level01_SecretEntrance`.
-- Replay: Main Menu calls `LaunchTutorial()`. Completion returns to Main Menu without changing progress, selected character or the current level.
+- First run: Intro completion opens the tutorial. Crossing the final exit calls `GameFlowController.CompleteTutorial()`, records `TutorialCompleted`, sets `CurrentLevelId` to Level01, and loads `Level01_SecretEntrance` after a brief completion fade.
+- Replay: Main Menu calls `LaunchTutorial()`. Crossing the final exit returns to Main Menu without changing progress, selected character or the current level.
 - Interruption: tutorial progress is intentionally not checkpointed. An incomplete tutorial is restarted from its beginning through the existing Continue flow.
 
 ## Pending assets

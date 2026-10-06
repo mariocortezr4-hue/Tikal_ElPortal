@@ -52,8 +52,6 @@ namespace Tikal.Tests.Editor
             var movement = player.GetComponent<PlayerMovement>();
             var look = player.GetComponent<PlayerLook>();
             var devices = player.GetComponent<InputDeviceManager>();
-            var camera = player.GetComponentInChildren<Camera>();
-
             var canvas = Canvas(root.transform);
             var reticle = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(ReticlePath), canvas.transform);
             var reticleSettings = reticle.GetComponent<ReticleSettings>();
@@ -71,13 +69,15 @@ namespace Tikal.Tests.Editor
             var sequenceRoot = new GameObject("TutorialSequence");
             sequenceRoot.transform.SetParent(root.transform, false);
             var sequence = sequenceRoot.AddComponent<TutorialSequenceController>();
-            var gate = Gate(environment, stone);
+            var gate = Gate(environment, stone, player.transform);
             gate.SetInteractionAvailable(false);
             var crouch = CrouchPassage(environment, stone, player.transform, movement);
             var steps = CreateSteps(sequenceRoot.transform, player.transform, look, input, movement, crouch, gate);
             EchoSceneAuthoring.Set(sequence, "_flow", flow);
             EchoSceneAuthoring.Set(sequence, "_steps", steps.Cast<UnityEngine.Object>().ToArray());
+            EchoSceneAuthoring.Set(sequence, "_exitGate", gate);
             BuildObjectiveUi(canvas.transform, sequence, input, devices);
+            ExitGuidance(environment, route, stone);
             Light(root.transform);
 
             EditorSceneManager.SaveScene(scene, ScenePath);
@@ -119,15 +119,35 @@ namespace Tikal.Tests.Editor
             return step;
         }
 
-        static TutorialExitGate Gate(Transform parent, Material stone)
+        static TutorialExitGate Gate(Transform parent, Material stone, Transform player)
         {
             var gate = new GameObject("ExpeditionExitGate");
             gate.transform.SetParent(parent, false);
             gate.transform.position = new Vector3(0, 0, 36);
             var stoneBlock = Shape("Lift stone", gate.transform, PrimitiveType.Cube, new Vector3(0, 1.4f, 0), new Vector3(3.6f, 2.8f, .7f), stone);
             var component = gate.AddComponent<TutorialExitGate>();
+            var exitTrigger = gate.GetComponent<BoxCollider>();
+            exitTrigger.isTrigger = true;
+            exitTrigger.center = new Vector3(0, 1.25f, 3.5f);
+            exitTrigger.size = new Vector3(4f, 2.5f, 1.5f);
             EchoSceneAuthoring.Set(component, "_movingStone", stoneBlock.transform);
+            EchoSceneAuthoring.Set(component, "_player", player);
             return component;
+        }
+
+        static void ExitGuidance(Transform parent, Material route, Material stone)
+        {
+            Shape("Exit path highlight", parent, PrimitiveType.Cube, new Vector3(0, .09f, 42), new Vector3(3.8f, .04f, 11f), route);
+            Shape("Exit marker left", parent, PrimitiveType.Cube, new Vector3(-2.1f, 1.1f, 42), new Vector3(.35f, 2.2f, .35f), stone);
+            Shape("Exit marker right", parent, PrimitiveType.Cube, new Vector3(2.1f, 1.1f, 42), new Vector3(.35f, 2.2f, .35f), stone);
+            var beacon = new GameObject("Warm exit beacon", typeof(Light));
+            beacon.transform.SetParent(parent, false);
+            beacon.transform.localPosition = new Vector3(0, 2.7f, 43);
+            var light = beacon.GetComponent<Light>();
+            light.type = LightType.Point;
+            light.range = 13f;
+            light.intensity = 4.5f;
+            light.color = new Color(1f, .64f, .3f);
         }
 
         static TutorialStep[] CreateSteps(Transform parent, Transform player, PlayerLook look, PlayerInputReader input, PlayerMovement movement, TutorialCrouchPassageStep crouch, TutorialExitGate gate)
@@ -166,10 +186,16 @@ namespace Tikal.Tests.Editor
             var complete = Panel("TutorialComplete", canvas, new Vector2(.5f, 0), new Vector2(0, 95), new Vector2(500, 58));
             var completion = Text("Label", complete.transform, 19, new Vector2(22, 17), new Vector2(440, 26));
             complete.SetActive(false);
-            var presenter = root.AddComponent<TutorialPromptPresenter>();
+            var fade = Panel("TutorialFade", canvas, new Vector2(.5f, .5f), Vector2.zero, new Vector2(1920, 1080));
+            fade.GetComponent<Image>().color = Color.black;
+            var fadeGroup = fade.AddComponent<CanvasGroup>();
+            fadeGroup.alpha = 0;
+            fade.SetActive(false);
+            var presenter = canvas.gameObject.AddComponent<TutorialPromptPresenter>();
             EchoSceneAuthoring.Set(presenter, "_sequence", sequence); EchoSceneAuthoring.Set(presenter, "_input", input); EchoSceneAuthoring.Set(presenter, "_devices", devices);
             EchoSceneAuthoring.Set(presenter, "_objectiveRoot", root); EchoSceneAuthoring.Set(presenter, "_title", title); EchoSceneAuthoring.Set(presenter, "_control", control); EchoSceneAuthoring.Set(presenter, "_instruction", instruction);
             EchoSceneAuthoring.Set(presenter, "_completionRoot", complete); EchoSceneAuthoring.Set(presenter, "_completion", completion);
+            EchoSceneAuthoring.Set(presenter, "_fadeOverlay", fadeGroup);
         }
 
         static Canvas Canvas(Transform parent)
