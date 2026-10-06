@@ -19,7 +19,9 @@ namespace Tikal.Tests.Editor
     {
         public const string ScenePath = "Assets/_Project/Scenes/Cinematics/Intro_AncientMap.unity";
         public const string TimelinePath = "Assets/_Project/Timelines/Intro/TL_Intro_AncientMap.playable";
-        public const double Duration = 80d;
+        public const double Duration = 97d;
+        public const string NarratorCueOneId = "VO_NARRATOR_INTRO_001";
+        public const string NarratorCueTwoId = "VO_NARRATOR_INTRO_002";
         const string PlaceholderPath = "Assets/_Project/Scenes/Core/IntroPlaceholder.unity";
         const string FontPath = "Assets/_Project/UI/Fonts/InteractionPromptFont.asset";
 
@@ -59,12 +61,7 @@ namespace Tikal.Tests.Editor
             director.extrapolationMode = DirectorWrapMode.None;
             director.timeUpdateMode = DirectorUpdateMode.GameTime;
             var sequence = systems.gameObject.AddComponent<IntroSequenceController>();
-            var audio = Child("Audio", systems);
-            foreach (var channel in new[] { "Ambience", "Music", "Voice", "SFX" })
-            {
-                var source = Child(channel, audio).gameObject.AddComponent<AudioSource>();
-                source.playOnAwake = false;
-            }
+            var audio = BuildAudio(systems);
 
             BuildEnvironment(environment);
             var explorer = BuildExplorer(characters);
@@ -74,7 +71,7 @@ namespace Tikal.Tests.Editor
             var uiObjects = BuildUi(ui, sequence, devices);
             BuildLighting(lighting);
 
-            var timeline = RebuildTimeline(director, sequence, explorer, map, uiObjects.Fade, cameraObjects);
+            var timeline = RebuildTimeline(director, sequence, explorer, map, uiObjects, cameraObjects, audio);
             director.playableAsset = timeline;
             Set(sequence, "_flow", flow);
             Set(sequence, "_director", director);
@@ -87,6 +84,23 @@ namespace Tikal.Tests.Editor
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
             return true;
+        }
+
+        static AudioObjects BuildAudio(Transform systems)
+        {
+            var root = Child("Audio", systems);
+            AudioSource CreateSource(string name)
+            {
+                var source = Child(name, root).gameObject.AddComponent<AudioSource>();
+                source.playOnAwake = false;
+                source.loop = false;
+                source.spatialBlend = 0;
+                return source;
+            }
+            var ambience = CreateSource("Ambience");
+            ambience.volume = .55f;
+            ambience.gameObject.AddComponent<Animator>();
+            return new AudioObjects(ambience, CreateSource("Music"), CreateSource("Voice"), CreateSource("SFX"));
         }
 
         static void BuildEnvironment(Transform parent)
@@ -122,10 +136,18 @@ namespace Tikal.Tests.Editor
             var anchor = Child("ExplorerAnchor", parent);
             anchor.localPosition = new Vector3(0, 0, -5);
             var animator = anchor.gameObject.AddComponent<Animator>();
+            BuildCinematicTargets(anchor, 2.08f, 1.42f);
             var visualRoot = Child("CharacterVisualRoot", anchor);
             var visual = Child("ExplorerPlaceholder", visualRoot);
             Humanoid(visual, Material("Route.mat"), false);
             return animator;
+        }
+
+        static void BuildCinematicTargets(Transform anchor, float headHeight, float chestHeight)
+        {
+            var targets = Child("CinematicTargets", anchor);
+            Child("HeadLookTarget", targets).localPosition = new Vector3(0, headHeight, 0);
+            Child("ChestLookTarget", targets).localPosition = new Vector3(0, chestHeight, 0);
         }
 
         static void BuildElder(Transform parent)
@@ -133,6 +155,7 @@ namespace Tikal.Tests.Editor
             var anchor = Child("ElderAnchor", parent);
             anchor.localPosition = new Vector3(2.3f, .8f, 12f);
             anchor.localRotation = Quaternion.Euler(0, 205, 0);
+            BuildCinematicTargets(anchor, 1.65f, 1.02f);
             var visual = Child("ElderPlaceholder", anchor);
             Humanoid(visual, Material("EarthProxy.mat"), true);
         }
@@ -150,12 +173,12 @@ namespace Tikal.Tests.Editor
             {
                 new CameraDefinition("CAM_Establishing", new Vector3(-13, 8, -10), new Vector3(0, 1, 15), 48),
                 new CameraDefinition("CAM_ExplorerWalk", new Vector3(-5, 2.2f, -1), new Vector3(0, 1.2f, 8), 42),
-                new CameraDefinition("CAM_TwoShot", new Vector3(-4, 2.1f, 9), new Vector3(1.1f, 1.2f, 12), 44),
-                new CameraDefinition("CAM_ExplorerDialogue", new Vector3(3.7f, 1.9f, 12.8f), new Vector3(.25f, 1.45f, 10.8f), 38),
-                new CameraDefinition("CAM_ElderDialogue", new Vector3(-.3f, 1.85f, 10.3f), new Vector3(2.3f, 1.35f, 12), 36),
-                new CameraDefinition("CAM_MapHandoff", new Vector3(-.2f, 1.9f, 10.7f), new Vector3(1.35f, 1.45f, 11.6f), 31),
-                new CameraDefinition("CAM_FinalWarning", new Vector3(.1f, 1.8f, 10.8f), new Vector3(2.3f, 1.4f, 12), 30),
-                new CameraDefinition("CAM_ExplorerDeparture", new Vector3(7, 3.3f, 7), new Vector3(0, 1.1f, 19), 46)
+                new CameraDefinition("CAM_TwoShot", new Vector3(-4.2f, 3f, 8.4f), new Vector3(1.15f, 2.25f, 11), 45),
+                new CameraDefinition("CAM_ExplorerDialogue", new Vector3(3.8f, 2.2f, 12.9f), new Vector3(.1f, 2.08f, 9.8f), 37),
+                new CameraDefinition("CAM_ElderDialogue", new Vector3(-.2f, 2.2f, 10.2f), new Vector3(2.3f, 2.45f, 12), 35),
+                new CameraDefinition("CAM_MapHandoff", new Vector3(-.2f, 1.7f, 10.6f), new Vector3(1.35f, 1.5f, 11.5f), 31),
+                new CameraDefinition("CAM_FinalWarning", new Vector3(.25f, 2.35f, 10.2f), new Vector3(2.3f, 2.45f, 12), 28),
+                new CameraDefinition("CAM_ExplorerDeparture", new Vector3(8, 4.2f, 6), new Vector3(0, 1.5f, 20), 52)
             };
             var result = new List<Camera>();
             foreach (var definition in definitions)
@@ -192,9 +215,11 @@ namespace Tikal.Tests.Editor
             fade.AddComponent<Animator>();
 
             var date = CenterPanel("DateCard", canvasObject.transform, new Vector2(700, 150));
+            var dateGroup = date.AddComponent<CanvasGroup>(); dateGroup.alpha = 0; date.AddComponent<Animator>();
             var dateText = Text("DateText", date.transform, "1500 d.C.", 54, TextAlignmentOptions.Center);
             Stretch(dateText.rectTransform, 30);
             var narrative = CenterPanel("NarrativeText", canvasObject.transform, new Vector2(1180, 220));
+            var narrativeGroup = narrative.AddComponent<CanvasGroup>(); narrativeGroup.alpha = 0; narrative.AddComponent<Animator>();
             var narrativeText = Text("NarrativeText", narrative.transform, string.Empty, 34, TextAlignmentOptions.Center);
             Stretch(narrativeText.rectTransform, 36);
             var subtitle = BottomPanel("SubtitlePanel", canvasObject.transform, new Vector2(1320, 180), 90);
@@ -227,10 +252,10 @@ namespace Tikal.Tests.Editor
             Set(skipPresenter, "_sequence", sequence); Set(skipPresenter, "_devices", devices); Set(skipPresenter, "_label", skipLabel); Set(skipPresenter, "_progress", progress);
 
             date.SetActive(false); narrative.SetActive(false); subtitle.SetActive(false); title.SetActive(false);
-            return new UiObjects(fadeGroup, presenter, skipPresenter);
+            return new UiObjects(fadeGroup, dateGroup, narrativeGroup, presenter, skipPresenter);
         }
 
-        static TimelineAsset RebuildTimeline(PlayableDirector director, IntroSequenceController sequence, Animator explorer, Animator map, CanvasGroup fade, Camera[] cameras)
+        static TimelineAsset RebuildTimeline(PlayableDirector director, IntroSequenceController sequence, Animator explorer, Animator map, UiObjects ui, Camera[] cameras, AudioObjects audio)
         {
             var timeline = AssetDatabase.LoadAssetAtPath<TimelineAsset>(TimelinePath);
             if (timeline == null)
@@ -251,14 +276,14 @@ namespace Tikal.Tests.Editor
             var cameraGroup = timeline.CreateTrack<GroupTrack>(null, "Cameras");
             var ranges = new[]
             {
-                new[] { new Range(0, 18) },
-                new[] { new Range(18, 28) },
-                new[] { new Range(28, 31) },
-                new[] { new Range(36, 41) },
-                new[] { new Range(31, 36), new Range(41, 48) },
-                new[] { new Range(48, 63) },
-                new[] { new Range(70, 77) },
-                new[] { new Range(63, 70), new Range(77, 80) }
+                new[] { new Range(0, 35) },
+                new[] { new Range(35, 45) },
+                new[] { new Range(45, 48) },
+                new[] { new Range(53, 58) },
+                new[] { new Range(48, 53), new Range(58, 65) },
+                new[] { new Range(65, 80) },
+                new[] { new Range(87, 94) },
+                new[] { new Range(80, 87), new Range(94, 97) }
             };
             for (var index = 0; index < cameras.Length; index++)
             {
@@ -276,49 +301,77 @@ namespace Tikal.Tests.Editor
             AddAnimation(timeline, director, blockingGroup, "ExplorerAnchor Movement", explorer,
                 PositionClip("Explorer_Blocking", new[]
                 {
-                    Key(0, new Vector3(0, 0, -5)), Key(18, new Vector3(0, 0, -5)), Key(28, new Vector3(.1f, 0, 9.8f)),
-                    Key(63, new Vector3(.1f, 0, 9.8f)), Key(70, new Vector3(0, 0, 15)), Key(74, new Vector3(0, 0, 15)), Key(80, new Vector3(0, 0, 24))
+                    Key(0, new Vector3(0, 0, -5)), Key(35, new Vector3(0, 0, -5)), Key(45, new Vector3(.1f, 0, 9.8f)),
+                    Key(80, new Vector3(.1f, 0, 9.8f)), Key(87, new Vector3(0, 0, 15)), Key(91, new Vector3(0, 0, 15)), Key(97, new Vector3(0, 0, 24))
                 }));
             AddAnimation(timeline, director, blockingGroup, "AncientMap Handoff", map,
                 PositionClip("AncientMap_Handoff", new[]
                 {
-                    Key(0, new Vector3(1.75f, 1.55f, 11.55f)), Key(48, new Vector3(1.75f, 1.55f, 11.55f)),
-                    Key(54, new Vector3(.55f, 1.48f, 10.8f)), Key(63, new Vector3(.2f, 1.3f, 10.3f)), Key(68, new Vector3(.2f, -.5f, 10.3f)), Key(80, new Vector3(.2f, -.5f, 10.3f))
+                    Key(0, new Vector3(1.75f, 1.55f, 11.55f)), Key(65, new Vector3(1.75f, 1.55f, 11.55f)),
+                    Key(71, new Vector3(.55f, 1.48f, 10.8f)), Key(80, new Vector3(.2f, 1.3f, 10.3f)), Key(85, new Vector3(.2f, -.5f, 10.3f)), Key(97, new Vector3(.2f, -.5f, 10.3f))
                 }));
             var fadeClip = ScalarClip("Cinematic_Fade", typeof(CanvasGroup), "m_Alpha", new[]
             {
-                new Keyframe(0, 1), new Keyframe(7.5f, 1), new Keyframe(9, 0), new Keyframe(78.5f, 0), new Keyframe(80, 1)
+                new Keyframe(0, 1), new Keyframe(23.5f, 1), new Keyframe(25, 0), new Keyframe(95.5f, 0), new Keyframe(97, 1)
             });
-            AddAnimation(timeline, director, blockingGroup, "Fade", fade.GetComponent<Animator>(), fadeClip);
+            AddAnimation(timeline, director, blockingGroup, "Fade", ui.Fade.GetComponent<Animator>(), fadeClip);
+            AddAnimation(timeline, director, blockingGroup, "DateCard Fade", ui.Date.GetComponent<Animator>(),
+                ScalarClip("DateCard_Fade", typeof(CanvasGroup), "m_Alpha", new[]
+                {
+                    new Keyframe(0, 0), new Keyframe(1.5f, 0), new Keyframe(1.9f, 1),
+                    new Keyframe(4.1f, 1), new Keyframe(4.5f, 0), new Keyframe(97, 0)
+                }));
+            AddAnimation(timeline, director, blockingGroup, "NarrativeText Fade", ui.Narrative.GetComponent<Animator>(),
+                ScalarClip("NarrativeText_Fade", typeof(CanvasGroup), "m_Alpha", new[]
+                {
+                    new Keyframe(0, 0), new Keyframe(6, 0), new Keyframe(6.6f, 1),
+                    new Keyframe(12.5f, 1), new Keyframe(13.5f, 0), new Keyframe(15, 0),
+                    new Keyframe(15.6f, 1), new Keyframe(22.5f, 1), new Keyframe(23.5f, 0), new Keyframe(97, 0)
+                }));
 
             var narrativeGroup = timeline.CreateTrack<GroupTrack>(null, "Narrative");
             var cues = timeline.CreateTrack<CinematicCueTrack>(narrativeGroup, "Cinematic Cues");
             director.SetGenericBinding(cues, sequence);
-            AddCue(cues, "date", CinematicCueType.Date, 1, 2.4, string.Empty, "1500 d.C.");
-            AddCue(cues, "narrative-ruins", CinematicCueType.Narrative, 3.6, 1.8, string.Empty, "Bajo la inmensidad de la selva descansaban\nlas ruinas de una ciudad olvidada.");
-            AddCue(cues, "narrative-source", CinematicCueType.Narrative, 5.6, 2.2, string.Empty, "Se decía que en algún lugar de ella permanecía\noculta una fuente de conocimiento.");
-            AddCue(cues, "explorer-question", CinematicCueType.Subtitle, 28.4, 2.3, "EXPLORADOR", "¿Qué hace aquí?");
-            AddCue(cues, "elder-same", CinematicCueType.Subtitle, 31.2, 2.1, "ANCIANO", "Podría preguntarte lo mismo.");
-            AddCue(cues, "elder-destination", CinematicCueType.Subtitle, 33.6, 2.2, "ANCIANO", "¿A dónde te diriges?");
-            AddCue(cues, "explorer-source", CinematicCueType.Subtitle, 36.4, 3.1, "EXPLORADOR", "Busco la Fuente del Conocimiento.");
-            AddCue(cues, "elder-stories", CinematicCueType.Subtitle, 40.4, 2.4, "ANCIANO", "He oído historias sobre ella.");
-            AddCue(cues, "elder-brave", CinematicCueType.Subtitle, 43.1, 2.5, "ANCIANO", "Pocos valientes se atreven a buscarla.");
-            AddCue(cues, "elder-way", CinematicCueType.Subtitle, 46, 1.8, "ANCIANO", "Y pocos conocen el camino.");
-            AddCue(cues, "elder-take", CinematicCueType.Subtitle, 49, 1.4, "ANCIANO", "Toma.");
-            AddCue(cues, "map-received", CinematicCueType.AncientMapReceived, 54, .25, string.Empty, string.Empty);
-            AddCue(cues, "elder-map", CinematicCueType.Subtitle, 52, 2.3, "ANCIANO", "Te ayudará a no perderte.");
-            AddCue(cues, "elder-hidden-path", CinematicCueType.Subtitle, 55, 3.4, "ANCIANO", "Pero el camino que buscas no está a simple vista.");
-            AddCue(cues, "elder-hidden-entrance", CinematicCueType.Subtitle, 59, 3.2, "ANCIANO", "Debes encontrar una entrada oculta.");
-            AddCue(cues, "explorer-thanks", CinematicCueType.Subtitle, 63.8, 1.5, "EXPLORADOR", "Gracias.");
-            AddCue(cues, "elder-remember", CinematicCueType.Subtitle, 70.4, 2.1, "ANCIANO", "Y recuerda...");
-            AddCue(cues, "elder-warning", CinematicCueType.Subtitle, 73.2, 3.8, "ANCIANO", "No confíes en el sistema.");
-            AddCue(cues, "title", CinematicCueType.Title, 78.8, 1.2, string.Empty, "TIKAL: EL PORTAL");
+            AddCue(cues, "date", CinematicCueType.Date, 1.5, 3, string.Empty, "1500 d.C.");
+            AddCue(cues, NarratorCueOneId, CinematicCueType.Narrative, 6, 7.5, string.Empty, "Bajo la inmensidad de la selva descansaban\nlas ruinas de una ciudad olvidada.");
+            AddCue(cues, NarratorCueTwoId, CinematicCueType.Narrative, 15, 8.5, string.Empty, "Se decía que en algún lugar de ella permanecía\noculta una fuente de conocimiento.");
+            AddCue(cues, "explorer-question", CinematicCueType.Subtitle, 45.4, 2.3, "EXPLORADOR", "¿Qué hace aquí?");
+            AddCue(cues, "elder-same", CinematicCueType.Subtitle, 48.2, 2.1, "ANCIANO", "Podría preguntarte lo mismo.");
+            AddCue(cues, "elder-destination", CinematicCueType.Subtitle, 50.6, 2.2, "ANCIANO", "¿A dónde te diriges?");
+            AddCue(cues, "explorer-source", CinematicCueType.Subtitle, 53.4, 3.1, "EXPLORADOR", "Busco la Fuente del Conocimiento.");
+            AddCue(cues, "elder-stories", CinematicCueType.Subtitle, 57.4, 2.4, "ANCIANO", "He oído historias sobre ella.");
+            AddCue(cues, "elder-brave", CinematicCueType.Subtitle, 60.1, 2.5, "ANCIANO", "Pocos valientes se atreven a buscarla.");
+            AddCue(cues, "elder-way", CinematicCueType.Subtitle, 63, 1.8, "ANCIANO", "Y pocos conocen el camino.");
+            AddCue(cues, "elder-take", CinematicCueType.Subtitle, 66, 1.4, "ANCIANO", "Toma.");
+            AddCue(cues, "map-received", CinematicCueType.AncientMapReceived, 71, .25, string.Empty, string.Empty);
+            AddCue(cues, "elder-map", CinematicCueType.Subtitle, 69, 2.3, "ANCIANO", "Te ayudará a no perderte.");
+            AddCue(cues, "elder-hidden-path", CinematicCueType.Subtitle, 72, 3.4, "ANCIANO", "Pero el camino que buscas no está a simple vista.");
+            AddCue(cues, "elder-hidden-entrance", CinematicCueType.Subtitle, 76, 3.2, "ANCIANO", "Debes encontrar una entrada oculta.");
+            AddCue(cues, "explorer-thanks", CinematicCueType.Subtitle, 80.8, 1.5, "EXPLORADOR", "Gracias.");
+            AddCue(cues, "elder-remember", CinematicCueType.Subtitle, 87.4, 2.1, "ANCIANO", "Y recuerda...");
+            AddCue(cues, "elder-warning", CinematicCueType.Subtitle, 90.2, 3.8, "ANCIANO", "No confíes en el sistema.");
+            AddCue(cues, "title", CinematicCueType.Title, 95.8, 1.2, string.Empty, "TIKAL: EL PORTAL");
 
             var audioGroup = timeline.CreateTrack<GroupTrack>(null, "Audio Slots");
-            timeline.CreateTrack<AudioTrack>(audioGroup, "Ambience");
+            var ambience = timeline.CreateTrack<AudioTrack>(audioGroup, "Ambience");
+            director.SetGenericBinding(ambience, audio.Ambience);
+            var ambienceClip = FindJungleAmbience();
+            if (ambienceClip != null)
+            {
+                var clip = ambience.CreateClip(ambienceClip);
+                clip.start = 0; clip.duration = Duration; clip.easeInDuration = 4; clip.easeOutDuration = 2;
+                ((AudioPlayableAsset)clip.asset).loop = true;
+            }
             timeline.CreateTrack<AudioTrack>(audioGroup, "Music");
             timeline.CreateTrack<AudioTrack>(audioGroup, "Voice");
+            timeline.CreateTrack<AudioTrack>(audioGroup, "VOICE_NARRATOR");
             timeline.CreateTrack<AudioTrack>(audioGroup, "SFX");
+            AddAnimation(timeline, director, audioGroup, "Ambience Mix", audio.Ambience.GetComponent<Animator>(),
+                ScalarClip("Ambience_Mix", typeof(AudioSource), "m_Volume", new[]
+                {
+                    new Keyframe(0, 0), new Keyframe(4, .55f), new Keyframe(87, .55f),
+                    new Keyframe(89.5f, .35f), new Keyframe(94, .35f), new Keyframe(95, .5f), new Keyframe(97, 0)
+                }));
             EditorUtility.SetDirty(timeline);
             return timeline;
         }
@@ -458,6 +511,15 @@ namespace Tikal.Tests.Editor
         static Material Material(string file) => AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Art/Materials/Level01/" + file);
         static PositionKey Key(float time, Vector3 value) => new PositionKey(time, value);
 
+        static AudioClip FindJungleAmbience()
+        {
+            return AssetDatabase.FindAssets("AUD_AMB_Jungle_Main_01 t:AudioClip")
+                .Select(AssetDatabase.GUIDToAssetPath)
+                .Where(path => string.Equals(Path.GetFileNameWithoutExtension(path), "AUD_AMB_Jungle_Main_01", StringComparison.OrdinalIgnoreCase))
+                .Select(AssetDatabase.LoadAssetAtPath<AudioClip>)
+                .FirstOrDefault(clip => clip != null);
+        }
+
         static void RegisterScene()
         {
             var scenes = EditorBuildSettings.scenes.Where(item => item.path != ScenePath && item.path != PlaceholderPath).ToList();
@@ -516,10 +578,27 @@ namespace Tikal.Tests.Editor
 
         readonly struct UiObjects
         {
-            public UiObjects(CanvasGroup fade, CinematicSubtitlePresenter subtitles, CinematicSkipPromptPresenter skip) { Fade = fade; Subtitles = subtitles; Skip = skip; }
+            public UiObjects(CanvasGroup fade, CanvasGroup date, CanvasGroup narrative, CinematicSubtitlePresenter subtitles, CinematicSkipPromptPresenter skip)
+            {
+                Fade = fade; Date = date; Narrative = narrative; Subtitles = subtitles; Skip = skip;
+            }
             public CanvasGroup Fade { get; }
+            public CanvasGroup Date { get; }
+            public CanvasGroup Narrative { get; }
             public CinematicSubtitlePresenter Subtitles { get; }
             public CinematicSkipPromptPresenter Skip { get; }
+        }
+
+        readonly struct AudioObjects
+        {
+            public AudioObjects(AudioSource ambience, AudioSource music, AudioSource voice, AudioSource sfx)
+            {
+                Ambience = ambience; Music = music; Voice = voice; Sfx = sfx;
+            }
+            public AudioSource Ambience { get; }
+            public AudioSource Music { get; }
+            public AudioSource Voice { get; }
+            public AudioSource Sfx { get; }
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Tikal.Tests.Editor
             Require(timeline != null, "PlayableDirector uses a TimelineAsset");
             Require(AssetDatabase.GetAssetPath(timeline) == AncientMapIntroAuthoring.TimelinePath, "Timeline uses the canonical asset path");
             Require(timeline.name == "TL_Intro_AncientMap", "Timeline uses the canonical name");
-            Require(timeline.duration >= 75 && timeline.duration <= 85, "Timeline duration is between 75 and 85 seconds");
+            Require(timeline.duration >= 95 && timeline.duration <= 105, "Timeline duration is between 95 and 105 seconds");
 
             var transforms = roots.SelectMany(root => root.GetComponentsInChildren<Transform>(true)).ToArray();
             RequireNamed(transforms, "ExplorerAnchor");
@@ -74,9 +74,30 @@ namespace Tikal.Tests.Editor
             Require(components.OfType<Camera>().Count(camera => CameraNames.Contains(camera.name)) == CameraNames.Length, "All eight required cameras exist");
             Require(!components.Any(component => component.GetType().Name == "PlayerMovement" || component.GetType().Name == "PlayerInputReader"), "No gameplay controller drives the cinematic ExplorerAnchor");
 
+            var explorerAnchor = transforms.Single(transform => transform.name == "ExplorerAnchor");
+            var elderAnchor = transforms.Single(transform => transform.name == "ElderAnchor");
+            var explorerHead = explorerAnchor.Find("CinematicTargets/HeadLookTarget");
+            var explorerChest = explorerAnchor.Find("CinematicTargets/ChestLookTarget");
+            var elderHead = elderAnchor.Find("CinematicTargets/HeadLookTarget");
+            var elderChest = elderAnchor.Find("CinematicTargets/ChestLookTarget");
+            Require(explorerHead != null, "Explorer HeadLookTarget exists");
+            Require(explorerChest != null, "Explorer ChestLookTarget exists");
+            Require(elderHead != null, "Elder HeadLookTarget exists");
+            Require(elderChest != null, "Elder ChestLookTarget exists");
+            Require(explorerHead.localPosition.y > explorerChest.localPosition.y, "Explorer facial target is above its upper-torso target");
+            Require(elderHead.localPosition.y > elderChest.localPosition.y && elderHead.localPosition.y < explorerHead.localPosition.y, "Elder targets respect the seated pose");
+
             var tracks = AllTracks(timeline).ToArray();
-            var cues = tracks.OfType<CinematicCueTrack>().SelectMany(track => track.GetClips()).Select(clip => clip.asset as CinematicCueAsset).Where(cue => cue != null).ToArray();
+            var cueClips = tracks.OfType<CinematicCueTrack>().SelectMany(track => track.GetClips()).Where(clip => clip.asset is CinematicCueAsset).ToArray();
+            var cues = cueClips.Select(clip => (CinematicCueAsset)clip.asset).ToArray();
             Require(cues.Length >= 18, "Timeline contains the complete narrative cue sequence");
+            var date = cueClips.Single(clip => ((CinematicCueAsset)clip.asset).CueId == "date");
+            var narratorOne = cueClips.Single(clip => ((CinematicCueAsset)clip.asset).CueId == AncientMapIntroAuthoring.NarratorCueOneId);
+            var narratorTwo = cueClips.Single(clip => ((CinematicCueAsset)clip.asset).CueId == AncientMapIntroAuthoring.NarratorCueTwoId);
+            Require(date.start >= 1.4 && date.duration >= 3, "DateCard has a readable three-second hold after the opening pause");
+            Require(narratorOne.start >= 6 && narratorOne.duration >= 7.5, "NarrativeText 1 allows slow narration and retained reading time");
+            Require(narratorTwo.start >= 15 && narratorTwo.duration >= 8.5, "NarrativeText 2 allows slow narration and retained reading time");
+            Require(narratorTwo.end >= 23.5, "Narrative prologue extends beyond the former seven-second opening");
             var visibleText = string.Join("\n", cues.Select(cue => (cue.Speaker ?? string.Empty) + " " + (cue.Text ?? string.Empty)));
             Require(visibleText.Contains("1500 d.C."), "Date cue contains 1500 d.C.");
             Require(visibleText.Contains("Fuente del Conocimiento"), "Dialogue contains Fuente del Conocimiento");
@@ -90,6 +111,31 @@ namespace Tikal.Tests.Editor
             Require(cameraTracks.All(track => director.GetGenericBinding(track) != null), "Every camera activation track is bound");
             var audioNames = tracks.OfType<AudioTrack>().Select(track => track.name).ToArray();
             foreach (var audioName in new[] { "Ambience", "Music", "Voice", "SFX" }) Require(audioNames.Contains(audioName), "Timeline has the " + audioName + " audio slot");
+            Require(audioNames.Contains("VOICE_NARRATOR"), "Timeline has the VOICE_NARRATOR slot");
+            Require(cues.Any(cue => cue.CueId == AncientMapIntroAuthoring.NarratorCueOneId), "VO_NARRATOR_INTRO_001 hook exists");
+            Require(cues.Any(cue => cue.CueId == AncientMapIntroAuthoring.NarratorCueTwoId), "VO_NARRATOR_INTRO_002 hook exists");
+            var ambienceTrack = tracks.OfType<AudioTrack>().Single(track => track.name == "Ambience");
+            Require(director.GetGenericBinding(ambienceTrack) is AudioSource, "Ambience Timeline track is bound to its dedicated AudioSource");
+            var ambienceExists = AssetDatabase.FindAssets("AUD_AMB_Jungle_Main_01 t:AudioClip").Length > 0;
+            Require(!ambienceExists || ambienceTrack.GetClips().Any(), "Existing jungle ambience is placed on its Timeline track");
+
+            var cameras = components.OfType<Camera>().ToDictionary(camera => camera.name);
+            var previousTime = director.time;
+            director.time = 54; director.Evaluate();
+            RequireFacing(cameras["CAM_ExplorerDialogue"], explorerHead, 5, "ExplorerDialogue frames the Explorer face");
+            director.time = 60; director.Evaluate();
+            RequireFacing(cameras["CAM_ElderDialogue"], elderHead, 5, "ElderDialogue frames the seated Elder face");
+            director.time = 92; director.Evaluate();
+            RequireFacing(cameras["CAM_FinalWarning"], elderHead, 4, "FinalWarning maintains facial framing");
+            Require(cameras["CAM_FinalWarning"].fieldOfView <= 30, "FinalWarning is the intimate close framing");
+            director.time = 67; director.Evaluate();
+            var map = transforms.Single(transform => transform.name == "AncientMap_Proxy");
+            RequireFacing(cameras["CAM_MapHandoff"], map, 8, "MapHandoff intentionally frames the map");
+            Require(cameras["CAM_MapHandoff"].fieldOfView <= 32, "MapHandoff keeps its deliberate detail framing");
+            director.time = 46.5; director.Evaluate();
+            RequireVisible(cameras["CAM_TwoShot"], explorerHead, "TwoShot keeps the Explorer head visible");
+            RequireVisible(cameras["CAM_TwoShot"], elderHead, "TwoShot keeps the Elder head visible");
+            director.time = previousTime; director.Evaluate();
 
             Require(SceneCatalog.Get(GameSceneIds.Intro).Path == AncientMapIntroAuthoring.ScenePath, "SceneCatalog routes Intro to Intro_AncientMap");
             Require(GameFlowController.GetIntroCompletionDestination(false) == GameSceneIds.Tutorial, "First Run completion routes to Tutorial");
@@ -125,6 +171,18 @@ namespace Tikal.Tests.Editor
 
         static void RequireNamed(IEnumerable<Transform> transforms, string name) =>
             Require(transforms.Count(transform => transform.name == name) == 1, "Scene contains exactly one " + name);
+
+        static void RequireFacing(Camera camera, Transform target, float maxAngle, string message)
+        {
+            var direction = (target.position - camera.transform.position).normalized;
+            Require(Vector3.Angle(camera.transform.forward, direction) <= maxAngle, message);
+        }
+
+        static void RequireVisible(Camera camera, Transform target, string message)
+        {
+            var point = camera.WorldToViewportPoint(target.position);
+            Require(point.z > 0 && point.x > .08f && point.x < .92f && point.y > .12f && point.y < .92f, message);
+        }
 
         static void Require(bool condition, string message)
         {
