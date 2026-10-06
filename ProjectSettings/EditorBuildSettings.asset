@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Core/IntroPlaceholder.unity
     guid: d9959d53824dc6445b9fbca417cdcd3b
   - enabled: 1
-    path: Assets/_Project/Scenes/Core/TutorialPlaceholder.unity
-    guid: e02a61d1772b89645b23cfd00d1fecd1
+    path: Assets/_Project/Scenes/Tutorial/TUT_ExplorerBasics.unity
+    guid: 7b40b08b9aa50cb449f3952351e032c0
   - enabled: 1
     path: Assets/_Project/Scenes/Levels/Level01_SecretEntrance.unity
     guid: c9589d1cc6dec0f489b266b19f31ed35

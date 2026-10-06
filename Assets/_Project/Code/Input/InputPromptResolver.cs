@@ -8,6 +8,12 @@ namespace Tikal.Input
         public static InputPromptData Resolve(InputAction action, InputDeviceFamily family)
         {
             if (action == null || action.actionMap?.asset == null) return default;
+            if (string.Equals(action.name, "Move", StringComparison.Ordinal))
+                return new InputPromptData(family == InputDeviceFamily.KeyboardMouse ? "WASD" :
+                    family == InputDeviceFamily.GenericGamepad ? "Stick izquierdo" : "Left Stick", "<Player>/move");
+            if (string.Equals(action.name, "Look", StringComparison.Ordinal))
+                return new InputPromptData(family == InputDeviceFamily.KeyboardMouse ? "Mouse" :
+                    family == InputDeviceFamily.GenericGamepad ? "Stick derecho" : "Right Stick", "<Player>/look");
             if (string.Equals(action.name, "Navigate", StringComparison.Ordinal))
                 return new InputPromptData(family == InputDeviceFamily.KeyboardMouse
                     ? "WASD / FLECHAS" : "STICK / CRUCETA", "<UI>/navigate");
@@ -25,13 +31,15 @@ namespace Tikal.Input
                 if (binding.isPartOfComposite || string.IsNullOrEmpty(binding.effectivePath) || !mask.Matches(binding)) continue;
                 var display = action.GetBindingDisplayString(index, out _, out var control,
                     InputBinding.DisplayStringOptions.DontIncludeInteractions);
-                if (family != InputDeviceFamily.KeyboardMouse) display = FaceButtonText(control, family) ?? display;
+                if (family != InputDeviceFamily.KeyboardMouse) display = GamepadControlText(control, family) ?? display;
                 return new InputPromptData(display, binding.effectivePath);
             }
             return default;
         }
-        private static string FaceButtonText(string control, InputDeviceFamily family)
+        private static string GamepadControlText(string control, InputDeviceFamily family)
         {
+            if (string.Equals(control, "leftStickPress", StringComparison.OrdinalIgnoreCase))
+                return family == InputDeviceFamily.Xbox ? "LS" : family == InputDeviceFamily.PlayStation ? "L3" : "Stick izquierdo";
             if (string.Equals(control, "select", StringComparison.OrdinalIgnoreCase))
                 return family == InputDeviceFamily.Xbox ? "View" : family == InputDeviceFamily.PlayStation ? "Share" : "Select";
             if (string.Equals(control, "buttonWest", StringComparison.OrdinalIgnoreCase))

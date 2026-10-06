@@ -16,6 +16,11 @@ namespace Tikal.Input
         private bool _callbacksSubscribed;
 
         public InputAction SecretCommandAction => _actions == null ? null : _actions.Player.SecretCommand;
+        public InputAction MoveAction => _actions == null ? null : _actions.Player.Move;
+        public InputAction LookAction => _actions == null ? null : _actions.Player.Look;
+        public InputAction JumpAction => _actions == null ? null : _actions.Player.Jump;
+        public InputAction SprintAction => _actions == null ? null : _actions.Player.Sprint;
+        public InputAction CrouchAction => _actions == null ? null : _actions.Player.Crouch;
         public InputAction InteractAction => _actions == null ? null : _actions.Player.Interact;
         public InputAction JournalAction => _actions == null ? null : _actions.Global.Journal;
         public bool GameplayEnabled => _actions != null && _actions.Player.enabled;
