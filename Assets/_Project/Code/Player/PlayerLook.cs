@@ -25,6 +25,7 @@ namespace Tikal.Player
         private float _pitch;
 
         public bool IsConfigured => _cameraRoot != null;
+        public Transform CameraRoot => _cameraRoot;
         public float Pitch => _pitch;
         public float MouseSensitivity => _deltaSensitivity;
         public float GamepadSensitivity => _rateSensitivity;
