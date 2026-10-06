@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using Tikal.Core;
 using Tikal.Input;
@@ -25,9 +26,26 @@ namespace Tikal.Tests.Editor
                 Require(sequence.Steps.Count == 6, "Tutorial contains six steps");
                 var expected = new[] { TutorialPromptAction.Move, TutorialPromptAction.Look, TutorialPromptAction.Jump, TutorialPromptAction.Crouch, TutorialPromptAction.Sprint, TutorialPromptAction.Interact };
                 Require(sequence.Steps.Select(step => step.PromptAction).SequenceEqual(expected), "Tutorial step order is Move, Look, Jump, Crouch, Sprint, Interact");
+                var expectedTypes = new[] { typeof(TutorialMovementStep), typeof(TutorialLookStep), typeof(TutorialJumpStep), typeof(TutorialCrouchPassageStep), typeof(TutorialSprintStep), typeof(TutorialInteractStep) };
+                Require(sequence.Steps.Select(step => step.GetType()).SequenceEqual(expectedTypes), "Tutorial uses the expected concrete step type at every index");
                 Require(!sequence.Steps.Select(step => step.PromptAction).Except(expected).Any(), "SecretCommand is not a tutorial step");
                 Require(sequence.Steps.All(step => step != null && step.HasRequiredReferences), "Every tutorial step has its critical references");
                 Require(sequence.Steps.All(step => !string.IsNullOrWhiteSpace(step.Title) && !string.IsNullOrWhiteSpace(step.Instruction)), "Every control step has visible guidance");
+                Require(sequence.Steps.All(step => step.gameObject.activeInHierarchy), "Every tutorial step is active in the authored hierarchy");
+                for (var index = 0; index < sequence.Steps.Count; index++)
+                {
+                    var step = sequence.Steps[index];
+                    var scriptPath = AssetDatabase.GetAssetPath(MonoScript.FromMonoBehaviour(step));
+                    Require(Path.GetFileNameWithoutExtension(scriptPath) == step.GetType().Name, step.GetType().Name + " has a stable same-name MonoScript asset");
+                    if (index < sequence.Steps.Count - 1)
+                        Require(sequence.GetNextStep(step) == sequence.Steps[index + 1], step.PromptAction + " activates " + sequence.Steps[index + 1].PromptAction);
+                }
+                Require(sequence.GetNextStep(sequence.Steps[5]) == null, "Interact transitions to AwaitingExit instead of another control step");
+                Require(sequence.GetNextStep(sequence.Steps[1]) is TutorialJumpStep, "Look explicitly advances to Jump");
+                var jumpStep = (TutorialJumpStep)sequence.Steps[2];
+                Require(jumpStep.PromptAction == TutorialPromptAction.Jump && jumpStep.Title == "SALTA", "Jump owns the SALTA presentation");
+                Require(jumpStep.Instruction == "Supera el obstáculo.", "Jump has the obstacle instruction");
+                Require(jumpStep.GetComponent<BoxCollider>() != null && jumpStep.GetComponent<BoxCollider>().isTrigger, "Jump completion uses its obstacle zone");
                 var gate = components.OfType<TutorialExitGate>().Single();
                 Require(sequence.ExitGate == gate, "Sequence owns the final exit phase");
                 Require(gate.HasRequiredReferences, "Exit gate has its player, moving stone and trigger references");
@@ -45,6 +63,9 @@ namespace Tikal.Tests.Editor
                 Require(GameFlowController.GetTutorialCompletionDestination(false) == GameSceneIds.Level01, "First-run tutorial exit routes to Level01");
                 Require(GameFlowController.GetTutorialCompletionDestination(true) == GameSceneIds.MainMenu, "Tutorial replay exit routes to MainMenu");
                 var actions = new TikalInputActions();
+                foreach (var promptAction in expected)
+                foreach (InputDeviceFamily family in Enum.GetValues(typeof(InputDeviceFamily)))
+                    Require(!string.IsNullOrWhiteSpace(InputPromptResolver.Resolve(ActionFor(actions, promptAction), family).DisplayText), promptAction + " has prompt text for " + family);
                 Require(InputPromptResolver.Resolve(actions.Player.Move, InputDeviceFamily.KeyboardMouse).DisplayText == "WASD", "Keyboard movement prompt resolves from Move");
                 Require(InputPromptResolver.Resolve(actions.Player.Look, InputDeviceFamily.Xbox).DisplayText == "Right Stick", "Xbox look prompt resolves from Look");
                 RequirePrompt(actions.Player.Jump, InputDeviceFamily.KeyboardMouse, "<Keyboard>/space", "Space", "Keyboard jump");
@@ -76,6 +97,19 @@ namespace Tikal.Tests.Editor
             Require(prompt.ControlPath == path, label + " uses the expected Input System binding");
             Require(!string.IsNullOrWhiteSpace(prompt.DisplayText), label + " has visible prompt text");
             if (display != null) Require(prompt.DisplayText == display, label + " uses the expected device label");
+        }
+
+        static UnityEngine.InputSystem.InputAction ActionFor(TikalInputActions actions, TutorialPromptAction prompt)
+        {
+            switch (prompt)
+            {
+                case TutorialPromptAction.Move: return actions.Player.Move;
+                case TutorialPromptAction.Look: return actions.Player.Look;
+                case TutorialPromptAction.Jump: return actions.Player.Jump;
+                case TutorialPromptAction.Crouch: return actions.Player.Crouch;
+                case TutorialPromptAction.Sprint: return actions.Player.Sprint;
+                default: return actions.Player.Interact;
+            }
         }
     }
 }

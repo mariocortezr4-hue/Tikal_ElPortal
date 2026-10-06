@@ -98,6 +98,7 @@ namespace Tikal.Tutorial
         private void Refresh(TutorialStep step)
         {
             var prompt = InputPromptResolver.Resolve(ActionFor(step.PromptAction), _devices.ActiveDevice).DisplayText;
+            Debug.Log($"[Tutorial] Presenter: {step.PromptAction}", this);
             if (_title != null) _title.text = step.Title;
             if (_control != null)
             {

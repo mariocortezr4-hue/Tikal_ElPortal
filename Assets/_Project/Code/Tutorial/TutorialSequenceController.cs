@@ -19,7 +19,7 @@ namespace Tikal.Tutorial
         private int _index = -1;
 
         public IReadOnlyList<TutorialStep> Steps => _steps;
-        public TutorialStep CurrentStep => _index >= 0 && _index < _steps.Length ? _steps[_index] : null;
+        public TutorialStep CurrentStep => _steps != null && _index >= 0 && _index < _steps.Length ? _steps[_index] : null;
         public TutorialExitGate ExitGate => _exitGate;
         public TutorialSequenceState State { get; private set; }
         public bool AllControlStepsCompleted
@@ -37,6 +37,14 @@ namespace Tikal.Tutorial
         public event Action AwaitingExit;
         public event Action ExitReached;
         public event Action SequenceCompleted;
+
+        public TutorialStep GetNextStep(TutorialStep step)
+        {
+            if (_steps == null || step == null) return null;
+            for (var index = 0; index < _steps.Length - 1; index++)
+                if (_steps[index] == step) return _steps[index + 1];
+            return null;
+        }
 
         private void Start()
         {
@@ -70,6 +78,7 @@ namespace Tikal.Tutorial
             State = TutorialSequenceState.Running;
             next.Completed += OnStepCompleted;
             next.ActivateStep();
+            Debug.Log($"[Tutorial] Activating: {next.PromptAction}", this);
             StepActivated?.Invoke(next);
         }
 
@@ -77,6 +86,7 @@ namespace Tikal.Tutorial
         {
             step.Completed -= OnStepCompleted;
             State = TutorialSequenceState.StepFeedback;
+            Debug.Log($"[Tutorial] Completed: {step.PromptAction}", this);
             StepCompleted?.Invoke(step);
             StartCoroutine(AdvanceAfterFeedback());
         }

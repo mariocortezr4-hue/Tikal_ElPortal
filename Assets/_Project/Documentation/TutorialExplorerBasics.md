@@ -10,13 +10,15 @@ The intended first play is two to four minutes. The route is a compact jungle-an
 
 1. **MUÉVETE** — accumulate real planar movement.
 2. **OBSERVA TU ENTORNO** — accumulate meaningful player yaw or pitch change.
-3. **SALTA** — use the real Jump action at the root.
+3. **SALTA** — appears immediately after Look; use the real Jump action inside the root obstacle zone.
 4. **AGÁCHATE** — enter the low-passage trigger while physically crouched.
 5. **CORRE** — cover distance while the existing `PlayerMovement` reports sprinting.
 6. **INTERACTÚA** — use the existing `PlayerInteraction` flow on the exit stone.
 7. **CONTINÚA POR EL SENDERO** — cross the unlocked exit trigger after the six control steps.
 
 Each control step shows `✓ COMPLETADO` for 0.8 seconds and then presents the next objective automatically. The final interaction opens the stone passage; it does not finish the tutorial. A warm environmental beacon and highlighted path lead the player through the exit trigger, which is enabled only after all six control steps are complete.
+
+Each concrete tutorial step is stored in its own same-name `MonoBehaviour` script. This is required so Unity serializes stable script references when the authoring scene is saved and reopened.
 
 `SecretCommand` is deliberately absent from the tutorial and no secret control is displayed.
 

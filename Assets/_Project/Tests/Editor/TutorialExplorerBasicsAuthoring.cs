@@ -156,8 +156,13 @@ namespace Tikal.Tests.Editor
             EchoSceneAuthoring.Set(move, "_player", player);
             var observe = Component<TutorialLookStep>("02_Look", parent, "OBSERVA TU ENTORNO", "Mira a tu alrededor antes de continuar.", TutorialPromptAction.Look);
             EchoSceneAuthoring.Set(observe, "_player", player); EchoSceneAuthoring.Set(observe, "_look", look);
-            var jump = Component<TutorialJumpStep>("03_Jump", parent, "SALTA", "Supera la raíz del sendero.", TutorialPromptAction.Jump);
+            var jump = Component<TutorialJumpStep>("03_Jump", parent, "SALTA", "Supera el obstáculo.", TutorialPromptAction.Jump);
             EchoSceneAuthoring.Set(jump, "_input", input);
+            EchoSceneAuthoring.Set(jump, "_player", player);
+            jump.transform.position = new Vector3(0, 1.1f, 10.5f);
+            var jumpZone = jump.GetComponent<BoxCollider>();
+            jumpZone.isTrigger = true;
+            jumpZone.size = new Vector3(4.5f, 2.4f, 5f);
             SetBase(crouch, "AGÁCHATE", "Pasa bajo la piedra caída.", TutorialPromptAction.Crouch);
             var sprint = Component<TutorialSprintStep>("05_Sprint", parent, "CORRE", "Cruza el tramo abierto con rapidez.", TutorialPromptAction.Sprint);
             EchoSceneAuthoring.Set(sprint, "_player", player); EchoSceneAuthoring.Set(sprint, "_movement", movement);
