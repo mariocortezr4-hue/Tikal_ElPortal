@@ -8,6 +8,10 @@ namespace Tikal.Input
         public static InputPromptData Resolve(InputAction action, InputDeviceFamily family)
         {
             if (action == null || action.actionMap?.asset == null) return default;
+            if (string.Equals(action.name, "Move", StringComparison.Ordinal))
+                return new InputPromptData(family == InputDeviceFamily.KeyboardMouse ? "WASD" : "STICK IZQUIERDO", "<Player>/move");
+            if (string.Equals(action.name, "Look", StringComparison.Ordinal))
+                return new InputPromptData(family == InputDeviceFamily.KeyboardMouse ? "MOUSE" : "STICK DERECHO", "<Player>/look");
             if (string.Equals(action.name, "Navigate", StringComparison.Ordinal))
                 return new InputPromptData(family == InputDeviceFamily.KeyboardMouse
                     ? "WASD / FLECHAS" : "STICK / CRUCETA", "<UI>/navigate");
