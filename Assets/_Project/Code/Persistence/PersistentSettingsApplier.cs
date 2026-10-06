@@ -1,3 +1,4 @@
+using System;
 using Tikal.Player;
 using Tikal.UI;
 using UnityEngine;
@@ -12,6 +13,8 @@ namespace Tikal.Persistence
 
         private GamePersistenceService _service;
         public CameraMode CameraMode { get; private set; } = Tikal.Persistence.CameraMode.FirstPerson;
+        public GameSettingsData CurrentSettings { get; private set; }
+        public event Action<GameSettingsData> SettingsApplied;
 
         private void Awake()
         {
@@ -23,9 +26,11 @@ namespace Tikal.Persistence
         {
             settings ??= GameSettingsData.CreateDefault();
             CameraMode = settings.CameraMode;
+            CurrentSettings = settings;
             AudioListener.volume = settings.MasterVolume;
             if (_reticleSettings != null) _reticleSettings.SetMode(settings.ReticleMode);
             if (_playerLook != null) _playerLook.ApplySettings(settings.MouseSensitivity, settings.GamepadSensitivity, settings.InvertY);
+            SettingsApplied?.Invoke(settings);
         }
     }
 }
