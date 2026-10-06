@@ -48,6 +48,7 @@ Explorer
   CameraTargets                      identity logical targets; independent of visual bones
     ThirdPersonPivot
     LookTarget
+    InteractionOrigin                configurable logical chest target (1.35 m initially)
   CharacterVisualRoot
     ThirdPersonHumanProxy
       Head / Body / LeftArm / RightArm / LeftLeg / RightLeg
@@ -141,14 +142,39 @@ tag, render setup and AudioListener are retained when switching back.
 TutorialLookStep measures the active TPS orbit angles instead of requiring Explorer rotation.
 FPS keeps its original yaw/pitch measurement. A mode switch alone contributes no tutorial Look
 progress. The steps, required degrees, prompts and semantic controls remain unchanged, with
-no new SecretCommand. Level01 puzzles, interactions, secrets and narrative scenes are untouched.
+no new SecretCommand. Level01 puzzles, secrets and narrative scenes are untouched.
 `Intro_AncientMap` and its Timeline cameras are excluded from all authoring.
 
-**Known foundation limitation:** PlayerInteraction still casts 3 m from the actual camera.
-Moving that camera behind Explorer reduces effective reach in front of the character, and a
-retracted orbit may see Explorer's CharacterController. Interaction is deliberately unchanged
-per this feature's scope. Do not claim TPS interaction parity until the following integration
-defines aim origin, character reach and occlusion. FPS interaction remains unchanged.
+### Interaction reach correction
+
+`PlayerInteraction` retains its original FPS ray exactly: actual camera position/forward,
+existing `_interactionDistance` (3 m), existing interaction layer mask and ignored triggers.
+Existing FPS tests and older scenes without a TPS rig continue to use that path.
+
+TPS uses two-stage targeting. The same MainCamera casts from viewport center (also when the
+reticle mode is None). Its nearest non-self solid hit identifies the visually selected
+IInteractable and AimPoint. The visual search bound is camera-to-origin separation plus the
+canonical interaction distance: this includes all potentially reachable points without
+creating another gameplay reach setting.
+
+Physical reach starts at `Explorer/CameraTargets/InteractionOrigin`, initially 1.35 m above
+the feet. Edit this Transform to tune chest height; repeated authoring retains that tuning.
+It belongs to the logical rig, never a Head bone or Animator. Its effective height is capped
+below the existing CharacterController top while crouching, without changing movement.
+
+The selected AimPoint must be within the original 3 m Euclidean player reach and must not be
+behind Explorer's facing (negative dot product with Explorer.forward). A second ray from the
+logical chest toward AimPoint uses only the original interaction distance. Its first non-self
+solid hit must resolve to the same IInteractable selected by the camera. Thus walls or other
+interactables between player and target reject interaction even when visible from the camera;
+a camera-side blocker also prevents visual selection. Both stages ignore triggers and only
+filter this Explorer's own hierarchy, preserving legitimate world colliders on shared layers.
+An origin overlapping world geometry fails closed instead of casting out through a wall.
+
+CurrentInteractable, FocusChanged, CanInteract and queued InteractPressed handling are unchanged.
+The existing prompt consumes this validated focus; None/Dot/Cross are unchanged. Objects beyond
+player reach, behind the character or behind blockers cannot gain an interaction prompt simply
+because the orbit camera sees them. No distance compensation or puzzle-specific logic is added.
 
 ## Validation and manual checks
 
@@ -160,11 +186,18 @@ in the interactive Editor; a static compile does not establish gameplay correctn
 The validation menu checks all critical references, one active camera/listener, persisted modes,
 three stable targets, humanoid hierarchy, visibility in both modes, valid profile/mask/clamp,
 missing scripts, reticle wiring, Tutorial Look references and settings/input-lock source contracts.
+It also checks one PlayerInteraction, stable InteractionOrigin, original input/camera references,
+positive canonical reach, separation of visual aim/player range and the occlusion contract.
 The Play Mode checks create disposable fixtures away from gameplay with their camera/listener
 disabled before activation, restore cursor/volume, and never save preferences. They exercise FPS
 look/FOV, live settings, free orbit, mouse/stick math, inversion/clamps, both lock gates, wall
 retraction, trigger/self filtering, collision priority over minimum distance, initial overlap,
-smoothed return and switching back to the original FPS local camera pose.
+smoothed return and switching back to the original FPS local camera pose. Added interaction
+fixtures check FPS in/out of range; TPS within player reach with cameras at 0.5/3.4/8 m; a
+visually selected target outside player reach; chest-side and camera-side occlusion; another
+interactable blocking the physical ray; triggers/self filtering; behind-player rejection;
+input-lock focus clearing/restoration; and an origin embedded in world geometry. Run these
+behavior checks in the interactive Editor; static compilation does not execute physics tests.
 
 Manual checks, after authoring:
 
@@ -192,6 +225,6 @@ to accept the final visual before rerunning this v1 menu, which intentionally en
 PlayerCameraController only gates CharacterVisualRoot visibility; it never needs Animator.
 
 TPS-2 will define camera-relative movement, facing toward movement, strafe/animation blending,
-interaction reach/aim integration and final Humanoid locomotion. Body-aware FPS, head hiding,
+final Humanoid locomotion and any further aiming refinements. Body-aware FPS, head hiding,
 shadows and separate first-person mesh remain future decisions. No TPS-2 changes or merges
 to develop are part of this foundation.

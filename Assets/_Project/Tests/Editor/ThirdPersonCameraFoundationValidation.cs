@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using Tikal.Input;
+using Tikal.Interaction;
 using Tikal.Persistence;
 using Tikal.Player;
 using Tikal.Tutorial;
@@ -88,6 +89,16 @@ namespace Tikal.Tests.Editor
             Require(controller != null && controller.enabled && controller.IsConfigured, "configured PlayerCameraController exists");
             Require(player.GetComponent<PlayerInputReader>() != null && player.GetComponent<PlayerLook>().IsConfigured &&
                 player.GetComponent<PlayerMovement>() != null && player.GetComponent<CharacterController>() != null, "existing player components preserved");
+            var interactions = player.GetComponents<PlayerInteraction>();
+            Require(interactions.Length == 1 && interactions[0].enabled && interactions[0].HasThirdPersonConfiguration,
+                "one PlayerInteraction with stable InteractionOrigin");
+            var interactionSettings = new SerializedObject(interactions[0]);
+            Require(interactionSettings.FindProperty("_inputSource").objectReferenceValue == player.GetComponent<PlayerInputReader>() &&
+                interactionSettings.FindProperty("_viewCamera").objectReferenceValue == player.GetComponentInChildren<Camera>(true),
+                "FPS input/view camera preserved; TPS aim uses same camera");
+            Require(interactions[0].InteractionOrigin.name == "InteractionOrigin" &&
+                interactions[0].InteractionOrigin.parent == player.transform.Find("CameraTargets") && interactions[0].InteractionDistance > 0,
+                "player-owned InteractionOrigin; canonical positive reach");
             var serialized = new SerializedObject(controller);
             var camera = (Camera)serialized.FindProperty("_mainCamera").objectReferenceValue;
             var fps = (Transform)serialized.FindProperty("_firstPersonTarget").objectReferenceValue;
@@ -140,6 +151,12 @@ namespace Tikal.Tests.Editor
         private static void ValidateSourceContracts()
         {
             var camera = File.ReadAllText("Assets/_Project/Code/Player/PlayerCameraController.cs");
+            var interaction = File.ReadAllText("Assets/_Project/Code/Interaction/PlayerInteraction.cs");
+            Require(interaction.Contains("ViewportPointToRay") && interaction.Contains("new Ray(origin, towardAim.normalized)") &&
+                interaction.Contains("towardAim.sqrMagnitude > _interactionDistance * _interactionDistance"), "TPS visual aim separated from player reach");
+            Require(interaction.Contains("TryNearestWorldHit(reachRay, _interactionDistance") &&
+                interaction.Contains("ReferenceEquals(hit.collider.GetComponentInParent<IInteractable>(), candidate)") &&
+                interaction.Contains("QueryTriggerInteraction.Ignore"), "physical first-solid occlusion and ignored triggers");
             Require(camera.Contains("QueryTriggerInteraction.Ignore") && camera.Contains("IsChildOf(transform)"), "ignore triggers and own hierarchy");
             Require(camera.Contains("_look.MouseSensitivity") && camera.Contains("_look.GamepadSensitivity") && camera.Contains("_look.InvertY"), "existing sensitivity/InvertY reused");
             Require(camera.Contains("_player.GameplayActive") && camera.Contains("_input.GameplayEnabled"), "shared Pause/Journal/modal gate");

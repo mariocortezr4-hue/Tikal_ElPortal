@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Tikal.Interaction;
 using Tikal.Persistence;
 using Tikal.Player;
 using Tikal.UI;
@@ -97,6 +98,15 @@ namespace Tikal.Tests.Editor
                 throw new InvalidOperationException("Keep exactly one existing AudioListener on MainCamera.");
             camera.GetComponent<AudioListener>().enabled = true;
             var targets = Child(player.transform, "CameraTargets");
+            var interaction = player.GetComponent<PlayerInteraction>();
+            if (interaction == null || player.GetComponents<PlayerInteraction>().Length != 1)
+                throw new InvalidOperationException("Preserve exactly one existing PlayerInteraction on Explorer.");
+            var hadOrigin = targets.Find("InteractionOrigin") != null;
+            var origin = Child(targets, "InteractionOrigin");
+            if (!hadOrigin)
+                origin.localPosition = Vector3.up * 1.35f;
+            // Retain any subsequent Inspector tuning of this logical target and of reach.
+            Set(interaction, "_interactionOrigin", origin);
             var pivot = Child(targets, "ThirdPersonPivot");
             pivot.localPosition = Vector3.up * profile.PivotHeight;
             var lookTarget = Child(targets, "LookTarget");
