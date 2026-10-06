@@ -23,6 +23,7 @@ namespace Tikal.Core
 
         public string PlayButtonLabel => Progress.HasStartedGame ? "CONTINUAR" : "JUGAR";
         public string CurrentLevelTitle => SceneCatalog.TryGet(Progress.CurrentLevelId, out var info) ? info.Title : SceneCatalog.Get(GameSceneIds.Level01).Title;
+        public bool IsIntroReplay => _introReplayToMenu;
 
         public void PlayOrContinue()
         {
@@ -82,13 +83,16 @@ namespace Tikal.Core
             if (_introReplayToMenu)
             {
                 _introReplayToMenu = false;
-                Load(GameSceneIds.MainMenu);
+                Load(GetIntroCompletionDestination(true));
                 return;
             }
             Progress.IntroSeen = true;
             Persistence.SaveProgress(Progress);
-            Load(GameSceneIds.Tutorial);
+            Load(GetIntroCompletionDestination(false));
         }
+
+        public static string GetIntroCompletionDestination(bool replay) =>
+            replay ? GameSceneIds.MainMenu : GameSceneIds.Tutorial;
 
         public void CompleteTutorial()
         {
