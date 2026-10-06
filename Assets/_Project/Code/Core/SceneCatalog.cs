@@ -25,7 +25,7 @@ namespace Tikal.Core
         private static readonly SceneInfo[] Scenes =
         {
             new SceneInfo(GameSceneIds.MainMenu, "Assets/_Project/Scenes/Menus/MainMenu.unity", "Menu principal", false),
-            new SceneInfo(GameSceneIds.Intro, "Assets/_Project/Scenes/Core/IntroPlaceholder.unity", "Introduccion", false),
+            new SceneInfo(GameSceneIds.Intro, "Assets/_Project/Scenes/Cinematics/Intro_AncientMap.unity", "Introducción", false),
             new SceneInfo(GameSceneIds.Tutorial, "Assets/_Project/Scenes/Tutorial/TUT_ExplorerBasics.unity", "Tutorial", false),
             new SceneInfo(GameSceneIds.Level01, "Assets/_Project/Scenes/Levels/Level01_SecretEntrance.unity", "Nivel 1 - La Entrada Secreta", true),
             new SceneInfo(GameSceneIds.Level02, string.Empty, "Nivel 2", true)
