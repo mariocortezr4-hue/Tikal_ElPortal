@@ -98,8 +98,9 @@ material. All primitive colliders are removed. It has no locomotion/Animator.
 - FPS: the original `PlayerLook.Tick`, unchanged yaw/pitch/clamps and input math.
 - TPS: `PlayerCameraController.TickLook`, independent orbit yaw and clamped pitch.
 
-TPS never writes Explorer's rotation. Movement remains relative to the existing Explorer axes;
-this is intentional foundation behavior, with no camera-relative movement/facing implementation.
+Foundation v1 Look never writes Explorer's rotation. Movement Integration v2 now routes Move
+through a horizontal camera basis and smoothly turns Explorer; stationary free orbit remains.
+See [ThirdPersonMovement.md](ThirdPersonMovement.md) for the separate movement authority and tests.
 Mouse delta uses PlayerLook.MouseSensitivity; stick rate uses PlayerLook.GamepadSensitivity
 and deltaTime, with the same unit-circle clamp and InvertY sign as FPS. No new input actions,
 direct device polling, sensitivity values or preferences are introduced.
@@ -224,7 +225,7 @@ remove the proxy (or hide it when the final visual is present). Update authoring
 to accept the final visual before rerunning this v1 menu, which intentionally ensures the proxy.
 PlayerCameraController only gates CharacterVisualRoot visibility; it never needs Animator.
 
-TPS-2 will define camera-relative movement, facing toward movement, strafe/animation blending,
-final Humanoid locomotion and any further aiming refinements. Body-aware FPS, head hiding,
-shadows and separate first-person mesh remain future decisions. No TPS-2 changes or merges
-to develop are part of this foundation.
+TPS-2 camera-relative movement and smoothed facing are documented in ThirdPersonMovement.md.
+Strafe/animation blending, final Humanoid locomotion and further aiming refinements remain future
+work. Body-aware FPS, head hiding, shadows and separate first-person mesh remain future decisions.
+The camera foundation and the following movement integration perform no merges to develop.

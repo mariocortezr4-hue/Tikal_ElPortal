@@ -40,6 +40,7 @@ namespace Tikal.Player
             _thirdPersonPivot != null && _lookTarget != null && _characterVisualRoot != null &&
             _thirdPersonHumanProxy != null && _settingsApplier != null && _profile != null && _profile.IsValid;
         public bool OwnsLook => isActiveAndEnabled && IsConfigured && Mode == CameraMode.ThirdPerson;
+        public Transform MovementOrientation => _mainCamera != null ? _mainCamera.transform : null;
 
         private void Awake()
         {

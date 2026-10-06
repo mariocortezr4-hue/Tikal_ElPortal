@@ -15,6 +15,7 @@ namespace Tikal.Player
         private bool _jumpSubscribed;
         private bool _gameplayActive;
         private PlayerCameraController _playerCamera;
+        private bool _wasThirdPerson;
         public bool GameplayActive => _gameplayActive;
 
         private void Awake()
@@ -55,15 +56,22 @@ namespace Tikal.Player
 
         private void Update()
         {
-            if (!_gameplayActive)
+            if (!_gameplayActive || !_input.GameplayEnabled)
                 return;
-            if (_playerCamera != null && _playerCamera.OwnsLook)
+            var thirdPerson = _playerCamera != null && _playerCamera.OwnsLook;
+            if (_wasThirdPerson && !thirdPerson) _look.SynchronizePlayerYaw();
+            _wasThirdPerson = thirdPerson;
+            if (thirdPerson)
                 _playerCamera.TickLook(_input.Look, _input.LookMode, Time.deltaTime);
             else
                 _look.Tick(_input.Look, _input.LookMode, Time.deltaTime);
-            _movement.Tick(_input.Move, _input.SprintRequested, _input.CrouchHeld, Time.deltaTime);
+            if (thirdPerson)
+                _movement.TickThirdPerson(_input.Move, _input.SprintRequested, _input.CrouchHeld,
+                    Time.deltaTime, _playerCamera.MovementOrientation);
+            else
+                _movement.Tick(_input.Move, _input.SprintRequested, _input.CrouchHeld, Time.deltaTime);
             _look.SetEyeHeight(_movement.EyeHeight, _movement.MaximumEyeHeight, Time.deltaTime);
-            if (_playerCamera == null || !_playerCamera.OwnsLook)
+            if (!thirdPerson)
                 _look.TickSprintFeedback(_movement.IsSprinting, Time.deltaTime);
         }
 
