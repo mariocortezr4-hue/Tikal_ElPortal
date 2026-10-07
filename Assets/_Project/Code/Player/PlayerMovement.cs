@@ -14,6 +14,11 @@ namespace Tikal.Player
         [SerializeField, Min(0)] private float _deceleration = 32f;
         [SerializeField, Range(0, 1)] private float _airControl = 0.7f;
 
+        [Header("Third person facing")]
+        [SerializeField, Min(.001f)] private float _turnSmoothTime = .14f;
+        private float _turnVelocity;
+        public float TurnSmoothTime => _turnSmoothTime;
+
         [Header("Vertical movement")]
         [SerializeField, Min(0)] private float _jumpHeight = 1.2f;
         [SerializeField, Min(0)] private float _coyoteTime = 0.10f;
@@ -74,9 +79,24 @@ namespace Tikal.Player
             _coyoteRemaining = 0;
             _jumpConsumedSinceGrounded = false;
             IsSprinting = false;
+            _turnVelocity = 0;
         }
 
         public void Tick(Vector2 move, bool sprintHeld, bool crouchHeld, float deltaTime)
+        {
+            _turnVelocity = 0;
+            TickMotion(move, sprintHeld, crouchHeld, deltaTime, null);
+        }
+
+        public void TickThirdPerson(Vector2 move, bool sprintHeld, bool crouchHeld, float deltaTime, Transform cameraOrientation)
+        {
+            if (cameraOrientation == null) return;
+            // Input System already applies stick deadzones; suppress residual values at rest.
+            if (move.sqrMagnitude < ThirdPersonMovementMath.InputThresholdSquared) move = Vector2.zero;
+            TickMotion(move, sprintHeld, crouchHeld, deltaTime, cameraOrientation);
+        }
+
+        private void TickMotion(Vector2 move, bool sprintHeld, bool crouchHeld, float deltaTime, Transform cameraOrientation)
         {
             if (_controller == null || !_controller.enabled || deltaTime <= 0)
                 return;
@@ -95,12 +115,27 @@ namespace Tikal.Player
             IsSprinting = sprintHeld && IsGrounded && !IsCrouching && move.sqrMagnitude > 0;
             var speed = IsCrouching ? _crouchSpeed : IsSprinting ? _sprintSpeed : _walkSpeed;
             var clampedMove = Vector2.ClampMagnitude(move, 1f);
-            var targetVelocity = (transform.right * clampedMove.x + transform.forward * clampedMove.y) * speed;
+            var targetVelocity = cameraOrientation == null
+                ? (transform.right * clampedMove.x + transform.forward * clampedMove.y) * speed
+                : ThirdPersonMovementMath.CalculateMove(clampedMove, cameraOrientation.forward, cameraOrientation.right, transform.forward) * speed;
             var slowingDown = targetVelocity.sqrMagnitude < _horizontalVelocity.sqrMagnitude;
             var response = slowingDown ? _deceleration : _acceleration;
             if (!IsGrounded)
                 response *= _airControl;
             _horizontalVelocity = Vector3.MoveTowards(_horizontalVelocity, targetVelocity, response * deltaTime);
+
+            if (cameraOrientation != null)
+            {
+                if (move.sqrMagnitude >= ThirdPersonMovementMath.InputThresholdSquared &&
+                    _horizontalVelocity.sqrMagnitude >= ThirdPersonMovementMath.InputThresholdSquared)
+                {
+                    // Follow the actual accelerated horizontal velocity, including air control.
+                    var yaw = ThirdPersonMovementMath.TurnYaw(transform.eulerAngles.y, _horizontalVelocity,
+                        ref _turnVelocity, _turnSmoothTime, deltaTime);
+                    transform.rotation = Quaternion.Euler(0, yaw, 0);
+                }
+                else _turnVelocity = 0; // No residual turn or camera-follow when Move is released.
+            }
 
             if (IsGrounded)
                 _verticalVelocity = -_groundStickSpeed;
@@ -176,6 +211,7 @@ namespace Tikal.Player
 
         private void OnValidate()
         {
+            _turnSmoothTime = Mathf.Max(.001f, _turnSmoothTime);
             _gravity = Mathf.Min(_gravity, -0.01f);
             _sprintSpeed = Mathf.Max(_sprintSpeed, _walkSpeed);
             var capsule = GetComponent<CharacterController>();

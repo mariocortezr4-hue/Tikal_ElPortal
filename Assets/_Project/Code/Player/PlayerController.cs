@@ -14,6 +14,8 @@ namespace Tikal.Player
         private IPlayerInputReader _input;
         private bool _jumpSubscribed;
         private bool _gameplayActive;
+        private PlayerCameraController _playerCamera;
+        private bool _wasThirdPerson;
         public bool GameplayActive => _gameplayActive;
 
         private void Awake()
@@ -22,6 +24,7 @@ namespace Tikal.Player
             if (_movement == null) _movement = GetComponent<PlayerMovement>();
             if (_look == null) _look = GetComponent<PlayerLook>();
             _input = _inputReader;
+            _playerCamera = GetComponent<PlayerCameraController>();
             if (_input == null || _movement == null || _look == null || !_look.IsConfigured)
             {
                 UnityEngine.Debug.LogError("PlayerController requires input, movement and a configured look component.", this);
@@ -53,12 +56,23 @@ namespace Tikal.Player
 
         private void Update()
         {
-            if (!_gameplayActive)
+            if (!_gameplayActive || !_input.GameplayEnabled)
                 return;
-            _look.Tick(_input.Look, _input.LookMode, Time.deltaTime);
-            _movement.Tick(_input.Move, _input.SprintRequested, _input.CrouchHeld, Time.deltaTime);
+            var thirdPerson = _playerCamera != null && _playerCamera.OwnsLook;
+            if (_wasThirdPerson && !thirdPerson) _look.SynchronizePlayerYaw();
+            _wasThirdPerson = thirdPerson;
+            if (thirdPerson)
+                _playerCamera.TickLook(_input.Look, _input.LookMode, Time.deltaTime);
+            else
+                _look.Tick(_input.Look, _input.LookMode, Time.deltaTime);
+            if (thirdPerson)
+                _movement.TickThirdPerson(_input.Move, _input.SprintRequested, _input.CrouchHeld,
+                    Time.deltaTime, _playerCamera.MovementOrientation);
+            else
+                _movement.Tick(_input.Move, _input.SprintRequested, _input.CrouchHeld, Time.deltaTime);
             _look.SetEyeHeight(_movement.EyeHeight, _movement.MaximumEyeHeight, Time.deltaTime);
-            _look.TickSprintFeedback(_movement.IsSprinting, Time.deltaTime);
+            if (!thirdPerson)
+                _look.TickSprintFeedback(_movement.IsSprinting, Time.deltaTime);
         }
 
         /// <summary>Allows a future pause flow to gate gameplay and release the cursor without disabling Global.</summary>

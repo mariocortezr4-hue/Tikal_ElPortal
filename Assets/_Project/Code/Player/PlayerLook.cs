@@ -25,10 +25,14 @@ namespace Tikal.Player
         private float _pitch;
 
         public bool IsConfigured => _cameraRoot != null;
+        public Transform CameraRoot => _cameraRoot;
         public float Pitch => _pitch;
         public float MouseSensitivity => _deltaSensitivity;
         public float GamepadSensitivity => _rateSensitivity;
         public bool InvertY => _invertY;
+
+        // TPS movement can turn Explorer while FPS Look is inactive. Resume from that facing.
+        public void SynchronizePlayerYaw() => _yaw = transform.eulerAngles.y;
 
         private void Awake()
         {
