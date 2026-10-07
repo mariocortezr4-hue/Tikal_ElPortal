@@ -72,6 +72,11 @@ namespace Tikal.Tests.Editor
                         if (own == null) throw new InvalidOperationException("No settings applier for " + path);
                         if (reticles.Length == 1) Set(own, "_reticleSettings", reticles[0]);
                     }
+                    foreach (var reticle in Components<ReticlePresenter>(scene))
+                    {
+                        Set(reticle, "_interaction", player.GetComponent<PlayerInteraction>());
+                        Set(reticle, "_viewCamera", player.GetComponent<PlayerInteraction>().ViewCamera);
+                    }
                     ThirdPersonCameraFoundationValidation.ValidateScene(scene);
                     EditorSceneManager.MarkSceneDirty(scene);
                     EditorSceneManager.SaveScene(scene);

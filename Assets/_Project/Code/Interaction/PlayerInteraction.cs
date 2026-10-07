@@ -28,6 +28,10 @@ namespace Tikal.Interaction
 
         public IInteractable CurrentInteractable { get; private set; }
         public Transform InteractionOrigin => _interactionOrigin;
+        public Camera ViewCamera => _viewCamera;
+        public bool UsesThirdPersonAim => _playerCamera != null && _playerCamera.OwnsLook;
+        public bool HasResolvedAimPoint { get; private set; }
+        public Vector3 ResolvedAimPoint { get; private set; }
         public float InteractionDistance => _interactionDistance;
         public bool HasThirdPersonConfiguration => _interactionOrigin != null && _interactionOrigin.IsChildOf(transform);
         public event Action<IInteractable> FocusChanged;
@@ -62,6 +66,8 @@ namespace Tikal.Interaction
             _lastCollider = null;
             _resolved = null;
             _resolvedObject = null;
+            HasResolvedAimPoint = false;
+            ResolvedAimPoint = Vector3.zero;
             SetFocus(null);
         }
 
@@ -80,6 +86,8 @@ namespace Tikal.Interaction
 
         private void RefreshFocus()
         {
+            HasResolvedAimPoint = false;
+            ResolvedAimPoint = Vector3.zero;
             if (_input == null || !_input.GameplayEnabled || _viewCamera == null)
             {
                 SetFocus(null);
@@ -123,6 +131,8 @@ namespace Tikal.Interaction
             // regardless of camera distance. It never increases the physical interaction range.
             var aimDistance = Vector3.Distance(aimRay.origin, origin) + _interactionDistance;
             if (!TryNearestWorldHit(aimRay, aimDistance, out var aimHit)) return false;
+            // Publish the existing visual hit even when reach rejects interaction.
+            SetResolvedAimPoint(aimHit.point);
             var candidate = aimHit.collider.GetComponentInParent<IInteractable>();
             if (candidate == null) return false;
             var towardAim = aimHit.point - origin;
@@ -132,9 +142,17 @@ namespace Tikal.Interaction
             if (Vector3.Dot(transform.forward, towardAim) < 0) return false;
             var reachRay = new Ray(origin, towardAim.normalized);
             if (!TryNearestWorldHit(reachRay, _interactionDistance, out hit)) return false;
+            // The first physical hit wins visually too, including a blocking wall.
+            SetResolvedAimPoint(hit.point);
             // First solid hit must belong to the visually selected interactable. Walls and
             // other interactables block it; the prompt cannot select a different hidden target.
             return ReferenceEquals(hit.collider.GetComponentInParent<IInteractable>(), candidate);
+        }
+
+        private void SetResolvedAimPoint(Vector3 point)
+        {
+            ResolvedAimPoint = point;
+            HasResolvedAimPoint = true;
         }
 
         private Vector3 GetInteractionPosition()
