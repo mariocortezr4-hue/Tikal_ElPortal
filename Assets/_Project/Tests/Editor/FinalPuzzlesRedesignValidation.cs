@@ -64,6 +64,16 @@ namespace Tikal.Tests.Editor
                 var scene=EditorSceneManager.OpenScene("Assets/_Project/Scenes/Levels/Level01_SecretEntrance.unity");
                 var all=scene.GetRootGameObjects().SelectMany(go=>go.GetComponentsInChildren<Component>(true)).ToArray();
                 Require(all.All(c=>c!=null),"No Missing Scripts");
+                var secretClue = AssetDatabase.LoadAssetAtPath<ClueDefinition>("Assets/_Project/Data/Clues/level01.revelation.asset");
+                Require(secretClue.Id == "level01.clue05" && secretClue.SemanticContent == ClueSemanticContent.SecretCommand &&
+                    secretClue.Description == "Ya conoces la llave.", "Clue05 stores semantic SecretCommand with no universal G text");
+                foreach (var presenter in all.OfType<ClueDiscoveryPresenter>().Cast<UnityEngine.Object>().Concat(all.OfType<ClueJournalPresenter>()))
+                {
+                    var serialized = new SerializedObject(presenter);
+                    Require(serialized.FindProperty("_inputReader").objectReferenceValue == all.OfType<PlayerInputReader>().Single() &&
+                        serialized.FindProperty("_devices").objectReferenceValue == all.OfType<InputDeviceManager>().Single(),
+                        "Clue UI shares canonical action source and active device");
+                }
                 Require(all.OfType<LevelOutcomeController>().Count()==1&&all.OfType<SecretEntranceCommandReceiver>().Count()==1,"One outcome and one explicit secret receiver");
                 Require(all.OfType<EventSystem>().Count()==1&&all.OfType<Canvas>().Count()==1,"One UI event system and reused Canvas");
                 Require(EditorBuildSettings.scenes.Any(s=>s.enabled&&s.path==scene.path),"Level01 registered for real runtime retry");
@@ -241,10 +251,14 @@ namespace Tikal.Tests.Editor
                     Require(popupText.text.Contains("[ "+expected[pad]+" ]")&&((TMP_Text)Ref(journal,"_content")).text.Contains("[ "+expected[pad]+" ]")&&tracker.Count==2,"Device-aware discovery and already open Journal "+expected[pad]);
                 }
                 Keys(Key.H);Require(((TMP_Text)Ref(journal,"_content")).text.Contains("[ G ]"),"Open Journal switches back to keyboard");
-                Keys(Key.J);
                 actions.Player.SecretCommand.ApplyBindingOverride(0,"<Keyboard>/h");
-                Keys(Key.J);Require(((TMP_Text)Ref(journal,"_content")).text.Contains("[ H ]"),"Journal resolves a real rebinding without hardcoded G");
-                Keys(Key.J);actions.Player.SecretCommand.RemoveAllBindingOverrides();
+                InputSystem.Update();
+                Require(journal.IsOpen && ((TMP_Text)Ref(journal,"_content")).text.Contains("[ H ]") &&
+                    popupText.text.Contains("[ H ]"), "Already open Journal and visible discovery resolve live effective binding without device change");
+                actions.Player.SecretCommand.RemoveAllBindingOverrides();InputSystem.Update();
+                Require(((TMP_Text)Ref(journal,"_content")).text.Contains("[ G ]") && popupText.text.Contains("[ G ]") &&
+                    tracker.Count == 2 && tracker.DiscoveredClues.Contains(clue), "Binding/device refresh preserves discovered clue and restores keyboard hint");
+                Keys(Key.J);
                 Require(!popupText.isTextOverflowing&&!popupTitle.isTextOverflowing,"Discovery labels fit their rects");
                 Place(new Vector3(6,.6f,82),new Vector3(6,2.22f,89));Refresh();
                 Require(interaction.CurrentInteractable==null&&outcome.State==LevelOutcome.Playing,"Final warning visual needs no interaction and remains safe");

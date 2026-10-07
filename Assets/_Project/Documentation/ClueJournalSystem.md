@@ -2,6 +2,36 @@
 
 ## Flujo y fuente de verdad
 
+Auditoría Clue05: el asset level01.revelation ya almacena SecretCommand semántico, con texto
+«Ya conoces la llave.». CluePresentation ya resolvía SecretCommandAction mediante
+InputPromptResolver y el binding efectivo; Journal y discovery ya escuchaban ActiveDeviceChanged.
+No se encontró una G universal ni confusión con Interact en esta ruta.
+
+La presentación también refresca ahora ante BoundControlsChanged, incluso sin cambiar de
+dispositivo ni cerrar/reabrir el Journal. Las suscripciones se retiran al desactivar el presenter;
+la notificación exige referencias al reader y al manager. Renderizar nunca modifica ClueTracker.
+Clue05 mantiene su gate de Puzzle04/Zone05 y enseña una acción que ya existe desde el inicio.
+
+| Dispositivo | Interact | SecretCommand revelado por Clue05 |
+| --- | --- | --- |
+| Teclado | E | G |
+| Xbox | X / buttonWest | Y / buttonNorth |
+| PlayStation | □ / buttonWest | △ / buttonNorth |
+| Generic | Botón oeste | Botón norte |
+
+Los bindings siguen siendo Keyboard/e, Keyboard/g, Gamepad/buttonWest y Gamepad/buttonNorth.
+Los símbolos los produce el resolver existente. ActiveDeviceChanged vuelve a renderizar la pista
+descubierta en el Journal abierto y en la notificación visible; no exige redescubrimiento.
+DynamicPromptValidation comprueba las ocho combinaciones de texto y sus bindings efectivos.
+FinalPuzzlesRedesignValidation comprueba semántica, referencias, Missing Scripts, gate y refresco
+en vivo del Journal/discovery, incluyendo override y restauración con el mismo dispositivo.
+Estas pruebas interactivas deben ejecutarse en Unity; compilar no equivale a ejecutarlas.
+
+Verificación ejecutada sin batchmode: auditoría de los cuatro bindings y del asset semántico,
+seis comprobaciones del método real del resolver para nombres de mando, compilación runtime
+y Editor sin errores ni advertencias nuevas (217/2 ya existentes), y git diff --check.
+Las comprobaciones visuales, de Missing Scripts y del Journal en Play Mode quedan pendientes.
+
 PuzzleBase → PuzzleClueReward → ClueTracker → ClueDiscovered. La pista permanece registrada en el tracker durante la sesión; ClueDiscoveryPresenter muestra la notificación temporal durante seis segundos, y ClueJournalPresenter permite consultarla posteriormente. El diario no descubre pistas ni resuelve puzzles. Las inscripciones siguen siendo ayuda temporal independiente.
 
 ClueTracker conserva su diccionario por ID y mantiene el orden de descubrimiento. DiscoveredClues expone una vista IReadOnlyList respaldada por ReadOnlyCollection; los consumidores no pueden modificarla. Count cuenta solo descubrimientos y TryGetClue consulta por ID. Discover deduplica antes de notificar. No hay un segundo inventario de pistas en la UI.

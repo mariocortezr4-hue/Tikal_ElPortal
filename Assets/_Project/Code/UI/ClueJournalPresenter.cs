@@ -5,6 +5,7 @@ using Tikal.Player;
 using Tikal.Puzzles.Clues;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 namespace Tikal.UI
 {
     [DisallowMultipleComponent]
@@ -29,10 +30,12 @@ namespace Tikal.UI
             if(_tracker==null||_inputReader==null||_player==null||_devices==null||_panel==null||_content==null||_closeHint==null){Debug.LogError("Clue journal requires tracker, player, input and UI references.",this);return;}
             _inputReader.JournalPressed+=Toggle;_tracker.ClueDiscovered+=OnDiscovered;_tracker.ProgressRestored+=OnRestored;_devices.ActiveDeviceChanged+=OnDeviceChanged;
             _subscribed=true;_panel.SetActive(false);IsOpen=false;
+            InputSystem.onActionChange += OnActionChange;
         }
         private void OnDisable()
         {
             Close();if(!_subscribed)return;
+            InputSystem.onActionChange -= OnActionChange;
             _inputReader.JournalPressed-=Toggle;_tracker.ClueDiscovered-=OnDiscovered;_tracker.ProgressRestored-=OnRestored;_devices.ActiveDeviceChanged-=OnDeviceChanged;_subscribed=false;
         }
         public void Toggle(){if(IsOpen)Close();else Open();}
@@ -51,6 +54,12 @@ namespace Tikal.UI
         private void OnDiscovered(ClueDefinition _){if(IsOpen)Refresh();}
         private void OnRestored(){if(IsOpen)Refresh();}
         private void OnDeviceChanged(InputDeviceFamily _){if(IsOpen){Refresh();RefreshHint();}}
+        private void OnActionChange(object source, InputActionChange change)
+        {
+            if (!IsOpen) return;
+            if (CluePresentation.IsBindingChange(source, change, _inputReader.SecretCommandAction)) Refresh();
+            if (CluePresentation.IsBindingChange(source, change, _inputReader.JournalAction)) RefreshHint();
+        }
         private void RefreshHint()
         {
             var control=InputPromptResolver.Resolve(_inputReader.JournalAction,_devices.ActiveDevice).DisplayText;
