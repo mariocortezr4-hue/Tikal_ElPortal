@@ -17,15 +17,17 @@ namespace Tikal.Tests.Editor
         const string ScenePath = "Assets/_Project/Scenes/Menus/MainMenu.unity";
         const string BackdropPath = "Assets/_Project/UI/Sprites/MainMenuTikalBackdrop.png";
 
-        static readonly Color Ink = new Color(.018f, .035f, .055f, .92f);
-        static readonly Color Stone = new Color(.055f, .105f, .135f, .94f);
-        static readonly Color Gold = new Color(.86f, .62f, .27f);
-        static readonly Color Ivory = new Color(.96f, .93f, .84f);
-        static readonly Color Muted = new Color(.7f, .76f, .75f);
+        static readonly Color Ink = MenuVisualPalette.Ink;
+        static readonly Color Stone = MenuVisualPalette.Stone;
+        static readonly Color Gold = MenuVisualPalette.Gold;
+        static readonly Color Ivory = MenuVisualPalette.Ivory;
+        static readonly Color Muted = MenuVisualPalette.Muted;
 
         [MenuItem("Tikal/Authoring/Polish Existing Main Menu")]
         public static void RunFromMenu()
         {
+            if (EditorApplication.isPlayingOrWillChangePlaymode) { Debug.LogError("Polish Main Menu outside Play Mode."); return; }
+            if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
             try
             {
                 Apply();
@@ -39,6 +41,7 @@ namespace Tikal.Tests.Editor
 
         public static void Apply()
         {
+            if (EditorApplication.isPlayingOrWillChangePlaymode) throw new Exception("Polish Main Menu outside Play Mode.");
             var scene = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
             var root = scene.GetRootGameObjects().Single(item => item.name == "MainMenu").transform;
             var cameraTransform = root.Find("MenuCamera");
@@ -60,7 +63,7 @@ namespace Tikal.Tests.Editor
             image.sprite = Backdrop();
             image.raycastTarget = false;
 
-            var shade = Image("LeftShade", background, new Color(.008f, .02f, .035f, .78f));
+            var shade = Image("LeftShade", background, new Color(.018f, .028f, .021f, .78f));
             Frame(shade.rectTransform, new Vector2(0, 0), new Vector2(.43f, 1));
             shade.transform.SetSiblingIndex(0);
             var bottom = Image("BottomShade", background, new Color(.01f, .025f, .04f, .55f));
@@ -73,13 +76,17 @@ namespace Tikal.Tests.Editor
             top.transform.SetSiblingIndex(2);
 
             var title = Find(background, "Title").GetComponent<TMP_Text>();
-            title.text = "<size=68><b>TIKAL</b></size>\n<size=37>EL PORTAL</size>";
-            Style(title, 59, Gold, TextAlignmentOptions.Left);
+            title.text = "TIKAL";
+            Style(title, 80, Gold, TextAlignmentOptions.Left);
+            title.fontStyle = FontStyles.Bold;
             title.characterSpacing = 9;
-            Anchor(title.rectTransform, new Vector2(0, 1), new Vector2(95, -90), new Vector2(640, 160), new Vector2(0, 1));
+            Anchor(title.rectTransform, new Vector2(0, 1), new Vector2(95, -85), new Vector2(640, 100), new Vector2(0, 1));
+            var brandSubtitle = Text("BrandSubtitle", background, "EL EXPLORADOR", 32, Ivory);
+            brandSubtitle.characterSpacing = 7;
+            Anchor(brandSubtitle.rectTransform, new Vector2(0, 1), new Vector2(99, -185), new Vector2(640, 50), new Vector2(0, 1));
             var eyebrow = Text("BrandEyebrow", background, "UNA AVENTURA EN LAS SOMBRAS", 16, Gold);
             Anchor(eyebrow.rectTransform, new Vector2(0, 1), new Vector2(97, -61), new Vector2(610, 24), new Vector2(0, 1));
-            var footer = Text("Footer", background, "TIKAL  /  EL PORTAL", 16, Muted);
+            var footer = Text("Footer", background, "TIKAL  /  EL EXPLORADOR", 16, Muted);
             Anchor(footer.rectTransform, new Vector2(0, 0), new Vector2(96, 43), new Vector2(550, 25), Vector2.zero);
 
             var main = Find(background, "Main");
@@ -96,7 +103,7 @@ namespace Tikal.Tests.Editor
             Style(subtitle, 17, Muted, TextAlignmentOptions.Left);
             Anchor(subtitle.rectTransform, new Vector2(0, .5f), new Vector2(99, 202), new Vector2(520, 30), new Vector2(0, .5f));
 
-            var journey = Image("JourneyCard", main, new Color(.02f, .055f, .075f, .87f));
+            var journey = Image("JourneyCard", main, new Color(.055f, .085f, .065f, .91f));
             Anchor(journey.rectTransform, new Vector2(1, 0), new Vector2(-80, 92), new Vector2(560, 170), new Vector2(1, 0));
             var accent = Image("Accent", journey.transform, Gold);
             Frame(accent.rectTransform, Vector2.zero, new Vector2(0, 1));
@@ -110,6 +117,7 @@ namespace Tikal.Tests.Editor
             Anchor(cardHeading.rectTransform, new Vector2(0, 1), new Vector2(28, -48), new Vector2(505, 44), new Vector2(0, 1));
             var cardBody = Text("Body", journey.transform, "Explora las ruinas. Sigue las pistas.\nDescubre lo que duerme tras el portal.", 19, Ivory);
             Anchor(cardBody.rectTransform, new Vector2(0, 1), new Vector2(28, -94), new Vector2(505, 62), new Vector2(0, 1));
+            CarvedFrame(journey.transform);
 
             DecoratePanel(Find(background, "Levels"), "LevelsTitle", "NIVELES");
             DecoratePanel(Find(background, "CharacterSelection"), "CharacterTitle", "PERSONAJE");
@@ -132,6 +140,7 @@ namespace Tikal.Tests.Editor
             SetupControlHints(root, background, menu);
 
             EditorSceneManager.MarkSceneDirty(scene);
+            MainMenuVisualValidation.ValidateScene(scene);
             if (!EditorSceneManager.SaveScene(scene)) throw new Exception("Failed to save " + ScenePath);
         }
 
@@ -238,16 +247,18 @@ namespace Tikal.Tests.Editor
             GameObject savedMarker = null;
             if (persistent)
             {
-                var saved = Text("SavedMarker", selectable.transform, "GUARDADO", 12, Gold);
+                var saved = Text("SavedMarker", selectable.transform, "SELECCIONADO", 13, Ivory);
                 saved.fontStyle = FontStyles.Bold;
                 saved.alignment = TextAlignmentOptions.Right;
-                Anchor(saved.rectTransform, new Vector2(1, 0), new Vector2(-16, 10), new Vector2(150, 22), new Vector2(1, 0));
-                var savedCheck = Image("SavedCheck", saved.transform, Gold);
-                Anchor(savedCheck.rectTransform, new Vector2(0, .5f), new Vector2(52, 0), new Vector2(7, 7), new Vector2(.5f, .5f));
+                Anchor(saved.rectTransform, new Vector2(1, 0), new Vector2(-16, 14), new Vector2(188, 22), new Vector2(1, 0));
+                CheckIcon(saved.transform);
                 savedMarker = saved.gameObject;
             }
             var visual = selectable.GetComponent<MenuSelectableVisual>() ?? selectable.gameObject.AddComponent<MenuSelectableVisual>();
             visual.Configure(selectable, background, label, focus.gameObject, savedMarker, primary);
+            Outline(selectable.transform, "NormalOutline", new Color(.30f, .33f, .26f), 1, 0);
+            visual.ConfigureBorders(Outline(selectable.transform, "FocusOutline", Gold, 2, 3),
+                persistent ? Outline(selectable.transform, "SavedOutline", MenuVisualPalette.JadeEdge, 2, 0) : null);
         }
 
         static void AttachControlVisual(Selectable selectable, TMP_Text label)
@@ -257,16 +268,18 @@ namespace Tikal.Tests.Editor
             focus.gameObject.SetActive(false);
             var visual = selectable.GetComponent<MenuSelectableVisual>() ?? selectable.gameObject.AddComponent<MenuSelectableVisual>();
             visual.Configure(selectable, null, label, focus.gameObject, null, false);
+            visual.ConfigureBorders(Outline(selectable.transform, "FocusOutline", Gold, 2, 4), null);
         }
 
         static void DecoratePanel(Transform panel, string titleName, string title)
         {
             var veil = panel.GetComponent<Image>() ?? panel.gameObject.AddComponent<Image>();
-            veil.color = new Color(.008f, .02f, .035f, .8f);
+            veil.color = new Color(.018f, .028f, .021f, .8f);
             veil.raycastTarget = false;
             var card = Image("ContentCard", panel, Ink);
             Anchor(card.rectTransform, new Vector2(.5f, .5f), Vector2.zero, new Vector2(1200, 840), new Vector2(.5f, .5f));
             card.transform.SetSiblingIndex(0);
+            CarvedFrame(card.transform);
             var rule = Image("CardRule", panel, Gold);
             Anchor(rule.rectTransform, new Vector2(.5f, .5f), new Vector2(-598, 419), new Vector2(1196, 3), new Vector2(0, 1));
             rule.transform.SetSiblingIndex(1);
@@ -298,12 +311,22 @@ namespace Tikal.Tests.Editor
             {
                 var button = Find(panel, "Character0" + (i + 1)).GetComponent<Button>();
                 Anchor((RectTransform)button.transform, new Vector2(.5f, .5f),
-                    new Vector2(-450 + (i % 2) * 460, 105 - (i / 2) * 100), new Vector2(420, 82), new Vector2(0, .5f));
+                    new Vector2(-450 + (i % 2) * 460, 95 - (i / 2) * 170), new Vector2(420, 142), new Vector2(0, .5f));
                 StyleButton(button);
+                var label = button.transform.Find("Label").GetComponent<TMP_Text>();
+                label.rectTransform.offsetMin = new Vector2(104, 60);
+                label.rectTransform.offsetMax = new Vector2(-16, -24);
+                var preview = Image("PreviewSurface", button.transform, Ink);
+                Anchor(preview.rectTransform, new Vector2(0, .5f), new Vector2(18, 0), new Vector2(68, 94), new Vector2(0, .5f));
+                Outline(preview.transform, "PreviewBorder", new Color(.30f, .33f, .26f), 1, 0);
+                var placeholder = Text("Placeholder", preview.transform, "PREVIEW", 10, Muted);
+                Frame(placeholder.rectTransform, Vector2.zero, Vector2.one); placeholder.alignment = TextAlignmentOptions.Center;
             }
             var confirm = Find(panel, "ConfirmCharacter").GetComponent<Button>();
-            Anchor((RectTransform)confirm.transform, new Vector2(.5f, .5f), new Vector2(-450, -160), new Vector2(420, 58), new Vector2(0, .5f));
+            Anchor((RectTransform)confirm.transform, new Vector2(.5f, .5f), new Vector2(-450, -215), new Vector2(420, 58), new Vector2(0, .5f));
             StyleButton(confirm, true);
+            var hint = Text("SelectionHint", panel, "ELEGIR propone el personaje. CONFIRMAR guarda la elección.", 17, Muted);
+            Anchor(hint.rectTransform, new Vector2(.5f, .5f), new Vector2(-450, -278), new Vector2(900, 30), new Vector2(0, .5f));
         }
 
         static void PolishSimple(Transform panel, string buttonName)
@@ -350,7 +373,7 @@ namespace Tikal.Tests.Editor
             ConfigureDropdown(camera, new[] { "PRIMERA PERSONA", "TERCERA PERSONA" }, 0);
             PlaceDropdown(panel, camera, "MODO DE CÁMARA", 50, -155);
             var reticle = Find(panel, "Reticle").GetComponent<TMP_Dropdown>();
-            ConfigureDropdown(reticle, new[] { "NINGUNO", "PUNTO", "CRUZ" }, 1);
+            ConfigureDropdown(reticle, new[] { "NINGUNA", "PUNTO", "CRUCETA" }, 1);
             PlaceDropdown(panel, reticle, "RETÍCULO", -490, -200);
 
             var controller = panel.GetComponent<SettingsMenuController>();
@@ -360,6 +383,13 @@ namespace Tikal.Tests.Editor
             AttachControlVisual(invert, invertLabel);
             AttachControlVisual(camera, camera.captionText);
             AttachControlVisual(reticle, reticle.captionText);
+            ChoiceState(camera, new[] { "PRIMERA\nPERSONA", "TERCERA\nPERSONA" }, "ACTIVA");
+            ChoiceState(reticle, new[] { "NINGUNA", "PUNTO", "CRUCETA" }, "ACTIVO");
+            var invertState = Text("ValueState", invert.transform, "DESACTIVADO", 14, Ivory);
+            Anchor(invertState.rectTransform, new Vector2(1, .5f), Vector2.zero, new Vector2(156, 30), new Vector2(1, .5f));
+            invertLabel.rectTransform.sizeDelta = new Vector2(225, 34);
+            invertLabel.rectTransform.anchoredPosition = new Vector2(148, 0);
+            Readout(invert, invertState, false);
         }
 
         static void PlaceSlider(Transform panel, string name, float x, float y)
@@ -378,6 +408,102 @@ namespace Tikal.Tests.Editor
             Find(slider.transform, "Background/Fill").GetComponent<Image>().color = Gold;
             Find(slider.transform, "Handle").GetComponent<Image>().color = Ivory;
             AttachControlVisual(slider, label);
+            label.rectTransform.sizeDelta = new Vector2(335, 26);
+            var value = Text(name + "Value", panel, "", 17, Ivory);
+            value.alignment = TextAlignmentOptions.Right;
+            Anchor(value.rectTransform, new Vector2(.5f, .5f), new Vector2(x + 340, y + 31), new Vector2(90, 26), new Vector2(0, .5f));
+            Readout(slider, value, name == "Master" || name == "Music" || name == "SFX");
+        }
+
+        static GameObject Outline(Transform parent, string name, Color color, float thickness, float outset)
+        {
+            var root = parent.Find(name) as RectTransform;
+            if (root == null)
+            {
+                root = new GameObject(name, typeof(RectTransform)).GetComponent<RectTransform>();
+                root.SetParent(parent, false);
+            }
+            Frame(root, Vector2.zero, Vector2.one);
+            root.offsetMin = Vector2.one * -outset; root.offsetMax = Vector2.one * outset;
+            for (int i = 0; i < 4; i++)
+            {
+                var line = Image("Edge" + i, root, color).rectTransform;
+                bool horizontal = i < 2;
+                Frame(line, horizontal ? new Vector2(0, i) : new Vector2(i - 2, 0),
+                    horizontal ? new Vector2(1, i) : new Vector2(i - 2, 1));
+                line.sizeDelta = horizontal ? new Vector2(0, thickness) : new Vector2(thickness, 0);
+                line.pivot = horizontal ? new Vector2(.5f, i) : new Vector2(i - 2, .5f);
+            }
+            return root.gameObject;
+        }
+
+        static void CheckIcon(Transform parent)
+        {
+            // Geometric check avoids dependence on a font's Unicode checkmark coverage.
+            var old = parent.Find("SavedCheck"); if (old != null) UnityEngine.Object.DestroyImmediate(old.gameObject);
+            var shortStroke = Image("CheckShort", parent, MenuVisualPalette.JadeEdge).rectTransform;
+            Anchor(shortStroke, new Vector2(0, .5f), new Vector2(14, -2), new Vector2(8, 3), new Vector2(.5f, .5f));
+            shortStroke.localRotation = Quaternion.Euler(0, 0, -45);
+            var longStroke = Image("CheckLong", parent, MenuVisualPalette.JadeEdge).rectTransform;
+            Anchor(longStroke, new Vector2(0, .5f), new Vector2(21, 1), new Vector2(15, 3), new Vector2(.5f, .5f));
+            longStroke.localRotation = Quaternion.Euler(0, 0, 45);
+        }
+
+        static void CarvedFrame(Transform panel)
+        {
+            Outline(panel, "CarvedBorder", new Color(.38f, .34f, .23f, .75f), 1, -10);
+            // Abstract stepped masonry corners: architectural geometry, no invented writing.
+            for (int corner = 0; corner < 4; corner++)
+            {
+                var anchor = new Vector2(corner % 2, corner / 2);
+                float x = anchor.x == 0 ? 1 : -1, y = anchor.y == 0 ? 1 : -1;
+                for (int step = 0; step < 3; step++)
+                {
+                    var line = Image("StoneStep" + corner + "_" + step, panel, step == 2 ? MenuVisualPalette.JadeEdge : Gold).rectTransform;
+                    Anchor(line, anchor, new Vector2(x * (16 + step * 7), y * (16 + step * 7)),
+                        new Vector2(36 - step * 8, 2), anchor);
+                }
+            }
+            // Sprite slot for a future supplied stone texture, preserving today's procedural fill.
+            var surface = Image("StoneSurface", panel, new Color(.22f, .26f, .19f, .08f));
+            Frame(surface.rectTransform, new Vector2(.03f, .06f), new Vector2(.97f, .94f));
+            surface.transform.SetAsFirstSibling();
+        }
+
+        static void Readout(Selectable control, TMP_Text text, bool percentage)
+        {
+            var presenter = control.GetComponent<MenuSettingStatePresenter>() ?? control.gameObject.AddComponent<MenuSettingStatePresenter>();
+            var data = new SerializedObject(presenter);
+            data.FindProperty("_slider").objectReferenceValue = control as Slider;
+            data.FindProperty("_toggle").objectReferenceValue = control as Toggle;
+            data.FindProperty("_valueText").objectReferenceValue = text;
+            data.FindProperty("_percentage").boolValue = percentage;
+            data.ApplyModifiedPropertiesWithoutUndo(); presenter.RefreshVisual();
+        }
+
+        static void ChoiceState(TMP_Dropdown control, string[] names, string state)
+        {
+            var presenter = control.GetComponent<MenuSettingStatePresenter>() ?? control.gameObject.AddComponent<MenuSettingStatePresenter>();
+            var data = new SerializedObject(presenter); data.FindProperty("_choice").objectReferenceValue = control;
+            var fills = data.FindProperty("_optionFills"); fills.arraySize = names.Length;
+            var markers = data.FindProperty("_activeMarkers"); markers.arraySize = names.Length;
+            float width = (430f - (names.Length - 1) * 6) / names.Length;
+            for (int i = 0; i < names.Length; i++)
+            {
+                var chip = Image("ActiveOption" + i, control.transform, Stone);
+                Anchor(chip.rectTransform, new Vector2(0, 0), new Vector2(i * (width + 6), -9), new Vector2(width, 64), new Vector2(0, 1));
+                Outline(chip.transform, "Border", new Color(.30f, .33f, .26f), 1, 0);
+                var label = Text("OptionName", chip.transform, names[i], 13, Ivory);
+                label.alignment = TextAlignmentOptions.Center;
+                Anchor(label.rectTransform, new Vector2(.5f, 1), new Vector2(0, -5), new Vector2(width - 16, 32), new Vector2(.5f, 1));
+                var marker = Text("ActiveMarker", chip.transform, state, 12, Ivory); marker.alignment = TextAlignmentOptions.Center;
+                Anchor(marker.rectTransform, new Vector2(.5f, 0), new Vector2(0, 5), new Vector2(100, 19), new Vector2(.5f, 0));
+                CheckIcon(marker.transform);
+                Outline(marker.transform, "ActiveBorder", MenuVisualPalette.JadeEdge, 1, 0);
+                fills.GetArrayElementAtIndex(i).objectReferenceValue = chip;
+                markers.GetArrayElementAtIndex(i).objectReferenceValue = marker.gameObject;
+            }
+            data.ApplyModifiedPropertiesWithoutUndo(); presenter.RefreshVisual();
         }
 
         static void ConfigureNavigation(Transform background)
@@ -474,6 +600,7 @@ namespace Tikal.Tests.Editor
 
         static void ConfigureDropdown(TMP_Dropdown dropdown, string[] options, int defaultValue)
         {
+            var shownValue = dropdown.options.Count > 0 ? dropdown.value : defaultValue;
             var image = dropdown.GetComponent<Image>();
             image.color = Stone;
             var caption = Text("Label", dropdown.transform, string.Empty, 20, Ivory);
@@ -525,7 +652,7 @@ namespace Tikal.Tests.Editor
             dropdown.captionText = caption;
             dropdown.itemText = itemLabel;
             dropdown.options = options.Select(value => new TMP_Dropdown.OptionData(value)).ToList();
-            dropdown.SetValueWithoutNotify(defaultValue);
+            dropdown.SetValueWithoutNotify(Mathf.Clamp(shownValue, 0, options.Length - 1));
             dropdown.RefreshShownValue();
             template.gameObject.SetActive(false);
         }

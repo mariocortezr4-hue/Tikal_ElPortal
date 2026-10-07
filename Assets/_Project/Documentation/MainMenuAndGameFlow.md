@@ -1,4 +1,4 @@
-# Main Menu And Game Flow
+# TIKAL: El Explorador — Main Menu And Game Flow
 
 This milestone adds the base architecture for menu navigation, game flow and persistence. It does not build the final elder cinematic or the real tutorial.
 
@@ -183,7 +183,7 @@ Cancel returns from submenus to the Main Menu. It does not quit the game.
 
 The current `EventSystem` selection is the single source of truth for keyboard and gamepad focus. Buttons and settings controls render a clear amber focus treatment, mouse hover transfers that same selection, and every panel falls back to its first active, interactable control when its preferred action is locked. Level01 stays visible but disabled until onboarding is complete, so Levels initially focuses VOLVER.
 
-The bottom control bar listens to `InputDeviceManager.ActiveDeviceChanged` and resolves semantic Navigate, Submit and Cancel prompts through `InputPromptResolver`. It updates without polling for Keyboard/Mouse, Xbox, PlayStation and generic gamepads; VOLVER is hidden on the root menu and shown in secondary panels. Character focus is temporary, while the persisted character keeps a separate GUARDADO marker until confirmation.
+The bottom control bar listens to `InputDeviceManager.ActiveDeviceChanged` and resolves semantic Navigate, Submit and Cancel prompts through `InputPromptResolver`. It updates without polling for Keyboard/Mouse, Xbox, PlayStation and generic gamepads; VOLVER is hidden on the root menu and shown in secondary panels. Character focus is temporary, while the persisted character keeps a separate SELECCIONADO marker until confirmation.
 
 ## Manual Editor Checklist
 
@@ -216,3 +216,65 @@ I. Settings -> change Camera Mode and Reticle -> leave and reopen the menu -> bo
 `SettingsMenuController` edits settings and saves them through `GamePersistenceService`.
 
 `CharacterSelectionController` edits `SelectedCharacterId` and saves it through `GamePersistenceService`.
+
+## Main Menu visual identity — TIKAL: El Explorador
+
+The canonical game title is **TIKAL: El Explorador**. Main Menu composes TIKAL as the dominant
+heading and EL EXPLORADOR as a separate smaller subtitle, retaining UNA AVENTURA EN LAS SOMBRAS.
+The repository, folders, namespaces, scene IDs and persistence IDs retain their technical names.
+Intro/Timeline is outside this feature; its older title is left for a dedicated cinematic update.
+
+The palette uses obsidian/charcoal, dark green stone, aged amber, restrained jade, warm ivory and
+stone beige. The existing jungle/ruins backdrop and fonts are reused. Procedural stepped corners,
+thin carved borders and translucent stone surfaces create an architectural frame without fake
+Maya glyphs or invented writing. No downloaded or generated texture assets are added. StoneSurface
+Images are explicit future texture slots; character PreviewSurface areas remain placeholders.
+
+Normal controls have dark fills, ivory labels and a subtle border. Focus adds an outer amber border,
+a lateral accent and stronger text. Saved character cards keep a jade fill, a solid jade border and
+a geometric check with SELECCIONADO. Focus on a saved card shows both borders and retains the
+check. Disabled controls retain readable muted labels. The check uses two UI strokes, so it does
+not require a Unicode glyph in the font atlas. Focus never writes character progress; existing
+ELEGIR proposes a pending character and CONFIRMAR saves it through the unchanged controller.
+
+Camera and reticle keep their existing dropdowns, indices, values and navigation. Below each,
+a noninteractive option strip highlights only the current value with a jade fill, check and
+ACTIVA/ACTIVO label. These strips are presentation, not additional controls. MenuSettingStatePresenter
+reads existing dropdown/toggle/slider values, including silent loading, and never owns or writes
+settings. Reticle display labels become Ninguna/Punto/Cruceta while the same three indices remain.
+Volume sliders display percentages, sensitivities display numeric values, and InvertY explicitly
+shows ACTIVADO/DESACTIVADO. No input actions, GameFlow, CharacterSelectionController,
+SettingsMenuController, save format, camera or gameplay code changes.
+
+Main actions and the existing level card retain their flow. Level availability/locked hints remain
+owned by MainMenuController. The existing device hint resolver remains connected: Enter/Escape,
+Xbox A/B, PlayStation cross/circle and generic south/east semantics are unchanged. Pause buttons
+that share MenuSelectableVisual adopt the palette/focus text treatment; Pause functionality and
+its scene authoring are unchanged. Only Main Menu receives the new decorative borders/readouts.
+
+### Authoring and validation
+
+Outside Play Mode, run **Tikal/Authoring/Polish Existing Main Menu**. The canonical tool reuses named
+children/components and validates before saving MainMenu. Repeated runs should produce the same
+UI structure. Generate Main Menu Flow also applies this same visual pass. Do not hand-edit scene
+YAML. This source commit leaves the existing scene materialization for a second commit after QA.
+
+Run **Tikal/Validation/Validate Main Menu Visual Identity** on the authored scene. This preview-scene
+validation checks title/subtitle and absence of old Main Menu branding, sole controllers/EventSystem,
+unique children, marker/border/preview support, combined focus/saved behavior, active-option markers,
+readouts, navigation and responsive canvas. It temporarily changes only preview control/visual
+state using SetValueWithoutNotify, restores it and never saves progress/settings. Existing
+Validate Main Menu Flow also calls these structural checks.
+
+For 1920x1080, 1280x720, 1920x1200 and 1280x800, the validator computes CanvasScaler layout bounds,
+checks marker/control visibility and control overlaps, and checks the main action/card gap. This is
+conceptual geometry validation, not rendered text or screenshot verification. Native Unity QA must
+confirm text fits, glyphs, pointer/gamepad focus and dropdown expansion at all four resolutions.
+
+Manual checklist: run Polish twice; verify no duplicates; open Character, move focus without
+confirming, choose another pending character and confirm, then reopen to inspect the saved marker.
+Check focused+saved together. Switch First/Third and all three reticle values, then reopen Settings;
+markers must match the existing saved controls. Adjust five sliders and InvertY. Test locked and
+available Level01, all eight main actions, keyboard/Xbox/PlayStation/generic hints, and Cancel.
+No Unity batchmode is used. Scene authoring, structural menu execution and rendered/playtest QA
+remain pending until these native Editor steps are performed; static C# compilation is separate.
