@@ -64,6 +64,20 @@ namespace Tikal.Tests.Editor
                 var scene=EditorSceneManager.OpenScene("Assets/_Project/Scenes/Levels/Level01_SecretEntrance.unity");
                 var all=scene.GetRootGameObjects().SelectMany(go=>go.GetComponentsInChildren<Component>(true)).ToArray();
                 Require(all.All(c=>c!=null),"No Missing Scripts");
+                foreach (var label in new[] {
+                    (TMP_Text)Ref(all.OfType<ClueDiscoveryPresenter>().Single(), "_description"),
+                    (TMP_Text)Ref(all.OfType<ClueJournalPresenter>().Single(), "_content") })
+                    Require(label.font.HasCharacter('△', true), "Clue UI font/fallback contains U+25B3, not missing-glyph square");
+                var secretClue = AssetDatabase.LoadAssetAtPath<ClueDefinition>("Assets/_Project/Data/Clues/level01.revelation.asset");
+                Require(secretClue.Id == "level01.clue05" && secretClue.SemanticContent == ClueSemanticContent.SecretCommand &&
+                    secretClue.Description == "Ya conoces la llave.", "Clue05 stores semantic SecretCommand with no universal G text");
+                foreach (var presenter in all.OfType<ClueDiscoveryPresenter>().Cast<UnityEngine.Object>().Concat(all.OfType<ClueJournalPresenter>()))
+                {
+                    var serialized = new SerializedObject(presenter);
+                    Require(serialized.FindProperty("_inputReader").objectReferenceValue == all.OfType<PlayerInputReader>().Single() &&
+                        serialized.FindProperty("_devices").objectReferenceValue == all.OfType<InputDeviceManager>().Single(),
+                        "Clue UI shares canonical action source and active device");
+                }
                 Require(all.OfType<LevelOutcomeController>().Count()==1&&all.OfType<SecretEntranceCommandReceiver>().Count()==1,"One outcome and one explicit secret receiver");
                 Require(all.OfType<EventSystem>().Count()==1&&all.OfType<Canvas>().Count()==1,"One UI event system and reused Canvas");
                 Require(EditorBuildSettings.scenes.Any(s=>s.enabled&&s.path==scene.path),"Level01 registered for real runtime retry");
@@ -165,6 +179,19 @@ namespace Tikal.Tests.Editor
         static void Observe(float seconds)=>Method(typeof(ObservationAlignmentPuzzle),"Evaluate").Invoke(Observation,new object[]{seconds});
         static Vector3 AltarFeet()=>((ObservationPoint)Ref(Observation,"_point")).transform.position+Vector3.up*.28f;
         static Vector3 AimTarget()=>((Transform)Ref(Observation,"_target")).position;
+        static void RequireRenderedControl(TMP_Text label, string control)
+        {
+            Require(label.text.Contains("[ " + control + " ]"), "semantic control text: " + control);
+            label.ForceMeshUpdate(true, true);
+            var start = label.text.IndexOf("[ " + control + " ]", StringComparison.Ordinal) + 2;
+            foreach (var character in label.textInfo.characterInfo.Take(label.textInfo.characterCount)
+                .Where(c => c.index >= start && c.index < start + control.Length && !char.IsWhiteSpace(c.character)))
+                Require(character.textElement != null && character.textElement.unicode == label.text[character.index] && character.isVisible,
+                    "rendered control glyph preserves Unicode instead of missing-glyph replacement: " + control);
+            Require(label.textInfo.characterInfo.Take(label.textInfo.characterCount).Count(c => c.index >= start && c.index < start + control.Length) == control.Length,
+                "all control characters reached TMP renderer: " + control);
+        }
+
         static void NativeLook(int device)
         {
             var look=reader.GetComponent<PlayerLook>();var pivot=(Transform)Ref(look,"_cameraRoot");
@@ -223,7 +250,14 @@ namespace Tikal.Tests.Editor
                 Require(content.transform.GetComponentsInChildren<Renderer>().Any(r=>r.transform.IsChildOf(content.transform.Find("KeySymbol_VisualProxy"))),"Key proxy visible after gate");
                 gate.enabled=false;gate.enabled=true;Observe(1);
                 Require(reveals==1&&tracker.Count==1&&discovery.CanInteract,"Gate re-enable does not duplicate reveal and Examinar enabled");
-                Place(new Vector3(0,.6f,68.5f),new Vector3(0,1.5f,71));Focus(discovery,new Vector3(0,1.5f,71));Keys(Key.E);
+                Place(new Vector3(0,.6f,68.5f),new Vector3(0,1.5f,71));Focus(discovery,new Vector3(0,1.5f,71));
+                if (device < 0) Keys(Key.H); else Pad(pads[device], GamepadButton.East);
+                Refresh();
+                var interactionLabel = (TMP_Text)Ref(prompt, "_label");
+                var beforeControl = device < 0 ? "E" : new[] { "X", "□", "Botón oeste" }[device];
+                Require(interactionLabel.text == "[ " + beforeControl + " ]  Examinar", "Zone05 uses Interact before discovery: " + beforeControl);
+                RequireRenderedControl(interactionLabel, beforeControl);
+                if (device < 0) Keys(Key.E); else Pad(pads[device], GamepadButton.West);
                 Require(discovery.IsSolved&&tracker.Count==2&&tracker.HasClue("level01.clue05")&&path.IsRevealed,"Native Examinar completes Puzzle05 and opens path");
                 discovery.Interact();discovery.enabled=false;discovery.enabled=true;
                 foreach(var reward in discovery.transform.root.GetComponentsInChildren<PuzzleClueReward>(true))if((PuzzleBase)Ref(reward,"_puzzle")==discovery){reward.enabled=false;reward.enabled=true;}
@@ -232,6 +266,9 @@ namespace Tikal.Tests.Editor
                 Require(clue.SemanticContent==ClueSemanticContent.SecretCommand&&!clue.Description.Contains("G")&&clue.Title=="La llave","Clue05 stores semantic content rather than physical binding");
                 var popup=UnityEngine.Object.FindAnyObjectByType<ClueDiscoveryPresenter>();var popupText=(TMP_Text)Ref(popup,"_description");
                 var popupTitle=(TMP_Text)Ref(popup,"_title");
+                var revealedControl = device < 0 ? "G" : new[] { "Y", "△", "Botón norte" }[device];
+                Require(popupText.text.Contains("[ " + revealedControl + " ]"), "Native Examine event renders SecretCommand, not Interact: " + revealedControl);
+                RequireRenderedControl(popupText, revealedControl);
                 Keys(Key.H);Require(popupText.text.Contains("[ G ]")&&popupTitle.text.Contains("DESCUBRIMIENTO")&&popupTitle.text.Contains("LA LLAVE"),"Keyboard discovery presents DESCUBRIMIENTO / LA LLAVE / G");
                 Keys(Key.J);Require(journal.IsOpen&&((TMP_Text)Ref(journal,"_content")).text.Contains("LA MIRADA"),"Journal opens with discovered clues");
                 string[] expected={"Y","△","Botón norte"};
@@ -239,12 +276,20 @@ namespace Tikal.Tests.Editor
                 {
                     Pad(pads[pad],GamepadButton.North);
                     Require(popupText.text.Contains("[ "+expected[pad]+" ]")&&((TMP_Text)Ref(journal,"_content")).text.Contains("[ "+expected[pad]+" ]")&&tracker.Count==2,"Device-aware discovery and already open Journal "+expected[pad]);
+                    RequireRenderedControl(popupText, expected[pad]);
+                    RequireRenderedControl((TMP_Text)Ref(journal,"_content"), expected[pad]);
                 }
                 Keys(Key.H);Require(((TMP_Text)Ref(journal,"_content")).text.Contains("[ G ]"),"Open Journal switches back to keyboard");
-                Keys(Key.J);
+                RequireRenderedControl(popupText, "G");
+                RequireRenderedControl((TMP_Text)Ref(journal,"_content"), "G");
                 actions.Player.SecretCommand.ApplyBindingOverride(0,"<Keyboard>/h");
-                Keys(Key.J);Require(((TMP_Text)Ref(journal,"_content")).text.Contains("[ H ]"),"Journal resolves a real rebinding without hardcoded G");
-                Keys(Key.J);actions.Player.SecretCommand.RemoveAllBindingOverrides();
+                InputSystem.Update();
+                Require(journal.IsOpen && ((TMP_Text)Ref(journal,"_content")).text.Contains("[ H ]") &&
+                    popupText.text.Contains("[ H ]"), "Already open Journal and visible discovery resolve live effective binding without device change");
+                actions.Player.SecretCommand.RemoveAllBindingOverrides();InputSystem.Update();
+                Require(((TMP_Text)Ref(journal,"_content")).text.Contains("[ G ]") && popupText.text.Contains("[ G ]") &&
+                    tracker.Count == 2 && tracker.DiscoveredClues.Contains(clue), "Binding/device refresh preserves discovered clue and restores keyboard hint");
+                Keys(Key.J);
                 Require(!popupText.isTextOverflowing&&!popupTitle.isTextOverflowing,"Discovery labels fit their rects");
                 Place(new Vector3(6,.6f,82),new Vector3(6,2.22f,89));Refresh();
                 Require(interaction.CurrentInteractable==null&&outcome.State==LevelOutcome.Playing,"Final warning visual needs no interaction and remains safe");

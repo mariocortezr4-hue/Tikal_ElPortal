@@ -106,6 +106,14 @@ namespace Tikal.Tests.Editor
                 Prompt(interact,InputDeviceFamily.KeyboardMouse,"E"); Prompt(interact,InputDeviceFamily.Xbox,"X"); Prompt(interact,InputDeviceFamily.PlayStation,"□");
                 Prompt(interact,InputDeviceFamily.GenericGamepad,"Botón oeste");
                 Prompt(secret,InputDeviceFamily.KeyboardMouse,"G"); Prompt(secret,InputDeviceFamily.Xbox,"Y"); Prompt(secret,InputDeviceFamily.PlayStation,"△");
+                Prompt(secret,InputDeviceFamily.GenericGamepad,"Botón norte");
+                foreach (var family in new[] { InputDeviceFamily.KeyboardMouse, InputDeviceFamily.Xbox, InputDeviceFamily.PlayStation, InputDeviceFamily.GenericGamepad })
+                {
+                    Require(InputPromptResolver.Resolve(interact, family).ControlPath ==
+                        (family == InputDeviceFamily.KeyboardMouse ? "<Keyboard>/e" : "<Gamepad>/buttonWest"), "Interact effective binding: " + family);
+                    Require(InputPromptResolver.Resolve(secret, family).ControlPath ==
+                        (family == InputDeviceFamily.KeyboardMouse ? "<Keyboard>/g" : "<Gamepad>/buttonNorth"), "SecretCommand effective binding: " + family);
+                }
                 var binding=interact.GetBindingIndex(InputBinding.MaskByGroup("KeyboardMouse"));
                 interact.ApplyBindingOverride(binding,"<Keyboard>/f");
                 Require(InputPromptResolver.Resolve(interact,InputDeviceFamily.KeyboardMouse).DisplayText=="F" && InputPromptResolver.Resolve(interact,InputDeviceFamily.KeyboardMouse).ControlPath=="<Keyboard>/f","Resolver respects effective binding overrides.");

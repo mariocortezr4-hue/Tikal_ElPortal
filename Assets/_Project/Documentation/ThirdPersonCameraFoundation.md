@@ -191,6 +191,16 @@ have not been executed by this change.
 
 ## FPS, Tutorial and Level01 compatibility
 
+Reticle alignment audit: the authored Dot/Cross/root are already centered on the full-screen
+overlay Canvas, including gameplay scene overrides. TPS visual aim already uses
+ViewportPointToRay(0.5, 0.5); FPS uses the equivalent camera-forward ray. No numerical reticle
+offset was found. A shoulder-shifted character is intentional and can create a perceived
+misalignment; confirming the reported visual issue still requires an interactive view.
+ReticlePresenter now enforces center anchors/pivot and zero offset when enabled, independent
+of camera mode. Foundation validation checks authored layout, full viewport, CanvasScaler,
+camera-center direction and both visuals at 1920x1080, 1280x720, 1920x1200 and 1280x800.
+None/Dot/Cross, visibility gates, camera feel and player-origin TPS reach remain unchanged.
+
 PlayerMovement is untouched: walk/sprint/jump/crouch, acceleration, gravity and headroom behavior
 stay as authored. PlayerLook retains FPS pitch/yaw/sensitivity, eye-height smoothing and its
 75-to-78 sprint FOV. The proxy/visual root are hidden in FPS. The original camera's local pose,

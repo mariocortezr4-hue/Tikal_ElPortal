@@ -67,6 +67,7 @@ namespace Tikal.Tests.Editor
             var players = ThirdPersonCameraFoundationAuthoring.Components<PlayerController>(scene);
             Require(players.Length == 1, scene.path + ": one Explorer");
             ValidatePlayer(players[0]);
+            ValidateReticle(scene, players[0].GetComponentInChildren<Camera>(true));
             var cameras = ThirdPersonCameraFoundationAuthoring.Components<Camera>(scene).Where(c => c.enabled && c.gameObject.activeInHierarchy).ToArray();
             Require(cameras.Length == 1 && cameras[0].CompareTag("MainCamera"), scene.path + ": exactly one active MainCamera");
             Require(ThirdPersonCameraFoundationAuthoring.Components<AudioListener>(scene).Count(l => l.enabled && l.gameObject.activeInHierarchy) == 1,
@@ -142,6 +143,51 @@ namespace Tikal.Tests.Editor
                 }
             }
             else Require(visual.activeSelf == controller.OwnsLook && proxy.activeSelf == controller.OwnsLook, "live mode visibility");
+        }
+
+        private static void ValidateReticle(Scene scene, Camera camera)
+        {
+            var reticles = ThirdPersonCameraFoundationAuthoring.Components<ReticlePresenter>(scene);
+            // The movement-only test scene deliberately has no HUD.
+            if (reticles.Length == 0 && scene.path == "Assets/_Project/Scenes/Testing/PlayerMovementTest.unity") return;
+            Require(reticles.Length == 1, "one reticle in gameplay HUD");
+            var reticle = reticles[0];
+            var serialized = new SerializedObject(reticle);
+            var dot = (GameObject)serialized.FindProperty("_dot").objectReferenceValue;
+            var cross = (GameObject)serialized.FindProperty("_cross").objectReferenceValue;
+            Require(dot != null && cross != null, "both reticle modes assigned");
+            foreach (var rect in new[] { (RectTransform)reticle.transform, (RectTransform)dot.transform, (RectTransform)cross.transform })
+                Require(rect.anchorMin == new Vector2(.5f, .5f) && rect.anchorMax == rect.anchorMin &&
+                    rect.pivot == rect.anchorMin && rect.anchoredPosition3D == Vector3.zero,
+                    "reticle center anchors/pivot and zero offset: " + rect.name);
+            var canvas = reticle.GetComponentInParent<Canvas>();
+            Require(canvas != null && canvas.renderMode == RenderMode.ScreenSpaceOverlay && reticle.transform.parent == canvas.transform,
+                "reticle directly follows the full-screen HUD canvas");
+            var scaler = canvas.GetComponent<UnityEngine.UI.CanvasScaler>();
+            Require(scaler != null && scaler.uiScaleMode == UnityEngine.UI.CanvasScaler.ScaleMode.ScaleWithScreenSize,
+                "existing responsive CanvasScaler retained");
+            Require(camera.rect == new Rect(0, 0, 1, 1), "gameplay camera uses full viewport");
+            var ray = camera.ViewportPointToRay(new Vector3(.5f, .5f, 0));
+            Require(Vector3.Dot(ray.direction, camera.transform.forward) > .99999f, "viewport center equals camera forward in FPS/TPS");
+            foreach (var size in new[] { new Vector2(1920, 1080), new Vector2(1280, 720), new Vector2(1920, 1200), new Vector2(1280, 800) })
+            {
+                var fixture = new GameObject("Temporary reticle canvas", typeof(RectTransform), typeof(Canvas));
+                try
+                {
+                    fixture.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
+                    var parent = (RectTransform)fixture.transform;
+                    parent.sizeDelta = size;
+                    foreach (var visual in new[] { dot, cross })
+                    {
+                        var clone = UnityEngine.Object.Instantiate(visual, parent, false);
+                        var rect = (RectTransform)clone.transform;
+                        var center = parent.InverseTransformPoint(rect.TransformPoint(rect.rect.center));
+                        Require(center.sqrMagnitude < .000001f, visual.name + " stays at viewport center for " + size);
+                        UnityEngine.Object.DestroyImmediate(clone);
+                    }
+                }
+                finally { UnityEngine.Object.DestroyImmediate(fixture); }
+            }
         }
 
         private static void ValidateMissingScripts(GameObject root)
