@@ -151,6 +151,7 @@ namespace Tikal.Tests.Editor
                 var panel=((GameObject)serialized.FindProperty("_panel").objectReferenceValue).GetComponent<RectTransform>();panel.sizeDelta=new Vector2(660,180);
                 var title=((TMP_Text)serialized.FindProperty("_title").objectReferenceValue);title.rectTransform.sizeDelta=new Vector2(620,66);title.rectTransform.anchoredPosition=new Vector2(0,35);title.fontSize=23;
                 var description=(TMP_Text)serialized.FindProperty("_description").objectReferenceValue;description.rectTransform.sizeDelta=new Vector2(620,65);description.rectTransform.anchoredPosition=new Vector2(0,-35);description.fontSize=24;
+                SecretEntranceAuthoring.Apply(scene);
                 AssetDatabase.SaveAssets();EditorSceneManager.SaveScene(scene);
                 Debug.Log("TIKAL_FINAL_PUZZLES_REDESIGN_AUTHORED");if(Application.isBatchMode)EditorApplication.Exit(0);
             }

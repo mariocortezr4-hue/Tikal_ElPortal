@@ -82,8 +82,7 @@ namespace Tikal.Tests.Editor
                 Require(all.OfType<EventSystem>().Count()==1&&all.OfType<Canvas>().Count()==1,"One UI event system and reused Canvas");
                 Require(EditorBuildSettings.scenes.Any(s=>s.enabled&&s.path==scene.path),"Level01 registered for real runtime retry");
                 var receiver=all.OfType<SecretEntranceCommandReceiver>().Single();
-                Require(receiver.Range==3&&Mathf.Approximately(receiver.MinimumDot,.7f),"Exact 3m / dot 0.7 configuration");
-                foreach(var name in new[]{"_inputReader","_player","_camera","_target","_zone","_outcome"})Require(Ref(receiver,name)!=null,"Explicit secret reference "+name);
+                SecretEntranceValidation.ValidateScene(scene);
                 Require(!all.OfType<GlyphStone>().Any()&&!all.OfType<GlyphSequencePuzzle>().Any()&&!all.OfType<RevelationStele>().Any()&&!all.OfType<RevelationPuzzle>().Any(),"No old playable mechanisms left in scene");
                 Require(all.OfType<PuzzleBase>().Count()==5,"Exactly five canonical puzzles");
                 var observation=all.OfType<ObservationAlignmentPuzzle>().Single();
@@ -405,7 +404,11 @@ namespace Tikal.Tests.Editor
             var first=SolveJourney();while(first.MoveNext())yield return first.Current;
             Walk(6,74,true);Walk(0,67,true);Walk(0,39,true);Walk(29,39,true);Walk(29,12,true);Walk(0,12,true);Walk(0,2.5f,true);
             Require(outcome.State==LevelOutcome.Playing&&tracker.Count==5,"Canonical return from warning through all five zones preserves decision");
-            reader.GetComponent<PlayerController>().enabled=true;camera.transform.LookAt(((Transform)Ref(secret,"_target")).position);Keys(Key.G);
+            door.Interact();
+            for(int closeStep=0;closeStep<100&&door.State!=Door.DoorState.Closed;closeStep++)
+            { Method(typeof(Door),"Tick").Invoke(door,new object[]{.02f}); yield return null; }
+            Require(door.State==Door.DoorState.Closed,"Canonical journey closes original Door before secret decision");
+            reader.GetComponent<PlayerController>().enabled=true;Keys(Key.G);
             Require(outcome.State==LevelOutcome.Victory&&tracker.Count==5,"CANONICAL native G at original Entrance wins after all five puzzles");
             OutcomeCheck(LevelOutcome.Victory);
             Debug.Log("TIKAL_REDESIGN_JOURNEY_CANONICAL_PASSED: physical traversal, native E and production rotation ticks, five real puzzle rewards, visual warning backtrack, original Door secret");
@@ -417,7 +420,7 @@ namespace Tikal.Tests.Editor
             Debug.Log("TIKAL_REDESIGN_JOURNEY_DEFEAT_PASSED: all five puzzles, warning, actual no-return crossing, Defeat and Retry");
             reset=Retry(1);while(reset.MoveNext())yield return reset.Current;
             Walk(-6,-10);Walk(-6,-3);Walk(0,-3);Walk(0,-2.6f);
-            reader.GetComponent<PlayerController>().enabled=true;camera.transform.LookAt(((Transform)Ref(secret,"_target")).position);Pad(pads[2],GamepadButton.North);
+            reader.GetComponent<PlayerController>().enabled=true;Pad(pads[2],GamepadButton.North);
             Require(outcome.State==LevelOutcome.Victory&&tracker.Count==0&&UnityEngine.Object.FindObjectsByType<PuzzleBase>().All(p=>!p.IsSolved),"SPEEDRUN physical spawn to Entrance wins without puzzle or clue");
             OutcomeCheck(LevelOutcome.Victory);
             Debug.Log("TIKAL_REDESIGN_JOURNEY_SPEEDRUN_PASSED: physical approach, Generic buttonNorth, zero clues and unsolved puzzles");
