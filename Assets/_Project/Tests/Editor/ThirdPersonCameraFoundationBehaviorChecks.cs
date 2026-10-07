@@ -65,7 +65,8 @@ namespace Tikal.Tests.Editor
                 Check(Mathf.Abs(Mathf.DeltaAngle(orbitBefore, controller.Yaw) - 12) < .01f && instance.transform.rotation == yawBefore, "free orbit; player stays still");
                 orbitBefore = controller.Yaw;
                 controller.TickLook(Vector2.right, LookInputMode.Rate, .02f);
-                Check(Mathf.Abs(Mathf.DeltaAngle(orbitBefore, controller.Yaw) - 3) < .01f, "stick rate sensitivity uses deltaTime");
+                Check(Mathf.Abs(Mathf.DeltaAngle(orbitBefore, controller.Yaw) - controller.Profile.GamepadYawRate * .02f) < .01f,
+                    "stick rate uses profile base rate and existing sensitivity normalization");
                 settings.MouseSensitivity = .24f;
                 settings.GamepadSensitivity = 100f;
                 settings.InvertY = true;
@@ -132,6 +133,16 @@ namespace Tikal.Tests.Editor
                 Check(returning > compressed && returning < 3.3f, "wall removal returns gradually");
                 for (var i = 0; i < 100; i++) Invoke(controller, "UpdateThirdPersonPose", .02f);
                 Check(Mathf.Abs(Vector3.Distance(origin, camera.transform.position) - Mathf.Sqrt(3.4f * 3.4f + .35f * .35f)) < .03f, "unobstructed full distance restored");
+                var radius = ThirdPersonCameraMath.ConfiguredBoom(controller.Profile.Distance, controller.Profile.ShoulderOffset).magnitude;
+                var fov = camera.fieldOfView;
+                for (var frame = 0; frame < 240; frame++)
+                {
+                    controller.TickLook(new Vector2(15, 0), LookInputMode.Delta, 1f / 60f);
+                    Invoke(controller, "UpdateThirdPersonPose", 1f / 60f);
+                    Check(Mathf.Abs(Vector3.Distance(origin, camera.transform.position) - radius) < .015f,
+                        "unobstructed orbit keeps configured boom radius");
+                    Check(camera.fieldOfView == fov, "orbit leaves FOV unchanged");
+                }
                 controller.ApplyCameraMode(CameraMode.FirstPerson);
                 Check(camera.transform.localPosition == fpsLocalPosition && camera.transform.localRotation == fpsLocalRotation, "runtime switch restores exact FPS local pose");
                 ValidateInteractionHits(instance, camera, controller, fixture.transform);

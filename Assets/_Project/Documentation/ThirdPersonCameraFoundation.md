@@ -80,8 +80,10 @@ only when absent. Edit it in the Inspector without recompilation:
 | CollisionRadius | 0.20 m |
 | CollisionPadding | 0.10 m |
 | MinimumDistance | 0.45 m |
-| PositionSmoothTime | 0.12 s |
+| CollisionReturnSmoothTime | 0.12 s |
 | RotationSmoothTime | 0.06 s |
+| GamepadYawRate / GamepadPitchRate | 190 / 145 degrees/s |
+| GamepadResponseExponent | 1.5 |
 | CollisionMask | All layers |
 
 Distance is the backward arm length; the diagonal shoulder arm is slightly longer.
@@ -125,13 +127,67 @@ Every query ignores triggers. A SphereCast from the pivot along the diagonal sho
 selects the nearest non-self hit, subtracting padding. It can retract below MinimumDistance
 when a closer obstruction requires it. All hits are considered, avoiding fixed-buffer overflow.
 
-New obstruction distance retracts immediately. Clearance restores arm length via SmoothDamp.
-Yaw/pitch and position are smoothed separately. A second SphereCast constrains the actual
-smoothed position so smoothing cannot interpolate through a corner. OverlapSphere and
+New obstruction distance retracts immediately. Clearance restores arm length via SmoothDamp,
+using CollisionReturnSmoothTime. Only yaw/pitch and collision recovery are smoothed; the world
+position is constructed directly from the final rotation and current radial distance. No
+Cartesian position interpolation or second smoothing pass can cut the orbit arc. OverlapSphere and
 ComputePenetration resolve initial overlap, which SphereCast alone cannot detect, including
 low ceilings and pivots near geometry. Depenetration is bounded to eight passes; pathological
 overlapping solid volumes or a spawn embedded in geometry still require level-authoring fixes
 and manual verification. Queries allocate hit arrays in v1; optimize after profiling if needed.
+
+### Camera feel polish diagnosis and input
+
+The former implementation first smoothed orbit angles, then applied Vector3.SmoothDamp from
+the previous world position to the rotated boom endpoint. That interpolation follows a chord
+inside the orbit circle, temporarily shortening Pivot-to-camera distance. It also applied two
+successive smoothing stages to camera response. TPS FOV was already stable; LateUpdate was
+already after all player Update calls and before interaction LateUpdate. Neither FOV nor update
+ordering was the source of the confirmed geometric radius compression.
+
+Now the configured local boom is `(ShoulderOffset, 0, -Distance)`, rotated by smoothed pitch/yaw.
+The configured radial length is sqrt(Distance squared + ShoulderOffset squared), approximately
+3.418 m for 3.4/0.35. CollisionDistance is the SphereCast hit distance minus padding, capped at
+that configured radius. CurrentDistance retracts immediately and recovers smoothly, then places
+the camera exactly on that direction/radius. Orbit alone cannot reduce radius. The shoulder
+rotates with the same rig and scales toward the pivot on retraction, retaining collision safety.
+PositionSmoothTime migrates to CollisionReturnSmoothTime through FormerlySerializedAs; existing
+profile assets keep their tuned 0.12 value without hand-edited YAML. RotationSmoothTime remains
+0.06 s; there is no extra input acceleration or translation-follow lag. A short existing angular
+settling tail remains when input is released; no long inertia is added. TPS FOV remains the
+authored base 75, while the existing FPS sprint transition 75-to-78 remains unchanged.
+
+Look bindings have no added processors; the generic Gamepad rightStick layout already applies
+radial stickDeadzone. Installed InputSettings defaults are inner 0.125 and outer 0.925; no custom
+settings asset overrides were found. Keep them: no second custom deadzone is applied. The 0.25
+InputDeviceManager threshold selects active device and never gates camera Look.
+
+TPS gamepad Look preserves radial direction with output magnitude `magnitude^1.5`. Compared with
+the former linear response, processed magnitude 0.2 becomes approximately 0.089, giving finer
+near-center control while full stick still reaches the full rate. This moderate exponent is a
+blockout tuning choice for exploration, to confirm by another controller playtest. Base yaw is
+190 degrees/s; pitch is 145 degrees/s (0.763 of yaw). The existing GamepadSensitivity acts as
+`setting / 150`, matching its existing default 150. For example, 75 halves both rates, 300 doubles
+them. No preference values or JSON format are changed. PlayStation and Xbox use the same path.
+
+Gamepad angular delta is shaped stick times per-axis degrees/s times that multiplier times
+deltaTime. Mouse stays raw frame delta times existing MouseSensitivity: no curve, deadzone,
+acceleration or deltaTime multiplier. InvertY and pitch clamps -30/+70 are retained. FPS input
+processing, approved movement/turn time 0.14, interaction and all gameplay flows are unchanged.
+
+The Foundation validation menu now runs scene-free tests for full 360-degree radii at three
+pitches, the former chord compression, radial curve/rates, settings scaling, mouse delta and
+30/60/120 FPS gamepad integration, plus collision retract/return math. Its source contracts
+reject Cartesian position smoothing. The existing Play Mode behavior checks add repeated orbit
+radius and FOV assertions, and retain real collision recovery and FPS checks. Run them and repeat
+mouse/PlayStation/Xbox feel tests interactively; mathematical checks do not establish subjective
+feel, wall clipping or visual jitter correctness in a live scene.
+
+Verification for this polish: 1,099 scene-free mathematical assertions passed with the installed
+UnityEngine managed assembly. Runtime and Editor sources compile with no errors and no new
+warnings against HEAD (217 existing runtime warnings, two Editor warnings). No Unity batchmode
+was used. The new Play Mode radius/FOV assertions and another interactive controller playtest
+have not been executed by this change.
 
 ## FPS, Tutorial and Level01 compatibility
 

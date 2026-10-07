@@ -19,6 +19,8 @@ namespace Tikal.Tests.Editor
         [MenuItem("Tikal/Validation/Validate Third Person Camera Foundation")]
         public static void Run()
         {
+            try { Debug.Log("TPS camera feel math checks passed: " + ThirdPersonCameraFeelChecks.Run()); }
+            catch (Exception exception) { Debug.LogException(exception); return; }
             if (EditorApplication.isPlayingOrWillChangePlaymode)
             {
                 try { ValidateScene(SceneManager.GetActiveScene()); Debug.Log("TIKAL_THIRD_PERSON_CAMERA_RUNTIME_REFERENCES_VALID"); }
@@ -158,6 +160,10 @@ namespace Tikal.Tests.Editor
                 interaction.Contains("ReferenceEquals(hit.collider.GetComponentInParent<IInteractable>(), candidate)") &&
                 interaction.Contains("QueryTriggerInteraction.Ignore"), "physical first-solid occlusion and ignored triggers");
             Require(camera.Contains("QueryTriggerInteraction.Ignore") && camera.Contains("IsChildOf(transform)"), "ignore triggers and own hierarchy");
+            Require(camera.Contains("ThirdPersonCameraMath.BoomOffset") && camera.Contains("ThirdPersonCameraMath.RecoverDistance") &&
+                !camera.Contains("Vector3.SmoothDamp") && !camera.Contains("_positionVelocity"), "orbital placement and collision-only distance smoothing");
+            Require(camera.Contains("_profile.GamepadResponseExponent") && camera.Contains("_profile.GamepadYawRate") &&
+                camera.Contains("_profile.GamepadPitchRate"), "gamepad curve and axis rates configured");
             Require(camera.Contains("_look.MouseSensitivity") && camera.Contains("_look.GamepadSensitivity") && camera.Contains("_look.InvertY"), "existing sensitivity/InvertY reused");
             Require(camera.Contains("_player.GameplayActive") && camera.Contains("_input.GameplayEnabled"), "shared Pause/Journal/modal gate");
             Require(camera.Contains("SettingsApplied +=") && camera.Contains("SettingsApplied -=") && !camera.Contains("PlayerPrefs") && !camera.Contains("ReticleMode"), "event settings; no extra preference/reticle system");

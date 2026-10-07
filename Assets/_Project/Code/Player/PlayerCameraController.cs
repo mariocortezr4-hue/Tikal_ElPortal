@@ -28,8 +28,7 @@ namespace Tikal.Player
         private float _yaw, _pitch, _smoothYaw, _smoothPitch;
         private float _yawVelocity, _pitchVelocity, _distanceVelocity;
         private float _distance;
-        private Vector3 _positionVelocity;
-        private bool _initialized, _snap;
+        private bool _initialized;
         private SphereCollider _collisionProbe;
 
         public CameraMode Mode { get; private set; } = CameraMode.FirstPerson;
@@ -120,13 +119,11 @@ namespace Tikal.Player
                 _smoothYaw = _yaw;
                 _smoothPitch = _pitch;
                 _yawVelocity = _pitchVelocity = _distanceVelocity = 0;
-                _positionVelocity = Vector3.zero;
-                _distance = _profile.Distance;
+                _distance = ThirdPersonCameraMath.ConfiguredBoom(_profile.Distance, _profile.ShoulderOffset).magnitude;
                 _mainCamera.fieldOfView = _baseFov;
-                _snap = true;
                 // A deliberate mode change also gets a valid pose while a UI lock is active.
                 // This does not consume Look or release the shared gameplay lock.
-                UpdateThirdPersonPose(_profile.PositionSmoothTime);
+                UpdateThirdPersonPose(_profile.CollisionReturnSmoothTime);
             }
         }
 
@@ -134,8 +131,9 @@ namespace Tikal.Player
         {
             if (!OwnsLook || _player == null || !_player.GameplayActive || _input == null ||
                 !_input.GameplayEnabled || deltaTime <= 0) return;
-            var rotation = mode == LookInputMode.Delta ? look * _look.MouseSensitivity :
-                Vector2.ClampMagnitude(look, 1f) * (_look.GamepadSensitivity * deltaTime);
+            var rotation = ThirdPersonCameraMath.LookDelta(look, mode, _look.MouseSensitivity,
+                _look.GamepadSensitivity, _profile.GamepadYawRate, _profile.GamepadPitchRate,
+                _profile.GamepadResponseExponent, deltaTime);
             _yaw = Mathf.Repeat(_yaw + rotation.x, 360f);
             _pitch = Mathf.Clamp(_pitch + rotation.y * (_look.InvertY ? 1f : -1f), _profile.PitchMin, _profile.PitchMax);
         }
@@ -157,26 +155,19 @@ namespace Tikal.Player
             pivotLocal.y = Mathf.Min(_profile.PivotHeight, _look.CameraRoot.localPosition.y);
             _thirdPersonPivot.localPosition = pivotLocal;
             var pivot = _thirdPersonPivot.position;
-            var desiredOffset = rotation * new Vector3(_profile.ShoulderOffset, 0, -_profile.Distance);
+            var configuredBoom = ThirdPersonCameraMath.ConfiguredBoom(_profile.Distance, _profile.ShoulderOffset);
+            var desiredOffset = rotation * configuredBoom;
             var direction = desiredOffset.normalized;
-            var fullDistance = desiredOffset.magnitude;
+            var fullDistance = configuredBoom.magnitude;
             var safeDistance = SafeDistance(pivot, direction, fullDistance);
-            var targetDistance = safeDistance;
-            // Occlusion retracts immediately; the return uses the profile's smoothing.
-            _distance = safeDistance < _distance ? safeDistance : Mathf.SmoothDamp(_distance, targetDistance,
-                ref _distanceVelocity, _profile.PositionSmoothTime, Mathf.Infinity, deltaTime);
-            if (safeDistance <= _distance) _distanceVelocity = 0;
-            var desired = pivot + direction * _distance;
-            var candidate = _snap ? desired : Vector3.SmoothDamp(_mainCamera.transform.position, desired,
-                ref _positionVelocity, _profile.PositionSmoothTime, Mathf.Infinity, deltaTime);
-            // Smoothing can cross a corner: cast again against the actual smoothed path.
-            var offset = candidate - pivot;
-            if (offset.sqrMagnitude > 0)
-                candidate = pivot + offset.normalized * SafeDistance(pivot, offset.normalized, offset.magnitude);
+            // Smooth only collision recovery. Smoothed angles describe the arc directly;
+            // Cartesian position interpolation would cut that arc and compress the radius.
+            _distance = ThirdPersonCameraMath.RecoverDistance(_distance, safeDistance,
+                ref _distanceVelocity, _profile.CollisionReturnSmoothTime, deltaTime);
+            var candidate = pivot + ThirdPersonCameraMath.BoomOffset(desiredOffset, _distance);
             candidate = ResolveOverlaps(candidate);
             _mainCamera.transform.SetPositionAndRotation(candidate, rotation);
             _lookTarget.position = pivot + rotation * Vector3.forward * _profile.Distance;
-            _snap = false;
         }
 
         private bool IsSelf(Collider collider) => collider == null || collider.transform.IsChildOf(transform);

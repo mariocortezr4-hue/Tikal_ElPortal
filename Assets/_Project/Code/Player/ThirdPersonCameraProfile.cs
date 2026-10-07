@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Tikal.Player
 {
@@ -13,13 +14,18 @@ namespace Tikal.Player
         [Min(.01f)] public float CollisionRadius = .20f;
         [Min(0)] public float CollisionPadding = .10f;
         [Min(0)] public float MinimumDistance = .45f;
-        [Min(.001f)] public float PositionSmoothTime = .12f;
+        [FormerlySerializedAs("PositionSmoothTime")]
+        [Min(.001f)] public float CollisionReturnSmoothTime = .12f;
         [Min(.001f)] public float RotationSmoothTime = .06f;
+        [Min(0)] public float GamepadYawRate = 190f;
+        [Min(0)] public float GamepadPitchRate = 145f;
+        [Range(1, 3)] public float GamepadResponseExponent = 1.5f;
         public LayerMask CollisionMask = ~0;
 
         public bool IsValid => Distance > MinimumDistance && MinimumDistance >= 0 &&
             PivotHeight >= 0 && CollisionRadius > 0 && CollisionPadding >= 0 &&
             CollisionMask.value != 0 && PitchMin >= -89 && PitchMax <= 89 && PitchMin < PitchMax &&
-            PositionSmoothTime > 0 && RotationSmoothTime > 0;
+            CollisionReturnSmoothTime > 0 && RotationSmoothTime > 0 &&
+            GamepadYawRate >= 0 && GamepadPitchRate >= 0 && GamepadResponseExponent >= 1 && GamepadResponseExponent <= 3;
     }
 }
