@@ -39,6 +39,8 @@ namespace Tikal.UI
         private float _previousTimeScale;
         private GameObject _panel;
         public bool IsOpen { get; private set; }
+        public bool IsListening => isActiveAndEnabled && _subscribed;
+        public bool HasIndependentOverlay => _overlay != null && !transform.IsChildOf(_overlay.transform);
         public event Action<bool> PauseChanged;
         public bool IsConfigured => _player != null && _input != null && _devices != null && _flow != null &&
             _events != null && _settings != null && _settings.IsConfigured && _overlay != null &&
@@ -54,7 +56,7 @@ namespace Tikal.UI
 
         private void OnEnable()
         {
-            if (!IsConfigured) { Debug.LogError("Apply Gameplay Pause Menu authoring: missing references.", this); return; }
+            if (!IsConfigured || !HasIndependentOverlay) { Debug.LogError("Apply Gameplay Pause Menu authoring: missing references or listener inside hidden overlay.", this); return; }
             _overlay.SetActive(false);
             _ui = new TikalInputActions();
             _ui.UI.Cancel.performed += OnCancel;

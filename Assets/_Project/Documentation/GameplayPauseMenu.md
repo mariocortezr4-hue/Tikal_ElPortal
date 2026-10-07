@@ -91,9 +91,28 @@ mode changes, reticle changes after Resume, sensitivity feel, audio persistence,
 Level01 disabled checkpoint button, Main Menu→Continue with incomplete Tutorial and with Level01,
 and Pause rejection during defeat/victory/Tutorial exit. No batchmode is used.
 
-Source verification: runtime and Editor compile with zero errors and no new warnings relative
-to HEAD (217 existing runtime warnings, two Editor warnings). Static asset checks confirm the
-two original Pause bindings and eight reusable settings references in Main Menu. Protected
-movement/camera/puzzle/Tutorial code and materialized scenes/prefabs are unchanged. The authoring
-and Play Mode validation have not been executed in this source-only pass; generated UI and scene
-changes are intentionally reserved for the post-playtest commit requested by the user.
+## Runtime integration repair
+
+The first authoring implementation used Single() on the imported UI InputActionReference
+sub-assets. The installed Input System importer creates both the current reference and a hidden
+legacy compatibility reference for each action. Tutorial has no EventSystem yet, so creating its
+UI input module failed on the first action reference before saving Tutorial or processing Level01.
+The generated prefab alone therefore did not provide a Pause listener in either saved scene.
+
+ActionReference now matches the canonical UI action ID and prefers its visible imported reference,
+accepting the legacy duplicate without adding bindings or creating new actions. Scene saving is
+checked, and authoring asserts that the configured enabled listener remains outside the hidden
+overlay. Runtime rejects an overlay that contains its listener rather than deactivating itself.
+
+Validation now checks all six imported UI action references, active controller/input/Canvas/UI
+module, independent overlay, runtime subscription and Global/Pause enabled before input. Its
+Play Mode checks use Escape and Start on virtual Xbox, PlayStation and generic devices both to
+open and to close, asserting panel visibility, listener retention and initial Continue selection.
+The Continue button is also exercised independently.
+
+Run Tikal/Authoring/Apply Gameplay Pause Menu again outside Play Mode, then
+Tikal/Validation/Validate Gameplay Pause Menu in Edit Mode and during playable gameplay in
+each scene. Retest the physical controllers with Game view focused. This repair compiles runtime
+and Editor sources without Unity batchmode; native authoring/Play Mode have not been run by the
+agent. Actual delivery of Escape/Options from the user's physical devices was not recorded.
+The generated prefab is preserved; protected gameplay code and existing scene files are unchanged.

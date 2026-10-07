@@ -44,9 +44,17 @@ namespace Tikal.Tests.Editor
                         var pauses = GameplayPauseMenuAuthoring.Components<PauseMenuController>(scene);
                         Check(pauses.Length == 1, path + ": apply Gameplay Pause Menu authoring first");
                         Check(pauses[0].IsConfigured, path + ": all critical pause/menu/settings references");
+                        Check(pauses[0].isActiveAndEnabled && pauses[0].HasIndependentOverlay,
+                            path + ": active listener outside hidden overlay");
+                        Check(((PlayerInputReader)Field(pauses[0], "_input")).isActiveAndEnabled, "active gameplay input reader");
+                        Check(pauses[0].GetComponentInParent<Canvas>() != null && pauses[0].GetComponentInParent<Canvas>().isActiveAndEnabled,
+                            "active existing gameplay Canvas");
                         Check(GameplayPauseMenuAuthoring.Components<EventSystem>(scene).Length == 1, "one EventSystem");
                         var events = GameplayPauseMenuAuthoring.Components<EventSystem>(scene).Single();
                         Check(events.GetComponent<InputSystemUIInputModule>() != null, "native Input System UI navigation");
+                        var module = events.GetComponent<InputSystemUIInputModule>();
+                        Check(events.isActiveAndEnabled && module.isActiveAndEnabled && module.move?.action != null &&
+                            module.submit?.action != null && module.cancel?.action != null, "active connected UI navigation");
                         Check(GameplayPauseMenuAuthoring.Components<SettingsMenuController>(scene).Length == 1, "one reused settings controller");
                         var settings = GameplayPauseMenuAuthoring.Components<SettingsMenuController>(scene).Single();
                         Check(Field(settings, "_runtimeApplier") == (object)GameplayPauseMenuAuthoring.Components<PersistentSettingsApplier>(scene).Single(), "same gameplay settings applier");
@@ -70,6 +78,9 @@ namespace Tikal.Tests.Editor
             var asset = AssetDatabase.LoadAssetAtPath<InputActionAsset>("Assets/_Project/Input/TikalInputActions.inputactions");
             var pause = asset.FindAction("Global/Pause", true);
             Check(pause.bindings.Any(b => b.effectivePath == "<Keyboard>/escape") && pause.bindings.Any(b => b.effectivePath == "<Gamepad>/start"), "existing Escape/Start Pause bindings");
+            foreach (var name in new[] { "Navigate", "Submit", "Cancel", "Point", "Click", "ScrollWheel" })
+                Check(GameplayPauseMenuAuthoring.ActionReference(name).action.id == asset.FindAction("UI/" + name, true).id,
+                    "authoring resolves UI action including legacy duplicate references: " + name);
             var source = File.ReadAllText("Assets/_Project/Code/UI/PauseMenuController.cs");
             Check(!source.Contains("SecretCommandAction"), "Controls never reveals secret action");
             Check(source.Contains("_input.PausePressed +=") && source.Contains("_player.SetGameplayActive(false)"), "reuse Pause event and gameplay lock authority");
@@ -81,8 +92,17 @@ namespace Tikal.Tests.Editor
             Check(pause != null && pause.IsConfigured && !pause.IsOpen && pause.CanOpen, "authored gameplay scene, close menu before validation");
             var player = (PlayerController)Field(pause, "_player");
             var reader = (PlayerInputReader)Field(pause, "_input");
+            Check(pause.IsListening && pause.HasIndependentOverlay, "runtime listener subscribed outside hidden overlay");
+            Check(reader.isActiveAndEnabled && reader.PauseAction != null && reader.PauseAction.enabled &&
+                reader.PauseAction.actionMap.name == "Global" && reader.PauseAction.actionMap.enabled,
+                "Global/Pause enabled before opening gameplay menu");
+            var overlay = (GameObject)Field(pause, "_overlay");
+            Check(!overlay.activeSelf && pause.isActiveAndEnabled, "hidden overlay keeps listener active");
             var journal = (ClueJournalPresenter)Field(pause, "_journal");
             var events = (EventSystem)Field(pause, "_events");
+            Check(UnityEngine.Object.FindObjectsByType<EventSystem>(FindObjectsInactive.Include).Length == 1 &&
+                events.isActiveAndEnabled && events.GetComponent<InputSystemUIInputModule>()?.isActiveAndEnabled == true,
+                "one active runtime EventSystem with native UI input module");
             var settings = (SettingsMenuController)Field(pause, "_settings");
             var applier = (PersistentSettingsApplier)Field(settings, "_runtimeApplier");
             var original = JsonUtility.FromJson<GameSettingsData>(JsonUtility.ToJson(applier.CurrentSettings));
@@ -107,6 +127,10 @@ namespace Tikal.Tests.Editor
                 {
                     if (device < 0) PressKey(Key.Escape); else Pad(pads[device], GamepadButton.Start);
                     Check(pause.IsOpen && Time.timeScale == 0 && !player.GameplayActive && !reader.GameplayEnabled, "native Pause opens and locks: " + device);
+                    Check(overlay.activeInHierarchy && pause.IsListening, "native Pause makes panel visible and keeps listener subscribed: " + device);
+                    var module = events.GetComponent<InputSystemUIInputModule>();
+                    Check(module.move?.action?.enabled == true && module.submit?.action?.enabled == true && module.cancel?.action?.enabled == true,
+                        "UI navigation/Submit/Cancel enabled while paused: " + device);
                     Check(actions.Global.Pause.enabled && actions.Global.Journal.enabled && !actions.Player.enabled, "Global remains active, gameplay including secret disabled");
                     Check(!((ReticlePresenter)UnityEngine.Object.FindAnyObjectByType<ReticlePresenter>()).IsVisible, "reticle hidden during pause");
                     Check(Cursor.visible && Cursor.lockState == CursorLockMode.None, "mouse cursor available");
@@ -122,9 +146,14 @@ namespace Tikal.Tests.Editor
                     Check(!body.Contains("SecretCommand") && !body.Contains("Botón norte") && !body.Contains("△"), "no secret spoiler in controls");
                     Check(body.Contains("Moverse") && body.Contains("Pausa") && body.Contains("Diario"), "eight principal controls");
                     Check(body.Contains("Interactuar   " + (device < 0 ? "E" : new[] { "X", "□", "Botón oeste" }[device])), "device-aware controls: " + device);
-                    pause.Resume();
-                    Check(!pause.IsOpen && player.GameplayActive && reader.GameplayEnabled && Time.timeScale == originalScale, "Continue restores gameplay/time");
+                    if (device < 0) PressKey(Key.Escape); else Pad(pads[device], GamepadButton.Start);
+                    Check(!pause.IsOpen && player.GameplayActive && reader.GameplayEnabled && Time.timeScale == originalScale, "native Pause restores gameplay/time");
+                    Check(!overlay.activeSelf && pause.IsListening && reader.PauseAction.enabled, "native Pause closes without disabling listener: " + device);
                 }
+                PressKey(Key.Escape);
+                ((Button)Field(pause, "_continue")).onClick.Invoke();
+                Check(!pause.IsOpen && pause.IsListening && reader.GameplayEnabled && Time.timeScale == originalScale,
+                    "Continue button restores gameplay/time and preserves listener");
                 if (journal != null) { journal.Open(); pause.Open(); Check(pause.IsOpen && !journal.IsOpen && !journal.enabled, "Pause closes/disables open Journal"); pause.Resume(); Check(journal.enabled && reader.GameplayEnabled, "Journal re-enabled after Resume"); }
                 pause.Open(); pause.ShowSettings();
                 // Exercise the actual existing UI handlers without writing the user's settings file.

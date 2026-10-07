@@ -38,7 +38,8 @@ namespace Tikal.Tests.Editor
                 {
                     var scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Single);
                     Apply(scene);
-                    EditorSceneManager.SaveScene(scene);
+                    if (!EditorSceneManager.SaveScene(scene))
+                        throw new InvalidOperationException("Could not save Pause integration: " + path);
                 }
                 AssetDatabase.SaveAssets();
                 Debug.Log("TIKAL_GAMEPLAY_PAUSE_AUTHORED: Tutorial + Level01. Run validation and interactive playtest.");
@@ -81,6 +82,10 @@ namespace Tikal.Tests.Editor
             serialized.ApplyModifiedPropertiesWithoutUndo();
             var settings = root.GetComponentInChildren<SettingsMenuController>(true);
             Set(settings, "_runtimeApplier", Components<PersistentSettingsApplier>(scene).Single());
+            root.SetActive(true);
+            pause.enabled = true;
+            if (!pause.IsConfigured || !pause.HasIndependentOverlay)
+                throw new InvalidOperationException("Pause listener must be configured outside the hidden overlay: " + scene.path);
             if (Components<Canvas>(scene).Length != originalCanvasCount)
                 throw new InvalidOperationException("Pause authoring must reuse the existing Canvas count.");
         }
@@ -89,11 +94,22 @@ namespace Tikal.Tests.Editor
             var module = events.gameObject.AddComponent<InputSystemUIInputModule>();
             const string path = "Assets/_Project/Input/TikalInputActions.inputactions";
             module.actionsAsset = AssetDatabase.LoadAssetAtPath<InputActionAsset>(path);
-            InputActionReference Ref(string name) => AssetDatabase.LoadAllAssetsAtPath(path).OfType<InputActionReference>()
-                .Single(r => r.action != null && r.action.actionMap.name == "UI" && r.action.name == name);
+            InputActionReference Ref(string name) => ActionReference(name);
             module.move = Ref("Navigate"); module.submit = Ref("Submit"); module.cancel = Ref("Cancel");
             module.point = Ref("Point"); module.leftClick = Ref("Click"); module.scrollWheel = Ref("ScrollWheel");
             module.rightClick = module.middleClick = module.trackedDevicePosition = module.trackedDeviceOrientation = null;
+        }
+        internal static InputActionReference ActionReference(string name)
+        {
+            const string path = "Assets/_Project/Input/TikalInputActions.inputactions";
+            var action = AssetDatabase.LoadAssetAtPath<InputActionAsset>(path).FindAction("UI/" + name, true);
+            // The importer also creates a hidden legacy reference for each action.
+            // LoadAllAssetsAtPath includes both, so Single() aborts Tutorial authoring.
+            var references = AssetDatabase.LoadAllAssetsAtPath(path).OfType<InputActionReference>()
+                .Where(r => r.action != null && r.action.id == action.id)
+                .OrderBy(r => (r.hideFlags & HideFlags.HideInHierarchy) != 0).ToArray();
+            if (references.Length == 0) throw new InvalidOperationException("Missing UI action reference: " + name);
+            return references[0];
         }
         private static void Stretch(RectTransform rect)
         {
