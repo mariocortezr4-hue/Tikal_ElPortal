@@ -62,6 +62,11 @@ namespace Tikal.Interaction
                 _input.InteractPressed -= OnInteractPressed;
                 _subscribed = false;
             }
+            ClearFocusForRespawn();
+        }
+
+        public void ClearFocusForRespawn()
+        {
             _pendingInteractions = 0;
             _lastCollider = null;
             _resolved = null;

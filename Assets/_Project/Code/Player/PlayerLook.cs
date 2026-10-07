@@ -34,6 +34,20 @@ namespace Tikal.Player
         // TPS movement can turn Explorer while FPS Look is inactive. Resume from that facing.
         public void SynchronizePlayerYaw() => _yaw = transform.eulerAngles.y;
 
+        public void ResetAfterRespawn(float eyeHeight, float maximumHeight)
+        {
+            _yaw = transform.eulerAngles.y;
+            _pitch = 0;
+            if (_cameraRoot != null)
+            {
+                _cameraRoot.localRotation = Quaternion.identity;
+                var position = _cameraRoot.localPosition;
+                position.y = Mathf.Min(eyeHeight, maximumHeight);
+                _cameraRoot.localPosition = position;
+            }
+            if (_camera != null) _camera.fieldOfView = _normalFov;
+        }
+
         private void Awake()
         {
             if (_cameraRoot == null)

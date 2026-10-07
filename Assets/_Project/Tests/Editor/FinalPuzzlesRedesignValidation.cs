@@ -161,6 +161,10 @@ namespace Tikal.Tests.Editor
         static IEnumerator Retry(int device)
         {
             var oldOutcome=outcome;
+            var localRespawn=outcome.State==LevelOutcome.Defeat && outcome.UsesCheckpointRespawn;
+            var solvedBefore=UnityEngine.Object.FindObjectsByType<PuzzleBase>().Count(p=>p.IsSolved);
+            var cluesBefore=tracker.Count;
+            if(localRespawn) reader.GetComponent<PlayerController>().enabled=true;
             if(device<0)InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.Enter));
             else InputSystem.QueueStateEvent(pads[device],new GamepadState().WithButton(GamepadButton.South));
             InputSystem.Update();module.Process();
@@ -168,6 +172,15 @@ namespace Tikal.Tests.Editor
             else InputSystem.QueueStateEvent(pads[device],new GamepadState());
             InputSystem.Update();
             double limit=EditorApplication.timeSinceStartup+10;
+            if(localRespawn)
+            {
+                var manager=UnityEngine.Object.FindAnyObjectByType<CheckpointManager>();
+                while(manager.IsRespawning){RequireTime(EditorApplication.timeSinceStartup<limit,"Local defeat respawn timed out");yield return null;}
+                Require(outcome.State==LevelOutcome.Playing && tracker.Count==cluesBefore &&
+                    UnityEngine.Object.FindObjectsByType<PuzzleBase>().Count(p=>p.IsSolved)==solvedBefore,"Defeat respawns locally and preserves progression");
+                // Reset only this test fixture for the next complete fresh-level journey.
+                UnityEngine.SceneManagement.SceneManager.LoadScene(outcome.gameObject.scene.name);
+            }
             while(oldOutcome!=null){RequireTime(EditorApplication.timeSinceStartup<limit,"Native UI Submit did not reload scene");yield return null;}
             Bind();NeutralCheck();Require(reader.transform.position.z<-8,"Retry restores original spawn");
         }

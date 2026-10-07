@@ -138,6 +138,17 @@ namespace Tikal.Player
             _pitch = Mathf.Clamp(_pitch + rotation.y * (_look.InvertY ? 1f : -1f), _profile.PitchMin, _profile.PitchMax);
         }
 
+        public void SnapAfterTeleport()
+        {
+            if (!_initialized) return;
+            _yaw = _smoothYaw = transform.eulerAngles.y;
+            _pitch = _smoothPitch = Mathf.Clamp(_look.Pitch, _profile.PitchMin, _profile.PitchMax);
+            _yawVelocity = _pitchVelocity = _distanceVelocity = 0;
+            _distance = ThirdPersonCameraMath.ConfiguredBoom(_profile.Distance, _profile.ShoulderOffset).magnitude;
+            if (Mode == CameraMode.ThirdPerson) UpdateThirdPersonPose(0, true);
+            else ApplyCameraMode(CameraMode.FirstPerson);
+        }
+
         private void LateUpdate()
         {
             if (!OwnsLook || Time.deltaTime <= 0 || _player == null || !_player.GameplayActive ||
@@ -145,10 +156,14 @@ namespace Tikal.Player
             UpdateThirdPersonPose(Time.deltaTime);
         }
 
-        private void UpdateThirdPersonPose(float deltaTime)
+        private void UpdateThirdPersonPose(float deltaTime, bool snap = false)
         {
-            _smoothYaw = Mathf.SmoothDampAngle(_smoothYaw, _yaw, ref _yawVelocity, _profile.RotationSmoothTime, Mathf.Infinity, deltaTime);
-            _smoothPitch = Mathf.SmoothDampAngle(_smoothPitch, _pitch, ref _pitchVelocity, _profile.RotationSmoothTime, Mathf.Infinity, deltaTime);
+            if (snap) { _smoothYaw = _yaw; _smoothPitch = _pitch; _yawVelocity = _pitchVelocity = 0; }
+            else
+            {
+                _smoothYaw = Mathf.SmoothDampAngle(_smoothYaw, _yaw, ref _yawVelocity, _profile.RotationSmoothTime, Mathf.Infinity, deltaTime);
+                _smoothPitch = Mathf.SmoothDampAngle(_smoothPitch, _pitch, ref _pitchVelocity, _profile.RotationSmoothTime, Mathf.Infinity, deltaTime);
+            }
             var rotation = Quaternion.Euler(_smoothPitch, _smoothYaw, 0);
             var pivotLocal = _thirdPersonPivot.localPosition;
             // Crouch uses the existing eye-height safety without changing movement.
@@ -162,7 +177,7 @@ namespace Tikal.Player
             var safeDistance = SafeDistance(pivot, direction, fullDistance);
             // Smooth only collision recovery. Smoothed angles describe the arc directly;
             // Cartesian position interpolation would cut that arc and compress the radius.
-            _distance = ThirdPersonCameraMath.RecoverDistance(_distance, safeDistance,
+            _distance = snap ? safeDistance : ThirdPersonCameraMath.RecoverDistance(_distance, safeDistance,
                 ref _distanceVelocity, _profile.CollisionReturnSmoothTime, deltaTime);
             var candidate = pivot + ThirdPersonCameraMath.BoomOffset(desiredOffset, _distance);
             candidate = ResolveOverlaps(candidate);
