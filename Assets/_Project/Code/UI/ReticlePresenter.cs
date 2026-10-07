@@ -23,6 +23,10 @@ namespace Tikal.UI
                 Debug.LogError("Reticle requires settings, input availability and both visuals.", this);
                 return;
             }
+            // The reticle represents camera-center aim, never the shoulder-shifted player.
+            Center((RectTransform)transform);
+            Center((RectTransform)_dot.transform);
+            Center((RectTransform)_cross.transform);
             _settings.ModeChanged += OnModeChanged;
             _inputReader.GameplayEnabledChanged += OnGameplayChanged;
             _subscribed = true;
@@ -49,6 +53,12 @@ namespace Tikal.UI
 
         private void OnModeChanged(ReticleMode mode) => Refresh();
         private void OnGameplayChanged(bool enabled) => Refresh();
+
+        private static void Center(RectTransform rect)
+        {
+            rect.anchorMin = rect.anchorMax = rect.pivot = new Vector2(.5f, .5f);
+            rect.anchoredPosition3D = Vector3.zero;
+        }
 
         private void Refresh()
         {
