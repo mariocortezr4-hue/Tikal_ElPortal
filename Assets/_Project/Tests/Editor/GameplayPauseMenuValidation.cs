@@ -182,7 +182,9 @@ namespace Tikal.Tests.Editor
                 pause.Back(); Check(events.currentSelectedGameObject == ((Button)Field(pause, "_configuration")).gameObject, "Back restores Settings selection");
                 pause.Resume(); pause.Open(); pause.enabled = false;
                 Check(!pause.IsOpen && Time.timeScale == originalScale && reader.GameplayEnabled, "disable restores pause lifecycle"); pause.enabled = true;
-                Check(pause.CanRestart == (Field(pause, "_tutorial") != null), "Tutorial restart available; Level01 checkpoint unavailable by approved scope");
+                Check(pause.CanRestart == (Field(pause, "_tutorial") != null ||
+                    Field(pause, "_checkpointRestart") is ICheckpointRestart checkpoint && checkpoint.CanRestartFromCheckpoint),
+                    "Tutorial start restart or connected session checkpoint restart");
             }
             finally
             {

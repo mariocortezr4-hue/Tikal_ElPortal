@@ -62,11 +62,10 @@ Runtime sliders reserve Left/Right for adjustment and use Up/Down to visit every
 
 ## Restart and GameFlow
 
-Repository inspection found no checkpoint/respawn implementation: LevelOutcomeController only
-reloads an entire scene after a terminal outcome. The user explicitly selected leaving Level01's
-Restart button disabled until the existing checkpoint system can be connected. No fake checkpoint
-or full-level fallback is introduced. ICheckpointRestart is a small adapter contract for that
-future authority, using its validity flag and RestartFromCheckpoint operation; Pause stores none.
+Level01 now connects ICheckpointRestart to CheckpointManager through Apply Level01 Checkpoints.
+The existing button becomes available with a valid session-local checkpoint; Resume restores time
+and input before local respawn. Puzzles, clues and Door state remain intact. Scenes that have not
+been authored keep the button disabled. See CheckpointRespawnSystem.md for integration and tests.
 Tutorial may restart from scene start, as requested, through GameFlowController. It does not mark
 TutorialCompleted or change progress.
 
@@ -88,7 +87,7 @@ are asserted. Test cleanup restores settings, cursor, audio, time and virtual de
 
 Manually test Escape/Options toggle, mouse/keyboard/gamepad navigation and dropdowns, FPS/TPS
 mode changes, reticle changes after Resume, sensitivity feel, audio persistence, Tutorial restart,
-Level01 disabled checkpoint button, Main Menu→Continue with incomplete Tutorial and with Level01,
+Level01 local checkpoint restart, Main Menu→Continue with incomplete Tutorial and with Level01,
 and Pause rejection during defeat/victory/Tutorial exit. No batchmode is used.
 
 ## Runtime integration repair

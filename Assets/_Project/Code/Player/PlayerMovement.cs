@@ -88,6 +88,13 @@ namespace Tikal.Player
             TickMotion(move, sprintHeld, crouchHeld, deltaTime, null);
         }
 
+        public void ResetForRespawn()
+        {
+            StopMotion();
+            IsGrounded = false; // Re-established by the next CharacterController movement tick.
+            if (_controller != null) ApplyHeight(CanStand() ? _standingHeight : _crouchingHeight);
+        }
+
         public void TickThirdPerson(Vector2 move, bool sprintHeld, bool crouchHeld, float deltaTime, Transform cameraOrientation)
         {
             if (cameraOrientation == null) return;

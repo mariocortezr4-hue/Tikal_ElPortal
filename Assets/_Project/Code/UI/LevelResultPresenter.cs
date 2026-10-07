@@ -34,6 +34,14 @@ namespace Tikal.UI
         }
         private void Show(LevelOutcome outcome)
         {
+            if (_transition != null) { StopCoroutine(_transition); _transition = null; }
+            if (outcome == LevelOutcome.Playing)
+            {
+                if (_events.currentSelectedGameObject != null && _events.currentSelectedGameObject.transform.IsChildOf(_panel.transform))
+                    _events.SetSelectedGameObject(null);
+                _panel.SetActive(false); _fade.alpha = 0;
+                return;
+            }
             _title.text=outcome==LevelOutcome.Victory?"NIVEL COMPLETADO":"HAS QUEDADO ATRAPADO";
             _subtitle.text=outcome==LevelOutcome.Victory?"La Entrada Secreta":"";
             _panel.SetActive(true);_fade.alpha=0;
