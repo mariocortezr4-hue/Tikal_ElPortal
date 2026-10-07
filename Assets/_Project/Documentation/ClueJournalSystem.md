@@ -2,6 +2,48 @@
 
 ## Flujo y fuente de verdad
 
+### Clue05: diagnóstico del cuadrado en PlayStation
+
+La cadena real es SecretKeyDiscoveryPuzzle.Interact (Examinar) → PuzzleSolved →
+PuzzleClueReward → ClueTracker.ClueDiscovered → ClueDiscoveryPresenter.Show/RenderClue →
+CluePresentation.Description → SecretCommandAction → InputPromptResolver → TMP_Text.
+La escena conecta el reward al asset level01.revelation (SecretCommand semántico), y conecta
+popup/Journal al mismo PlayerInputReader e InputDeviceManager. No copia el binding de Interact,
+no usa un icono cacheado y no hay un segundo resolver de discovery.
+
+El resolver entrega U+25B3 (△) desde Gamepad/buttonNorth para PlayStation. Sin embargo,
+InteractionPromptFont es un atlas estático que solo contiene U+25A1 (□), no U+25B3.
+Su fallback global Liberation Sans tampoco contiene U+25B3 en el cmap del TTF.
+TextMeshProUGUI reemplaza un carácter no encontrado por TMP_Settings.missingGlyphCharacter,
+o por U+25A1 cuando ese setting es cero (configuración actual). El cuadrado observado es el
+glifo de sustitución, no el control Interact. ClueDiscoveryPresenter._description es el texto
+que muestra esa sustitución; ClueJournalPresenter._content usaba la misma fuente.
+
+CluePromptSymbols añade un único glifo original U+25B3 con atlas Alpha8 SDF estático,
+referenciado en el fallback de InteractionPromptFont. No depende de fuentes del sistema ni de
+generación dinámica en un build. Tools/GenerateCluePromptSymbols.py reproduce el asset usando
+solo la biblioteca estándar de Python. No cambia la tipografía de los caracteres existentes.
+La escena y prefabs ya referencian la fuente compartida: no requieren regeneración ni authoring.
+
+El mapping sigue en InputPromptResolver.GamepadControlText: West = X/□/Botón oeste;
+North = Y/△/Botón norte. Keyboard usa el binding efectivo E/G del Input System.
+Discovery y Journal conservan ActiveDeviceChanged y no modifican el progreso al refrescar.
+
+FinalPuzzlesRedesignValidation ahora activa Zone05 mediante E o buttonWest en cada una de
+las cuatro familias. Comprueba el prompt antes de Examine y el SecretCommand inmediatamente
+después del evento real; luego cambia dispositivo con popup y Journal abiertos. ForceMeshUpdate
+comprueba textElement.unicode y visibilidad para detectar la sustitución aunque .text sea correcto.
+La validación de edición exige cobertura de △ en ambas fuentes/fallbacks y mantiene Missing Scripts.
+La ejecución de Play Mode y la confirmación visual con hardware siguen siendo verificaciones
+interactivas; no se ejecutan con batchmode.
+
+Verificación de este fix: comprobados cmap sin U+25B3, sustitución U+25A1 en el código TMP,
+referencias materializadas del popup/Journal, mapa Unicode→glyph, tamaño/contorno/hueco del atlas,
+fallback sin ciclos y reproducción determinista. Preview del contorno inspeccionado visualmente.
+Runtime y Editor compilan sin errores ni nuevas advertencias (217/2 existentes).
+Las nuevas pruebas completas de Examine→evento→malla TMP están añadidas pero no ejecutadas
+en Play Mode en esta sesión; falta confirmar el resultado visible con el mando real.
+
 Auditoría Clue05: el asset level01.revelation ya almacena SecretCommand semántico, con texto
 «Ya conoces la llave.». CluePresentation ya resolvía SecretCommandAction mediante
 InputPromptResolver y el binding efectivo; Journal y discovery ya escuchaban ActiveDeviceChanged.
