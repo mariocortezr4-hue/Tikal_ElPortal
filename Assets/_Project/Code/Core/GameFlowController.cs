@@ -24,6 +24,21 @@ namespace Tikal.Core
         public string PlayButtonLabel => Progress.HasStartedGame ? "CONTINUAR" : "JUGAR";
         public string CurrentLevelTitle => SceneCatalog.TryGet(Progress.CurrentLevelId, out var info) ? info.Title : SceneCatalog.Get(GameSceneIds.Level01).Title;
         public bool IsIntroReplay => _introReplayToMenu;
+        public bool IsTransitioning { get; private set; }
+
+        public void ReturnToMainMenu()
+        {
+            _introReplayToMenu = _tutorialReplayToMenu = false;
+            Time.timeScale = 1;
+            Load(GameSceneIds.MainMenu);
+        }
+
+        public void RestartCurrentGameplayScene()
+        {
+            IsTransitioning = true;
+            Time.timeScale = 1;
+            SceneManager.LoadScene(gameObject.scene.name, LoadSceneMode.Single);
+        }
 
         public void PlayOrContinue()
         {
@@ -129,7 +144,7 @@ namespace Tikal.Core
 #endif
         }
 
-        private static void Load(string sceneId)
+        private void Load(string sceneId)
         {
             var scene = SceneCatalog.Get(sceneId);
             if (string.IsNullOrWhiteSpace(scene.Path))
@@ -137,6 +152,7 @@ namespace Tikal.Core
                 Debug.LogWarning($"Scene '{sceneId}' is not implemented yet.");
                 return;
             }
+            IsTransitioning = true;
             SceneManager.LoadScene(scene.SceneName, LoadSceneMode.Single);
         }
     }

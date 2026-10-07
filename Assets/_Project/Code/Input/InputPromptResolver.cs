@@ -38,6 +38,8 @@ namespace Tikal.Input
         }
         private static string GamepadControlText(string control, InputDeviceFamily family)
         {
+            if (string.Equals(control, "start", StringComparison.OrdinalIgnoreCase))
+                return family == InputDeviceFamily.PlayStation ? "Options" : family == InputDeviceFamily.Xbox ? "Menu" : "Start";
             if (string.Equals(control, "leftStickPress", StringComparison.OrdinalIgnoreCase))
                 return family == InputDeviceFamily.Xbox ? "LS" : family == InputDeviceFamily.PlayStation ? "L3" : "Stick izquierdo";
             if (string.Equals(control, "select", StringComparison.OrdinalIgnoreCase))

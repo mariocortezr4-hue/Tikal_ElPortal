@@ -17,22 +17,29 @@ namespace Tikal.UI
         [SerializeField] private TMP_Dropdown _cameraMode;
         [SerializeField] private TMP_Dropdown _reticleMode;
         [SerializeField] private ReticleSettings _previewReticle;
+        [SerializeField] private PersistentSettingsApplier _runtimeApplier = null;
 
         private GamePersistenceService _persistence;
         private GameSettingsData _settings;
         private bool _loading;
 
         public GameObject FirstSelection => _masterVolume != null ? _masterVolume.gameObject : gameObject;
+        public bool IsConfigured => _masterVolume != null && _musicVolume != null && _sfxVolume != null &&
+            _mouseSensitivity != null && _gamepadSensitivity != null && _invertY != null &&
+            _cameraMode != null && _reticleMode != null;
+        public bool HasOpenDropdown => (_cameraMode != null && _cameraMode.IsExpanded) || (_reticleMode != null && _reticleMode.IsExpanded);
+        public void CloseDropdowns() { if (_cameraMode != null && _cameraMode.IsExpanded) _cameraMode.Hide(); if (_reticleMode != null && _reticleMode.IsExpanded) _reticleMode.Hide(); }
 
         private void Awake()
         {
             _persistence = new GamePersistenceService();
-            _settings = _persistence.LoadSettings();
-            LoadControls();
         }
 
         private void OnEnable()
         {
+            _settings = _runtimeApplier != null && _runtimeApplier.CurrentSettings != null
+                ? _runtimeApplier.CurrentSettings : _persistence.LoadSettings();
+            LoadControls();
             _masterVolume.onValueChanged.AddListener(OnMaster);
             _musicVolume.onValueChanged.AddListener(OnMusic);
             _sfxVolume.onValueChanged.AddListener(OnSfx);
@@ -102,6 +109,7 @@ namespace Tikal.UI
         private void ApplyRuntime()
         {
             AudioListener.volume = _settings.MasterVolume;
+            if (_runtimeApplier != null) _runtimeApplier.Apply(_settings);
             if (_previewReticle != null) _previewReticle.SetMode(_settings.ReticleMode);
         }
     }
