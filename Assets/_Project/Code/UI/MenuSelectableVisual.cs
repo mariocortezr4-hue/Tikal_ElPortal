@@ -5,6 +5,18 @@ using UnityEngine.UI;
 
 namespace Tikal.UI
 {
+    public static class MenuVisualPalette
+    {
+        public static readonly Color Ink = new Color(.025f, .035f, .03f, .96f);
+        public static readonly Color Stone = new Color(.075f, .105f, .085f, .96f);
+        public static readonly Color Hover = new Color(.13f, .17f, .13f, .98f);
+        public static readonly Color Gold = new Color(.86f, .65f, .32f);
+        public static readonly Color Jade = new Color(.12f, .28f, .21f);
+        public static readonly Color JadeEdge = new Color(.40f, .68f, .52f);
+        public static readonly Color Ivory = new Color(.96f, .93f, .84f);
+        public static readonly Color Muted = new Color(.74f, .73f, .65f);
+    }
+
     [DisallowMultipleComponent]
     public sealed class MenuSelectableVisual : MonoBehaviour, ISelectHandler, IDeselectHandler,
         IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
@@ -15,12 +27,13 @@ namespace Tikal.UI
         [SerializeField] private GameObject _focusIndicator;
         [SerializeField] private GameObject _persistentMarker;
         [SerializeField] private bool _primary;
+        [SerializeField] private GameObject _focusOutline = null;
+        [SerializeField] private GameObject _savedOutline = null;
 
-        private static readonly Color Ink = new Color(.018f, .035f, .055f, .96f);
-        private static readonly Color Stone = new Color(.055f, .105f, .135f, .94f);
-        private static readonly Color Hover = new Color(.105f, .18f, .205f, .97f);
-        private static readonly Color Gold = new Color(.86f, .62f, .27f, 1f);
-        private static readonly Color Ivory = new Color(.96f, .93f, .84f, 1f);
+        private static readonly Color Stone = MenuVisualPalette.Stone;
+        private static readonly Color Hover = MenuVisualPalette.Hover;
+        private static readonly Color Gold = MenuVisualPalette.Gold;
+        private static readonly Color Ivory = MenuVisualPalette.Ivory;
         private static readonly Color Disabled = new Color(.055f, .07f, .075f, .72f);
 
         private bool _selected;
@@ -43,25 +56,33 @@ namespace Tikal.UI
         public void SetPersistent(bool value)
         {
             if (_persistentMarker != null) _persistentMarker.SetActive(value);
+            RefreshVisual();
         }
+
+        public void ConfigureBorders(GameObject focusOutline, GameObject savedOutline)
+        { _focusOutline = focusOutline; _savedOutline = savedOutline; RefreshVisual(); }
 
         public void RefreshVisual()
         {
             var interactable = _selectable == null || _selectable.IsInteractable();
             var hasFocus = _selected && interactable;
+            var saved = _persistentMarker != null && _persistentMarker.activeSelf;
             if (_focusIndicator != null) _focusIndicator.SetActive(hasFocus);
+            if (_focusOutline != null) _focusOutline.SetActive(hasFocus);
+            if (_savedOutline != null) _savedOutline.SetActive(saved);
             if (_background != null)
             {
                 if (!interactable) _background.color = Disabled;
-                else if (_pressed) _background.color = new Color(.68f, .48f, .2f, 1f);
-                else if (hasFocus) _background.color = Gold;
+                else if (saved) _background.color = MenuVisualPalette.Jade;
+                else if (_pressed) _background.color = Hover;
+                else if (hasFocus) _background.color = Hover;
                 else if (_hovered) _background.color = Hover;
-                else _background.color = _primary ? new Color(.73f, .49f, .18f, .96f) : Stone;
+                else _background.color = _primary ? new Color(.21f, .17f, .095f, .97f) : Stone;
             }
             if (_label == null) return;
-            _label.color = !interactable ? new Color(.48f, .51f, .52f, 1f) : hasFocus ? (_background != null ? Ink : Gold) : Ivory;
+            _label.color = !interactable ? MenuVisualPalette.Muted : hasFocus ? Color.white : Ivory;
             _label.fontStyle = hasFocus ? FontStyles.Bold : FontStyles.Normal;
-            _label.characterSpacing = hasFocus ? 7f : 2f;
+            _label.characterSpacing = 2f;
         }
 
         private void OnEnable()

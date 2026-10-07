@@ -173,7 +173,7 @@ namespace Tikal.Tests.Editor
             scaler.matchWidthOrHeight = .5f;
             var background = Rect("Background", canvas.transform, Vector2.zero, Vector2.one);
             background.gameObject.AddComponent<Image>().color = new Color(.03f, .04f, .035f, 1);
-            Text("Title", background, "TIKAL: EL PORTAL", 48).rectTransform.anchorMin = new Vector2(.1f, .82f);
+            Text("Title", background, "TIKAL: EL EXPLORADOR", 48).rectTransform.anchorMin = new Vector2(.1f, .82f);
             var events = EventSystem(root.transform);
             var main = Panel("Main", background, true);
             var levels = Panel("Levels", background, false);

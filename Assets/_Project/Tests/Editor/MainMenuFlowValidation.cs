@@ -152,9 +152,10 @@ namespace Tikal.Tests.Editor
             var camera = settingsBindings.FindProperty("_cameraMode").objectReferenceValue as TMPro.TMP_Dropdown;
             var reticle = settingsBindings.FindProperty("_reticleMode").objectReferenceValue as TMPro.TMP_Dropdown;
             Require(camera != null && camera.template != null && camera.options.Select(option => option.text).SequenceEqual(new[] { "PRIMERA PERSONA", "TERCERA PERSONA" }), "Camera Mode dropdown is wired and selectable");
-            Require(reticle != null && reticle.template != null && reticle.options.Select(option => option.text).SequenceEqual(new[] { "NINGUNO", "PUNTO", "CRUZ" }), "Reticle dropdown is wired and selectable");
+            Require(reticle != null && reticle.template != null && reticle.options.Select(option => option.text).SequenceEqual(new[] { "NINGUNA", "PUNTO", "CRUCETA" }), "Reticle dropdown is wired and selectable");
             Require(components.OfType<Button>().Single(button => button.name == "Level01").gameObject.activeSelf, "Level01 remains visible while locked");
             Require(new SerializedObject(components.OfType<MainMenuController>().Single()).FindProperty("_levelHint").objectReferenceValue != null, "Level availability hint is wired");
+            MainMenuVisualValidation.ValidateScene(main);
             var module = components.OfType<InputSystemUIInputModule>().Single();
             Require(module.move != null && module.submit != null && module.cancel != null, "Navigate Submit Cancel wired");
             var actions = new TikalInputActions();
