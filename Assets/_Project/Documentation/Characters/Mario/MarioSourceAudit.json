@@ -1,0 +1,306 @@
+{
+  "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Materiales_Tikal_ElPortal\\Personajes\\CHR_Explorer",
+  "files": [
+    {
+      "path": "Animations/CHR_Explorer_CrouchIdle.anim",
+      "bytes": 904487,
+      "sha256": "6493ed3987cd5ea346e76d756494ca01e97e3c1bfc69377c8d2b4401a2f1e847"
+    },
+    {
+      "path": "Animations/CHR_Explorer_CrouchIdle.anim.meta",
+      "bytes": 188,
+      "sha256": "4e69260d071ead4c806c95569b5a36383ed16e7305e3c97320039f7baa308075"
+    },
+    {
+      "path": "Animations/CHR_Explorer_CrouchWalk.anim",
+      "bytes": 452903,
+      "sha256": "67549954e748093e8262e65f4d1686f9e2e5c9ca59a154b6c057bf4747f72494"
+    },
+    {
+      "path": "Animations/CHR_Explorer_CrouchWalk.anim.meta",
+      "bytes": 188,
+      "sha256": "ecb70be632bbd6ea1d11fe97bc8cfa1bdf7be0eeddcdd65065ab8b51b9be4e06"
+    },
+    {
+      "path": "Animations/CHR_Explorer_Idle.anim",
+      "bytes": 1311714,
+      "sha256": "a8f75f4234ff7689eb19127a27666005df00df777eefcb957dec00b0f0e57590"
+    },
+    {
+      "path": "Animations/CHR_Explorer_Idle.anim.meta",
+      "bytes": 188,
+      "sha256": "5301d837c0818a77fd3fbd14246d3dda00682a8f15d9043265b9f06b5e74aa6d"
+    },
+    {
+      "path": "Animations/CHR_Explorer_Jump.anim",
+      "bytes": 1213857,
+      "sha256": "40f514711fa64880748f7bfe2aa406171e8480561c0616bbeb0ec295306257b5"
+    },
+    {
+      "path": "Animations/CHR_Explorer_Jump.anim.meta",
+      "bytes": 188,
+      "sha256": "ec0481b55e6170fefc03ce70e08f0548924cbad7c3aaeecf4f117a4ab3c5777a"
+    },
+    {
+      "path": "Animations/CHR_Explorer_Run.anim",
+      "bytes": 377468,
+      "sha256": "b586fdf923845e185e7da140feda5f9d8c602e3e04e254eed8eb280bed8fcbe5"
+    },
+    {
+      "path": "Animations/CHR_Explorer_Run.anim.meta",
+      "bytes": 188,
+      "sha256": "0be5fdf29ab255fb37912c7839737ef06b8f0a5bd9187c9acc08d52cc06d88e8"
+    },
+    {
+      "path": "Animations/CHR_Explorer_Walk.anim",
+      "bytes": 644535,
+      "sha256": "cb5c625597491fcb13db57aaccda72f09e4553e62673b8e557c502c8e7d2728d"
+    },
+    {
+      "path": "Animations/CHR_Explorer_Walk.anim.meta",
+      "bytes": 188,
+      "sha256": "848802117464a4b1bce7455fd3753651ed7e1c78fe18eb4490ab1e8168b9b1a5"
+    },
+    {
+      "path": "Animations.meta",
+      "bytes": 172,
+      "sha256": "d8012086966a298f42dfbce71b2907ae24245dffc4e8c45ea5c6ba8f624f5fde"
+    },
+    {
+      "path": "Controllers/CHR_Explorer.controller",
+      "bytes": 19379,
+      "sha256": "bd7d844fb6bc73a042c8a073a4d3eb243f024bf0fbc4da87cc704814ec21b5ea"
+    },
+    {
+      "path": "Controllers/CHR_Explorer.controller.meta",
+      "bytes": 188,
+      "sha256": "67d8cf0a999b616054221f7dfd89dab8d2bfd00b40f22d951c77df1eb23c432b"
+    },
+    {
+      "path": "Controllers.meta",
+      "bytes": 172,
+      "sha256": "d96aadf4271aedf68b3a7d7b97b16b36848b10dafb8a32bbc0f1b81a92143530"
+    },
+    {
+      "path": "Documentation/CHR_Explorer_README.md",
+      "bytes": 10354,
+      "sha256": "a4152a11f296369c3b3fef613f021a6cced256c426bf1a2a81a09cfce1f61edc"
+    },
+    {
+      "path": "Documentation/CHR_Explorer_README.md.meta",
+      "bytes": 158,
+      "sha256": "042a36f053f39487ddb2b7b30b11799e9442c73f7e792fac21a3a22218e52bd1"
+    },
+    {
+      "path": "Documentation/CHR_Explorer_Reporte_Empaquetado.md",
+      "bytes": 17490,
+      "sha256": "8c93398142e5da5275659e1b8ac271e5259f243e06e8bbffb4a0986e3127ff91"
+    },
+    {
+      "path": "Documentation/CHR_Explorer_Reporte_Empaquetado.md.meta",
+      "bytes": 158,
+      "sha256": "fa23fb1be11c2fa76b44e42319c1f6a9034d7b971cc0b52462c58f4fe2388787"
+    },
+    {
+      "path": "Documentation.meta",
+      "bytes": 172,
+      "sha256": "92f23bf96fa137f7c13dfb11719b98283729b42be7fc550da67a78f93a7da18e"
+    },
+    {
+      "path": "Materials/CHR_Explorer.mat",
+      "bytes": 4014,
+      "sha256": "79f53405f123d7535265cccf05ce5afacf1bc1569178d1c3ba88c87690ce103f"
+    },
+    {
+      "path": "Materials/CHR_Explorer.mat.meta",
+      "bytes": 188,
+      "sha256": "736c40835adf136634e08f335b29250405afc6b376d0ea702566926d19d9c948"
+    },
+    {
+      "path": "Materials.meta",
+      "bytes": 172,
+      "sha256": "5a9a30889a998399e0ecc8b144a26cd3b66c0cec4905731a886eab383ef6c5ba"
+    },
+    {
+      "path": "Models/CHR_Explorer.fbx",
+      "bytes": 2536972,
+      "sha256": "de4d1fefe8c4136605aaa544014ea1374c3dc39f0aef7f7ff25edc4c78777de6"
+    },
+    {
+      "path": "Models/CHR_Explorer.fbx.meta",
+      "bytes": 3063,
+      "sha256": "ebed6da60003d87ef9b3ee72c9a1dc13eef529afc31f1c328172026dcd113cc8"
+    },
+    {
+      "path": "Models.meta",
+      "bytes": 172,
+      "sha256": "954d42905a17d822c737d0b259a0e3fc5070e75bc0be4991fd0e135eed3a599d"
+    },
+    {
+      "path": "Prefabs/CHR_Explorer.prefab",
+      "bytes": 77199,
+      "sha256": "cef0b781427bf943548ed6598d787a42fc5880d3719043625cb8338fcb6145a2"
+    },
+    {
+      "path": "Prefabs/CHR_Explorer.prefab.meta",
+      "bytes": 154,
+      "sha256": "56e891ba18f39a7f867882d3ee96091e62831951eb7f3ff58e84b1e12eeb8f21"
+    },
+    {
+      "path": "Prefabs.meta",
+      "bytes": 172,
+      "sha256": "4eb02a15e0541cf9f403bd9edfc5fb27bce730f7e620a6dc0f05070daa454953"
+    },
+    {
+      "path": "Scripts/ExplorerAnimator.cs",
+      "bytes": 1284,
+      "sha256": "7633516859c1cf2b7f48229b3e936b516a4e03c9f2fc95722e94eaa19f7053bf"
+    },
+    {
+      "path": "Scripts/ExplorerAnimator.cs.meta",
+      "bytes": 59,
+      "sha256": "cadd541396bd4ce285e3ddc460d9ff7f4b84f198123eb70812362b089f66e4a9"
+    },
+    {
+      "path": "Scripts/ExplorerCamera.cs",
+      "bytes": 794,
+      "sha256": "7f1998de40666ad229fb91c290122253ea11f0f59d62b8bac8506c85114f21bd"
+    },
+    {
+      "path": "Scripts/ExplorerCamera.cs.meta",
+      "bytes": 59,
+      "sha256": "6a75c4ec93052cf5a4997afde781b1a0c8013c8ae94c050aa50cea1506589568"
+    },
+    {
+      "path": "Scripts/ExplorerGround.cs",
+      "bytes": 1300,
+      "sha256": "206a0808cdd2a61aa43e330081a135685e13601c2c0af723573a5099aac45c27"
+    },
+    {
+      "path": "Scripts/ExplorerGround.cs.meta",
+      "bytes": 59,
+      "sha256": "6cf23615a28354d0734af9bcf7bedc947397feb365cd79c712914348295d0474"
+    },
+    {
+      "path": "Scripts/ExplorerInput.cs",
+      "bytes": 624,
+      "sha256": "3a5e704c3bf5fb20e830997e4887379e4535a6a1401ac2094a0491564ca13aaf"
+    },
+    {
+      "path": "Scripts/ExplorerInput.cs.meta",
+      "bytes": 59,
+      "sha256": "c2c13f8a3952c420ad70d5f6dc4f0d08ec54aa2b4be7df1665bde763f7b7fdae"
+    },
+    {
+      "path": "Scripts/ExplorerMotor.cs",
+      "bytes": 6191,
+      "sha256": "f485d665bcc1ed0fd68c3beae5a8878a6a4a1426a9c7c41c3e3df2dc3796d7eb"
+    },
+    {
+      "path": "Scripts/ExplorerMotor.cs.meta",
+      "bytes": 59,
+      "sha256": "700632f82c41498d6750c1f45762f605d5e6b254ef336f01ecef6835538841ed"
+    },
+    {
+      "path": "Scripts.meta",
+      "bytes": 172,
+      "sha256": "7a4ea095ce1d9e76a3589ad3878d125ad2b8dfda5090231788f7219bb22cb6c7"
+    },
+    {
+      "path": "Textures/CHR_Explorer_BaseColor.JPEG",
+      "bytes": 1350079,
+      "sha256": "91507c6cb1761af746e0d41b8b9930f81f8b06675387f339412827e658598c90",
+      "resolution": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "Textures/CHR_Explorer_BaseColor.JPEG.meta",
+      "bytes": 2354,
+      "sha256": "6e9ae1da93cfb72c6b7e53cc3a1262218d3d538cd9f068d45eaf481ad3633671"
+    },
+    {
+      "path": "Textures.meta",
+      "bytes": 172,
+      "sha256": "5b0035a0aa7b6a064b027602d69015610de88434ed42fa432cbb78fa761f8636"
+    }
+  ],
+  "clips": [
+    {
+      "file": "Animations/CHR_Explorer_CrouchIdle.anim",
+      "name": "CHR_Explorer_CrouchIdle",
+      "duration": 1.0333334,
+      "loop": true,
+      "object_reference_curves": 1
+    },
+    {
+      "file": "Animations/CHR_Explorer_CrouchWalk.anim",
+      "name": "CHR_Explorer_CrouchWalk",
+      "duration": 1.0333334,
+      "loop": true,
+      "object_reference_curves": 1
+    },
+    {
+      "file": "Animations/CHR_Explorer_Idle.anim",
+      "name": "CHR_Explorer_Idle",
+      "duration": 5.6000004,
+      "loop": true,
+      "object_reference_curves": 1
+    },
+    {
+      "file": "Animations/CHR_Explorer_Jump.anim",
+      "name": "CHR_Explorer_Jump",
+      "duration": 2.3333335,
+      "loop": false,
+      "object_reference_curves": 1
+    },
+    {
+      "file": "Animations/CHR_Explorer_Run.anim",
+      "name": "CHR_Explorer_Run",
+      "duration": 0.53333336,
+      "loop": true,
+      "object_reference_curves": 1
+    },
+    {
+      "file": "Animations/CHR_Explorer_Walk.anim",
+      "name": "CHR_Explorer_Walk",
+      "duration": 1.3666668,
+      "loop": true,
+      "object_reference_curves": 1
+    }
+  ],
+  "duplicate_bytes": [],
+  "model": "Models/CHR_Explorer.fbx",
+  "textures": [
+    "Textures/CHR_Explorer_BaseColor.JPEG"
+  ],
+  "normal_map": "ABSENT",
+  "rig_evidence": "Source ModelImporter Humanoid/CreateFromModel auto-mapping; Unity validation pending",
+  "missing": [
+    "Jump Start",
+    "Jump/Fall independent",
+    "Jump Land",
+    "Crouch Enter",
+    "Crouch Exit",
+    "Turn Left",
+    "Turn Right",
+    "Look Around",
+    "Interact",
+    "Receive Object",
+    "Inspect Map",
+    "Store Map",
+    "Talk",
+    "Listen/Nod",
+    "React / Look Back"
+  ],
+  "excluded_from_copy": [
+    "source prefab with CharacterController",
+    "ExplorerInput",
+    "ExplorerMotor",
+    "ExplorerGround",
+    "ExplorerCamera",
+    "ExplorerAnimator",
+    "source controller coupled to source motor"
+  ]
+}

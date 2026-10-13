@@ -1,0 +1,29 @@
+{
+    "passed": true,
+    "unity": "6000.6.3f1",
+    "avatar": "CHR_ExplorerAvatar",
+    "height": 1.8000000715255737,
+    "importScale": 1.6105284690856934,
+    "triangles": 30632,
+    "vertices": 32753,
+    "bones": 65,
+    "clips": [
+        "Idle",
+        "Walk",
+        "Run",
+        "Jump (full clip)",
+        "CrouchIdle (held alias)",
+        "CrouchWalk"
+    ],
+    "checks": [
+        "catalog/name/prefab",
+        "Humanoid required bone mapping",
+        "root motion false/shared controller",
+        "visual-only/no missing scripts",
+        "height/feet/unit root",
+        "URP/BaseColor/no fake Normal",
+        "Tutorial+Level01 existing Player/spawner/camera foundation",
+        "existing menu selector/four-slot catalog order"
+    ],
+    "error": ""
+}

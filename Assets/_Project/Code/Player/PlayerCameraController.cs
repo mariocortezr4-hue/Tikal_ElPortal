@@ -88,6 +88,15 @@ namespace Tikal.Player
             if (_collisionProbe != null) Destroy(_collisionProbe.gameObject);
         }
 
+        public void RefreshCharacterVisualVisibility()
+        {
+            var thirdPerson = Mode == CameraMode.ThirdPerson;
+            if (_characterVisualRoot != null) _characterVisualRoot.SetActive(thirdPerson);
+            var spawner = GetComponent<CharacterVisualSpawner>();
+            if (_thirdPersonHumanProxy != null)
+                _thirdPersonHumanProxy.SetActive(thirdPerson && (spawner == null || !spawner.HasVisual));
+        }
+
         private void ApplySettings(GameSettingsData settings)
         {
             // Reuse PlayerLook's settings; neither controller creates another persistence source.
@@ -102,7 +111,7 @@ namespace Tikal.Player
             Mode = next;
             bool thirdPerson = Mode == CameraMode.ThirdPerson;
             if (_characterVisualRoot != null) _characterVisualRoot.SetActive(thirdPerson);
-            if (_thirdPersonHumanProxy != null) _thirdPersonHumanProxy.SetActive(thirdPerson);
+            RefreshCharacterVisualVisibility();
             if (!_initialized) return;
             if (!thirdPerson)
             {
