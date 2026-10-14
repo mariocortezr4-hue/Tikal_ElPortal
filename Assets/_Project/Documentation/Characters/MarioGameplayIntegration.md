@@ -1,6 +1,6 @@
 # Mario — integración gameplay
 
-Estado: integración materializada en feature/character-mario-integration; validación automatizada Editor/Play Mode y revisión de capturas realizadas. El playtest humano completo permanece pendiente. No modifica Intro_AncientMap, Timeline, Elder, AncientMap, puzzles, input, formato de guardado ni ajuste de cámara TPS.
+Estado: integración y refinamiento de Walk/grounding en feature/character-mario-integration. El usuario confirmó satisfactorio el playtest humano inicial; la revisión humana de estas correcciones es independiente de las pruebas automatizadas indicadas abajo. No modifica Intro_AncientMap, Timeline, Elder, AncientMap, puzzles, input, formato de guardado ni ajuste de cámara TPS.
 
 ## Fuente y auditoría
 
@@ -98,3 +98,74 @@ No se modificaron escenas, Timeline Intro, Elder, AncientMap, cápsula física, 
 Quedan para aceptación humana: navegación real con teclado/gamepad, MainMenu→Tutorial/Continue completo, Pause Settings FPS/TPS, foot sliding prolongado, puertas, Journal, puzzles y SecretCommand. No se afirma haber realizado ese recorrido manual.
 
 Control Git: stage explícito, comprobación de tamaños individuales antes del commit, diff --check; commit/push exclusivamente a feature/character-mario-integration. El hash y resultado de push se entregan en el reporte de la sesión, sin merge ni cambios en main.
+
+
+## Refinamiento Walk y alineación — 2026-10-13
+
+### Fuente canónica y retirada de la anterior
+
+Se auditó íntegramente la entrega READ-ONLY:
+`C:\Users\Mario Cortez\Documents\Codex\2026-10-11\files-pasted-by-the-user-proyecto\outputs\CHR_Explorer_Walk_Update`.
+Contiene siete archivos: clip, meta, README, manifiesto, verificación de protección, validación y texto de traspaso. Se leyeron documentos y datos; los seis hashes declarados en MANIFEST_SHA256.json coincidieron. La auditoría inicial/final incluye los siete archivos y no modifica la fuente.
+
+La Walk canónica es `Assets/_Project/Art/Characters/Mario/Animations/CHR_Explorer_Walk.anim`, fileID 7400000, GUID **31ec003e1e834ebba8fa3954574ab9ae**. Corresponde a C aprobada/Upright, no a la Walk anterior ni a Natural B. Su SHA de entrega es `c56fe0890ba6ecf187548dc23e871459e2839d9aa365d221bb52844e3111a80d`. Se normalizó únicamente whitespace final y saltos de línea en la copia local para diff --check; curvas, ajustes, nombre y GUID se conservan. La fuente externa permanece idéntica.
+
+La Walk anterior era un **.anim independiente**, GUID `b09c1f85f39f9c548895867b7b174c1f`; no un clip embebido en FBX. La búsqueda previa encontró únicamente su meta y la referencia del hijo central de ExplorerLocomotion. Se retiró su identidad/contenido por reemplazo auditado del clip y meta en la misma ruta, después de preparar la nueva referencia. No queda un asset de Walk antigua en Assets ni referencia activa del controller. El original es recuperable en Git y el respaldo local de auditoría permanece en Temp; no se elimina nada del master externo.
+
+`AC_ExplorerGameplay` conserva Idle/Walk/Run, estructura, parámetros, transiciones y velocidades; cambia solo la referencia de Motion del hijo Walk al nuevo GUID. No se crea AC_Mario, otro Avatar ni un AnimatorOverrideController.
+
+### Propiedades, loop y velocidad
+
+- AnimationClip nativo no Legacy, Humanoid confirmado por Unity 6000.6.3f1.
+- Duración 1.3666668 s, 30 fps, 130 bindings Animator sin rutas Transform de un esqueleto específico.
+- Loop Time y Loop Pose activados, blending de orientación/Y/XZ conservado.
+- RootT.x/y/z y RootQ.x/y/z/w presentes: datos de cuerpo Humanoid, no coordenadas métricas del Player. No se borran para inmovilizar físicamente al actor.
+- RootT.x: −0.10045553..0.0003899905; RootT.y: 0.9381055..0.9824292; RootT.z: −0.014417871..0.042879738. Principio/final casi iguales: el ciclo no representa avance acumulativo horizontal. Orientación offset Y=0, KeepOriginalOrientation conservado.
+- Animator.applyRootMotion sigue false en prefab y puente. PlayerMovement/CharacterController siguen como autoridad; ningún ajuste de transform cada frame.
+- El paquete de prueba externo cita 1.60 m/s y 1.8723404 de cadencia. **No se trasladan esos valores de gameplay**: el juego conserva Walk=4 m/s, Sprint=6.5 m/s y Crouch=2 m/s.
+- Se conserva el timeScale Walk **4.292876** ya existente, umbral **0.61538464**, Locomotion state speed=1; Run timeScale **1.7278966** intacto. No se añade multiplicador ni amortiguado nuevo en runtime.
+
+### Diagnóstico y solución visual
+
+CharacterVisualRoot tiene Y local 0. El Avatar existente es válido/humanoid, humanScale≈0.9002806; importScale=1.61052847, FBX, mapeo y bind poses permanecen intactos. El root del modelo tenía Y local **+0.15764016 m**, obtenido originalmente a partir de bounds del renderer. La geometría real de las suelas no coincide con ese límite de bounds: la medición CPU de skinning en 96 fases mostró Idle medio +0.15200025 m sobre el origen; la nueva Walk media +0.15205449 m. Diferencia entre sus apoyos medios: solo 0.054 mm. No hay motivo para corregir RootT de un clip de forma aislada.
+
+En Play Mode sobre cubo plano, el CharacterController existente estabiliza el Player en **Y≈+0.03999989 m**, coherente con su skinWidth 0.04. Esa separación también debe considerarse visualmente; no se modifica la cápsula para quitarla.
+
+Corrección definitiva, exclusivamente en el modelo anidado de `CHR_Mario_PlayerVisual.prefab`:
+
+- Y anterior: **+0.15764016 m**.
+- Y final: **−0.03436009 m**.
+- Delta aplicado: **−0.19200025 m** (= −0.15200025 de calibración + −0.04 de separación física medida).
+- Root exterior, X/Z, escala, rotación, huesos y Avatar sin cambios.
+
+No se introduce un componente de grounding, IK, otro motor ni offset dinámico. El origen visual se mantiene también durante Jump; no se pega al suelo en el aire. El authoring usa la calibración al crear el prefab y el validador comprueba su valor y suelas reales, evitando el falso criterio basado solo en renderer.bounds.min.y.
+
+### Medición de geometría y límites
+
+`MarioGroundBefore.json` registra el diagnóstico anterior con la Walk antigua; `MarioGroundValidation.json` registra el nuevo clip y configuración final. Los valores de este último están relativos al origen del Player; para el plano de suelo de la prueba, sumar la separación física medida de 0.04 m.
+
+| Pose | Suela mínima / máxima respecto al suelo plano (m) | Interpretación |
+|---|---|---|
+| Idle, 96 fases | −0.000847 / +0.000785 | Apoyo estable alrededor del plano |
+| Walk nueva, 96 fases | −0.006142 / +0.014476 | Apoyo medio ≈+0.000054; leve variación de suela en el ciclo |
+| Run existente, 96 fases | −0.023692 / +0.094316 | Incluye fase aérea y penetración puntual de geometría de bota heredadas |
+| CrouchIdle, fase .25 | +0.025234 | Alias existente, conservado; no es un nuevo idle de agachado |
+| CrouchWalk existente, 96 fases | −0.062844 / +0.026272 | Variación heredada de puntas/botas; no certifica contacto perfecto |
+| Jump existente, 96 fases | +0.004245 / +0.596730 | Elevación visual propia del clip, conservada |
+
+Los huesos de pie permanecen por encima del plano; su posición no equivale a la planta de la bota. No se afirma cero deslizamiento ni ausencia total de penetración de puntas en Run/Crouch. La corrección elimina el desplazamiento constante; una corrección detallada de esas poses sería un trabajo adicional sobre clips/IK y no se oculta como validación perfecta.
+
+### Validación y evidencias
+
+La ejecución autoritativa está en `MarioPlayValidation.json` y `MarioEditorValidation.json`: Editor normal, nunca batchmode. Las pruebas Play Mode usan simulación uniforme de 60 Hz para que las capturas GPU no falseen el intervalo de medición; ese ajuste temporal se restaura al finalizar y no modifica ProjectSettings. La medición de continuidad comienza después de estabilizar Idle, excluyendo la inicialización de bind pose/Rebind. No se cambia el puente runtime para disimular un artefacto del arranque de la prueba.
+
+La suite comprueba referencia canónica/GUID, Walk antigua inactiva, root motion false, character.03/Mario, visual sin scripts faltantes, clips presentes, Idle/Walk/Run y transiciones inversas, conservación de offset en Crouch/Jump/Land/FPS/TPS/reset y RestartFromCheckpoint real de Level01. También valida selector y persistencia con un save aislado y presencia del Player/visual en Tutorial y Level01. No cambia objetivos Move/Sprint/Crouch del Tutorial ni puzzles/Journal/Door/SecretCommand/checkpoints; no equivale a un nuevo recorrido humano completo de sus mecánicas.
+
+Capturas actualizadas: Mario_Idle.png, Mario_Walk.png, Mario_Run.png, Mario_CrouchIdle.png y Mario_CrouchWalk.png. Se comprueban malla visible y ausencia de magenta; las capturas fueron revisadas visualmente. Son evidencia de poses concretas, no video de todo el ciclo.
+
+`Tikal/Validation/Validate Mario Gameplay Character` incluye ahora referencia Walk canónica, antigua inactiva, loop, offset calibrado y baseline Idle/Walk. `Tikal/Validation/Audit Mario Feet Baseline` permite repetir diagnóstico por clip sin alterar assets. Los experimentos fallidos iniciales no se presentan como aprobación; el JSON final es el dictamen vigente.
+
+`MarioWalkSourceAudit.json` y `MarioWalkProtectionVerification.json` registran identidad, fuentes READ-ONLY y cotejo de archivos versionados. PlayerMovement, cápsula, gravedad, terreno, cámaras, escenas, catálogo, UI, código runtime y demás clips permanecen intactos. El commit inicial 92958f3 no se modifica. El nuevo commit y push se reportan al cerrar la sesión; no hay merge ni cambios de rama/main.
+
+
+Resultado definitivo del refinamiento: **10 controles Editor y 72 comprobaciones Play Mode aprobados**, 0 errores runtime y 0 errores Editor registrados. En el ensayo final, Idle queda a −0.000517972 m del plano (0.52 mm de penetración imperceptible), Player Y=0.03999989 m y modelo local Y=−0.03436009 m. Continuidad después de estabilizar Idle: máximo salto de pelvis por muestra de 60 Hz=0.03283203 m; control de regresión de teleport (>0.08 m/muestra) superado. Esto no certifica ausencia de todo popping perceptible en cualquier framerate/terreno. Walk→Idle y Jump→Land regresan al baseline con tolerancia de 3 mm, sin corrección dinámica. La autoría se ejecutó dos veces y mantuvo bytes idénticos en prefab/controller/registry/model meta.

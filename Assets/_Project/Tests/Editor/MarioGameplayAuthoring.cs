@@ -82,7 +82,7 @@ namespace Tikal.Tests.Editor
                 try
                 {
                     var visual=(GameObject)PrefabUtility.InstantiatePrefab(model);visual.transform.SetParent(root.transform,false);visual.name="MarioModel";
-                    var bounds=Bounds(visual); visual.transform.localPosition-=new Vector3(bounds.center.x,bounds.min.y,bounds.center.z);
+                    var bounds=Bounds(visual); visual.transform.localPosition=new Vector3(-bounds.center.x,MarioWalkGroundValidation.ModelLocalY,-bounds.center.z);
                     var animator=visual.GetComponent<Animator>()??visual.AddComponent<Animator>();animator.avatar=avatar;animator.runtimeAnimatorController=controller;
                     animator.applyRootMotion=false;animator.updateMode=AnimatorUpdateMode.Normal;animator.cullingMode=AnimatorCullingMode.CullUpdateTransforms;
                     foreach(var renderer in root.GetComponentsInChildren<SkinnedMeshRenderer>(true))renderer.sharedMaterials=Enumerable.Repeat(material,renderer.sharedMaterials.Length).ToArray();
@@ -131,6 +131,7 @@ namespace Tikal.Tests.Editor
             var result=new ValidationResult{unity=Application.unityVersion};
             try
             {
+                MarioWalkGroundValidation.ValidateGround();
                 var definition=CharacterCatalog.GetOrDefault(CharacterIds.Character03);Require(definition.Id==CharacterIds.Character03&&definition.DisplayName=="Mario","character.03 catalog/name mapping");
                 var prefab=AssetDatabase.LoadAssetAtPath<GameObject>(Prefab);Require(prefab!=null&&definition.VisualPrefab==prefab,"Catalog references Mario prefab");
                 var animator=prefab.GetComponentInChildren<Animator>(true);Require(animator!=null&&animator.avatar!=null&&animator.avatar.isHuman&&animator.avatar.isValid,"Valid Humanoid Animator");
@@ -141,7 +142,7 @@ namespace Tikal.Tests.Editor
                 try
                 {
                     var a=ob.GetComponentInChildren<Animator>();var required=new[]{HumanBodyBones.Head,HumanBodyBones.Spine,HumanBodyBones.Chest,HumanBodyBones.LeftUpperArm,HumanBodyBones.RightUpperArm,HumanBodyBones.LeftLowerArm,HumanBodyBones.RightLowerArm,HumanBodyBones.LeftHand,HumanBodyBones.RightHand,HumanBodyBones.LeftUpperLeg,HumanBodyBones.RightUpperLeg,HumanBodyBones.LeftLowerLeg,HumanBodyBones.RightLowerLeg,HumanBodyBones.LeftFoot,HumanBodyBones.RightFoot};
-                    Require(required.All(b=>a.GetBoneTransform(b)!=null),"Critical Humanoid bones mapped");var b=Bounds(ob);result.height=b.size.y;Require(b.size.y>=1.7f&&b.size.y<=1.85f&&Mathf.Abs(b.min.y)<.025f,"Human height/feet alignment");
+                    Require(required.All(b=>a.GetBoneTransform(b)!=null),"Critical Humanoid bones mapped");var b=Bounds(ob);result.height=b.size.y;Require(b.size.y>=1.7f&&b.size.y<=1.85f&&Mathf.Abs(MarioWalkGroundValidation.Sole(ob)+MarioWalkGroundValidation.PhysicalGroundClearance)<.025f,"Human height/feet alignment");
                     var r=ob.GetComponentsInChildren<SkinnedMeshRenderer>();result.vertices=r.Sum(x=>x.sharedMesh.vertexCount);result.triangles=r.Sum(x=>x.sharedMesh.triangles.Length/3);result.bones=r.Sum(x=>x.bones.Length);
                     foreach(var mat in r.SelectMany(x=>x.sharedMaterials)){Require(mat!=null&&mat.shader.name=="Universal Render Pipeline/Lit"&&mat.GetTexture("_BaseMap")!=null,"URP/Lit with BaseColor");Require(mat.GetFloat("_Metallic")<.1f&&mat.GetFloat("_Smoothness")<=.35f,"Natural material");}
                 }
@@ -159,7 +160,7 @@ namespace Tikal.Tests.Editor
                     Require(menu.GetRootGameObjects().SelectMany(x=>x.GetComponentsInChildren<Tikal.UI.CharacterSelectionController>(true)).Count()==1,"Main Menu retains its existing selector");
                 } finally {EditorSceneManager.RestoreSceneManagerSetup(menuSetup);}
                 result.avatar=animator.avatar.name;result.importScale=((ModelImporter)AssetImporter.GetAtPath(Model)).globalScale;result.clips=new[]{"Idle","Walk","Run","Jump (full clip)","CrouchIdle (held alias)","CrouchWalk"};
-                result.checks=new[]{"catalog/name/prefab","Humanoid required bone mapping","root motion false/shared controller","visual-only/no missing scripts","height/feet/unit root","URP/BaseColor/no fake Normal","Tutorial+Level01 existing Player/spawner/camera foundation","existing menu selector/four-slot catalog order"};result.passed=true;
+                result.checks=new[]{"catalog/name/prefab","Humanoid required bone mapping","root motion false/shared controller","visual-only/no missing scripts","height/CPU-skinned-feet/unit root","canonical Walk/GUID/old clip retired/loop","96-phase Idle-Walk baseline/calibrated model offset","URP/BaseColor/no fake Normal","Tutorial+Level01 existing Player/spawner/camera foundation","existing menu selector/four-slot catalog order"};result.passed=true;
                 Debug.Log("MARIO_EDITOR_VALIDATION_PASS height="+result.height+" triangles="+result.triangles);
             }
             catch(Exception e){result.error=e.ToString();Debug.LogException(e);throw;}

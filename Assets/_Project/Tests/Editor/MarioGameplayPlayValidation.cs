@@ -35,6 +35,11 @@ namespace Tikal.Tests.Editor
         static CharacterVisualSpawner _spawner;
         static Animator _animator;
         static double _deadline;
+        static Vector3 _modelPosition;
+        static float _idleGroundBaseline;
+        static float _previousPelvisY, _maximumPelvisStep;
+        static bool _hasPelvisSample;
+        static int _originalCaptureRate;
         static MarioGameplayPlayValidation()
         {
             EditorApplication.playModeStateChanged+=Mode;
@@ -71,7 +76,11 @@ namespace Tikal.Tests.Editor
         }
         static void StartTests()
         {
-            if(_routine!=null)return;Checks.Clear();Errors.Clear();EditorErrors.Clear();Application.logMessageReceived+=Log;
+            if(_routine!=null)return;
+            // Screenshot GPU readbacks can stall a wall-clock frame. Use fixed simulation
+            // time so continuity compares equal intervals; restore on every Finish path.
+            _originalCaptureRate=Time.captureFramerate;Time.captureFramerate=60;
+            Checks.Clear();Errors.Clear();EditorErrors.Clear();Application.logMessageReceived+=Log;
             _routine=Tests();_deadline=EditorApplication.timeSinceStartup+180;EditorApplication.update+=Tick;
         }
         static void Log(string text,string stack,LogType type)
@@ -89,8 +98,8 @@ namespace Tikal.Tests.Editor
         static void Finish()
         {
             EditorApplication.update-=Tick;Application.logMessageReceived-=Log;_routine=null;
-            var result=new Result{enteredPlayMode=Application.isPlaying,passed=Application.isPlaying&&Errors.Count==0,checks=Checks.ToArray(),errors=Errors.ToArray(),editorErrors=EditorErrors.ToArray(),scope="Automated interactive-Editor tests: actual PlayerMovement/CharacterController, animation bridge, camera visibility, scene spawning, menu selection and isolated save roundtrip. Not a human WASD/puzzle acceptance playtest."};
-            Directory.CreateDirectory(Root);File.WriteAllText(Root+"/MarioPlayValidation.json",JsonUtility.ToJson(result,true));EditorApplication.ExitPlaymode();
+            var result=new Result{enteredPlayMode=Application.isPlaying,passed=Application.isPlaying&&Errors.Count==0,checks=Checks.ToArray(),errors=Errors.ToArray(),editorErrors=EditorErrors.ToArray(),scope="Automated interactive-Editor tests (fixed 60 Hz simulation, capture timing restored): actual PlayerMovement/CharacterController, animation bridge, camera visibility, scene spawning, menu selection and isolated save roundtrip. Not a human WASD/puzzle acceptance playtest."};
+            Directory.CreateDirectory(Root);File.WriteAllText(Root+"/MarioPlayValidation.json",JsonUtility.ToJson(result,true));Time.captureFramerate=_originalCaptureRate;EditorApplication.ExitPlaymode();
         }
         static IEnumerator Tests()
         {
@@ -103,6 +112,11 @@ namespace Tikal.Tests.Editor
             _player.GetComponent<PlayerController>().enabled=false;
             _movement=_player.GetComponent<PlayerMovement>();_camera=_player.GetComponent<PlayerCameraController>();_spawner=_player.GetComponent<CharacterVisualSpawner>();
             _spawner.Apply(CharacterIds.Character03);_animator=_spawner.CurrentVisual.GetComponentInChildren<Animator>(true);
+            _modelPosition=_animator.transform.localPosition;_hasPelvisSample=false;_maximumPelvisStep=0;
+            Check(!_animator.applyRootMotion,"Root Motion remains disabled");
+            Check(_animator.runtimeAnimatorController.animationClips.All(c=>c!=null),"No missing animation clips");
+            Check(currentPrefabScripts(_spawner.CurrentVisual),"No missing visual scripts");
+            Check(Mathf.Abs(_modelPosition.y-MarioWalkGroundValidation.ModelLocalY)<.00001f,"Calibrated visual model offset");
             for(int i=0;i<5;i++)yield return null;
             _camera.ApplyCameraMode(CameraMode.ThirdPerson);
             Check(_spawner.CurrentVisual.activeInHierarchy,"Mario visible in TPS");
@@ -111,24 +125,36 @@ namespace Tikal.Tests.Editor
             var proxy=_player.transform.Find("CharacterVisualRoot/ThirdPersonHumanProxy");Check(proxy!=null&&!proxy.gameObject.activeSelf,"Proxy suppressed for Mario");
             for(int i=0;i<45;i++){_movement.Tick(Vector2.zero,false,false,Time.deltaTime);yield return null;}
             Check(_movement.IsGrounded&&_animator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"),"Idle grounded/Locomotion");Capture("Mario_Idle.png");
-            for(int i=0;i<70;i++){_movement.Tick(Vector2.up,false,false,Time.deltaTime);yield return null;}
+            _idleGroundBaseline=MarioWalkGroundValidation.Sole(current)+_player.transform.position.y;
+            Debug.Log("MARIO_REAL_GROUND_METRIC playerY="+_player.transform.position.y+" sole="+_idleGroundBaseline+" rootLocal="+_animator.transform.localPosition.y);Check(Mathf.Abs(_idleGroundBaseline)<.002f,"Flat-ground Idle sole contact");
+            _hasPelvisSample=false;_maximumPelvisStep=0;ProbePelvis(); // Start after initial bind-pose/Rebind warm-up.
+            for(int i=0;i<70;i++){_movement.Tick(Vector2.up,false,false,Time.deltaTime);yield return null;ProbePelvis();}
             Check(Mathf.Abs(_movement.CurrentSpeed-_movement.WalkSpeed)<.05f&&_animator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"),"Actual unchanged Walk speed/animation");Capture("Mario_Walk.png");
-            for(int i=0;i<70;i++){_movement.Tick(Vector2.up,true,false,Time.deltaTime);yield return null;}
+            Check(_animator.GetCurrentAnimatorClipInfo(0).Any(x=>AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(x.clip))==MarioWalkGroundValidation.CanonicalGuid && x.weight>.9f),"Actual canonical Walk is playing");
+            Check(_animator.transform.localPosition==_modelPosition,"Walk root curves do not move visual root");
+            for(int i=0;i<70;i++){_movement.Tick(Vector2.up,true,false,Time.deltaTime);yield return null;ProbePelvis();}
             Check(Mathf.Abs(_movement.CurrentSpeed-_movement.SprintSpeed)<.05f&&_animator.GetCurrentAnimatorClipInfo(0).Any(x=>x.clip.name=="CHR_Explorer_Run"&&x.weight>.9f),"Actual unchanged Sprint speed/Run clip");Capture("Mario_Run.png");
+            for(int i=0;i<70;i++){_movement.Tick(Vector2.up,false,false,Time.deltaTime);yield return null;ProbePelvis();}
+            Check(_animator.GetCurrentAnimatorClipInfo(0).Any(x=>AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(x.clip))==MarioWalkGroundValidation.CanonicalGuid&&x.weight>.9f),"Run to new Walk transition");
+            for(int i=0;i<70;i++){_movement.Tick(Vector2.zero,false,false,Time.deltaTime);yield return null;}
+            Check(_animator.GetFloat("Speed")<.01f&&Mathf.Abs(MarioWalkGroundValidation.Sole(current)+_player.transform.position.y-_idleGroundBaseline)<.003f,"Walk to Idle returns to same ground baseline");
+            Debug.Log("MARIO_TRANSITION_PELVIS_MAX_STEP " + _maximumPelvisStep);
+            Check(_maximumPelvisStep<.08f,"Idle-Walk-Run-Walk transitions have no pelvis teleport (>8cm/frame)");
             _movement.RequestJump();bool airborne=false,landed=false;
             for(int i=0;i<160;i++){_movement.Tick(Vector2.zero,false,false,Time.deltaTime);airborne|=!_movement.IsGrounded;if(airborne&&_movement.IsGrounded)landed=true;yield return null;}
             Check(airborne&&landed&&_animator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"),"Physical Jump/full-clip fallback/landing settles");
+            Check(_animator.transform.localPosition==_modelPosition&&Mathf.Abs(MarioWalkGroundValidation.Sole(current)+_player.transform.position.y-_idleGroundBaseline)<.003f,"Jump/Land returns to same visual baseline without runtime grounding");
             for(int i=0;i<70;i++){_movement.Tick(Vector2.zero,false,true,Time.deltaTime);yield return null;}
-            Check(_movement.IsCrouching&&_animator.GetCurrentAnimatorStateInfo(0).IsName("CrouchIdle"),"CrouchIdle held alias at phase .25");Capture("Mario_CrouchIdle.png");
+            Check(_movement.IsCrouching&&_animator.GetCurrentAnimatorStateInfo(0).IsName("CrouchIdle"),"CrouchIdle held alias at phase .25");Capture("Mario_CrouchIdle.png");Check(_animator.transform.localPosition==_modelPosition,"CrouchIdle preserves visual offset");
             for(int i=0;i<70;i++){_movement.Tick(Vector2.up,false,true,Time.deltaTime);yield return null;}
-            Check(Mathf.Abs(_movement.CurrentSpeed-_movement.CrouchSpeed)<.05f&&_animator.GetCurrentAnimatorStateInfo(0).IsName("CrouchWalk"),"Actual existing crouch mechanics/clip");Capture("Mario_CrouchWalk.png");
+            Check(Mathf.Abs(_movement.CurrentSpeed-_movement.CrouchSpeed)<.05f&&_animator.GetCurrentAnimatorStateInfo(0).IsName("CrouchWalk"),"Actual existing crouch mechanics/clip");Capture("Mario_CrouchWalk.png");Check(_animator.transform.localPosition==_modelPosition,"CrouchWalk preserves visual offset");
             for(int i=0;i<70;i++){_movement.Tick(Vector2.zero,false,false,Time.deltaTime);yield return null;}
             Check(!_movement.IsCrouching&&_animator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"),"Crouch release settles");
-            for(int i=0;i<4;i++){_camera.ApplyCameraMode(CameraMode.FirstPerson);Check(!current.activeInHierarchy,"FPS hides full body immediately");_camera.ApplyCameraMode(CameraMode.ThirdPerson);Check(current.activeInHierarchy&&_spawner.CurrentVisual==current,"TPS restores same visual");yield return null;}
+            for(int i=0;i<4;i++){_camera.ApplyCameraMode(CameraMode.FirstPerson);Check(!current.activeInHierarchy,"FPS hides full body immediately");_camera.ApplyCameraMode(CameraMode.ThirdPerson);Check(current.activeInHierarchy&&_spawner.CurrentVisual==current,"TPS restores same visual");Check(_animator.transform.localPosition==_modelPosition,"FPS/TPS preserves visual offset");yield return null;}
             _movement.RequestJump();_movement.Tick(Vector2.zero,false,false,Time.deltaTime);yield return null;
             _movement.ResetForRespawn();_player.GetComponent<PlayerAnimationController>().ResetForRespawn();
             for(int i=0;i<70;i++){_movement.Tick(Vector2.zero,false,false,Time.deltaTime);yield return null;}
-            Check(_movement.IsGrounded&&_animator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion")&&_animator.GetFloat("Speed")<.01f,"Respawn reset hook clears residual airborne/run state");
+            Check(_movement.IsGrounded&&_animator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion")&&_animator.GetFloat("Speed")<.01f,"Respawn reset hook clears residual airborne/run state");Check(_animator.transform.localPosition==_modelPosition,"Respawn preserves calibrated model offset");
             var path=Path.Combine(Path.GetTempPath(),"TikalMarioValidation-"+Guid.NewGuid().ToString("N"));var save=new GamePersistenceService(path);var progress=GameProgressData.CreateDefault();progress.SelectedCharacterId=CharacterIds.Character03;save.SaveProgress(progress);Check(save.LoadProgress().SelectedCharacterId==CharacterIds.Character03,"Existing save schema preserves character.03 roundtrip (isolated file)");
             EditorSceneManager.LoadSceneInPlayMode("Assets/_Project/Scenes/Menus/MainMenu.unity",new LoadSceneParameters(LoadSceneMode.Single));
             for(int i=0;i<10;i++)yield return null;
@@ -151,9 +177,19 @@ namespace Tikal.Tests.Editor
                 var spawner=players[0].GetComponent<CharacterVisualSpawner>();spawner.Apply(save.LoadProgress().SelectedCharacterId);var camera=players[0].GetComponent<PlayerCameraController>();camera.ApplyCameraMode(CameraMode.ThirdPerson);yield return null;
                 Check(spawner.HasVisual&&spawner.CurrentVisual.activeInHierarchy&&spawner.CurrentVisual.GetComponentInChildren<Animator>().avatar.isValid,"Persisted selection maps to Mario in scene: "+scenePath);
                 camera.ApplyCameraMode(CameraMode.FirstPerson);Check(!spawner.CurrentVisual.activeInHierarchy,"Scene FPS hide: "+scenePath);
-                if(scenePath.Contains("Level01")){var checkpoint=UnityEngine.Object.FindAnyObjectByType<CheckpointManager>();Check(checkpoint!=null&&checkpoint.CanRestartFromCheckpoint,"Actual Level01 checkpoint available");checkpoint.RestartFromCheckpoint();camera.ApplyCameraMode(CameraMode.ThirdPerson);for(int i=0;i<25;i++)yield return null;var anim=spawner.CurrentVisual.GetComponentInChildren<Animator>();Check(!checkpoint.IsRespawning&&anim.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"),"Actual Level01 RestartFromCheckpoint resets animation safely");}
+                if(scenePath.Contains("Level01")){var checkpoint=UnityEngine.Object.FindAnyObjectByType<CheckpointManager>();Check(checkpoint!=null&&checkpoint.CanRestartFromCheckpoint,"Actual Level01 checkpoint available");checkpoint.RestartFromCheckpoint();camera.ApplyCameraMode(CameraMode.ThirdPerson);for(int i=0;i<25;i++)yield return null;var anim=spawner.CurrentVisual.GetComponentInChildren<Animator>();Check(!checkpoint.IsRespawning&&anim.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"),"Actual Level01 RestartFromCheckpoint resets animation safely");Check(Mathf.Abs(anim.transform.localPosition.y-MarioWalkGroundValidation.ModelLocalY)<.00001f,"Actual checkpoint preserves visual calibration");}
             }
         }
+        static void ProbePelvis()
+        {
+            var y=_animator.GetBoneTransform(HumanBodyBones.Hips).position.y-_player.transform.position.y;
+            if(_hasPelvisSample) {
+                var step=Mathf.Abs(y-_previousPelvisY);_maximumPelvisStep=Mathf.Max(_maximumPelvisStep,step);
+                if(step>.08f)Debug.Log("MARIO_PELVIS_OUTLIER previous="+_previousPelvisY+" next="+y+" speed="+_animator.GetFloat("Speed")+" dt="+Time.deltaTime+" phase="+_animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            }
+            _previousPelvisY=y;_hasPelvisSample=true;
+        }
+        static bool currentPrefabScripts(GameObject visual)=>visual.GetComponentsInChildren<MonoBehaviour>(true).All(x=>x!=null);
         static void Capture(string name)
         {
             var renderers=_spawner.CurrentVisual.GetComponentsInChildren<SkinnedMeshRenderer>();

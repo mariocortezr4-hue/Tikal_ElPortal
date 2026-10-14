@@ -20,7 +20,9 @@
         "Humanoid required bone mapping",
         "root motion false/shared controller",
         "visual-only/no missing scripts",
-        "height/feet/unit root",
+        "height/CPU-skinned-feet/unit root",
+        "canonical Walk/GUID/old clip retired/loop",
+        "96-phase Idle-Walk baseline/calibrated model offset",
         "URP/BaseColor/no fake Normal",
         "Tutorial+Level01 existing Player/spawner/camera foundation",
         "existing menu selector/four-slot catalog order"

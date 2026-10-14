@@ -1,0 +1,143 @@
+{
+  "source": [
+    {
+      "path": "C:\\Users\\Mario Cortez\\Documents\\Codex\\2026-10-11\\files-pasted-by-the-user-proyecto\\outputs\\CHR_Explorer_Walk_Update\\CHR_Explorer_Walk.anim",
+      "sha256": "c56fe0890ba6ecf187548dc23e871459e2839d9aa365d221bb52844e3111a80d"
+    },
+    {
+      "path": "C:\\Users\\Mario Cortez\\Documents\\Codex\\2026-10-11\\files-pasted-by-the-user-proyecto\\outputs\\CHR_Explorer_Walk_Update\\CHR_Explorer_Walk.anim.meta",
+      "sha256": "9e96abfd092de9e083e4ca8622b9ed6405454d2b344314448ff0a16b0af8da7d"
+    },
+    {
+      "path": "C:\\Users\\Mario Cortez\\Documents\\Codex\\2026-10-11\\files-pasted-by-the-user-proyecto\\outputs\\CHR_Explorer_Walk_Update\\CHR_Explorer_Walk_Update_README.md",
+      "sha256": "274c662a5f73934944f0e1c6adba99990b95bd7c57b1e8c8a35099bfe5c4d47d"
+    },
+    {
+      "path": "C:\\Users\\Mario Cortez\\Documents\\Codex\\2026-10-11\\files-pasted-by-the-user-proyecto\\outputs\\CHR_Explorer_Walk_Update\\MANIFEST_SHA256.json",
+      "sha256": "43d5d2a943ca8d5d292460a0e747b3322576140d32a45c02fd20862f5a2d3324"
+    },
+    {
+      "path": "C:\\Users\\Mario Cortez\\Documents\\Codex\\2026-10-11\\files-pasted-by-the-user-proyecto\\outputs\\CHR_Explorer_Walk_Update\\Protection_Verification.json",
+      "sha256": "b38208aef39b5d1d220165e55ec4f6f1908873e3da3d4602bcd62d356c442d36"
+    },
+    {
+      "path": "C:\\Users\\Mario Cortez\\Documents\\Codex\\2026-10-11\\files-pasted-by-the-user-proyecto\\outputs\\CHR_Explorer_Walk_Update\\Texto_Para_Otro_Chat.txt",
+      "sha256": "54ead8bb64bbea4f6aeaaa4bcde5433ca629a8ff36d88c14b95f175b3e50ffc5"
+    },
+    {
+      "path": "C:\\Users\\Mario Cortez\\Documents\\Codex\\2026-10-11\\files-pasted-by-the-user-proyecto\\outputs\\CHR_Explorer_Walk_Update\\Validacion_Entrega.json",
+      "sha256": "26eff863b275d228428d95c36c694b0abba8ebc4160adaf8f195dafecfba0362"
+    }
+  ],
+  "clips": [
+    {
+      "path": "C:\\Users\\Mario Cortez\\Documents\\Codex\\2026-10-11\\files-pasted-by-the-user-proyecto\\outputs\\CHR_Explorer_Walk_Update\\CHR_Explorer_Walk.anim",
+      "curves": 130,
+      "root": {
+        "RootT.x": {
+          "min": -0.10045553,
+          "max": 0.0003899905,
+          "first": -0.0021215014,
+          "last": -0.0021220187
+        },
+        "RootT.y": {
+          "min": 0.9381055,
+          "max": 0.9824292,
+          "first": 0.9822428,
+          "last": 0.9822416
+        },
+        "RootT.z": {
+          "min": -0.014417871,
+          "max": 0.042879738,
+          "first": 0.011882654,
+          "last": 0.011881456
+        },
+        "RootQ.x": {
+          "min": 0.07710284,
+          "max": 0.10934775,
+          "first": 0.10673631,
+          "last": 0.106736764
+        },
+        "RootQ.y": {
+          "min": -0.05155644,
+          "max": 0.12453419,
+          "first": -0.0196535,
+          "last": -0.019652814
+        },
+        "RootQ.z": {
+          "min": -0.024676627,
+          "max": 0.03314896,
+          "first": -0.006036734,
+          "last": -0.0060365982
+        },
+        "RootQ.w": {
+          "min": 0.9875674,
+          "max": 0.99407494,
+          "first": 0.9940749,
+          "last": 0.99407494
+        }
+      },
+      "duration": 1.3666668,
+      "fps": 30.0,
+      "loopTime": 1,
+      "loopPose": 1
+    },
+    {
+      "path": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\My project\\Assets\\_Project\\Art\\Characters\\Mario\\Animations\\CHR_Explorer_Walk.anim",
+      "curves": 130,
+      "root": {
+        "RootT.x": {
+          "min": -0.093134694,
+          "max": -0.005783635,
+          "first": -0.0076565826,
+          "last": -0.0076570916
+        },
+        "RootT.y": {
+          "min": 0.87718225,
+          "max": 0.9659768,
+          "first": 0.9453114,
+          "last": 0.94531024
+        },
+        "RootT.z": {
+          "min": -0.0066913213,
+          "max": 0.0627372,
+          "first": 0.02814509,
+          "last": 0.028143967
+        },
+        "RootQ.x": {
+          "min": 0.0800301,
+          "max": 0.1080947,
+          "first": 0.10566756,
+          "last": 0.10566813
+        },
+        "RootQ.y": {
+          "min": -0.054293722,
+          "max": 0.12574592,
+          "first": -0.019011647,
+          "last": -0.01901123
+        },
+        "RootQ.z": {
+          "min": -0.02645542,
+          "max": 0.03548486,
+          "first": -0.009483896,
+          "last": -0.009483779
+        },
+        "RootQ.w": {
+          "min": 0.987169,
+          "max": 0.9941745,
+          "first": 0.9941745,
+          "last": 0.9941745
+        }
+      },
+      "duration": 1.3666668,
+      "fps": 30.0,
+      "loopTime": 1,
+      "loopPose": 1
+    }
+  ],
+  "oldReferences": [
+    "Assets\\_Project\\Animation\\Characters\\Explorer\\AC_ExplorerGameplay.controller",
+    "Assets\\_Project\\Art\\Characters\\Mario\\Animations\\CHR_Explorer_Walk.anim.meta"
+  ],
+  "retirement": "Independent .anim replaced in audited canonical path; old GUID removed. Source master untouched."
+}

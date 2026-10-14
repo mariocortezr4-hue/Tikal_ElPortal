@@ -1,0 +1,33 @@
+{
+  "sourceFiles": 7,
+  "sourceChanged": [],
+  "trackedFilesAudited": 853,
+  "changedTracked": [
+    "Assets/_Project/Animation/Characters/Explorer/AC_ExplorerGameplay.controller",
+    "Assets/_Project/Art/Characters/Mario/Animations/CHR_Explorer_Walk.anim",
+    "Assets/_Project/Art/Characters/Mario/Animations/CHR_Explorer_Walk.anim.meta",
+    "Assets/_Project/Documentation/Characters/Mario/MarioEditorValidation.json",
+    "Assets/_Project/Documentation/Characters/Mario/MarioPlayValidation.json",
+    "Assets/_Project/Documentation/Characters/Mario/Mario_CrouchIdle.png",
+    "Assets/_Project/Documentation/Characters/Mario/Mario_CrouchWalk.png",
+    "Assets/_Project/Documentation/Characters/Mario/Mario_Idle.png",
+    "Assets/_Project/Documentation/Characters/Mario/Mario_Run.png",
+    "Assets/_Project/Documentation/Characters/Mario/Mario_Walk.png",
+    "Assets/_Project/Documentation/Characters/MarioGameplayIntegration.md",
+    "Assets/_Project/Prefabs/Characters/CHR_Mario_PlayerVisual.prefab",
+    "Assets/_Project/Tests/Editor/MarioGameplayAuthoring.cs",
+    "Assets/_Project/Tests/Editor/MarioGameplayPlayValidation.cs"
+  ],
+  "unexpectedChanges": [],
+  "physicsAndRuntimeCodeUnchanged": true,
+  "runtimeFilesVerified": 233,
+  "scenesVerified": 11,
+  "sceneChanges": [],
+  "oldGuidActiveReferences": [],
+  "canonicalGuid": "31ec003e1e834ebba8fa3954574ab9ae",
+  "localClipOnlyWhitespaceNormalized": true,
+  "editorChecksPassed": 10,
+  "playChecksPassed": 72,
+  "runtimeErrors": 0,
+  "editorErrors": 0
+}
