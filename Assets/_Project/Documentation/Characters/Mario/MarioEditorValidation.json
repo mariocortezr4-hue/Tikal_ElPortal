@@ -22,10 +22,35 @@
         "visual-only/no missing scripts",
         "height/CPU-skinned-feet/unit root",
         "canonical Walk/GUID/old clip retired/loop",
+        "independent Walk/Run feel playback/unchanged normalized thresholds",
+        "physical speeds/Jump/Crouch unchanged",
         "96-phase Idle-Walk baseline/calibrated model offset",
         "URP/BaseColor/no fake Normal",
         "Tutorial+Level01 existing Player/spawner/camera foundation",
         "existing menu selector/four-slot catalog order"
     ],
-    "error": ""
+    "error": "",
+    "animationFeel": {
+        "walkPlaybackBefore": 4.29287576675415,
+        "walkPlayback": 2.200000047683716,
+        "runPlaybackBefore": 1.7278965711593628,
+        "runPlayback": 1.5896648168563843,
+        "walkPhysicalSpeed": 4.0,
+        "sprintPhysicalSpeed": 6.5,
+        "thresholdsBefore": [
+            0.0,
+            0.6153846383094788,
+            1.0
+        ],
+        "thresholds": [
+            0.0,
+            0.6153846383094788,
+            1.0
+        ],
+        "thresholdsChanged": false,
+        "footIK": false,
+        "rootMotion": false,
+        "slidingStatus": "SEVERE low-foot velocity proxy for 2.2x at 4 m/s; perceptual acceptance pending human playtest",
+        "scope": "Animation feel initial compromise; does not claim NONE/MINOR sliding"
+    }
 }

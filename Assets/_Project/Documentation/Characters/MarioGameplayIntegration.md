@@ -169,3 +169,97 @@ Capturas actualizadas: Mario_Idle.png, Mario_Walk.png, Mario_Run.png, Mario_Crou
 
 
 Resultado definitivo del refinamiento: **10 controles Editor y 72 comprobaciones Play Mode aprobados**, 0 errores runtime y 0 errores Editor registrados. En el ensayo final, Idle queda a −0.000517972 m del plano (0.52 mm de penetración imperceptible), Player Y=0.03999989 m y modelo local Y=−0.03436009 m. Continuidad después de estabilizar Idle: máximo salto de pelvis por muestra de 60 Hz=0.03283203 m; control de regresión de teleport (>0.08 m/muestra) superado. Esto no certifica ausencia de todo popping perceptible en cualquier framerate/terreno. Walk→Idle y Jump→Land regresan al baseline con tolerancia de 3 mm, sin corrección dinámica. La autoría se ejecutó dos veces y mantuvo bytes idénticos en prefab/controller/registry/model meta.
+
+
+## Animation Feel Pass — 2026-10-13
+
+### Alcance y dictamen
+
+El playtest humano aprobó la integración y pidió Run ligeramente más calmada y Walk menos acelerada. Esta pasada modifica exclusivamente las velocidades de los hijos Walk/Run de ExplorerLocomotion y su autoría/validación. **Perfil técnico inicial, pendiente de nueva aceptación humana; el objetivo NONE/MINOR de foot sliding de Walk no está demostrado ni alcanzado por el indicador utilizado.** La física y la calibración anterior siguen aprobadas e intactas.
+
+### Auditoría de la cadencia anterior
+
+La autoría inicial calculaba Walk como `1.8723404 × (WalkSpeed / 1.6) × (1.6508058 / 1.8)`. Con WalkSpeed=4, produce **4.29287554**, serializado como **4.292876**. Era una compensación por velocidad/altura respecto al paquete de pruebas, no una integración de desplazamiento RootT. Aplicarla automáticamente elevó mucho la cadencia. Con un ciclo de 1.3666668 s, lo reducía a 0.318357 s en tiempo de juego.
+
+El clip canónico sigue siendo CHR_Explorer_Walk, GUID 31ec003e1e834ebba8fa3954574ab9ae, Humanoid, 30 fps y 130 bindings. Loop Time/Loop Pose y todos sus datos permanecen idénticos. RootT/RootQ son cíclicas y no dan avance horizontal neto relevante. Animator.applyRootMotion=false: no se necesita hacer coincidir un avance de root inexistente con la velocidad física. Eso tampoco elimina el problema de deslizamiento de pies: una zancada visual pequeña debe acompañar ahora 4 m/s de desplazamiento real.
+
+Run conserva su clip de 0.53333336 s, 30 fps, 130 bindings y RootT/RootQ cíclicas. Su rate anterior era 1.7278966. No se alteran curvas, torso, rig, Avatar, mallas, materiales ni fuentes externas.
+
+### Comparaciones y elección inicial
+
+Se muestrearon 192 fases por clip y se compararon Walk **1.0, 1.15, 1.25, 1.4, 1.6, 1.8, 2.2, 2.6, 2.8 y 4.292876**; Run al **100/88/92/95 %** del rate previo. Se generaron secuencias laterales y vistas frontal/trasera de los valores seleccionados. No se conserva la captura inicial de pose GPU en caché como evidencia: las secuencias finales utilizan snapshots de geometría CPU skinning por cada fase y muestran poses distintas.
+
+| Parámetro | Anterior | Inicial seleccionado | Efecto |
+|---|---:|---:|---|
+| Walk child timeScale | 4.292876 | **2.2** | Reducción de cadencia ≈48.75 %; ciclo ≈0.621212 s |
+| Run child timeScale | 1.7278966 | **1.5896648** | **92 %** del anterior; ciclo ≈0.335501 s, frente a ≈0.308660 s |
+| Locomotion state speed | 1 | 1 | Sin multiplicador global |
+| Animator.speed | 1 | 1 | Idle/Jump/Crouch no se ralentizan |
+| Walk física | 4 m/s | 4 m/s | Intacta |
+| Sprint física | 6.5 m/s | 6.5 m/s | Intacta |
+
+Walk 1.0–1.8 aporta cadencia más calmada, pero el terreno avanza demasiado respecto al recorrido del pie. 2.6–2.8 reduce ese desacople parcialmente y acelera de nuevo las piernas. **2.2 es el punto intermedio técnico inicial**, no una aprobación artística final ni una solución a todo patinaje. No se utiliza >3x como ajuste nuevo. Run 0.92 es un cambio sutil dentro del rango solicitado; no se modifica su desplazamiento físico.
+
+### Foot sliding: medición y límite real
+
+El indicador toma velocidad longitudinal de los huesos de pie en fases bajas (hasta 2 cm sobre su mínimo), suma el avance prescrito del actor y calcula media absoluta. No identifica toda la superficie de contacto ni es un solver de pies. La clasificación heurística proyecta esa velocidad sobre una ventana ilustrativa de 0.2 s: NONE <2 cm; MINOR <10 cm; NOTICEABLE <25 cm; SEVERE ≥25 cm. Son umbrales del diagnóstico, no estándares humanos ni presupuestos del proyecto.
+
+| Caso | Velocidad de deslizamiento estimada (m/s) | Clase heurística |
+|---|---:|---|
+| Walk 1.0 | 3.275 | SEVERE |
+| Walk 1.8 | 2.695 | SEVERE |
+| Walk **2.2** | **2.405** | **SEVERE** |
+| Walk 2.8 | 1.970 | SEVERE |
+| Walk anterior 4.292876 | 0.890 | NOTICEABLE |
+| Run anterior | 1.281 | SEVERE |
+| Run al 92 % | **0.777** | NOTICEABLE |
+
+La revisión de las secuencias con marcas de terreno confirma el desacople longitudinal en las Walk lentas. No se declara NONE/MINOR, ni se confunde «tests técnicos aprobados» con naturalidad aprobada. La reducción a 2.2 disminuye el deslizamiento estimado respecto a 1.8 en ≈10.8 %, pero no alcanza el objetivo. Con este clip, sin cambiar física o zancada, la auditoría no encontró un rate <3x que garantice el objetivo de patinaje mínimo. La decisión final debe venir del playtest humano A–F. No se retoca el clip ni se expande la feature a un nuevo sistema de locomoción para ocultar esa limitación.
+
+### Blending, transiciones e IK
+
+ExplorerLocomotion sigue siendo Blend Tree 1D con Speed = CurrentSpeed / SprintSpeed. Thresholds **0 / 0.61538464 / 1**, sin cambios. A Walk física completa hay Walk pura; a Sprint completo, Run pura. No había mezcla excesiva de Run a Walk estable que justificara cambiar thresholds.
+
+Las transiciones entre estos tres movimientos ocurren por pesos dentro del mismo Blend Tree; no se añade un crossfade artificial ni otra máquina de estados. Se conservan las transiciones externas de 0.08 s, los parámetros y el puente runtime. Walk/Run tienen multiplicadores independientes en ChildMotion.timeScale. La autoría sustituye la fórmula de sincronización anterior por el perfil explícito y mantiene idempotencia al reaplicarlo.
+
+Foot IK y layer IK Pass siguen **desactivados**. No hubo evidencia que justificara activarlos. El IK estándar de contacto no se presenta como solución al gran desacople longitudinal de esta zancada; no se implementa Animation Rigging ni se instalan paquetes.
+
+### Entrada analógica y estado aprobado
+
+Se probaron magnitudes **procesadas** de Vector2 de 25/50/75/100 % en el Player real; no se afirma haber conectado un gamepad físico o probado sus deadzones.
+
+| Magnitud de Walk | Velocidad física | Speed normalizado | Pesos Idle / Walk / Run |
+|---|---:|---:|---|
+| 25 % | 1 m/s | 0.153846 | 0.75 / 0.25 / 0 |
+| 50 % | 2 m/s | 0.307692 | 0.50 / 0.50 / 0 |
+| 75 % | 3 m/s | 0.461538 | 0.25 / 0.75 / 0 |
+| 100 % | 4 m/s | 0.615385 | 0 / 1 / 0 |
+| Sprint completo | 6.5 m/s | 1 | 0 / 0 / 1 |
+
+Se comprobaron diagonales con Vector2 limitado a magnitud 1, sin velocidad extra. Ground offset **−0.03436009 m** permanece intacto. Jump conserva Air/Land speed=1 y JumpPhase; CrouchWalk conserva 1.6366963, CrouchIdle conserva CrouchPose. FPS oculta el cuerpo, TPS lo muestra; selección character.03 y respawn conservan configuración. No hay modificaciones en PlayerMovement, CharacterController, input, cámaras, checkpoints, interacción, UI o puzzles.
+
+### Pruebas y validación
+
+**93 comprobaciones Play Mode y 12 controles Editor aprobados, 0 errores runtime y 0 errores Editor registrados**, en Unity 6000.6.3f1 normal, sin batchmode. Simulación de tests a 60 Hz; timing de captura restaurado. Mayor diferencia de pelvis por muestra durante locomoción estabilizada: **0.02086413 m**, por debajo del control de regresión de teleport de 0.08 m; no equivale a certificar todas las condiciones de framerate/terreno.
+
+El validador `Tikal/Validation/Validate Mario Gameplay Character` informa old/new playback y thresholds en `MarioEditorValidation.json.animationFeel`. El menú `Run Mario Animation Feel Play Tests` ejecuta el Player/CharacterController real, verificaciones analógicas, referencias, ausencia de clips/scripts faltantes, FPS/TPS, Jump/Crouch y checkpoint real. La nueva ejecución se guarda en **MarioAnimationFeelPlayValidation.json**; el informe anterior MarioPlayValidation.json y sus capturas aprobadas se conservan.
+
+Evidencias nuevas: MarioAnimationFeelAudit.json; MarioFeel_WalkComparison.gif; MarioFeel_RunComparison.gif; MarioFeel_Walk_ThreeViews.gif/.png y MarioFeel_Run_ThreeViews.gif/.png; cinco capturas MarioFeel_Idle/Walk/Run/CrouchIdle/CrouchWalk.png. Las comparaciones prescritas de movimiento en Editor complementan las pruebas de gameplay; no sustituyen la aceptación humana. Se revisaron poses frontal, lateral y trasera sin modificar cámaras de producción.
+
+### Playtest humano recomendado, aún pendiente
+
+A. TPS, superficie plana: W durante 10 s; revisar cadencia, zancada, cadera y patinaje especialmente lateral.
+
+B. W+Sprint: mismo avance físico; comprobar Run algo más calmada, sin slow-motion evidente.
+
+C. Walk→Run→Walk e Idle→Walk→Idle repetidos; evaluar responsividad y popping.
+
+D. A/D y diagonales: playback coherente, sin acelerar desplazamiento.
+
+E. Gamepad real, stick gradual: contrastar blending y deadzones reales con los ensayos Vector2.
+
+F. Jump/Crouch y FPS/TPS: confirmar que se perciben iguales a la integración aprobada.
+
+Registrar para Walk y Run la categoría perceptual NONE / MINOR / NOTICEABLE / SEVERE después de estos ensayos. Si el compromiso no es aceptable, volver a revisar el rate o diseñar una zancada adecuada en otra tarea; no declarar aprobado el objetivo MINOR solo porque pasó la suite técnica. El nuevo commit/push se reporta al cerrar la sesión, sin amend de 92958f3/070b2b3, sin cambiar de rama y sin merge.
+
+Las GIF muestran ventanas comparativas de 2.4 s a 15 muestras/s. Su reinicio puede cortar el ciclo a mitad de fase y reiniciar las marcas del suelo; ese corte de la evidencia no es un defecto del loop del AnimationClip. La cadencia de pasos del JSON es una estimación de dos pasos por ciclo, no una medición humana certificada.

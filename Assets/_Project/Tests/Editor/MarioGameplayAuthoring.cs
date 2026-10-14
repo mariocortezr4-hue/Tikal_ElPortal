@@ -23,7 +23,7 @@ namespace Tikal.Tests.Editor
         public static readonly string[] Scenes = {
             "Assets/_Project/Scenes/Tutorial/TUT_ExplorerBasics.unity",
             "Assets/_Project/Scenes/Levels/Level01_SecretEntrance.unity" };
-        [Serializable] public class ValidationResult { public bool passed; public string unity, avatar; public float height, importScale; public int triangles, vertices, bones; public string[] clips, checks; public string error; }
+        [Serializable] public class ValidationResult { public bool passed; public string unity, avatar; public float height, importScale; public int triangles, vertices, bones; public string[] clips, checks; public string error; public MarioAnimationFeelValidation.ProfileReport animationFeel; }
         public static void Folder(string path) { Directory.CreateDirectory(path); AssetDatabase.Refresh(); }
         static AnimationClip Clip(string name) => AssetDatabase.LoadAssetAtPath<AnimationClip>(Art + "/Animations/CHR_Explorer_" + name + ".anim");
         public static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
@@ -75,6 +75,7 @@ namespace Tikal.Tests.Editor
             if (!textureImporter.sRGBTexture || !textureImporter.mipmapEnabled) { textureImporter.sRGBTexture=true;textureImporter.mipmapEnabled=true;textureImporter.SaveAndReimport(); }
             if (AssetDatabase.LoadAssetAtPath<AnimatorController>(Controller)==null) BuildController();
             var controller = AssetDatabase.LoadAssetAtPath<AnimatorController>(Controller);
+            MarioAnimationFeelValidation.ApplyProfile(controller);
             Folder("Assets/_Project/Prefabs/Characters");
             if (AssetDatabase.LoadAssetAtPath<GameObject>(Prefab)==null)
             {
@@ -106,7 +107,7 @@ namespace Tikal.Tests.Editor
             var movement=AssetDatabase.LoadAssetAtPath<GameObject>(ThirdPersonCameraFoundationAuthoring.ExplorerPath).GetComponent<PlayerMovement>();
             var locomotion=machine.AddState("Locomotion",new Vector3(200,100));
             var tree=new BlendTree{name="ExplorerLocomotion",blendType=BlendTreeType.Simple1D,blendParameter="Speed",useAutomaticThresholds=false};AssetDatabase.AddObjectToAsset(tree,c);
-            tree.children=new[]{new ChildMotion{motion=Clip("Idle"),threshold=0,timeScale=1},new ChildMotion{motion=Clip("Walk"),threshold=movement.WalkSpeed/movement.SprintSpeed,timeScale=1.8723404f*(movement.WalkSpeed/1.6f)*(1.6508058f/1.8f)},new ChildMotion{motion=Clip("Run"),threshold=1,timeScale=(movement.SprintSpeed/3.45f)*(1.6508058f/1.8f)}};
+            tree.children=new[]{new ChildMotion{motion=Clip("Idle"),threshold=0,timeScale=1},new ChildMotion{motion=Clip("Walk"),threshold=movement.WalkSpeed/movement.SprintSpeed,timeScale=MarioAnimationFeelValidation.WalkPlayback},new ChildMotion{motion=Clip("Run"),threshold=1,timeScale=MarioAnimationFeelValidation.RunPlayback}};
             locomotion.motion=tree;machine.defaultState=locomotion;
             var idle=machine.AddState("CrouchIdle",new Vector3(200,270));idle.motion=Clip("CrouchIdle");idle.timeParameterActive=true;idle.timeParameter="CrouchPose";
             var crouch=machine.AddState("CrouchWalk",new Vector3(440,270));crouch.motion=Clip("CrouchWalk");crouch.speed=.87f*(movement.CrouchSpeed/.975f)*(1.6508058f/1.8f);
@@ -132,6 +133,7 @@ namespace Tikal.Tests.Editor
             try
             {
                 MarioWalkGroundValidation.ValidateGround();
+                result.animationFeel=MarioAnimationFeelValidation.ValidateProfile();
                 var definition=CharacterCatalog.GetOrDefault(CharacterIds.Character03);Require(definition.Id==CharacterIds.Character03&&definition.DisplayName=="Mario","character.03 catalog/name mapping");
                 var prefab=AssetDatabase.LoadAssetAtPath<GameObject>(Prefab);Require(prefab!=null&&definition.VisualPrefab==prefab,"Catalog references Mario prefab");
                 var animator=prefab.GetComponentInChildren<Animator>(true);Require(animator!=null&&animator.avatar!=null&&animator.avatar.isHuman&&animator.avatar.isValid,"Valid Humanoid Animator");
@@ -160,7 +162,7 @@ namespace Tikal.Tests.Editor
                     Require(menu.GetRootGameObjects().SelectMany(x=>x.GetComponentsInChildren<Tikal.UI.CharacterSelectionController>(true)).Count()==1,"Main Menu retains its existing selector");
                 } finally {EditorSceneManager.RestoreSceneManagerSetup(menuSetup);}
                 result.avatar=animator.avatar.name;result.importScale=((ModelImporter)AssetImporter.GetAtPath(Model)).globalScale;result.clips=new[]{"Idle","Walk","Run","Jump (full clip)","CrouchIdle (held alias)","CrouchWalk"};
-                result.checks=new[]{"catalog/name/prefab","Humanoid required bone mapping","root motion false/shared controller","visual-only/no missing scripts","height/CPU-skinned-feet/unit root","canonical Walk/GUID/old clip retired/loop","96-phase Idle-Walk baseline/calibrated model offset","URP/BaseColor/no fake Normal","Tutorial+Level01 existing Player/spawner/camera foundation","existing menu selector/four-slot catalog order"};result.passed=true;
+                result.checks=new[]{"catalog/name/prefab","Humanoid required bone mapping","root motion false/shared controller","visual-only/no missing scripts","height/CPU-skinned-feet/unit root","canonical Walk/GUID/old clip retired/loop","independent Walk/Run feel playback/unchanged normalized thresholds","physical speeds/Jump/Crouch unchanged","96-phase Idle-Walk baseline/calibrated model offset","URP/BaseColor/no fake Normal","Tutorial+Level01 existing Player/spawner/camera foundation","existing menu selector/four-slot catalog order"};result.passed=true;
                 Debug.Log("MARIO_EDITOR_VALIDATION_PASS height="+result.height+" triangles="+result.triangles);
             }
             catch(Exception e){result.error=e.ToString();Debug.LogException(e);throw;}

@@ -52,6 +52,8 @@ namespace Tikal.Tests.Editor
             if(EditorApplication.isCompiling||EditorApplication.isUpdating){EditorApplication.delayCall+=Resume;return;}
             File.Delete(Flag);Run();
         }
+        [MenuItem("Tikal/Validation/Run Mario Animation Feel Play Tests")]
+        public static void RunFeel()=>Run();
         [MenuItem("Tikal/Validation/Run Mario Gameplay Play Tests")]
         public static void Run()
         {
@@ -99,7 +101,7 @@ namespace Tikal.Tests.Editor
         {
             EditorApplication.update-=Tick;Application.logMessageReceived-=Log;_routine=null;
             var result=new Result{enteredPlayMode=Application.isPlaying,passed=Application.isPlaying&&Errors.Count==0,checks=Checks.ToArray(),errors=Errors.ToArray(),editorErrors=EditorErrors.ToArray(),scope="Automated interactive-Editor tests (fixed 60 Hz simulation, capture timing restored): actual PlayerMovement/CharacterController, animation bridge, camera visibility, scene spawning, menu selection and isolated save roundtrip. Not a human WASD/puzzle acceptance playtest."};
-            Directory.CreateDirectory(Root);File.WriteAllText(Root+"/MarioPlayValidation.json",JsonUtility.ToJson(result,true));Time.captureFramerate=_originalCaptureRate;EditorApplication.ExitPlaymode();
+            Directory.CreateDirectory(Root);File.WriteAllText(Root+"/MarioAnimationFeelPlayValidation.json",JsonUtility.ToJson(result,true));Time.captureFramerate=_originalCaptureRate;EditorApplication.ExitPlaymode();
         }
         static IEnumerator Tests()
         {
@@ -112,7 +114,11 @@ namespace Tikal.Tests.Editor
             _player.GetComponent<PlayerController>().enabled=false;
             _movement=_player.GetComponent<PlayerMovement>();_camera=_player.GetComponent<PlayerCameraController>();_spawner=_player.GetComponent<CharacterVisualSpawner>();
             _spawner.Apply(CharacterIds.Character03);_animator=_spawner.CurrentVisual.GetComponentInChildren<Animator>(true);
-            _modelPosition=_animator.transform.localPosition;_hasPelvisSample=false;_maximumPelvisStep=0;
+            _modelPosition=_animator.transform.localPosition;
+            MarioAnimationFeelValidation.ValidateProfile();
+            Check(_movement.WalkSpeed==4f&&_movement.SprintSpeed==6.5f,"WalkSpeed and SprintSpeed remain exactly approved");
+            Check(_animator.speed==1f,"Global Animator.speed unchanged");
+            Check(_modelPosition.y==MarioWalkGroundValidation.ModelLocalY,"Approved Mario ground offset unchanged");_hasPelvisSample=false;_maximumPelvisStep=0;
             Check(!_animator.applyRootMotion,"Root Motion remains disabled");
             Check(_animator.runtimeAnimatorController.animationClips.All(c=>c!=null),"No missing animation clips");
             Check(currentPrefabScripts(_spawner.CurrentVisual),"No missing visual scripts");
@@ -150,6 +156,19 @@ namespace Tikal.Tests.Editor
             Check(Mathf.Abs(_movement.CurrentSpeed-_movement.CrouchSpeed)<.05f&&_animator.GetCurrentAnimatorStateInfo(0).IsName("CrouchWalk"),"Actual existing crouch mechanics/clip");Capture("Mario_CrouchWalk.png");Check(_animator.transform.localPosition==_modelPosition,"CrouchWalk preserves visual offset");
             for(int i=0;i<70;i++){_movement.Tick(Vector2.zero,false,false,Time.deltaTime);yield return null;}
             Check(!_movement.IsCrouching&&_animator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"),"Crouch release settles");
+            foreach(var amount in new[]{.25f,.5f,.75f,1f}) {
+                for(int i=0;i<70;i++){_movement.Tick(Vector2.up*amount,false,false,Time.deltaTime);yield return null;}
+                var normalized=_animator.GetFloat("Speed");var clips=_animator.GetCurrentAnimatorClipInfo(0);
+                Check(Mathf.Abs(_movement.CurrentSpeed-4f*amount)<.001f,"Analog physical movement magnitude "+amount);
+                Check(Mathf.Abs(normalized-4f*amount/6.5f)<.0001f,"Analog Speed normalization "+amount);
+                Check(clips.Where(c=>c.clip.name=="CHR_Explorer_Run").All(c=>c.weight<.001f),"No unintended Run blend at analog Walk "+amount);
+                Check(Mathf.Abs(clips.Where(c=>c.clip.name=="CHR_Explorer_Walk").Sum(c=>c.weight)-amount)<.02f,"Continuous Idle/Walk analog weights "+amount);
+            }
+            for(int i=0;i<70;i++){_movement.Tick(Vector2.up,true,false,Time.deltaTime);yield return null;}
+            Check(Mathf.Abs(_movement.CurrentSpeed-6.5f)<.001f&&_animator.GetCurrentAnimatorClipInfo(0).Any(c=>c.clip.name=="CHR_Explorer_Run"&&c.weight>.99f),"Sprint remains 6.5 m/s and pure independent Run");
+            for(int i=0;i<70;i++){_movement.Tick(Vector2.one,false,false,Time.deltaTime);yield return null;}
+            Check(Mathf.Abs(_movement.CurrentSpeed-4f)<.001f&&_animator.GetCurrentAnimatorClipInfo(0).Any(c=>c.clip.name=="CHR_Explorer_Walk"&&c.weight>.99f),"Diagonal movement preserves Walk playback/physical speed");
+            for(int i=0;i<70;i++){_movement.Tick(Vector2.zero,false,false,Time.deltaTime);yield return null;}
             for(int i=0;i<4;i++){_camera.ApplyCameraMode(CameraMode.FirstPerson);Check(!current.activeInHierarchy,"FPS hides full body immediately");_camera.ApplyCameraMode(CameraMode.ThirdPerson);Check(current.activeInHierarchy&&_spawner.CurrentVisual==current,"TPS restores same visual");Check(_animator.transform.localPosition==_modelPosition,"FPS/TPS preserves visual offset");yield return null;}
             _movement.RequestJump();_movement.Tick(Vector2.zero,false,false,Time.deltaTime);yield return null;
             _movement.ResetForRespawn();_player.GetComponent<PlayerAnimationController>().ResetForRespawn();
@@ -192,6 +211,7 @@ namespace Tikal.Tests.Editor
         static bool currentPrefabScripts(GameObject visual)=>visual.GetComponentsInChildren<MonoBehaviour>(true).All(x=>x!=null);
         static void Capture(string name)
         {
+            name=name.Replace("Mario_","MarioFeel_");
             var renderers=_spawner.CurrentVisual.GetComponentsInChildren<SkinnedMeshRenderer>();
             foreach(var renderer in renderers)
             {
