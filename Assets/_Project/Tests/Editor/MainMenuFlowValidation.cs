@@ -63,7 +63,7 @@ namespace Tikal.Tests.Editor
                 Require(progress.IsLevelUnlocked(GameSceneIds.Level01) && !progress.IsLevelUnlocked(GameSceneIds.Level02), "Level01 default unlock without Level02");
                 Require(progress.SelectedCharacterId == CharacterIds.Default, "Default character is selected on first run");
                 Require(CharacterCatalog.All.Count == 4, "Four playable character ids are registered");
-                Require(CharacterCatalog.All.All(character => character.VisualPrefab == null), "Missing final character prefabs do not block catalog");
+                Require(CharacterCatalog.All.All(character => character.VisualPrefab == null || character.VisualPrefab.GetComponentInChildren<Animator>(true) != null), "Placeholder slots and assigned character visuals coexist in catalog");
                 progress.HasStartedGame = true;
                 progress.IntroSeen = true;
                 progress.TutorialCompleted = true;

@@ -22,11 +22,11 @@ namespace Tikal.Core
 
     public static class CharacterCatalog
     {
-        private static readonly CharacterDefinition[] Characters =
+        private static CharacterDefinition[] Characters => new CharacterDefinition[]
         {
             new CharacterDefinition(CharacterIds.Default, "Personaje 1"),
             new CharacterDefinition(CharacterIds.Character02, "Personaje 2"),
-            new CharacterDefinition(CharacterIds.Character03, "Personaje 3"),
+            new CharacterDefinition(CharacterIds.Character03, "Mario", Resources.Load<CharacterVisualAssets>("Characters/GameplayCharacterVisuals")?.MarioVisualPrefab),
             new CharacterDefinition(CharacterIds.Character04, "Personaje 4")
         };
 

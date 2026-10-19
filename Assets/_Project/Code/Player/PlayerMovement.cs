@@ -51,6 +51,9 @@ namespace Tikal.Player
         public bool IsGrounded { get; private set; }
         public bool IsSprinting { get; private set; }
         public bool IsCrouching => _controller != null && !Mathf.Approximately(_controller.height, _standingHeight);
+        public float WalkSpeed => _walkSpeed;
+        public float SprintSpeed => _sprintSpeed;
+        public float CrouchSpeed => _crouchSpeed;
         public float CurrentSpeed => _horizontalVelocity.magnitude;
         public float VerticalVelocity => _verticalVelocity;
         public float MaximumEyeHeight => _controller == null ? _standingEyeHeight : Mathf.Max(0, _controller.height - _cameraSafetyMargin);

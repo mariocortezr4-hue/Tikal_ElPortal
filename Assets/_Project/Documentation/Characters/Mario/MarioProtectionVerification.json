@@ -1,0 +1,19 @@
+{
+  "checkedUtc": "2026-10-13T08:01:56.800886+00:00",
+  "sourceFiles": 44,
+  "sourceSha256Unchanged": true,
+  "sourceNewFiles": [],
+  "trackedProjectFilesChecked": 787,
+  "changedTrackedFiles": [
+    "Assets/_Project/Code/Core/CharacterCatalog.cs",
+    "Assets/_Project/Code/Player/CharacterVisualSpawner.cs",
+    "Assets/_Project/Code/Player/PlayerCameraController.cs",
+    "Assets/_Project/Code/Player/PlayerMovement.cs",
+    "Assets/_Project/Tests/Editor/MainMenuFlowValidation.cs"
+  ],
+  "unexpectedTrackedChanges": [],
+  "scenesTimelinesInputSaveCheckpointPuzzleAssetsUnchanged": true,
+  "copiedFbxTextureBytesUnchanged": true,
+  "localAnimationYamlOnlyWhitespaceNormalized": true,
+  "animationCurvesValuesGuidsUnchanged": true
+}

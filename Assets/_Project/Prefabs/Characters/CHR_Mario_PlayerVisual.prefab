@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &296895683286863904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6375793856146163792}
+  m_Layer: 0
+  m_Name: CHR_Mario_PlayerVisual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6375793856146163792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296895683286863904}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8292724947640584925}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8403457532850236726
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6375793856146163792}
+    m_Modifications:
+    - target: {fileID: -8833805373484061153, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.22457168
+      objectReference: {fileID: 0}
+    - target: {fileID: -8833805373484061153, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.23203154
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000881413
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.03436009
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.044505157
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_Name
+      value: MarioModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229302429880163001, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value:
+      objectReference: {fileID: 2100000, guid: eb4ec19c825221347ab3339f11ede4a9, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_Controller
+      value:
+      objectReference: {fileID: 9100000, guid: 26f6ed8d408c6874d816d9cfa55ecc88, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+--- !u!4 &8292724947640584925 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0e7915230597e4b4f946d63f94316acf, type: 3}
+  m_PrefabInstance: {fileID: 8403457532850236726}
+  m_PrefabAsset: {fileID: 0}
