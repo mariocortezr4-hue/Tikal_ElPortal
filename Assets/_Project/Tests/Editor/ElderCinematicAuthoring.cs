@@ -30,6 +30,9 @@ namespace Tikal.Tests.Editor
         public static void Apply()
         {
             Require(!Application.isBatchMode&&!EditorApplication.isPlayingOrWillChangePlaymode,"Interactive Edit Mode required");
+            // Preserve the later polish rather than reapplying historical timestamps.
+            var currentTimeline=AssetDatabase.LoadAssetAtPath<TimelineAsset>(AncientMapIntroAuthoring.TimelinePath);
+            if(currentTimeline!=null && Tracks(currentTimeline).OfType<AudioTrack>().Any(t=>t.name=="Music"&&t.GetClips().Any())) { IntroAudioPolishAuthoring.Apply(); return; }
             Require(!EditorSceneManager.GetActiveScene().isDirty,"Save current scene before authoring");
             var prefab=AssetDatabase.LoadAssetAtPath<GameObject>(ElderCinematicPilot.Prefab);Require(prefab!=null,"Pilot prefab exists");
             var avatar=prefab.GetComponentInChildren<Animator>(true).avatar;Require(avatar!=null&&avatar.isHuman&&avatar.isValid,"Validated own Elder Avatar");
@@ -142,6 +145,7 @@ namespace Tikal.Tests.Editor
         [MenuItem("Tikal/Validation/Validate Elder Intro Integration")]
         public static void Validate()
         {
+            if(UnityEngine.Object.FindAnyObjectByType<IntroMusicEnvelope>()!=null) { IntroAudioPolishAuthoring.ValidateLoaded(); return; }
             var report=new Report{unity=Application.unityVersion};var checks=new List<string>();
             Action<bool,string> check=(v,m)=>{Require(v,m);checks.Add(m);};
             try
