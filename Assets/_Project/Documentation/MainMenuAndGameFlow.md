@@ -1,4 +1,4 @@
-# TIKAL: El Explorador — Main Menu And Game Flow
+# TIKAL: El Explorador â€” Main Menu And Game Flow
 
 This milestone adds the base architecture for menu navigation, game flow and persistence. It does not build the final elder cinematic or the real tutorial.
 
@@ -148,13 +148,15 @@ Level Select keeps Level01 visible but disabled until onboarding is complete. In
 MainMenu
 -> CharacterSelection
 -> SelectedCharacterId
--> future CharacterVisualSpawner
+-> CharacterVisualSpawner
 -> CharacterVisualRoot
 ```
 
 The Character panel stores the selected character in `GameProgressData.SelectedCharacterId`, not in settings. New installs use `character.default`. If a saved ID is no longer registered, progress falls back safely to `character.default`.
 
-All characters share the same gameplay architecture. Future models, rigs, animators, materials and animations should be attached as visual prefabs under `CharacterVisualRoot`; `CharacterVisualSpawner` is prepared to resolve `SelectedCharacterId` through `CharacterCatalog` without requiring prefabs in this feature.
+The canonical roster is slot 1 `character.default` = Dwight, slot 2 `character.02` = Axel, slot 3 `character.03` = Mario, and slot 4 `character.04` = DESCONOCIDO (locked, no visual prefab). The first three share the Player, CharacterVisualSpawner, PlayerAnimationController and AC_ExplorerGameplay, with one distinct Humanoid Avatar per model. FPS hides the visual root and TPS restores it.
+
+The fourth card remains visible with disabled styling and an explicit BLOQUEADO label. Both selection and progress assignment reject locked choices, preserving an existing playable selection. A legacy saved locked ID normalizes to the existing default; saved Axel/Mario remain unchanged. IsValid means registered; IsSelectable additionally rejects locked entries. No unlock condition or new save schema is introduced. See `Characters/DwightGameplayIntegration.md` for measurements and validation scope.
 
 ## Settings
 
@@ -217,7 +219,7 @@ I. Settings -> change Camera Mode and Reticle -> leave and reopen the menu -> bo
 
 `CharacterSelectionController` edits `SelectedCharacterId` and saves it through `GamePersistenceService`.
 
-## Main Menu visual identity — TIKAL: El Explorador
+## Main Menu visual identity â€” TIKAL: El Explorador
 
 The canonical game title is **TIKAL: El Explorador**. Main Menu composes TIKAL as the dominant
 heading and EL EXPLORADOR as a separate smaller subtitle, retaining UNA AVENTURA EN LAS SOMBRAS.

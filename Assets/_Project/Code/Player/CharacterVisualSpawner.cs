@@ -22,6 +22,7 @@ namespace Tikal.Player
         public void Apply(string characterId)
         {
             var definition = CharacterCatalog.GetOrDefault(characterId);
+            if (definition.IsLocked) return;
             if (_currentVisual != null && _currentPrefab == definition.VisualPrefab) return;
             if (_currentVisual != null)
             {

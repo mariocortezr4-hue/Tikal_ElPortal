@@ -20,7 +20,20 @@ namespace Tikal.Persistence
         public bool IntroSeen { get => _introSeen; set => _introSeen = value; }
         public bool TutorialCompleted { get => _tutorialCompleted; set => _tutorialCompleted = value; }
         public string CurrentLevelId { get => _currentLevelId; set => _currentLevelId = value ?? string.Empty; }
-        public string SelectedCharacterId { get => _selectedCharacterId; set => _selectedCharacterId = CharacterCatalog.IsValid(value) ? value : CharacterIds.Default; }
+        public string SelectedCharacterId
+        {
+            get => _selectedCharacterId;
+            set
+            {
+                // Reject a locked choice without replacing an existing playable selection.
+                if (CharacterCatalog.TryGet(value, out var choice) && choice.IsLocked)
+                {
+                    if (!CharacterCatalog.IsSelectable(_selectedCharacterId)) _selectedCharacterId = CharacterIds.Default;
+                    return;
+                }
+                _selectedCharacterId = CharacterCatalog.IsSelectable(value) ? value : CharacterIds.Default;
+            }
+        }
         public bool HasCompletedOnboarding => _introSeen && _tutorialCompleted;
         public IReadOnlyList<string> UnlockedLevels => _unlockedLevels;
         public IReadOnlyList<string> CompletedLevels => _completedLevels;

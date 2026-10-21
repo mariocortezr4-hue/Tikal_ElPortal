@@ -6,14 +6,16 @@ namespace Tikal.Core
 {
     public readonly struct CharacterDefinition
     {
-        public CharacterDefinition(string id, string displayName, GameObject visualPrefab = null, Sprite portrait = null)
+        public CharacterDefinition(string id, string displayName, GameObject visualPrefab = null, Sprite portrait = null, bool isLocked = false)
         {
             Id = id;
             DisplayName = displayName;
             VisualPrefab = visualPrefab;
             Portrait = portrait;
+            IsLocked = isLocked;
         }
 
+        public bool IsLocked { get; }
         public string Id { get; }
         public string DisplayName { get; }
         public GameObject VisualPrefab { get; }
@@ -24,15 +26,17 @@ namespace Tikal.Core
     {
         private static CharacterDefinition[] Characters => new CharacterDefinition[]
         {
-            new CharacterDefinition(CharacterIds.Default, "Personaje 1"),
+            new CharacterDefinition(CharacterIds.Default, "Dwight", Resources.Load<CharacterVisualAssets>("Characters/GameplayCharacterVisuals")?.DwightVisualPrefab),
             new CharacterDefinition(CharacterIds.Character02, "Axel", Resources.Load<CharacterVisualAssets>("Characters/GameplayCharacterVisuals")?.AxelVisualPrefab),
             new CharacterDefinition(CharacterIds.Character03, "Mario", Resources.Load<CharacterVisualAssets>("Characters/GameplayCharacterVisuals")?.MarioVisualPrefab),
-            new CharacterDefinition(CharacterIds.Character04, "Personaje 4")
+            new CharacterDefinition(CharacterIds.Character04, "DESCONOCIDO", isLocked: true)
         };
 
         public static IReadOnlyList<CharacterDefinition> All => Characters;
 
         public static CharacterDefinition Default => Characters[0];
+
+        public static bool IsSelectable(string id) => TryGet(id, out var character) && !character.IsLocked;
 
         public static bool IsValid(string id) => TryGet(id, out _);
 

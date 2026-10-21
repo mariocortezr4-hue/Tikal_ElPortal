@@ -62,7 +62,7 @@ namespace Tikal.Tests.Editor
                 Require(!progress.HasCompletedOnboarding, "Fresh progress has onboarding locked");
                 Require(progress.IsLevelUnlocked(GameSceneIds.Level01) && !progress.IsLevelUnlocked(GameSceneIds.Level02), "Level01 default unlock without Level02");
                 Require(progress.SelectedCharacterId == CharacterIds.Default, "Default character is selected on first run");
-                Require(CharacterCatalog.All.Count == 4, "Four playable character ids are registered");
+                Require(CharacterCatalog.All.Count == 4, "Four character ids registered; three playable and one locked");
                 Require(CharacterCatalog.All.All(character => character.VisualPrefab == null || character.VisualPrefab.GetComponentInChildren<Animator>(true) != null), "Placeholder slots and assigned character visuals coexist in catalog");
                 progress.HasStartedGame = true;
                 progress.IntroSeen = true;
@@ -83,7 +83,7 @@ namespace Tikal.Tests.Editor
                 Require(service.LoadProgress().SelectedCharacterId == CharacterIds.Character03, "Character03 selection persists");
                 loaded.SelectedCharacterId = CharacterIds.Character04;
                 service.SaveProgress(loaded);
-                Require(service.LoadProgress().SelectedCharacterId == CharacterIds.Character04, "Character04 selection persists");
+                Require(service.LoadProgress().SelectedCharacterId == CharacterIds.Character03, "Locked Character04 preserves Mario selection");
 
                 var settings = service.LoadSettings();
                 Require(Mathf.Approximately(settings.MasterVolume, 1) && Mathf.Approximately(settings.MusicVolume, .8f) && Mathf.Approximately(settings.SfxVolume, 1), "Audio defaults");
@@ -105,7 +105,7 @@ namespace Tikal.Tests.Editor
                 Require(loadedSettings.CameraMode == CameraMode.ThirdPerson, "CameraMode persists");
                 var progressAfterSettings = service.LoadProgress();
                 Require(progressAfterSettings.CurrentLevelId == GameSceneIds.Level01, "Settings save does not alter progress current level");
-                Require(progressAfterSettings.SelectedCharacterId == CharacterIds.Character04, "Settings save does not alter selected character");
+                Require(progressAfterSettings.SelectedCharacterId == CharacterIds.Character03, "Settings save does not alter selected character");
 
                 File.WriteAllText(service.ProgressPath, "{ invalid json");
                 Require(!service.LoadProgress().HasStartedGame, "Corrupt progress falls back safely");
@@ -211,7 +211,7 @@ namespace Tikal.Tests.Editor
             Set(spawner, "_characterVisualRoot", visualRoot);
             spawner.Apply(CharacterIds.Character04);
             spawner.Apply("character.missing");
-            Require(visualRoot.childCount == 0, "Missing final character prefab does not throw or spawn placeholders");
+            Require(spawner.HasVisual && spawner.CurrentVisual.name == CharacterIds.Default, "Unknown ID safely resolves to default Dwight visual");
             UnityEngine.Object.DestroyImmediate(lookRoot);
             UnityEngine.Object.DestroyImmediate(reticle.gameObject);
         }

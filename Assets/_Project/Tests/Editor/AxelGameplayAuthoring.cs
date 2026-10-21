@@ -92,7 +92,7 @@ namespace Tikal.Tests.Editor
                 Check(definition.Id==CharacterIds.Character02&&definition.DisplayName=="Axel"&&definition.VisualPrefab==prefab,"character.02 = Axel / canonical visual prefab");
                 var mario=CharacterCatalog.GetOrDefault(CharacterIds.Character03);
                 Check(mario.DisplayName=="Mario"&&mario.VisualPrefab==AssetDatabase.LoadAssetAtPath<GameObject>(MarioGameplayAuthoring.Prefab)&&mario.VisualPrefab!=prefab,"character.03 = Mario preserved / distinct visual");
-                Check(CharacterCatalog.All[0].Id==CharacterIds.Default&&CharacterCatalog.All[0].VisualPrefab==null&&CharacterCatalog.All[3].Id==CharacterIds.Character04&&CharacterCatalog.All[3].VisualPrefab==null,"Other slots retain existing definitions; no Dwight/slot4 implementation");
+                Check(CharacterCatalog.All[0].Id==CharacterIds.Default&&CharacterCatalog.All[0].DisplayName=="Dwight"&&CharacterCatalog.All[0].VisualPrefab!=null&&CharacterCatalog.All[3].Id==CharacterIds.Character04&&CharacterCatalog.All[3].IsLocked&&CharacterCatalog.All[3].VisualPrefab==null,"Dwight slot 1 and locked slot 4 coexist with Axel");
                 var a=prefab.GetComponentInChildren<Animator>(true);var modelAvatar=AssetDatabase.LoadAllAssetsAtPath(Model).OfType<Avatar>().Single();
                 Check(a!=null&&a.avatar==modelAvatar&&a.avatar.isValid&&a.avatar.isHuman,"Own valid Humanoid Animator/Avatar");
                 Check(a.runtimeAnimatorController==AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(Controller)&&!a.applyRootMotion,"Exact shared AC_ExplorerGameplay / Root Motion false");
