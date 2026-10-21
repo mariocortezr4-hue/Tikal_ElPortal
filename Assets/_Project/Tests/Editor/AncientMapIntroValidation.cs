@@ -67,7 +67,7 @@ namespace Tikal.Tests.Editor
             RequireNamed(transforms, "AncientMap_Proxy");
             RequireNamed(transforms, "FadeCanvas");
             RequireNamed(transforms, "DateCard");
-            RequireNamed(transforms, "NarrativeText");
+            Require(transforms.Count(t => t.name == "NarrativeText" && t.GetComponent<CanvasGroup>() != null) == 1, "Scene contains exactly one NarrativeText panel; its text child may share the name");
             RequireNamed(transforms, "SubtitlePanel");
             RequireNamed(transforms, "SkipPrompt");
             foreach (var cameraName in CameraNames) RequireNamed(transforms, cameraName);
@@ -130,7 +130,10 @@ namespace Tikal.Tests.Editor
             Require(cameras["CAM_FinalWarning"].fieldOfView <= 30, "FinalWarning is the intimate close framing");
             director.time = 67; director.Evaluate();
             var map = transforms.Single(transform => transform.name == "AncientMap_Proxy");
-            RequireFacing(cameras["CAM_MapHandoff"], map, 8, "MapHandoff intentionally frames the map");
+            var attachment=map.GetComponent<UnityEngine.Animations.ParentConstraint>();
+            if(attachment!=null&&attachment.sourceCount>0)
+                RequireVisible(cameras["CAM_MapHandoff"],attachment.GetSource(0).sourceTransform,"MapHandoff frames the real donor hand; attached prop is validated in Play Mode");
+            else RequireFacing(cameras["CAM_MapHandoff"], map, 8, "MapHandoff intentionally frames the map");
             Require(cameras["CAM_MapHandoff"].fieldOfView <= 32, "MapHandoff keeps its deliberate detail framing");
             director.time = 46.5; director.Evaluate();
             RequireVisible(cameras["CAM_TwoShot"], explorerHead, "TwoShot keeps the Explorer head visible");
