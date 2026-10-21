@@ -52,13 +52,14 @@ namespace Tikal.UI
 
         public void Select(int index)
         {
-            if (index < 0 || index >= CharacterCatalog.All.Count) return;
+            if (index < 0 || index >= CharacterCatalog.All.Count || CharacterCatalog.All[index].IsLocked) return;
             _pendingCharacterId = CharacterCatalog.All[index].Id;
             RefreshSelection();
         }
 
         public void Confirm()
         {
+            if (!CharacterCatalog.IsSelectable(_pendingCharacterId)) return;
             _progress.SelectedCharacterId = _pendingCharacterId;
             _persistence.SaveProgress(_progress);
             RefreshSelection();
@@ -69,12 +70,12 @@ namespace Tikal.UI
             if (_characterLabels == null) return;
             for (var index = 0; index < _characterLabels.Length && index < CharacterCatalog.All.Count; index++)
                 if (_characterLabels[index] != null)
-                    _characterLabels[index].text = CharacterCatalog.All[index].DisplayName;
+                    _characterLabels[index].text = CharacterCatalog.All[index].DisplayName.ToUpperInvariant() + (CharacterCatalog.All[index].IsLocked ? " [BLOQUEADO]" : string.Empty);
         }
 
         private void RefreshSelection()
         {
-            var selected = CharacterCatalog.GetOrDefault(_pendingCharacterId);
+            var selected = CharacterCatalog.IsSelectable(_pendingCharacterId) ? CharacterCatalog.GetOrDefault(_pendingCharacterId) : CharacterCatalog.Default;
             _pendingCharacterId = selected.Id;
             var saved = CharacterCatalog.GetOrDefault(_progress.SelectedCharacterId);
             if (_currentSelectionLabel != null)
@@ -83,6 +84,7 @@ namespace Tikal.UI
             for (var index = 0; index < _characterButtons.Length && index < CharacterCatalog.All.Count; index++)
             {
                 if (_characterButtons[index] == null) continue;
+                _characterButtons[index].interactable = !CharacterCatalog.All[index].IsLocked;
                 var visual = _characterButtons[index].GetComponent<MenuSelectableVisual>();
                 if (visual != null) visual.SetPersistent(CharacterCatalog.All[index].Id == saved.Id);
             }

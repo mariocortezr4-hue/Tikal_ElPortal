@@ -210,7 +210,7 @@ namespace Tikal.Tests.Editor
             selectorType.GetField("_progress",fields).SetValue(selector,GameProgressData.CreateDefault());
             selector.Select(1);selector.Confirm();
             var labels=(TMP_Text[])selectorType.GetField("_characterLabels",fields).GetValue(selector);
-            Check(labels[1].text=="Axel"&&save.LoadProgress().SelectedCharacterId==CharacterIds.Character02,"Actual second card Axel/Confirm writes existing schema to isolated save");
+            Check(labels[1].text=="AXEL"&&save.LoadProgress().SelectedCharacterId==CharacterIds.Character02,"Actual second card Axel/Confirm writes existing schema to isolated save");
             selector.gameObject.SetActive(false);yield return null;selector.gameObject.SetActive(true);yield return null;
             var buttons=(Button[])selectorType.GetField("_characterButtons",fields).GetValue(selector);
             var marker=(GameObject)typeof(MenuSelectableVisual).GetField("_persistentMarker",fields).GetValue(buttons[1].GetComponent<MenuSelectableVisual>());
