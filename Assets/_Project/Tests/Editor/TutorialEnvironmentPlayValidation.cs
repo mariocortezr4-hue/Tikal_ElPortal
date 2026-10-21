@@ -25,6 +25,9 @@ namespace Tikal.Tests.Editor
         [Serializable] class Setup { public SceneSetup[] scenes; }
         [Serializable] public class View { public string name; public Vector3 player, camera; public long visibleTriangles; public int drawCalls; public float cameraDistance; }
         [Serializable] public class Report { public bool passed, enteredPlayMode; public string scope; public string[] checks, errors; public View[] views; public double meanFrameMs, p95FrameMs; }
+        [Serializable] public class CharacterMeasure { public string id; public float standingHeight, standingCenter, standingTop, crouchHeight, crouchCenter, crouchTop, standingVisualTop, crouchIdleTop, crouchWalkTop, crouchEntryTop; }
+        [Serializable] public class MeasurementReport { public bool passed; public string scope; public CharacterMeasure[] characters; }
+        static readonly List<CharacterMeasure> measurements = new List<CharacterMeasure>();
         static readonly List<string> checks = new List<string>(), errors = new List<string>();
         static readonly List<View> views = new List<View>(); static readonly List<double> frameTimes = new List<double>();
         static readonly Stack<IEnumerator> stack = new Stack<IEnumerator>();
@@ -35,12 +38,17 @@ namespace Tikal.Tests.Editor
         static TutorialEnvironmentPlayValidation() { EditorApplication.update += Poll; EditorApplication.playModeStateChanged += Mode; EditorApplication.delayCall += Resume; }
         static void Poll()
         {
-            if (EditorApplication.isCompiling || EditorApplication.isUpdating || EditorApplication.isPlayingOrWillChangePlaymode || !File.Exists("Temp/TutorialArtPlay.request")) return;
+            if (EditorApplication.isCompiling || EditorApplication.isUpdating || EditorApplication.isPlayingOrWillChangePlaymode) return;
+            if(File.Exists("Temp/TutorialGuidanceMeasure.request")){File.Delete("Temp/TutorialGuidanceMeasure.request");SessionState.SetBool(Key+"Measure",true);Run();return;}
+            if(!File.Exists("Temp/TutorialArtPlay.request"))return;
+            SessionState.SetBool(Key+"Measure",false);
             File.Delete("Temp/TutorialArtPlay.request"); Run();
         }
         [MenuItem("Tikal/Validation/Run Tutorial Environment Play Tests")]
         public static void Run()
         {
+            if(EditorSceneManager.GetActiveScene().isDirty)throw new InvalidOperationException("Save current scene before Play validation");
+            EditorSceneManager.OpenScene(TutorialEnvironmentArtPass.ScenePath);
             TutorialEnvironmentArtPass.Validate();
             SessionState.SetString(Key + "Setup", JsonUtility.ToJson(new Setup { scenes = EditorSceneManager.GetSceneManagerSetup() }));
             EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single); SessionState.SetBool(Key, true); EditorApplication.EnterPlaymode();
@@ -69,8 +77,8 @@ namespace Tikal.Tests.Editor
             oldCapture = Time.captureFramerate; Time.captureFramerate = 30; oldBackground = Application.runInBackground; Application.runInBackground = true; oldVolume = AudioListener.volume;
             save = new GamePersistenceService(Path.Combine(Path.GetTempPath(), "TikalTutorialArt-" + Guid.NewGuid().ToString("N"))); save.SaveProgress(GameProgressData.CreateDefault());
             character = CharacterIds.Default; SceneManager.sceneLoaded += Inject; Application.logMessageReceived += Log; StaticSet("_introReplayToMenu", false); StaticSet("_tutorialReplayToMenu", false);
-            pad = InputSystem.AddDevice<Gamepad>(); keyboard = InputSystem.AddDevice<Keyboard>(); lastFrame = -1; lastReal = Time.realtimeSinceStartupAsDouble; deadline = EditorApplication.timeSinceStartup + 420;
-            routine = Tests(); stack.Clear(); stack.Push(routine); EditorApplication.update += Tick;
+            pad = InputSystem.AddDevice<Gamepad>(); keyboard = InputSystem.AddDevice<Keyboard>(); lastFrame = -1; lastReal = Time.realtimeSinceStartupAsDouble; deadline = EditorApplication.timeSinceStartup + 900;
+            measurements.Clear(); routine = SessionState.GetBool(Key+"Measure",false) ? MeasureCharacters() : Tests(); stack.Clear(); stack.Push(routine); EditorApplication.update += Tick;
         }
         static void Log(string message, string stack, LogType type) { if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert) errors.Add(message + "\n" + stack); }
         static void Check(bool value, string message) { if (!value) throw new InvalidOperationException(message); checks.Add(message); Debug.Log("TUTORIAL_ART_PLAY_CHECK " + message); }
@@ -89,6 +97,7 @@ namespace Tikal.Tests.Editor
             var sorted = frameTimes.OrderBy(t => t).ToArray();
             Directory.CreateDirectory(TutorialEnvironmentArtPass.Evidence);
             File.WriteAllText(TutorialEnvironmentArtPass.Evidence + "/PlayValidation.json", JsonUtility.ToJson(new Report { passed = errors.Count == 0, enteredPlayMode = true, checks = checks.ToArray(), errors = errors.ToArray(), views = views.ToArray(), meanFrameMs = sorted.Length == 0 ? 0 : sorted.Average(), p95FrameMs = sorted.Length == 0 ? 0 : sorted[(int)((sorted.Length - 1) * .95)], scope = "Normal interactive Editor. Virtual gamepad drives unchanged Player/Tutorial code through real physics in Dwight TPS and FPS. Camera is reset to straight ahead after Look. Intro skip uses real UI.Cancel. Saves isolated; frame timings exclude initial warm-up and five frames after captures but retain Editor overhead and are not a standalone GPU benchmark. Visible triangles use frustum and selected LOD, without occlusion or shadow passes." }, true));
+            if(SessionState.GetBool(Key+"Measure",false))File.WriteAllText(TutorialEnvironmentArtPass.Evidence+"/CrouchMeasurements.json",JsonUtility.ToJson(new MeasurementReport{passed=errors.Count==0,characters=measurements.ToArray(),scope="Real unchanged production Player/Animator in interactive Play Mode. Tops are world-space maximum CPU-skinned geometry, including head/hair/clothing; capsule tops include actual player floor elevation. Crouch walk sampled for two simulated seconds."},true));
             EditorApplication.ExitPlaymode();
         }
         static void Input(Vector2 move, Vector2 look = default, GamepadButton? button = null)
@@ -144,7 +153,7 @@ namespace Tikal.Tests.Editor
             for (int i = 0; i < 80 && player.transform.position.z < 13.4f; i++) { Input(Vector2.up); peak = Mathf.Max(peak, player.transform.position.y); yield return null; }
             Input(Vector2.zero); Check(peak > .7f && player.transform.position.z > 12, prefix + " Actual jump clears original obstacle collider");
             yield return Until(() => Active(TutorialPromptAction.Crouch), 90, prefix + " Crouch activates", Vector2.zero);
-            yield return Until(() => player.transform.position.z >= 21.4f, 200, prefix + " Crouched production capsule crosses unchanged lintel", Vector2.up, GamepadButton.East);
+            yield return Until(() => player.transform.position.z >= 21.4f, 200, prefix + " Crouched production capsule crosses locally calibrated lintel", Vector2.up, GamepadButton.East);
             Check(sequence.Steps[3].State == TutorialStepState.Completed, prefix + " Crouch step completes in original trigger"); Capture(prefix + "_03_CrouchExit");
             yield return Until(() => Active(TutorialPromptAction.Sprint), 90, prefix + " Sprint activates", Vector2.zero);
             yield return Until(() => !Active(TutorialPromptAction.Sprint), 140, prefix + " Sprint distance completes", Vector2.up, GamepadButton.LeftStick);
@@ -152,7 +161,7 @@ namespace Tikal.Tests.Editor
             yield return Until(() => Active(TutorialPromptAction.Interact), 90, prefix + " Interact activates", Vector2.zero);
             yield return Until(() => player.transform.position.z >= 33.2f, 180, prefix + " Reach interactable along clear path", Vector2.up);
             yield return Until(() => player.GetComponent<PlayerInteraction>().CurrentInteractable != null, 60, prefix + " Real raycast resolves gate and prompt", Vector2.zero);
-            Capture(prefix + "_05_Interact"); Input(Vector2.zero, default, GamepadButton.West); yield return null; Input(Vector2.zero);
+            Capture(prefix + "_05_Interact"); yield return null; Input(Vector2.zero, default, GamepadButton.West); yield return null; Input(Vector2.zero);
             yield return Until(() => sequence.State == TutorialSequenceState.AwaitingExit, 100, prefix + " Real interaction opens final phase", Vector2.zero);
             for (int i = 0; i < 35; i++) yield return null;
             Check(sequence.AllControlStepsCompleted && sequence.ExitGate.ExitAvailable, prefix + " Every original step completed before Exit"); Capture(prefix + "_06_Exit");
@@ -160,6 +169,26 @@ namespace Tikal.Tests.Editor
             for (int i = 0; i < 5; i++) yield return null;
             Check(SceneManager.GetActiveScene().name == "Level01_SecretEntrance" && save.LoadProgress().TutorialCompleted && save.LoadProgress().CurrentLevelId == GameSceneIds.Level01, prefix + " Tutorial completion persists to isolated save and enters Level01");
             measuring=false; player = null;
+        }
+        static IEnumerator MeasureCharacters()
+        {
+            EditorSceneManager.LoadSceneInPlayMode(TutorialEnvironmentArtPass.ScenePath,new LoadSceneParameters(LoadSceneMode.Single));for(int i=0;i<10;i++)yield return null;
+            player=UnityEngine.Object.FindAnyObjectByType<PlayerController>();movement=player.GetComponent<PlayerMovement>();camera=player.GetComponent<PlayerCameraController>();sequence=UnityEngine.Object.FindAnyObjectByType<TutorialSequenceController>();sequence.enabled=false;
+            camera.ApplyCameraMode(CameraMode.ThirdPerson);
+            var spawn=player.GetComponent<CharacterVisualSpawner>();var capsule=player.GetComponent<CharacterController>();
+            foreach(var id in new[]{CharacterIds.Default,CharacterIds.Character02,CharacterIds.Character03})
+            {
+                Input(Vector2.zero);capsule.enabled=false;player.transform.SetPositionAndRotation(new Vector3(0,.1f,0),Quaternion.identity);capsule.enabled=true;movement.ResetForRespawn();camera.SnapAfterTeleport();spawn.Apply(id);
+                for(int i=0;i<35;i++)yield return null;
+                var measure=new CharacterMeasure{id=id,standingHeight=capsule.height,standingCenter=capsule.center.y,standingTop=capsule.bounds.max.y};
+                for(int i=0;i<30;i++){if(i%3==0)measure.standingVisualTop=Mathf.Max(measure.standingVisualTop,AxelGameplayAuthoring.GeometryBounds(spawn.CurrentVisual).max.y);yield return null;}
+                for(int i=0;i<35;i++){Input(Vector2.zero,default,GamepadButton.East);yield return null;}
+                measure.crouchHeight=capsule.height;measure.crouchCenter=capsule.center.y;measure.crouchTop=capsule.bounds.max.y;
+                for(int i=0;i<60;i++){Input(Vector2.zero,default,GamepadButton.East);if(i%3==0)measure.crouchIdleTop=Mathf.Max(measure.crouchIdleTop,AxelGameplayAuthoring.GeometryBounds(spawn.CurrentVisual).max.y);yield return null;}
+                for(int i=0;i<60;i++){Input(Vector2.up,default,GamepadButton.East);if(i%3==0)measure.crouchWalkTop=Mathf.Max(measure.crouchWalkTop,AxelGameplayAuthoring.GeometryBounds(spawn.CurrentVisual).max.y);yield return null;}
+                measurements.Add(measure);Check(measure.crouchHeight<measure.standingHeight,"Measured real capsule and skinned poses: "+id);Input(Vector2.zero);
+            }
+            player=null;
         }
         static IEnumerator Tests()
         {
@@ -169,6 +198,7 @@ namespace Tikal.Tests.Editor
             for (int i = 0; i < 600 && SceneManager.GetActiveScene().path == AncientMapIntroAuthoring.ScenePath; i++) yield return null;
             InputSystem.QueueStateEvent(keyboard, new KeyboardState()); for (int i = 0; i < 8; i++) yield return null;
             Check(SceneManager.GetActiveScene().path == TutorialEnvironmentArtPass.ScenePath && save.LoadProgress().IntroSeen, "Unchanged Intro skip actually enters dressed Tutorial");
+            yield return TutorialGuidancePlayTests.Run(pad, save, Check);
             yield return Route(CameraMode.ThirdPerson);
             save.SaveProgress(GameProgressData.CreateDefault()); StaticSet("_tutorialReplayToMenu", false);
             EditorSceneManager.LoadSceneInPlayMode(TutorialEnvironmentArtPass.ScenePath, new LoadSceneParameters(LoadSceneMode.Single)); for (int i = 0; i < 8; i++) yield return null;

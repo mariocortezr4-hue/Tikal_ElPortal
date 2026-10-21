@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "scope": "Real unchanged production Player/Animator in interactive Play Mode. Tops are world-space maximum CPU-skinned geometry, including head/hair/clothing; capsule tops include actual player floor elevation. Crouch walk sampled for two simulated seconds. Entry peaks additionally measured while transitioning from blocked standing to moving crouch at original pilot underside Y=1.67, using vertices inside beam XZ footprint. Full validation must repeat after any clearance adjustment.",
+  "characters": [
+    {
+      "id": "character.default",
+      "standingHeight": 1.7999999523162842,
+      "standingCenter": 0.8999999761581421,
+      "standingTop": 1.899999976158142,
+      "crouchHeight": 1.0,
+      "crouchCenter": 0.5,
+      "crouchTop": 1.100000023841858,
+      "standingVisualTop": 1.8926348686218262,
+      "crouchIdleTop": 1.5204267501831055,
+      "crouchWalkTop": 1.5857791900634766,
+      "crouchEntryTop": 1.7842965126037598
+    },
+    {
+      "id": "character.02",
+      "standingHeight": 1.7999999523162842,
+      "standingCenter": 0.8999999761581421,
+      "standingTop": 1.899999976158142,
+      "crouchHeight": 1.0,
+      "crouchCenter": 0.5,
+      "crouchTop": 1.100000023841858,
+      "standingVisualTop": 1.9106467962265015,
+      "crouchIdleTop": 1.5010285377502441,
+      "crouchWalkTop": 1.5682125091552734,
+      "crouchEntryTop": 1.7791681289672852
+    },
+    {
+      "id": "character.03",
+      "standingHeight": 1.7999999523162842,
+      "standingCenter": 0.8999999761581421,
+      "standingTop": 1.899999976158142,
+      "crouchHeight": 1.0,
+      "crouchCenter": 0.5,
+      "crouchTop": 1.100000023841858,
+      "standingVisualTop": 1.6743748188018799,
+      "crouchIdleTop": 1.3531334400177002,
+      "crouchWalkTop": 1.4099197387695312,
+      "crouchEntryTop": 1.585186243057251
+    }
+  ]
+}

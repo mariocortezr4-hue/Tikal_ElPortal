@@ -190,6 +190,7 @@ namespace Tikal.Tests.Editor
             Place(ruins, "Wall_Sprint_Right", "ARQ_MuroMaya_01", new Vector3(6.5f, -.4f, 27), 104, Vector3.one * .9f);
             Place(ruins, "Wall_Exit_Left", "ARQ_MuroMaya_01", new Vector3(-5, -.3f, 39), 62, Vector3.one * .75f);
             Mount("Jump root", "ADP_Tutorial_JumpObstacle", new Vector3(3.5f, .6f, .658768f));
+            var lintelShape = Find("Low ruin lintel").GetComponent<BoxCollider>(); lintelShape.center = Vector3.zero; lintelShape.size = Vector3.one; Physics.SyncTransforms();
             Mount("Low ruin lintel", "ADP_Tutorial_LowLintel_R2", new Vector3(4.2f, .45f, 1.2f));
             Mount("Lift stone", "ADP_Tutorial_LiftStone", new Vector3(3.6f, 2.8f, .7f), true);
             foreach (var name in new[] { "Ruin left", "Ruin right" }) Mount(name, "ARQ_ColumnaMaya_01", new Vector3(.5f, 1.5f, 1.1f));
@@ -205,6 +206,7 @@ namespace Tikal.Tests.Editor
             var sun = Find("Jungle Sun").GetComponent<Light>(); sun.transform.rotation = Quaternion.Euler(48, -34, 0); sun.color = new Color(1, .91f, .76f); sun.intensity = 1.25f; sun.shadows = LightShadows.Soft;
             RenderSettings.ambientMode = AmbientMode.Trilight; RenderSettings.ambientSkyColor = new Color(.46f, .57f, .57f); RenderSettings.ambientEquatorColor = new Color(.29f, .39f, .32f); RenderSettings.ambientGroundColor = new Color(.18f, .22f, .16f);
             RenderSettings.fog = true; RenderSettings.fogMode = FogMode.Linear; RenderSettings.fogStartDistance = 28; RenderSettings.fogEndDistance = 72; RenderSettings.fogColor = new Color(.29f, .38f, .34f);
+            TutorialGuidanceAuthoring.Apply();
             EditorSceneManager.MarkSceneDirty(scene); EditorSceneManager.SaveScene(scene); AssetDatabase.SaveAssets(); Validate();
         }
         [MenuItem("Tikal/Validation/Validate Tutorial Environment Art Pass")]
@@ -217,6 +219,13 @@ namespace Tikal.Tests.Editor
             foreach (var c in baseline.components)
             {
                 bool found = current.TryGetValue(c.id, out var original);
+                if (found && original is BoxCollider beamCollider && beamCollider.name == "Low ruin lintel")
+                {
+                    Func<string, string> exceptShape = value => string.Join("\n", value.Split('\n').Where(line => !line.StartsWith("m_Size") && !line.StartsWith("m_Center")));
+                    check(exceptShape(Properties(original)) == exceptShape(c.value) && Vector3.Distance(beamCollider.center, new Vector3(0, -.02f / .45f, 0)) < .001f && Vector3.Distance(beamCollider.size, new Vector3(1, .49f / .45f, 1.2f)) < .001f, "Only authorized local lintel collision allowance; all other collider properties intact");
+                    continue;
+                }
+                if (found && original is Collider proxy && proxy.name.StartsWith("Vegetation proxy ")) { check(!proxy.enabled && Properties(proxy) == c.value.Replace("m_Enabled=True", "m_Enabled=False"), "Local obsolete vegetation collider disabled, all other properties intact: " + c.id); continue; }
                 if (found && Properties(original) != c.value)
                 {
                     Directory.CreateDirectory(Evidence);
@@ -230,6 +239,7 @@ namespace Tikal.Tests.Editor
             {
                 Require(current.TryGetValue(t.id, out var component), "Original transform still exists: " + t.id);
                 if(component is RectTransform) continue; // Canvas layout is recomputed by Unity; UI serialized blocks are audited separately.
+                if(component.name == "Low ruin lintel") { var beam = (Transform)component; var p = beam.localPosition; check(Mathf.Abs(p.y - TutorialGuidanceAuthoring.Clearance - .225f) < .002f && Mathf.Abs(p.x) < .001f && Mathf.Abs(p.z - 19) < .001f && Quaternion.Angle(beam.localRotation, Quaternion.identity) < .001f && Vector3.Distance(beam.localScale, new Vector3(4.2f, .45f, 1.2f)) < .001f, "Authorized measured lintel elevation; original XZ/rotation/scale preserved"); continue; }
                 check(CaptureTransform((Transform)component).value == t.value, "Original transform/spawn/anchor unchanged: " + t.id);
             }
             var all = scene.GetRootGameObjects().SelectMany(g => g.GetComponentsInChildren<Component>(true)).ToArray();
@@ -260,7 +270,8 @@ namespace Tikal.Tests.Editor
             foreach (var mat in mats.Where(m => m.GetTexture("_BumpMap") != null)) check(((TextureImporter)AssetImporter.GetAtPath(AssetDatabase.GetAssetPath(mat.GetTexture("_BumpMap")))).textureType == TextureImporterType.NormalMap, "Normal import type: " + mat.name);
             check(filters.Max(f => f.sharedMesh.triangles.Length / 3) < 50000, "No high-poly source mesh");
             var largest = filters.OrderByDescending(f => f.sharedMesh.triangles.Length).First(); var largestTex = textures.OrderByDescending(t => t.width * t.height).First();
-            var report = new Stats { passed = true, instances = placements.Length, trees = placements.Count(g => g.name.StartsWith("Tree_") || g.name.StartsWith("Canopy_")), bushes = placements.Count(g => g.name.StartsWith("Bush_")), plants = placements.Count(g => g.name.StartsWith("Plant_") || g.name.StartsWith("LeafLitter_")), rocks = placements.Count(g => g.name.StartsWith("Rock_")), ruins = placements.Count(g => g.name.StartsWith("Wall_") || g.name.Contains("Columna") || g.name.Contains("LowLintel")), props = placements.Count(g => g.name.Contains("LiftStone") || g.name.Contains("JumpObstacle")), lodGroups = placements.Sum(g => g.GetComponentsInChildren<LODGroup>(true).Length), materials = mats.Length, textures = textures.Length, shadowCasters = rs.Count(r => r.shadowCastingMode != ShadowCastingMode.Off), artColliders = placements.Sum(g => g.GetComponentsInChildren<Collider>(true).Count(c => c.enabled)), sceneColliders = all.OfType<Collider>().Count(c => c.enabled), largestMesh = largest.sharedMesh.triangles.Length / 3, largestMeshName = largest.sharedMesh.name, largestTexture = largestTex.name + " " + largestTex.width + "x" + largestTex.height, allLodTriangles = filters.Sum(f => (long)f.sharedMesh.triangles.Length / 3), lod0Triangles = placements.Sum(g => { var group = g.GetComponentInChildren<LODGroup>(); return group != null ? group.GetLODs()[0].renderers.Sum(r => (long)r.GetComponent<MeshFilter>().sharedMesh.triangles.Length / 3) : g.GetComponentsInChildren<MeshFilter>().Sum(f => (long)f.sharedMesh.triangles.Length / 3); }), resolutions = textures.Select(t => t.name + ":" + t.width + "x" + t.height).ToArray(), checks = checks.ToArray(), scope = "Editor integrity and scene geometry; visibility and frame timings are measured separately in real Play Mode." };
+            TutorialGuidanceAuthoring.Validate(check);
+            var report = new Stats { passed = true, instances = placements.Length, trees = placements.Count(g => g.name.StartsWith("Tree_") || g.name.StartsWith("Canopy_")), bushes = placements.Count(g => g.name.StartsWith("Bush_") || g.name.StartsWith("EdgeMass_")), plants = placements.Count(g => g.name.StartsWith("Plant_") || g.name.StartsWith("LeafLitter_")), rocks = placements.Count(g => g.name.StartsWith("Rock_")), ruins = placements.Count(g => g.name.StartsWith("Wall_") || g.name.Contains("Columna") || g.name.Contains("LowLintel") || g.name.StartsWith("InteractPillar_")), props = placements.Count(g => g.name.Contains("LiftStone") || g.name.Contains("JumpObstacle")), lodGroups = placements.Sum(g => g.GetComponentsInChildren<LODGroup>(true).Length), materials = mats.Length, textures = textures.Length, shadowCasters = rs.Count(r => r.shadowCastingMode != ShadowCastingMode.Off), artColliders = placements.Sum(g => g.GetComponentsInChildren<Collider>(true).Count(c => c.enabled)), sceneColliders = all.OfType<Collider>().Count(c => c.enabled), largestMesh = largest.sharedMesh.triangles.Length / 3, largestMeshName = largest.sharedMesh.name, largestTexture = largestTex.name + " " + largestTex.width + "x" + largestTex.height, allLodTriangles = filters.Sum(f => (long)f.sharedMesh.triangles.Length / 3), lod0Triangles = placements.Sum(g => { var group = g.GetComponentInChildren<LODGroup>(); return group != null ? group.GetLODs()[0].renderers.Sum(r => (long)r.GetComponent<MeshFilter>().sharedMesh.triangles.Length / 3) : g.GetComponentsInChildren<MeshFilter>().Sum(f => (long)f.sharedMesh.triangles.Length / 3); }), resolutions = textures.Select(t => t.name + ":" + t.width + "x" + t.height).ToArray(), checks = checks.ToArray(), scope = "Editor integrity and scene geometry; visibility and frame timings are measured separately in real Play Mode." };
             Directory.CreateDirectory(Evidence); File.WriteAllText(Evidence + "/EditorValidation.json", JsonUtility.ToJson(report, true)); Debug.Log("TUTORIAL_ART_EDITOR_PASS " + report.instances);
         }
     }

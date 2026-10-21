@@ -1,5 +1,7 @@
 # Tutorial — Environment Art Pass
 
+> Historial: las secciones hasta «Path Containment & Tutorial Guidance» describen la primera pasada aprobada (`eb33dc9`, `f1f51ac`). La sección final documenta el estado vigente y sus excepciones autorizadas: elevación del dintel, sustitución de colisiones placeholder por boundaries y safety local.
+
 ## Alcance y fuentes
 
 Unity 6000.6.3f1, URP 17.6.0. Rama `feature/tutorial-environment-art-pass`, base `9d282fa` (merge del pulido de Intro `6e58da2`). Se viste únicamente `Assets/_Project/Scenes/Tutorial/TUT_ExplorerBasics.unity`, conservando Move → Look → Jump → Crouch → Sprint → Interact → Exit. No se modifica código runtime, InputActions, Player, UI, selección, persistencia, Intro, Level01, puzzles ni checkpoints. No se trabaja audio ni se instala software.
@@ -159,3 +161,111 @@ Tiempos reales de frames de la segunda prueba: **media48,596ms, p9556,628ms**. N
 Se ejecutó Intro(skip UI.Cancel)→Tutorial vestido, recorrido completo Dwight TPS→Level01, recorrido completo Dwight FPS→Level01 y alternancia de Axel/Mario en ambos modos. Progreso y ajustes de prueba aislados, sin escritura sobre guardados del usuario. Se inspeccionaron capturas reales del inicio, obstáculos, interacción y salida; el material del personaje en capturas finales se ve correctamente. No se declara playtest humano ni aceptación artística final.
 
 Auditoría de protección: **991 archivos rastreados preexistentes sin cambios**, único archivo preexistente modificado la escena Tutorial. Cero objetos originales de escena eliminados; scripts, colliders, prefab overrides y bloques RectTransform/UI originales conservados. Modelos/texturas importados y fuentes seleccionadas comprobados por SHA256; kits y biblioteca externa intactos. No se integró Level01 ni puzzles.
+
+## Path Containment & Tutorial Guidance
+
+Segunda pasada sobre `feature/tutorial-environment-art-pass`, desde `f1f51ac`. No rehace el Art Pass ni altera los seis pasos, Exit, Input, PlayerMovement, PlayerLook, dimensiones globales del CharacterController, selección, FPS/TPS, Intro, GameFlow o Level01. La única clase runtime nueva es `TutorialOutOfBoundsVolume`, local a Tutorial. No hay imports nuevos, nuevos materiales, cambios de prefabs compartidos ni biblioteca duplicada.
+
+### Contención visual y física
+
+Se recolocan los 24 arbustos y 18 rocas existentes hacia los bordes, con variación determinista de posición. Los arbustos existentes aumentan su escala base por 2,1 en la variante pequeña izquierda y 1,65 en la mediana derecha, conservando sus proporciones y variaciones originales: el borde gana continuidad sin añadir objetos ni mallas. Se añaden diez masas de `VEG_ArbustoTropical_02/03`, con tamaños aproximados 3,2 × 2,1 × 3,2 m y rotaciones variadas, intercaladas en ambos lados; árboles y plantas existentes completan primer plano, borde y fondo. La seed adicional es 210622. El camino de 4,6 m queda despejado; la cara interior de los límites laterales está en X=±6,5 m. No se añaden colliders a plantas. Las nuevas masas desactivan sombras mediante overrides de escena, sin editar sus prefabs.
+
+`Environment/GameplayBoundaries` contiene **once BoxColliders sin Renderer**:
+
+- Cuatro segmentos laterales de 1 × 4,2 × 29,5 m, centros X=±7, Z=8,5/37,5. Solapan 0,5 m y cubren Z=-6,25…52,25. Altura 4,2 m frente a salto configurado de 1,2 m; se comprueba también salto físico real.
+- Un cierre trasero, centro (0; 2,1; -5,8), tamaño 15 × 4,2 × 1 m.
+- Dos alas delanteras, centro (±5,25; 2,1; 51,5), tamaño 4,5 × 4,2 × 1 m. Conservan una abertura central de 6 m tras el Exit canónico; no se encierra completamente el recorrido.
+- Dos alas de ruina junto a Crouch, centro (±4,4; 1,4; 19), tamaño 4,4 × 2,8 × 1,2 m, cerrando el bypass lateral. Se reutilizan dos muros visuales existentes, conservando sus nombres históricos `Wall_Jump_Left` y `Wall_Sprint_Right`.
+- Dos colliders de pilares Interact, centro (±2,25; 2,45; 36), tamaño 0,7 × 4,9 × 0,7 m.
+
+Se **deshabilitan únicamente los veinte CapsuleColliders de `Vegetation proxy 0…19` de esta escena**, cuyos renderers ya estaban ocultos. Sus volúmenes aislados quedaban por delante de los bordes reorganizados y comprimían la cámara TPS. La contención continua los sustituye; no se borran sus objetos ni se cambian sus demás propiedades. El validador exige exactamente esa excepción, manteniendo intactas las firmas de los restantes componentes originales. El suelo, triggers, colliders de salto y puerta conservan sus parámetros locales. Solo el dintel incorpora la elevación y el margen local de colisión descritos abajo.
+
+### Safety recovery
+
+Un único `Environment/TutorialOutOfBoundsVolume`, centro (0; -6; 23), trigger 100 × 10 × 120 m, contiene la protección inferior. La comprobación temprana de posición también recupera teleports que salten el trigger: Y<-2, X fuera de [-7,5; 7,5] o Z fuera de [-6,8; 51]. El límite frontal está después del trigger de salida; si por un fallo no se realiza la transición, no se permite seguir indefinidamente hacia el borde del suelo.
+
+El último punto seguro se registra solo con cápsula apoyada, X entre ±6,1, Z entre -5 y 46, Y entre -0,1 y 1. Si todavía no existe, usa spawn (0; 0,05; 0). Recuperar limpia foco interactivo, reposiciona, resetea movimiento/animación transitorios, restaura yaw/pitch y cámara mediante las API existentes y sincroniza física. No usa CheckpointManager, persistencia ni llamadas a TutorialSequenceController; no hace avanzar pasos ni marca TutorialCompleted. No teletransporta por retroceder dentro del recorrido.
+
+### Pilares Interact
+
+Dos instancias de `PFB_ARQ_ColumnaMaya_01`, conservando sus tres LOD (3999 / 1799 / 599 triángulos). Bases visuales en (±2,25; 0; 36), dimensiones ajustadas a 0,75 × 4,9 × 0,8 m; escala aproximada (1,022; 1,633; 1,073) respecto a bounds LOD0 de la pieza. La altura enmarca también la piedra elevada. Son hijos fijos de `ENV_TutorialArt/PathContainment`, fuera de `Lift stone`; no se mueven con ella. La pared conserva `_movingStone`, raycast/prompt, desplazamiento +Y2,2 y velocidad originales. La luz, baliza y ruta Exit se mantienen.
+
+### Crouch: medidas y apertura
+
+`TutorialCrouchMeasurements.json` conserva una medición real de los tres personajes con su Avatar/controlador/animaciones de producción. Se muestrean vértices skinned por CPU, incluyendo cabello/ropa; no se usan bounds de Renderer inflados. Y se expresa en mundo, con Player sobre suelo de aproximadamente Y=0,1. Crouch Walk se muestrea durante dos segundos simulados; no garantiza todas las variantes/poses futuras.
+
+| Personaje | Standing visual top Y | Crouch Idle top Y | Crouch Walk top Y |
+|---|---:|---:|---:|
+| Dwight | 1,8926 | 1,5204 | 1,5858 |
+| Axel | 1,9106 | 1,5010 | 1,5682 |
+| Mario | 1,6744 | 1,3531 | 1,4099 |
+
+La cápsula real, común a los tres, mide **1,8 m / center Y=0,9** de pie y **1,0 m / center Y=0,5** agachada, escala sin modificar. Tops medidos en mundo: 1,9 y 1,1 m. Dwight determina el máximo visual crouched: **1,5858 m** (aproximadamente 1,486 m por encima del origen apoyado).
+
+Una apertura inicial Y=1,67 daba 8,42 cm sobre el Crouch Walk de Dwight, pero la prueba de agacharse mientras se empuja contra la viga detectó penetración transitoria. Se midieron también picos de entrada dentro de la huella del techo: Dwight 1,7843, Axel 1,7792 y Mario 1,5852 m en ese piloto. Elevar conjuntamente collider y visual a 1,81 no resolvió la entrada de Axel (pico 1,8929 m); las poses asentadas solas no son un criterio suficiente. Esos intentos se conservan en la evidencia externa y no se consideran aprobados.
+
+La altura visual se deriva de `ceil(max(máximo crouch asentado + 0,075; máximo de entrada piloto + 0,06) × 100) / 100`: **underside visual Y=1,85 m**, frente a 1,325 anterior. El dintel visual sube **0,525 m**, centro Y=2,075, grosor 0,45 m. Sobre el camino con top Y=0,07 quedan **1,78 m visuales**.
+
+Se utiliza el ajuste local visual/collider permitido por el encargo: **underside físico Y=1,81 m**, 4 cm bajo el arte; cara superior común Y=2,30; collider 4,2 × 0,49 × 1,44 m, con margen delantero/trasero de 12 cm respecto al techo visible de 1,2 m de profundidad. No se oculta esta diferencia: evita iniciar el movimiento bajo la malla antes de que termine la transición de animación. El collider standing alcanza aproximadamente Y=1,9, por encima del umbral físico. La apertura física sobre el camino es 1,74 m. Los apoyos visuales se alargan hasta el techo, sin alterar sus colliders originales.
+
+La cápsula global y todas las animaciones permanecen intactas. El validador compara la firma completa del collider original salvo `center/size`, que comprueba contra el ajuste exacto autorizado; también comprueba límites visuales y físicos por separado. No se da por aprobado el ajuste hasta repetir standing/crouch y medir los vértices reales con los tres personajes.
+
+### Herramientas y alcance de validación
+
+Los menús canónicos siguen siendo `Tikal/Authoring/Apply Tutorial Environment Art Pass` y `Tikal/Validation/Validate Tutorial Environment Art Pass`. El helper `TutorialGuidanceAuthoring` añade composición, límites, pilares y safety por nombres estables; ejecutar dos veces exige escena y prefabs idénticos. El validador incluye continuidad, primitivas, número único de objetos, proxies deshabilitados, pilares fijos y clearance derivado del informe de medidas, además de las comprobaciones existentes de referencias, Missing Scripts y shaders URP soportados.
+
+`Tikal/Validation/Run Tutorial Environment Play Tests` incorpora `TutorialGuidancePlayTests`: caída/OOB con paso/estado/save intactos, movimiento real hasta safe point, ocho intentos laterales con sprint y salto, TPS paralelo y bajo presión contra el borde, cápsula standing rechazada y crouched aceptada con cada personaje, y comprobación CPU de vértices durante la transición hacia crouch sin preasentar la pose. Después recarga Tutorial y ejecuta el recorrido canónico completo TPS y FPS con prompt/raycast, elevación y Exit reales. Usa gamepad virtual, Editor interactivo normal y guardados aislados; no utiliza batchmode. Las desactivaciones temporales de secuencia durante pruebas de explotación no se serializan.
+
+Movement Debug sigue condicionado por `UNITY_EDITOR || DEBUG`; no se elimina ni se amplía. Los checks instrumentados y las capturas no sustituyen el playtest humano A–J, especialmente percepción de barreras, repetición vegetal, cámara libre y estética. La aprobación humana de la primera pasada no se extiende automáticamente a esta segunda.
+
+### Resultado final de las pruebas
+
+**935 checks Editor y 69 checks Play Mode aprobados**, cero errores capturados en la ejecución final. Authoring dos veces: escena y prefabs byte-idénticos. Se observaron los tres personajes durante la transición real, sin preasentar crouch:
+
+| Personaje | Máximo visual Y dentro del techo durante entrada/paso | Margen mínimo visual | Standing bloqueado Z | Crouched llega a Z |
+|---|---:|---:|---:|---:|
+| Dwight | 1.7839 | 6.61 cm | 17.940 | 21.549 |
+| Axel | 1.7792 | 7.08 cm | 17.940 | 21.549 |
+| Mario | 1.5807 | 26.93 cm | 17.940 | 21.549 |
+
+Ningún vértice medido penetra el techo visual en estas entradas. Dwight y Axel cumplen el margen deseado de 5–10 cm incluso durante la transición; Mario conserva mayor holgura. No se garantiza cualquier futura pose, rig o animación sin repetir la prueba. Las capturas muestran los personajes bajo el dintel; la lectura MUÉVETE durante estas sondas es intencionada: secuencia deshabilitada solo en diagnóstico y recargada antes del recorrido canónico.
+
+Se verificó un safe point distinto del spawn mediante movimiento apoyado real, caída forzada y retorno sin cambiar referencia/estado de step ni el JSON de guardado aislado. Ocho intentos de salida: izquierda/derecha en Z=4/15/28/44, con sprint y salto; pico real de pies Y=1,117, cero recuperaciones de safety durante los intentos de boundary. La protección no sustituye la barrera física.
+
+TPS paralelo al borde: boom mínimo 3,421 m, variación relativa máxima medida 0. Al presionar deliberadamente contra la pared: boom mínimo 0,946 m y variación máxima por frame 0,193 m; cero saltos mayores de 0,5 m. Se acepta la compresión de colisión al contacto, con cámara fuera del personaje; no se declara distancia libre constante contra una pared. El recorrido central conserva boom 3,42–3,46 m. FPS, raycast/prompt de Interact, pared móvil y Exit pasan sus checks en ambos recorridos. La transición existente carga Level01, sin modificar ningún archivo de esa escena.
+
+### Comparación de coste
+
+| Métrica | Primera pasada | Segunda pasada |
+|---|---:|---:|
+| Placements | 114 | 126 (+10,53%) |
+| LODGroups | 111 | 123 |
+| Suma de LOD0 instanciados | 759671 | 808359 (+6,41%) |
+| Suma de todos los niveles almacenados | 1261627 | 1348917 |
+| Shadow-casting renderers (todos los LOD, no simultáneos) | 131 | 137 |
+| Colliders habilitados de escena | 34 | 26 (14 restantes + 11 boundaries + 1 safety) |
+| Colliders artísticos habilitados | 0 | 0 |
+| Materiales / texturas | 22 / 37 | 22 / 37 |
+| Media Editor instrumentada ms | 48,596 | 49,082 |
+| P95 Editor instrumentado ms | 56,628 | 58,282 |
+
+| Vista comparable | Triángulos antes | Triángulos después | Delta |
+|---|---:|---:|---:|
+| TPS_01_Start | 379501 | 418597 | +10.30% |
+| TPS_02_Jump | 387655 | 418308 | +7.91% |
+| TPS_03_CrouchExit | 342957 | 376335 | +9.73% |
+| TPS_04_Sprint | 317013 | 340408 | +7.38% |
+| TPS_05_Interact | 272043 | 299807 | +10.21% |
+| TPS_06_Exit | 270243 | 298007 | +10.27% |
+| FPS_01_Start | 391462 | 426208 | +8.88% |
+| FPS_02_Jump | 378011 | 416357 | +10.14% |
+| FPS_03_CrouchExit | 358790 | 381848 | +6.43% |
+| FPS_04_Sprint | 276586 | 299234 | +8.19% |
+| FPS_05_Interact | 269964 | 295140 | +9.33% |
+| FPS_06_Exit | 273514 | 296840 | +8.53% |
+
+El rango pasa de **269964–391462** a **295140–426208** triángulos visibles estimados. Los doce encuadres aumentan entre **6.43% y 10.30%**, por debajo del objetivo orientativo de +15%. Draw calls observadas: 117–176 antes, 120–177 después. La geometría se estima por frustum y LOD, sin occlusion ni pases de sombras; posiciones equivalentes de la ruta con pequeñas diferencias de movimiento, no una captura GPU fija.
+
+Mismo Editor normal, instrumentación de ruta, captura a 30 fps simulados, warm-up de 45 frames y exclusión de cinco frames tras cada screenshot. Las sondas CPU de deformación/boundaries ocurren fuera de la ventana de timing. La media cambia +1.00% y P95 +2.92%; no permiten atribuir una mejora ni certificar rendimiento standalone/60FPS. Persisten los límites de Editor, instrumentación, shader/cache y alpha overdraw ya documentados.
+
+Evidencia final y fallos de desarrollo: `D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Tikal_ElPortal/_TutorialGuidance_20261021`. Playtest humano A–J pendiente para esta segunda pasada; no se inventa aprobación humana. La auditoría por hashes y bloques YAML verifica el alcance antes del commit.
