@@ -1,0 +1,224 @@
+{
+  "assets": [
+    {
+      "name": "VEG_ArbolTropical_04",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/_Revisions3145/Arboles/VEG_ArbolTropical_04/Prefabs/PFB_VEG_ArbolTropical_04.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\01_VEGETACION\\Arboles\\VEG_ArbolTropical_04",
+      "category": "Vegetation",
+      "dimensions": [
+        15.156742095947266,
+        16.0,
+        13.132908821105957
+      ],
+      "triangles": [
+        25718,
+        11107,
+        4879
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_04.prefab"
+    },
+    {
+      "name": "VEG_ArbolTropical_02",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/_PlayMode25_20261019/VEG_ArbolTropical_02/Prefabs/PFB_VEG_ArbolTropical_02.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\01_VEGETACION\\Arboles\\VEG_ArbolTropical_02",
+      "category": "Vegetation",
+      "dimensions": [
+        16.24833869934082,
+        16.0,
+        16.47334861755371
+      ],
+      "triangles": [
+        20000,
+        9000,
+        3500
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab"
+    },
+    {
+      "name": "VEG_PalmeraTropical_02",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/_PlayMode25_20261019/VEG_PalmeraTropical_02/Prefabs/PFB_VEG_PalmeraTropical_02.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\01_VEGETACION\\Palmeras\\VEG_PalmeraTropical_02",
+      "category": "Vegetation",
+      "dimensions": [
+        6.3596625328063965,
+        10.0,
+        5.96877908706665
+      ],
+      "triangles": [
+        11861,
+        4999,
+        1799
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PalmeraTropical_02.prefab"
+    },
+    {
+      "name": "VEG_ArbustoTropical_02",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/_PlayMode25_20261019/VEG_ArbustoTropical_02/Prefabs/PFB_VEG_ArbustoTropical_02.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\01_VEGETACION\\Arbustos\\VEG_ArbustoTropical_02",
+      "category": "Vegetation",
+      "dimensions": [
+        1.5723016262054443,
+        1.399999976158142,
+        1.44307541847229
+      ],
+      "triangles": [
+        3208,
+        2500,
+        1762
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab"
+    },
+    {
+      "name": "VEG_ArbustoTropical_03",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/Arbustos/VEG_ArbustoTropical_03/Prefabs/PFB_VEG_ArbustoTropical_03.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\01_VEGETACION\\Arbustos\\VEG_ArbustoTropical_03",
+      "category": "Vegetation",
+      "dimensions": [
+        2.547991991043091,
+        1.7999999523162842,
+        2.3285088539123535
+      ],
+      "triangles": [
+        4643,
+        2793,
+        2793
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_03.prefab"
+    },
+    {
+      "name": "VEG_HelechoTropical_02",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/_PlayMode25_20261019/VEG_HelechoTropical_02/Prefabs/PFB_VEG_HelechoTropical_02.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\01_VEGETACION\\Helechos\\VEG_HelechoTropical_02",
+      "category": "Vegetation",
+      "dimensions": [
+        1.8833178281784058,
+        1.1999999284744263,
+        1.851938009262085
+      ],
+      "triangles": [
+        3500,
+        1800,
+        1458
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab"
+    },
+    {
+      "name": "VEG_PlantaTropical_02",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/_PlayMode25_20261019/VEG_PlantaTropical_02/Prefabs/PFB_VEG_PlantaTropical_02.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\01_VEGETACION\\Plantas_Tropicales\\VEG_PlantaTropical_02",
+      "category": "Vegetation",
+      "dimensions": [
+        1.5903384685516357,
+        2.1000001430511475,
+        1.557463526725769
+      ],
+      "triangles": [
+        4321,
+        2199,
+        899
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab"
+    },
+    {
+      "name": "VEG_HojasSecasMonton_01",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/_Batch61_75_R2/Hojas_Suelo/VEG_HojasSecasMonton_01/Prefabs/PFB_VEG_HojasSecasMonton_01.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\01_VEGETACION\\Hojas_Suelo\\VEG_HojasSecasMonton_01",
+      "category": "Vegetation",
+      "dimensions": [
+        1.399999976158142,
+        0.333164244890213,
+        1.123596429824829
+      ],
+      "triangles": [
+        2759,
+        1873
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab"
+    },
+    {
+      "name": "ROC_RocaMusgo_02",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/_PlayMode25_20261019/ROC_RocaMusgo_02/Prefabs/PFB_ROC_RocaMusgo_02.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\02_ROCAS_Y_TERRENO\\Rocas_Con_Musgo\\ROC_RocaMusgo_02",
+      "category": "Rocks",
+      "dimensions": [
+        3.200000047683716,
+        1.2837573289871216,
+        2.298238754272461
+      ],
+      "triangles": [
+        6000,
+        2500,
+        800
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab"
+    },
+    {
+      "name": "ROC_RocaPlana_01",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/_Batch61_75_R2/Rocas_Tropicales/ROC_RocaPlana_01/Prefabs/PFB_ROC_RocaPlana_01.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\02_ROCAS_Y_TERRENO\\Rocas_Tropicales\\ROC_RocaPlana_01",
+      "category": "Rocks",
+      "dimensions": [
+        2.200000047683716,
+        0.384565532207489,
+        1.469437599182129
+      ],
+      "triangles": [
+        5916,
+        2400,
+        700
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaPlana_01.prefab"
+    },
+    {
+      "name": "ROC_RocaTropical_01",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/_PlayMode25_20261019/ROC_RocaTropical_01/Prefabs/PFB_ROC_RocaTropical_01.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\02_ROCAS_Y_TERRENO\\Rocas_Tropicales\\ROC_RocaTropical_01",
+      "category": "Rocks",
+      "dimensions": [
+        1.399999976158142,
+        0.5561641454696655,
+        1.2848788499832153
+      ],
+      "triangles": [
+        2442,
+        1200,
+        1200
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaTropical_01.prefab"
+    },
+    {
+      "name": "ARQ_MuroMaya_01",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/_PlayMode25_20261019/ARQ_MuroMaya_01/Prefabs/PFB_ARQ_MuroMaya_01.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\03_ARQUITECTURA_MAYA\\Muros\\ARQ_MuroMaya_01",
+      "category": "Ruins",
+      "dimensions": [
+        4.0,
+        1.6986268758773804,
+        0.853183925151825
+      ],
+      "triangles": [
+        5716,
+        3000,
+        3000
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab"
+    },
+    {
+      "name": "ARQ_ColumnaMaya_01",
+      "sourcePrefab": "D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Pruebas Assets/Assets/_AssetTests/_PlayMode25_20261019/ARQ_ColumnaMaya_01/Prefabs/PFB_ARQ_ColumnaMaya_01.prefab",
+      "library": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Tikal_Assets_Optimized\\03_ARQUITECTURA_MAYA\\Columnas\\ARQ_ColumnaMaya_01",
+      "category": "Ruins",
+      "dimensions": [
+        0.7338512539863586,
+        3.0,
+        0.7455702424049377
+      ],
+      "triangles": [
+        3999,
+        1799,
+        599
+      ],
+      "prefab": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_ColumnaMaya_01.prefab"
+    }
+  ]
+}

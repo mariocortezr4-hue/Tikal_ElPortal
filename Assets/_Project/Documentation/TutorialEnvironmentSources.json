@@ -1,0 +1,888 @@
+{
+  "files": [
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Arboles\\VEG_ArbolTropical_04\\Prefabs\\PFB_VEG_ArbolTropical_04.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_04.prefab",
+      "guid": "48a2a70c2a93dd94b8311ef97a90d8d5",
+      "sha256": "cc57d309aa59202e72547d561c3edef582f43d69bb2f96d43c87b903b3bed6fe",
+      "metaSHA256": "ddda21113c61c6566eb1928b3883a25619fbc24bf70ec00714d92f1dad9772bf",
+      "bytes": 11215
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Arboles\\VEG_ArbolTropical_04\\Models\\VEG_ArbolTropical_04_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_04/Models/VEG_ArbolTropical_04_LOD0.fbx",
+      "guid": "ce38d092979156d4c9d168b97dfb94fb",
+      "sha256": "68d5d93ed1e3f6902ba77f1ccb50822ae447386acaca5b2b903f7fb0908a0435",
+      "metaSHA256": "9685b908e84da8b3bec245d7fe21b5f0e9a67bbba77a7d2c316d2e6053002030",
+      "bytes": 1469708
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Arboles\\VEG_ArbolTropical_04\\Materials\\VEG_ArbolTropical_04_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_04/Materials/VEG_ArbolTropical_04_MAT00.mat",
+      "guid": "ae16fd15880996e468911960d23816d2",
+      "sha256": "700e4498245b921cae72e9320e1c9ee9c4be71d2c1b4975cf4ccb26838f8f98f",
+      "metaSHA256": "33d251ebe2bb9faf5c847a3605edc036c5d151dc54ef86c7eee9f624368d7092",
+      "bytes": 4087
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Arboles\\VEG_ArbolTropical_04\\Textures\\VEG_ArbolTropical_04_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_04/Textures/VEG_ArbolTropical_04_Normal.png",
+      "guid": "c24839e7be82c5441ac031922f3a85bd",
+      "sha256": "dfc299418031b2e35ceef734d5f1b519c76877fe1b2808a08745f5f9fa2a999c",
+      "metaSHA256": "d5b2d1a81f308ac4c901913c8534bb27f5e5db7dd93a3f4ae0fa3f5bf43ebcce",
+      "bytes": 2737742
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Arboles\\VEG_ArbolTropical_04\\Textures\\VEG_ArbolTropical_04_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_04/Textures/VEG_ArbolTropical_04_BaseColor.jpg",
+      "guid": "e6407886e54a85146b71f0b5d9d6c024",
+      "sha256": "57e5f68d75502bd5f55ebd29b418eb832c7b5c83091e77a3c8aeb7cd83f507c9",
+      "metaSHA256": "c9edd66adba9cfa405a10ff49e2b51f1961280cbbb1d7854dc5ce22fa7c675ea",
+      "bytes": 1066578
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Arboles\\VEG_ArbolTropical_04\\Models\\VEG_ArbolTropical_04_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_04/Models/VEG_ArbolTropical_04_LOD1.fbx",
+      "guid": "9a3f3df7a4a589c49805eb5605fcf912",
+      "sha256": "7909a0322540de4f5d3c1cd6720ff317b1d4c90ba6d6e32bece26ecdf954b810",
+      "metaSHA256": "8936ea5c1a47818789bd9befaefa920731b330fb22189c4a47933c2ba039d843",
+      "bytes": 756812
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Arboles\\VEG_ArbolTropical_04\\Models\\VEG_ArbolTropical_04_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_04/Models/VEG_ArbolTropical_04_LOD2.fbx",
+      "guid": "dee09f4e24dc4fb4489da9e1ce5cfbe4",
+      "sha256": "dad5c0632428942490d00d7caaaab074cd832daaecf8934222ef44264bfe2274",
+      "metaSHA256": "c1c1ac2dcb72fc84296796d53d8d79a7d186edbc83b8be6fb263192547dd9e35",
+      "bytes": 344492
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_02\\Prefabs\\PFB_VEG_ArbolTropical_02.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+      "guid": "3608415f22d741afae979a3959043c14",
+      "sha256": "4ae09308c15ec3265c3ae985b18f070088a65e26ae51b01f1a8bcc1ec312d30e",
+      "metaSHA256": "81102c7b2b04c8f7e894cce719e34b3f9c3adf71c323bab731bfd6c941dae9dc",
+      "bytes": 10571
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_02\\Models\\VEG_ArbolTropical_02_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_02/Models/VEG_ArbolTropical_02_LOD1.fbx",
+      "guid": "d0e17d06589d44b5a159a6bba8b3216e",
+      "sha256": "5dd9a5bf781a5d6c77065600362bd109a1abfc31e643c986e7c6f1636ee71b4a",
+      "metaSHA256": "d6d7fda68556de6c4e1cc66a7437e244675084d84da474d2a3893ab5b4ec8c0d",
+      "bytes": 408908
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_02\\Materials\\VEG_ArbolTropical_02_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_02/Materials/VEG_ArbolTropical_02_MAT00.mat",
+      "guid": "6b42d505cfa04cf9ac442b87f6568586",
+      "sha256": "0f5090163354f8ad21132772cad81b41f78bc53e07e1f987d50fb394ae256d44",
+      "metaSHA256": "f0d09bb371bc8ded88f53092fea91d3a961489528ed6ecd5be0c1c2e1fb48ecc",
+      "bytes": 4087
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_02\\Textures\\VEG_ArbolTropical_02_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_02/Textures/VEG_ArbolTropical_02_BaseColor.jpg",
+      "guid": "ea329706c32d4554942b70976c4d3a22",
+      "sha256": "6825b6b7ea9296b5f4bae6b49074f65d2e6175a9fda34fee326b9c1fd47004a7",
+      "metaSHA256": "151c8a8e3c58f86b6eb17504c2f30c13f0721bd9df58e83fdb8c8965c8200592",
+      "bytes": 1223726
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_02\\Textures\\VEG_ArbolTropical_02_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_02/Textures/VEG_ArbolTropical_02_Normal.png",
+      "guid": "59304f39529842cab50dc193ebf7c0f4",
+      "sha256": "821b85d0a48b02ded9de6ffdff58ccc704c4c3c9d69e8ac7d360ec01d208b5e9",
+      "metaSHA256": "9293b642b3816de17ea5002d5de1654620bc623ffec040fb9ec9ece68e417386",
+      "bytes": 2638388
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_02\\Models\\VEG_ArbolTropical_02_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_02/Models/VEG_ArbolTropical_02_LOD2.fbx",
+      "guid": "38857d70a72a4eff9fbf80611cb6fd9c",
+      "sha256": "62258864443b30a0db53459b9052af08299110b6be473d352783a37bfa2b0196",
+      "metaSHA256": "c553242c2a927186225515087414d6181701176404c04a2f93f641ae712b1bed",
+      "bytes": 217852
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_02\\Models\\VEG_ArbolTropical_02_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_02/Models/VEG_ArbolTropical_02_LOD0.fbx",
+      "guid": "7e0e9b92622a4be1984e9dec69ee49ce",
+      "sha256": "99b5ee9bc5493caa2445fd7ce6b000c41b16de18310967c1690248dedac40b67",
+      "metaSHA256": "8570ba89cde6768326fc66be65b116dae0a8979660a209709f0ef4fbd8e0069b",
+      "bytes": 660268
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PalmeraTropical_02\\Prefabs\\PFB_VEG_PalmeraTropical_02.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PalmeraTropical_02.prefab",
+      "guid": "393c560a598245a5b71a77186096497f",
+      "sha256": "1a4623702065fedcb9539d49a6a857c8e22e8b66c1ca42e2bec62569f168c929",
+      "metaSHA256": "4554eb796a3dd4436eacf61c3a4e385ea9874c65bffe27d3aa162c1e97aff487",
+      "bytes": 10564
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PalmeraTropical_02\\Models\\VEG_PalmeraTropical_02_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PalmeraTropical_02/Models/VEG_PalmeraTropical_02_LOD0.fbx",
+      "guid": "597fb35eec5c4b11b166d4b8189f81e9",
+      "sha256": "6a3ed5fa56ad8428a81e8bb4e7c0370d956cacbd86bb93ba1d41f0d505ead008",
+      "metaSHA256": "156f3d0703d79a4564cceba276bf50076ee048ab036a68073da3e3d9d8a89da5",
+      "bytes": 395260
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PalmeraTropical_02\\Materials\\VEG_PalmeraTropical_02_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PalmeraTropical_02/Materials/VEG_PalmeraTropical_02_MAT00.mat",
+      "guid": "984b09918c394789a0c0fed765d4c0f9",
+      "sha256": "7c1fa57dbb008bb932d3b65a8503264eba28b98a8c973ff5b9164d055febd723",
+      "metaSHA256": "231b1cb8bf2cf928701bfcf00d29ad0b8848b63fa99b4f0585e7b4b9f918d29a",
+      "bytes": 4088
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PalmeraTropical_02\\Textures\\VEG_PalmeraTropical_02_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PalmeraTropical_02/Textures/VEG_PalmeraTropical_02_BaseColor.jpg",
+      "guid": "4380b5368024401092270cdacd8a0dd3",
+      "sha256": "eb5dbf8cd2814120b32edb1c53fa0bc9eab41a0a6b6e449500f7c872a72da1f5",
+      "metaSHA256": "48bb0f1a4f6eca9b4af06684789db6901905e5f5df62b924490be290dd50f83f",
+      "bytes": 1025744
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PalmeraTropical_02\\Textures\\VEG_PalmeraTropical_02_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PalmeraTropical_02/Textures/VEG_PalmeraTropical_02_Normal.png",
+      "guid": "bc26774fe9074b2c898f12b585143f25",
+      "sha256": "1060f12ad43668c48d2ab8a445caafdbee7a7124f88dcd7af74b22f58170f0b0",
+      "metaSHA256": "4a4f418def2941d51bd7f1191508e8c5be9872891ada7e4fb8487ce582377c51",
+      "bytes": 9787692
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PalmeraTropical_02\\Models\\VEG_PalmeraTropical_02_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PalmeraTropical_02/Models/VEG_PalmeraTropical_02_LOD1.fbx",
+      "guid": "d6f5d5331dbf46b7b20fa977ac861e62",
+      "sha256": "39403b3f761e6f005a77ee702f0cd9bacdc1ec453317fdaba8e2b8b89d0f51b9",
+      "metaSHA256": "a43c78ab528e2c89f257142e01b3e2499a75e4e15b2a33d45b67579cd2ec6e7b",
+      "bytes": 251980
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PalmeraTropical_02\\Models\\VEG_PalmeraTropical_02_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PalmeraTropical_02/Models/VEG_PalmeraTropical_02_LOD2.fbx",
+      "guid": "b9e41b2a33df4bd99472243c882be727",
+      "sha256": "d3ac396ef2448976287448fb0499a6e80f70c2fcd39bd38074c5e8ca9bc59b99",
+      "metaSHA256": "28655b711a5989807ecc383d2e62ff5c19136bcb47777aae6b9367c180a51263",
+      "bytes": 123564
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbustoTropical_02\\Prefabs\\PFB_VEG_ArbustoTropical_02.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+      "guid": "fe79725804134764a6e356c5c882c51f",
+      "sha256": "bdf81f3be1c0f98448f32622813cde444b98bc5cedd0d48a283054586f608f62",
+      "metaSHA256": "32348d1f87f4a2a8efa3831fa9e3a7ded3f7d9188dc44e3d967f2036dd15031b",
+      "bytes": 10573
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbustoTropical_02\\Models\\VEG_ArbustoTropical_02_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_02/Models/VEG_ArbustoTropical_02_LOD1.fbx",
+      "guid": "3e6f571ad2a349c98fe0c9a085e7fb7a",
+      "sha256": "5abb9d97184c4298d1db75aefdd41b89d12da3116e071c08481194ee6e90cada",
+      "metaSHA256": "4e9517550d8141a54e4acfac18ff557f65f9b6bbd7098a3d35b8302a1a715128",
+      "bytes": 126508
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbustoTropical_02\\Materials\\VEG_ArbustoTropical_02_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_02/Materials/VEG_ArbustoTropical_02_MAT00.mat",
+      "guid": "a1cb954bb1a3415c8edfb20a3ea21361",
+      "sha256": "86cee87851c40567bb528ab9214b148a8dbc75671a15e7dbfd67d88b90272813",
+      "metaSHA256": "88690c0f24570fa757fc2d8267f88475772c579d0ac1e3be8b681a86fa56373e",
+      "bytes": 4089
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbustoTropical_02\\Textures\\VEG_ArbustoTropical_02_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_02/Textures/VEG_ArbustoTropical_02_BaseColor.jpg",
+      "guid": "25b8d7c11b0e4e228225dcdb292785ca",
+      "sha256": "7e4f4b27b943c8e95d618911ee9ad415d9ff1ac5a083459bee1b6507768c7216",
+      "metaSHA256": "904ad6bc0059a6c9facba779083be9a0f1389292c697c43927bc583d859e5126",
+      "bytes": 755727
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbustoTropical_02\\Textures\\VEG_ArbustoTropical_02_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_02/Textures/VEG_ArbustoTropical_02_Normal.png",
+      "guid": "28cc583cb8a84d8783821fbae2c06a4d",
+      "sha256": "2bcf91f96b9d23719cb1ef85ba6ccf17b51fa0e76de9560b60272f98409919c7",
+      "metaSHA256": "66efcbb5f14f07086c097ec90ab5a7d03fda0e87aa27210043dcf1a1989f690c",
+      "bytes": 10479851
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbustoTropical_02\\Models\\VEG_ArbustoTropical_02_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_02/Models/VEG_ArbustoTropical_02_LOD0.fbx",
+      "guid": "ed0ea08473e9401e920b6d85cba555b9",
+      "sha256": "ffbba67b1d0665bfc6270ac52ec9f2ff765d95ef4903ea381fdf1d3645152ea5",
+      "metaSHA256": "b2d739caef40de68b58705cef01d34ba5e3a44fd9692b9e5aee1440f52e33a36",
+      "bytes": 141260
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbustoTropical_02\\Models\\VEG_ArbustoTropical_02_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_02/Models/VEG_ArbustoTropical_02_LOD2.fbx",
+      "guid": "94cfa8386f044ff2ba03306413061d66",
+      "sha256": "358c15a1eb05bf8f95ac16dd09b861bb0ebe6a53a23078e67cc86cc3dd7b2019",
+      "metaSHA256": "e45cc5864cf79eb55dd56a7c4e05274221128b325b1203a2afc035cd17acce98",
+      "bytes": 104636
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\Arbustos\\VEG_ArbustoTropical_03\\Prefabs\\PFB_VEG_ArbustoTropical_03.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_03.prefab",
+      "guid": "8c10f894a22f209489f62e33b0ddd085",
+      "sha256": "6744bef75a63a2605d74424d68b0cbf65c57b910f5cbf060068567978455fe6c",
+      "metaSHA256": "f1be0dc821500c6790d36e7aaca5c556e53c84e7b191c2743d27f81f99e5b426",
+      "bytes": 7905
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\Arbustos\\VEG_ArbustoTropical_03\\Models\\VEG_ArbustoTropical_03_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_03/Models/VEG_ArbustoTropical_03_LOD0.fbx",
+      "guid": "87ba27dc0e4a7574bb28eb7e453366f2",
+      "sha256": "6bbd01a490a687e2c000c832f9ba7ac11272d5c471199611e42015db4d22e40b",
+      "metaSHA256": "0e7a853f63b900ed02c7c97b54fb8e975b3b3b6cdb61fb85b3cd96db8094c5b9",
+      "bytes": 181100
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\Arbustos\\VEG_ArbustoTropical_03\\Materials\\VEG_ArbustoTropical_03_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_03/Materials/VEG_ArbustoTropical_03_MAT00.mat",
+      "guid": "56d9376ba80fde54caaf91eee6e0b87a",
+      "sha256": "d7a68b24deac77c6a3c4425a633cbaf67adcecd3749d92a47ae26b7d13210b51",
+      "metaSHA256": "fd0da81f358eb3cb3c0accedeaf9f3261815c0e033e36daafde59163a1423833",
+      "bytes": 4089
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\Arbustos\\VEG_ArbustoTropical_03\\Textures\\VEG_ArbustoTropical_03_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_03/Textures/VEG_ArbustoTropical_03_BaseColor.jpg",
+      "guid": "4b8612cee3d5c8b4eaa8b9a3c2b24dcd",
+      "sha256": "c9492183a95058bbf25d5dcdad481df20bfae587151251968fb04939682a64c6",
+      "metaSHA256": "f53e17a67ccd1a0f85c39941d6f8026b6022968599f01e52a16af162def50114",
+      "bytes": 786998
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\Arbustos\\VEG_ArbustoTropical_03\\Textures\\VEG_ArbustoTropical_03_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_03/Textures/VEG_ArbustoTropical_03_Normal.png",
+      "guid": "cd759d95c8eea31419cf3c8859b6e59c",
+      "sha256": "ab121fa350fa97e5eec08c5f184bfe87548bd7ddce228dd0f33cf70415c63052",
+      "metaSHA256": "fb831d6e1364e021351f7d3217e9659539bcf3a77cac9553aaa9cdba0eb55a86",
+      "bytes": 10427623
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\Arbustos\\VEG_ArbustoTropical_03\\Models\\VEG_ArbustoTropical_03_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_03/Models/VEG_ArbustoTropical_03_LOD1.fbx",
+      "guid": "9e164c49cb0193b43a484af204e7f718",
+      "sha256": "1e81e28fe145761edf426503bfbf63233f1fbe401faaf4db61d5609ec206cac1",
+      "metaSHA256": "1cdfc00293675df39a114e28e0ebfd99448b399e243bc3a6c6b64cf36443f0cc",
+      "bytes": 135244
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_HelechoTropical_02\\Prefabs\\PFB_VEG_HelechoTropical_02.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+      "guid": "fa332c0bc5904127a04130656594e96e",
+      "sha256": "304da1d37531b907617798b96bd53d602292183f8ed5f4e73cd0acbfbfbc3688",
+      "metaSHA256": "73d00ca96880e725052ef36bbfb2d33e09880f23ea5714e8da9f6b9ce8a61bf8",
+      "bytes": 10583
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_HelechoTropical_02\\Models\\VEG_HelechoTropical_02_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HelechoTropical_02/Models/VEG_HelechoTropical_02_LOD1.fbx",
+      "guid": "70de48be99c144e8a55e569003cc4be2",
+      "sha256": "2b57a468247dee99ac7897ab55b841153098e11fcf60662b2f8526fbb3f7e0fc",
+      "metaSHA256": "65cfae8b1ce72166dbd87f07b701bab7678653487419762ddc178df3976a305c",
+      "bytes": 151644
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_HelechoTropical_02\\Materials\\VEG_HelechoTropical_02_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HelechoTropical_02/Materials/VEG_HelechoTropical_02_MAT00.mat",
+      "guid": "5b7d40aa98bf480e9ded18939392b2c3",
+      "sha256": "f735f431079a9b4998249ebec2efc9f7347a7f02de74505c95c3b452bcba5395",
+      "metaSHA256": "2d06eecefab9b0153a1601b932bf5cb9daf53d6de84a829925edc93c36dc6ae1",
+      "bytes": 4088
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_HelechoTropical_02\\Textures\\VEG_HelechoTropical_02_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HelechoTropical_02/Textures/VEG_HelechoTropical_02_BaseColor.jpg",
+      "guid": "6f78f458f33d4984a63b80164128d637",
+      "sha256": "49901cfdaf8ec9ad4deedbb8b7db4544f6e77df495b3e913f7394c8233e7ec6b",
+      "metaSHA256": "1a3ad698896f0caaa291d951cceab296befea8e8d4d4201130e1c575dc14627f",
+      "bytes": 1112357
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_HelechoTropical_02\\Textures\\VEG_HelechoTropical_02_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HelechoTropical_02/Textures/VEG_HelechoTropical_02_Normal.png",
+      "guid": "1beedae0d8f14d6aab2f440d90025d95",
+      "sha256": "0ff93038225d5241f71f79d5b69c69d3972281861f5b7407454054bcc550ee6c",
+      "metaSHA256": "0d3299ba47173eadc395001cc77b2f182efb1405ffaf7b2e723e9028c7648627",
+      "bytes": 5558951
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_HelechoTropical_02\\Models\\VEG_HelechoTropical_02_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HelechoTropical_02/Models/VEG_HelechoTropical_02_LOD0.fbx",
+      "guid": "4c9e6db177d044c29428ca473231062d",
+      "sha256": "1b2a0a74055fddda3728afd8b59cbda83be124ced52b30602158661d81a2ee17",
+      "metaSHA256": "f8d75627e4282a3a80ebabb8b50415c60b3fbcb7511ebe223469c71ee8eb8d4c",
+      "bytes": 285212
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_HelechoTropical_02\\Models\\VEG_HelechoTropical_02_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HelechoTropical_02/Models/VEG_HelechoTropical_02_LOD2.fbx",
+      "guid": "04b7966e8df744a587dc61673aa15182",
+      "sha256": "b50fa1acd57ba7ba920a9dc6393654782419694ef8cd15b8a7a25493f44b9bee",
+      "metaSHA256": "a9631328d62db3ae3a7681ea18ad3ac5c5ec5d5d30dc6c4babf81b848e8ca878",
+      "bytes": 123020
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PlantaTropical_02\\Prefabs\\PFB_VEG_PlantaTropical_02.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+      "guid": "cd3bb8155de54b45bb45b07c90e49f4e",
+      "sha256": "ba66844fc47a267520ea2481108ec060a7ec6d232e680d52004c4d6271343389",
+      "metaSHA256": "d3b66e9880b74f6c5c72d9bc0cba3aa73c0ea0042ce455f2c2affcac85a3e35d",
+      "bytes": 10563
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PlantaTropical_02\\Models\\VEG_PlantaTropical_02_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PlantaTropical_02/Models/VEG_PlantaTropical_02_LOD1.fbx",
+      "guid": "7defeb0678c548adb464070a18c5e17c",
+      "sha256": "2e785fb5cf95fcb14903184e3e6c0d8f61326ebcf5b15dd4362c8e6a3339fdb1",
+      "metaSHA256": "7b5da7aead95244d1be142d28b3d516f8a84cd19993457bdf4102fb37105e32f",
+      "bytes": 116892
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PlantaTropical_02\\Materials\\VEG_PlantaTropical_02_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PlantaTropical_02/Materials/VEG_PlantaTropical_02_MAT00.mat",
+      "guid": "836e811a73bc46a2b8349997ddafff11",
+      "sha256": "f2e7a912968311ed04cc216b273ed9d26a239c8128b17d1a0be138f44fe66b66",
+      "metaSHA256": "9865fee8cecb3cf58630d8d39a6ec5eec52fd9af21bbc27699040d58a261d3f2",
+      "bytes": 4087
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PlantaTropical_02\\Textures\\VEG_PlantaTropical_02_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PlantaTropical_02/Textures/VEG_PlantaTropical_02_Normal.png",
+      "guid": "c04ccaff35bb49ee97c924f7886894e9",
+      "sha256": "2011e23ec7be6349a295166d89265175d650ecf15483387f1771f09b466c2962",
+      "metaSHA256": "2b781219eddf9a64ac8831463c7e002e9e266d25cb2f363c1de8be6751832c27",
+      "bytes": 8917968
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PlantaTropical_02\\Textures\\VEG_PlantaTropical_02_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PlantaTropical_02/Textures/VEG_PlantaTropical_02_BaseColor.jpg",
+      "guid": "9c1e9fcda26a4a689dd9ce3c69d8ba95",
+      "sha256": "290b7eb4e44f55279745e5ae6f4d0ea12f48692aefb7e3f007b7f4f9ab28a3e2",
+      "metaSHA256": "328bbb1bbceb6427d2c1ec0eb21b653ba3dc8e563f02f8ec106a1646cfe32ab0",
+      "bytes": 950723
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PlantaTropical_02\\Models\\VEG_PlantaTropical_02_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PlantaTropical_02/Models/VEG_PlantaTropical_02_LOD2.fbx",
+      "guid": "a52a9ff9ca8b415c95d41ec3f33faa55",
+      "sha256": "7fe4ea2e0e8c2f970c0d3fcdc8c6a3e447b3a6acbaacf225162238dcae2e6d16",
+      "metaSHA256": "6996c0e4096f02202a217aa28215dc8d274f5a3e3c8065af3f26eee5164fc135",
+      "bytes": 69116
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_PlantaTropical_02\\Models\\VEG_PlantaTropical_02_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PlantaTropical_02/Models/VEG_PlantaTropical_02_LOD0.fbx",
+      "guid": "262756fa27f44e9cbd439406b6edf77a",
+      "sha256": "eb8416d04b480b26cd7b33d08f8fcf839eb93655559ff6eb6e01b48a9bff48f9",
+      "metaSHA256": "6650dd098c539523e0696d6d16b99ddcc0caa29ff24d048dbf80b1e14da4e46e",
+      "bytes": 158332
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Hojas_Suelo\\VEG_HojasSecasMonton_01\\Prefabs\\PFB_VEG_HojasSecasMonton_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+      "guid": "d03dd563ddc7acc45b20debed784d5f8",
+      "sha256": "26d2826691a89aa2b49a3154baa5300eef9bc8aefd6839d2dc7e6c80f4fb4ea8",
+      "metaSHA256": "04926efe85dd92098e69678e05985bffe15b7a432cdc2e6f33bf47f92198df8c",
+      "bytes": 7905
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Hojas_Suelo\\VEG_HojasSecasMonton_01\\Models\\VEG_HojasSecasMonton_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HojasSecasMonton_01/Models/VEG_HojasSecasMonton_01_LOD1.fbx",
+      "guid": "a69ae80f9c119b64f9096cf82b0774dc",
+      "sha256": "dfe621ed2b6cd0e76d7b03680a4f0795d1c9613687521f6df243fe4eb30a7448",
+      "metaSHA256": "d21e8c3c8bc62adec4a1cd74bcedb7ef327dc3e0cf00107c2e39a3abf5e5cef5",
+      "bytes": 83516
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Hojas_Suelo\\VEG_HojasSecasMonton_01\\Materials\\VEG_HojasSecasMonton_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HojasSecasMonton_01/Materials/VEG_HojasSecasMonton_01_MAT00.mat",
+      "guid": "8c87ea2376796d145a37b80eb763ded0",
+      "sha256": "c34f180b76daaa9dde959f9b0e7bbf0c4c2bc9ff06375398333cfe5a87e16b4c",
+      "metaSHA256": "303d891c22e806034a85816fcafbd677c14dfae1dd98d464bc4f012d9bf8e7ce",
+      "bytes": 4167
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Hojas_Suelo\\VEG_HojasSecasMonton_01\\Textures\\VEG_HojasSecasMonton_01_BaseColor.jpeg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HojasSecasMonton_01/Textures/VEG_HojasSecasMonton_01_BaseColor.jpeg",
+      "guid": "36b67d38ec9c94347b8936c115dc63a9",
+      "sha256": "f2f5bd60a1f9ac8f10d1cd01bc9042a5c6b3d835503736a8021ce2ac87a82e99",
+      "metaSHA256": "8b0df6b7a0a558b7843f5aca2127e93cd98a88bff48f7c5ce5307e23f6641581",
+      "bytes": 1066617
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Hojas_Suelo\\VEG_HojasSecasMonton_01\\Textures\\VEG_HojasSecasMonton_01_MetallicSmoothness_URP.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HojasSecasMonton_01/Textures/VEG_HojasSecasMonton_01_MetallicSmoothness_URP.png",
+      "guid": "297a22603f72b7549b0230fd57be4a2c",
+      "sha256": "708375b0ae8b2a9449bfaf429bc90427b29b284f8e742af9b9fedae51274e6da",
+      "metaSHA256": "9001e251c9c03c330d544127b5ffa5568dcf9803298142272df6dcb2d8fdc232",
+      "bytes": 3233775
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Hojas_Suelo\\VEG_HojasSecasMonton_01\\Textures\\VEG_HojasSecasMonton_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HojasSecasMonton_01/Textures/VEG_HojasSecasMonton_01_Normal.png",
+      "guid": "b1830f6cc37d77e44ac5380ade3a3b17",
+      "sha256": "d95db33f1c00a61547e0b2a623d9044b50701c18309254b2d78f78b14177306f",
+      "metaSHA256": "75fd14b196dd79b8cc8b92434ea098d7b31f784b7d633f7d2f7ed5ba9461c302",
+      "bytes": 2195560
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Hojas_Suelo\\VEG_HojasSecasMonton_01\\Models\\VEG_HojasSecasMonton_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HojasSecasMonton_01/Models/VEG_HojasSecasMonton_01_LOD0.fbx",
+      "guid": "65f68a1e516913f4b90c677a19f22d0d",
+      "sha256": "62ca012d7a4971ee949e48d638735a26d69e73317202f5e2c70a5b68bb06f744",
+      "metaSHA256": "e57b090e0cc9ad2f71b836f88bf2916c066a49b219a4145a44cd87fa4dfc2372",
+      "bytes": 104108
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_02\\Prefabs\\PFB_ROC_RocaMusgo_02.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+      "guid": "e2c0e142e74b4c4a8d77d292f3384668",
+      "sha256": "df1292df3324b668285b7a75482625e554a62e3f919316372f48ba31f2d4fb3d",
+      "metaSHA256": "d1fffe8ba35f5f4c45a8762b9d1567f28b251a601916a761540e1467c02a7173",
+      "bytes": 10571
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_02\\Models\\ROC_RocaMusgo_02_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaMusgo_02/Models/ROC_RocaMusgo_02_LOD1.fbx",
+      "guid": "2a661f7e61b74ccc91d78d137af9c168",
+      "sha256": "ead1850f9b56f3d474efcd61ccab847ce0ea2e9eae3530ea2934db48ddbf695a",
+      "metaSHA256": "a9d8926f8f3879195135faec3ee883a8e1f33378fd69d755dc7baf19f716d02e",
+      "bytes": 180780
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_02\\Materials\\ROC_RocaMusgo_02_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaMusgo_02/Materials/ROC_RocaMusgo_02_MAT00.mat",
+      "guid": "2805373aa2504a02bdcf4a53cdaaa0e9",
+      "sha256": "bd3bb1d8223f2d8ee3da14d789646a8819854590fab05d458f8ae1cae7719231",
+      "metaSHA256": "0641e6b7d2308f13a4621e20016583a058ebc56d27ed0235d1437404c05d5471",
+      "bytes": 4082
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_02\\Textures\\ROC_RocaMusgo_02_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaMusgo_02/Textures/ROC_RocaMusgo_02_BaseColor.jpg",
+      "guid": "34de28b057914aa1823d5560e16b76fc",
+      "sha256": "38f3581bfad074500aa9502ff7cfbf2f6f845860230ad52c6388ac60f286274c",
+      "metaSHA256": "e716f2be7bc64c3dd4f21a05dae0c8506f10bd3b1bc07225cd9f7ed7f08da935",
+      "bytes": 2212595
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_02\\Textures\\ROC_RocaMusgo_02_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaMusgo_02/Textures/ROC_RocaMusgo_02_Normal.png",
+      "guid": "d2962552c1a645a1b0670d835974d1c8",
+      "sha256": "4e64d36ed70159ed356acb2033aedc7a6bf97589ddeb1ff904f9d342bfe5241e",
+      "metaSHA256": "e9d4bd38aa845296137eb5f711082112587cb412f9cde58668a89b08be3fbb63",
+      "bytes": 8849270
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_02\\Models\\ROC_RocaMusgo_02_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaMusgo_02/Models/ROC_RocaMusgo_02_LOD2.fbx",
+      "guid": "a85e2c95336341f481d0a14fea614f02",
+      "sha256": "1fb0c0c4e2c7982c5491e24532af9c5376b39cfdd5aa83fa10ca6adc49501854",
+      "metaSHA256": "3a755810134a82b658f634a7560bacef5e674c987c39565ffbf515715f89cf0e",
+      "bytes": 79628
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_02\\Models\\ROC_RocaMusgo_02_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaMusgo_02/Models/ROC_RocaMusgo_02_LOD0.fbx",
+      "guid": "4cb75bab46434fb6ba69ee6b800fe5e7",
+      "sha256": "b0e495a3794ed18804452343d37cad1bc04665b7d8a6706d4728b64926e03ae3",
+      "metaSHA256": "1b1ae2d3f4b3fb4f39a0f65a0904428f530479702a4dc23785763f2d98efd478",
+      "bytes": 323692
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaPlana_01\\Prefabs\\PFB_ROC_RocaPlana_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaPlana_01.prefab",
+      "guid": "d011f9eaa2adcb54c899ab11d636ad67",
+      "sha256": "932d659dc0d1399a445fce5c290f8c6ff0d1b11da9dc41f538ff3d7633541560",
+      "metaSHA256": "43bb19e2cf32281d42ce679179c97897681f6a225e731ca0eb863b378f26c7e2",
+      "bytes": 12718
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaPlana_01\\Models\\ROC_RocaPlana_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaPlana_01/Models/ROC_RocaPlana_01_LOD0.fbx",
+      "guid": "9c9b4c09973f1ea4fb3a07e84c5022ba",
+      "sha256": "da97b672f6fff65719f5037a04271bfd40eadc7ca41df618e0c11f09deb26c30",
+      "metaSHA256": "d49fe598574b360005c7bb88ecc1e20cd3eb5f19965a54c63f8d5c2af72ce676",
+      "bytes": 196044
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaPlana_01\\Materials\\ROC_RocaPlana_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaPlana_01/Materials/ROC_RocaPlana_01_MAT00.mat",
+      "guid": "a5bbdca2aa19041448c5a06bb60a06e6",
+      "sha256": "f28343336151a5a88a318a69c96177d29b5dcf151e8f346cff5af48247d8c8a5",
+      "metaSHA256": "0fd7c4b2e539b3094aa7c81084ba0cdfe00bc99a8d5db91cfdd99c82efb00405",
+      "bytes": 4160
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaPlana_01\\Textures\\ROC_RocaPlana_01_BaseColor.jpeg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaPlana_01/Textures/ROC_RocaPlana_01_BaseColor.jpeg",
+      "guid": "dbbc886c9ad4c9f4b8c9954c617f5f38",
+      "sha256": "6507137823853d2b800c5aeb12db88c9514306d1861b91d4a2723c1e00fbf1c3",
+      "metaSHA256": "410058a5b9b756122a7081a3ba73333f8aec2cdbf88dc532674ce5ea6280ae0e",
+      "bytes": 1590681
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaPlana_01\\Textures\\ROC_RocaPlana_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaPlana_01/Textures/ROC_RocaPlana_01_Normal.png",
+      "guid": "f4eba4faece9e7f41aff474dfd2d414e",
+      "sha256": "0cbe15869443ffc7c1de2f1175d76983cab9692ee4ff56357c7082367c93ca95",
+      "metaSHA256": "9210545a45d43d61cee6f513fa667c4c0cad502859c1989df519730fdf0b55af",
+      "bytes": 4823991
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaPlana_01\\Textures\\ROC_RocaPlana_01_MetallicSmoothness_URP.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaPlana_01/Textures/ROC_RocaPlana_01_MetallicSmoothness_URP.png",
+      "guid": "da4eabfc378a15540bf8f37a37b1070a",
+      "sha256": "12a1ccedb3cc884d0279cf158c2a6c2d6c497176badba51d9d34464354f7fba9",
+      "metaSHA256": "304f11d94848dbfeea1193328accc2aa8a771056348081cd1952c09269322a54",
+      "bytes": 3455737
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaPlana_01\\Models\\ROC_RocaPlana_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaPlana_01/Models/ROC_RocaPlana_01_LOD1.fbx",
+      "guid": "36723c3a85a7bed44bea3757b405a74d",
+      "sha256": "b3c1818066a97160280f4bb92e54fd63bc57aa304e1fe66660da27af86dfca68",
+      "metaSHA256": "1fd146d86747e5465b10c4cdbec6aa159291de8f8080f3cb270dc328aa12780f",
+      "bytes": 123196
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaPlana_01\\Models\\ROC_RocaPlana_01_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaPlana_01/Models/ROC_RocaPlana_01_LOD2.fbx",
+      "guid": "fde32e1b667c67d449efbd1d579b26b0",
+      "sha256": "469119a613ac143bc346a0504a1443020478a5583bf6cc37aaf6abe0f70bfcfb",
+      "metaSHA256": "fc652cef25121de28379016d4c7c90c5d5bd6d6deba899f9e0bbdd029a6a10a8",
+      "bytes": 64076
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaTropical_01\\Prefabs\\PFB_ROC_RocaTropical_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaTropical_01.prefab",
+      "guid": "0c449dfa84da47c080a03841c2187568",
+      "sha256": "e247556bcabc206f60dcc934869551aa03981a70b4e80e287cca31fd38e99c60",
+      "metaSHA256": "690ceebeccc1eadb4147024af8409e477f02ce88068d744a6ae852db0e5a6a20",
+      "bytes": 7513
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaTropical_01\\Models\\ROC_RocaTropical_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaTropical_01/Models/ROC_RocaTropical_01_LOD0.fbx",
+      "guid": "55602d598d5447369156e1fee969086c",
+      "sha256": "3eb23d73af916a1274f07239728fc2f32d06e6ddb02d6a50353c608bf890a3e5",
+      "metaSHA256": "ba81e378088fd682eb8ebcd502063448295939583311b5a882c2002866d7804e",
+      "bytes": 102300
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaTropical_01\\Materials\\ROC_RocaTropical_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaTropical_01/Materials/ROC_RocaTropical_01_MAT00.mat",
+      "guid": "93c49e7e09a24fd085e3f1ee04a64b18",
+      "sha256": "c123ac4112ec040036130abd18f6bf63ee1c541f094c908907160d51de6c11c2",
+      "metaSHA256": "0bcceb42b40d604f0728035fe22a60b7afc98a5730d8ac51ccca34607f96b44b",
+      "bytes": 4084
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaTropical_01\\Textures\\ROC_RocaTropical_01_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaTropical_01/Textures/ROC_RocaTropical_01_BaseColor.jpg",
+      "guid": "1e8d1a1936af4ca984a4b60d84d16858",
+      "sha256": "a9ca2dda4ec600f1b574891a84b71ff8231b9e3bfac1c4d6b6bba20facc63d50",
+      "metaSHA256": "013bbc070b667cb12f0bf645c15c01cceb161a06510592f6ca7820594582242a",
+      "bytes": 2030136
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaTropical_01\\Textures\\ROC_RocaTropical_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaTropical_01/Textures/ROC_RocaTropical_01_Normal.png",
+      "guid": "b7557afbb26949f3a9e90ec4ce42635f",
+      "sha256": "246319a04f5978fc7ae9da921985b419b8cf674b832bef1a521e935a57c5a348",
+      "metaSHA256": "f851a55a24c0858fabab8d61e02608227d880deba9d5fe49238a61e2b7d8815f",
+      "bytes": 8981980
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaTropical_01\\Models\\ROC_RocaTropical_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Rocks/ROC_RocaTropical_01/Models/ROC_RocaTropical_01_LOD1.fbx",
+      "guid": "d0c92a08f2504d328f3324ae38a87b25",
+      "sha256": "2ed90b4540cfb5828dcb0e56b2ee19d9ff9602e685a3b089d01508ed3185f368",
+      "metaSHA256": "59e0737460e2c3161854a4390ba988f6c719cc071d0f3a9ac2727d6a0f44083e",
+      "bytes": 77532
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_MuroMaya_01\\Prefabs\\PFB_ARQ_MuroMaya_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+      "guid": "9db74ee9afae478eab8efead5dcce537",
+      "sha256": "04b84925b831cfd0ec78159ff8e4f2266242132b13cea8189ef87c6a36892000",
+      "metaSHA256": "05e1a228692641b74ed5d93690da798d77fec0d8f0d7b040be40e369e54f50a1",
+      "bytes": 10345
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_MuroMaya_01\\Models\\ARQ_MuroMaya_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_MuroMaya_01/Models/ARQ_MuroMaya_01_LOD0.fbx",
+      "guid": "6281bcc081824c06a639c6fd95ba7d0e",
+      "sha256": "4bb3343d6815b88599948af70f3220572444b683f459558025b9c4cfbebd8b03",
+      "metaSHA256": "400209ce4cf6f6908da9810c80e3c8e2820a8f1ef4587ff7aae47d53226c4803",
+      "bytes": 195004
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_MuroMaya_01\\Materials\\ARQ_MuroMaya_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_MuroMaya_01/Materials/ARQ_MuroMaya_01_MAT00.mat",
+      "guid": "0f30f4ee477a48e29960c9ed06f97912",
+      "sha256": "c48f34d7321d8ce7f1955049d344cae34238fbcb223ab25aaf50343f2ff82a85",
+      "metaSHA256": "d703d2e3755069a1694e036ac3ea30ee8197d41cbac2d7d13eb98ccdd09dc4cb",
+      "bytes": 4081
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_MuroMaya_01\\Textures\\ARQ_MuroMaya_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_MuroMaya_01/Textures/ARQ_MuroMaya_01_Normal.png",
+      "guid": "4a83451cdeb047e1b8292f94bd64fb80",
+      "sha256": "741a69b65e4de29c52ac8755d523c52a3df7ebaab448a61bfae7591c460b9685",
+      "metaSHA256": "cc4775206bb30fbd62a14613406cfe5561e3a93e8f73eb4cb8ed9d7698891dda",
+      "bytes": 9717005
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_MuroMaya_01\\Textures\\ARQ_MuroMaya_01_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_MuroMaya_01/Textures/ARQ_MuroMaya_01_BaseColor.jpg",
+      "guid": "c1cd63fd0acf4457a33eed3a9df6a2c5",
+      "sha256": "ec4ea319f30723e84c7c6b4d436d8b1e7cf99d14aad0da246cfd6aba64180e25",
+      "metaSHA256": "09a134b742b405647019c85c2e0b2fadb478b07f0a3ea64dc846387b7406b73e",
+      "bytes": 2132337
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_MuroMaya_01\\Models\\ARQ_MuroMaya_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_MuroMaya_01/Models/ARQ_MuroMaya_01_LOD1.fbx",
+      "guid": "21e76ff13c6546b18c64df58e5353391",
+      "sha256": "2e1b712c07d8e481b570e91ab3b90f72bc9f5067bb9982085d89ced67932e66e",
+      "metaSHA256": "3c4cbac082977a3b3d217381b15ac59bad8327260691caffd0f0e6245b188e2c",
+      "bytes": 144060
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_ColumnaMaya_01\\Prefabs\\PFB_ARQ_ColumnaMaya_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_ColumnaMaya_01.prefab",
+      "guid": "fc9cc158a57c440cb7306cbbaa9171c2",
+      "sha256": "3e809bdcca5194b6b53405f40b7409c735581e4036b48b70396e09d5829a12fd",
+      "metaSHA256": "296fad5442e61c36ae2ab041eb350aeb3fe0dbf19e20c3c3e9435db03a966052",
+      "bytes": 13598
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_ColumnaMaya_01\\Models\\ARQ_ColumnaMaya_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_ColumnaMaya_01/Models/ARQ_ColumnaMaya_01_LOD0.fbx",
+      "guid": "7f60cfcf3b4846609c95a9b32a397dfe",
+      "sha256": "73ba3a15572847ce1d2d071671f10c8191017d8cbb07ae7c387f99b5de39f78b",
+      "metaSHA256": "8379d1851f6292984828cdc9fa1b9da94b89fcf509f7b1eab97e9ed06f302945",
+      "bytes": 147644
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_ColumnaMaya_01\\Materials\\ARQ_ColumnaMaya_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_ColumnaMaya_01/Materials/ARQ_ColumnaMaya_01_MAT00.mat",
+      "guid": "32a41fc3f5c243a080897f9eb88451e7",
+      "sha256": "e04bd544a84c394d11df15f8910a3168c09899a6c6db3bade586952804636829",
+      "metaSHA256": "42038cf93e71e49f3dd0cb47b2b17236762f30b3fbc8264ac4fda12790293336",
+      "bytes": 4082
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_ColumnaMaya_01\\Textures\\ARQ_ColumnaMaya_01_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_ColumnaMaya_01/Textures/ARQ_ColumnaMaya_01_BaseColor.jpg",
+      "guid": "91b386a9093f407881ce1e08216030e7",
+      "sha256": "a50d886cc05acc2893332891fc22d7180211e1066d88cebb805ca60fce5ed703",
+      "metaSHA256": "c010f0e8851e1bcc6ec7f6e4473df352fbddc302d532782a06851da59ec23628",
+      "bytes": 2062791
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_ColumnaMaya_01\\Textures\\ARQ_ColumnaMaya_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_ColumnaMaya_01/Textures/ARQ_ColumnaMaya_01_Normal.png",
+      "guid": "c01aabf3ccf1460a8885a51da88eaade",
+      "sha256": "7c1907023e3cf9d8d7e6a338a773f4258d5154b8cebec620a7928ae6af7e1ed9",
+      "metaSHA256": "310d9db0628b9c408b45f918ea84176eca714be8da9e9e9fc987207b9c8661e3",
+      "bytes": 9299514
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_ColumnaMaya_01\\Models\\ARQ_ColumnaMaya_01_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_ColumnaMaya_01/Models/ARQ_ColumnaMaya_01_LOD2.fbx",
+      "guid": "c565454829a54559a89426696e4e3a34",
+      "sha256": "144bdc506e17e4c2fb229e9fdedc5957f2341a9596c50b7a7d22782076a2ad2a",
+      "metaSHA256": "279396663d50a556b04a0d11f045eed50e2f2896e8661821dadb092b6117c3a3",
+      "bytes": 45468
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_ColumnaMaya_01\\Models\\ARQ_ColumnaMaya_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_ColumnaMaya_01/Models/ARQ_ColumnaMaya_01_LOD1.fbx",
+      "guid": "0e33ea329f6949588579d30b2dc20e74",
+      "sha256": "61cdf88b80afb543185ac89949d9d49fd158db41a219748bac89edd4549faa29",
+      "metaSHA256": "695677841906ffee1750bc6118459b79311051d215030c4cfe9044b55f296791",
+      "bytes": 101692
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Prefabs\\PFB_ADP_Tutorial_JumpObstacle.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ADP_Tutorial_JumpObstacle.prefab",
+      "guid": "91e486f194e150a491f028e5a5c829e8",
+      "sha256": "e9875f0282750e550976a28cec382cb76d96b8c28c0ac2f0d0a240e666f77dc5",
+      "metaSHA256": "290723e793a05c6649740bb7f96e2ee6fdb950c883bd777597f0e9082eaa11bd",
+      "bytes": 8495
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Materials\\ADP_Tutorial_JumpObstacle_FallenLog1_0_0.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_JumpObstacle/Materials/ADP_Tutorial_JumpObstacle_FallenLog1_0_0.mat",
+      "guid": "7dbe957e5917508c91a635b70e98d2b8",
+      "sha256": "1a3205e04e93eedc93a127df5ab95ea7270922d61c68cb1173bfc8af7c9db665",
+      "metaSHA256": "a1d05dfd0bafd3241894a7e2bbeb2e3466810935c166e8e810a89681ac6c42fa",
+      "bytes": 4097
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Textures\\VEG_TroncoCaido_01_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_JumpObstacle/Textures/VEG_TroncoCaido_01_BaseColor.jpg",
+      "guid": "d79bf9c3de995831a56c8794d0a3f7ff",
+      "sha256": "80195163c6b221892ab95993bc728119cf6c9b5ad0eb9aaf600a49f705075faf",
+      "metaSHA256": "6473388e6605d167d011a3e3b8277b35d59384f7e3c46e02efdc742a688d1b53",
+      "bytes": 1827446
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Textures\\VEG_TroncoCaido_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_JumpObstacle/Textures/VEG_TroncoCaido_01_Normal.png",
+      "guid": "131bf9ed8ad15effb75b0729de0b6843",
+      "sha256": "d3a9e58969dbf6e1108d524073468282471abe97183d6d5e7eaf467d182c96fc",
+      "metaSHA256": "ff7ade394d853dd63ae7620d4cb3e983a7f6fd1524024d35477af3b0dacdb39e",
+      "bytes": 8970840
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Materials\\ADP_Tutorial_JumpObstacle_FallenLog0_0_0.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_JumpObstacle/Materials/ADP_Tutorial_JumpObstacle_FallenLog0_0_0.mat",
+      "guid": "f316a503d8315287b90f468504d48583",
+      "sha256": "bb2fc1beed4c1c524b726cf00b1eedc76a788803840c110bd506036d25ec6caa",
+      "metaSHA256": "2e580ed92b10bf928b149be33112df2ebc7832abb53bdc6a40a2b1fa69ea21d4",
+      "bytes": 4098
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Models\\ADP_Tutorial_JumpObstacle.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_JumpObstacle/Models/ADP_Tutorial_JumpObstacle.fbx",
+      "guid": "a0903eb363675d9c8fe60e70db44decc",
+      "sha256": "37c9ee46c7f622b1c9982818d0ca88f88d2dd18a6a97a5b69d430f92d926eed9",
+      "metaSHA256": "32e3a68dc3f6ad55c88932d9c767dd7f48b55d461ebe05402257f07199c3e52a",
+      "bytes": 663628
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Prefabs\\PFB_ADP_Tutorial_LowLintel_R2.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ADP_Tutorial_LowLintel_R2.prefab",
+      "guid": "56f2c9936a805155a5f4497e30589d04",
+      "sha256": "820784b5e519fdcd95a6abf37413e047b5d9911a70369690975686f70ef76a8d",
+      "metaSHA256": "b584d52c3fd6dfe2e0e495698e500d9d3f508e69cd6e184f0762a5c6da1a2ca1",
+      "bytes": 5197
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Models\\ADP_Tutorial_LowLintel_R2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_LowLintel_R2/Models/ADP_Tutorial_LowLintel_R2.fbx",
+      "guid": "b2eb42df1f03563eaae3e733f19b191b",
+      "sha256": "6a8ec0f3009202e55aad1aea3137a1127055ccc354ff24232a5c6a9d7617b3ca",
+      "metaSHA256": "621c3edd7f36c4c2d0a05d698ce2f28a22c260eddce377d9f75d8508e04fe9d3",
+      "bytes": 431068
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Materials\\ADP_Tutorial_LowLintel_R2_LowLintel_Visual_0.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_LowLintel_R2/Materials/ADP_Tutorial_LowLintel_R2_LowLintel_Visual_0.mat",
+      "guid": "f1cd77a710a5530cab27414dab794b2b",
+      "sha256": "7ad2e7b9466b526c9a28c3738dbe32344fa9c77aad04d96df75d3fdda21db9a8",
+      "metaSHA256": "a4904a62afe7b1e4a9c98152e61a437bf4a318126c70857e95a5626a40f8bd1b",
+      "bytes": 4102
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Textures\\ARQ_DintelMaya_01_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_LowLintel_R2/Textures/ARQ_DintelMaya_01_BaseColor.jpg",
+      "guid": "f4875456e7205537b0632f0770d214df",
+      "sha256": "91ca0e97d8723c3b60dfc34b0019931796e18e875c7fb15e6b94e1d2e9dc3625",
+      "metaSHA256": "e3c8e1946a802c5990fc46105d8581a64efaaca2ebbe7169da23d8327785c9c5",
+      "bytes": 2069221
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Textures\\ARQ_DintelMaya_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_LowLintel_R2/Textures/ARQ_DintelMaya_01_Normal.png",
+      "guid": "b88ae0e352925a92a36c689822508a80",
+      "sha256": "a60acc141384ed5c6a73070fecfae70ac86c8b34cc9a827dbabe3366285c1422",
+      "metaSHA256": "4a2c00fc976145aaa57ea5c3c36e683115c046956f677dbd16a5c404e510f832",
+      "bytes": 9074457
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Prefabs\\PFB_ADP_Tutorial_LiftStone.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ADP_Tutorial_LiftStone.prefab",
+      "guid": "79fa9335f8bc5899be2b7f6b70c3a310",
+      "sha256": "0914cceb6087b34a930c2caee45472953602ad708da7507cb28200824b3a6afd",
+      "metaSHA256": "720f8e5ed62fbceb30a0cd0e36315d7459ecb24c712006cfb8ddf79d6f5fe8fb",
+      "bytes": 9075
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Materials\\ADP_Tutorial_LiftStone_StoneLayer0_0_0.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_LiftStone/Materials/ADP_Tutorial_LiftStone_StoneLayer0_0_0.mat",
+      "guid": "f4620d3db52f5cb5a707d83f5a9edf15",
+      "sha256": "02294a202b2b087f8411ebe6dbe87208ff09791c92f023f08cba1a6b00677c89",
+      "metaSHA256": "762856da777f3faf3fc1cb1ba0fbbcb023de4e6a620d3244b4ebd5cfb5760a21",
+      "bytes": 4095
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Textures\\ARQ_MuroMaya_01_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_LiftStone/Textures/ARQ_MuroMaya_01_BaseColor.jpg",
+      "guid": "51e4fa491c975527ae1f2bc6802697f7",
+      "sha256": "ec4ea319f30723e84c7c6b4d436d8b1e7cf99d14aad0da246cfd6aba64180e25",
+      "metaSHA256": "31c862609e7af38040cc6550d37a0f00396472ae9a2f3de1409c58e31c6f0e48",
+      "bytes": 2132337
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Textures\\ARQ_MuroMaya_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_LiftStone/Textures/ARQ_MuroMaya_01_Normal.png",
+      "guid": "8a817a86d3a15ea19cc3b5d5dbad0665",
+      "sha256": "741a69b65e4de29c52ac8755d523c52a3df7ebaab448a61bfae7591c460b9685",
+      "metaSHA256": "c78e1535eb96731fe57df8202e3132b3e10e9d9b1e2a730ff85f5ad0a96a47f9",
+      "bytes": 9717005
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Materials\\ADP_Tutorial_LiftStone_StoneLayer1_0_0.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_LiftStone/Materials/ADP_Tutorial_LiftStone_StoneLayer1_0_0.mat",
+      "guid": "08d8fec00f95530e9994bddcc4937b1a",
+      "sha256": "050af57615de798850d60f47464d1757ca91a116bdf89fe75a2738565872abab",
+      "metaSHA256": "a640bfff9180db511c01ab05eacfa404d0af919eb11a5bf98c9f7c35079e52d8",
+      "bytes": 4096
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Tutorial\\Models\\ADP_Tutorial_LiftStone.fbx",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Adapters/ADP_Tutorial_LiftStone/Models/ADP_Tutorial_LiftStone.fbx",
+      "guid": "cb460842d06c56b5a04bc4597ce1aef1",
+      "sha256": "fb3f89614cf8318e5f3456861a561e433dc52538848b45efe58482fa015fa57d",
+      "metaSHA256": "2127f3725adbb87db1fbb1a6e228e5260db463c5817d9be4cc2e899627b23112",
+      "bytes": 641980
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Shared\\Materials\\VALIDATION_ONLY_Ground_Surfaces_Demo_Plane_3x3_0.mat",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ground/JungleGround/Materials/VALIDATION_ONLY_Ground_Surfaces_Demo_Plane_3x3_0.mat",
+      "guid": "81ab24a62bb55d6eaffc70eb218eb215",
+      "sha256": "5489ab90114eca75d04c25c7d2c90b86476f6b0947b62f97cea500217a0b866e",
+      "metaSHA256": "1a0c934f01ac608838155feb791706b2fb52c565363caa3700c7fb875fa81510",
+      "bytes": 4185
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Shared\\Textures\\TEX_JungleGround_01_BaseColor.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ground/JungleGround/Textures/TEX_JungleGround_01_BaseColor.png",
+      "guid": "5d8314fa204e5431bf3470ccbba54866",
+      "sha256": "6e0dc917cbd4ab3c85122bd6287599548a62e268372881bad8d95b10f58d1d13",
+      "metaSHA256": "dea1ce87d14f7c9f8c27c19f7713549fc5c659bf2266c5a7852e48d400f09555",
+      "bytes": 2745913
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Shared\\Textures\\VALIDATION_ONLY_Ground_Surfaces_Demo_Curved_Repeat_0_MetallicSmoothness.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ground/JungleGround/Textures/VALIDATION_ONLY_Ground_Surfaces_Demo_Curved_Repeat_0_MetallicSmoothness.png",
+      "guid": "2ebd08314db25332ada232b7f47914ff",
+      "sha256": "812f0b0ce2f19de6400fb964dff966c051ad9cf22370245ffef05eed6d919876",
+      "metaSHA256": "cedc9d95ee78d3548e585aaf990bca8d452739e6a3bdc502d96171920ba99cf7",
+      "bytes": 2821761
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\TIKAL_NON_CHARACTER_INTEGRATION_KIT\\UnityPayload\\Assets\\Tikal\\NonCharacterKit\\Shared\\Textures\\TEX_JungleGround_01_NormalGL.png",
+      "destination": "Assets/_Project/Art/Environment/Tutorial/Ground/JungleGround/Textures/TEX_JungleGround_01_NormalGL.png",
+      "guid": "cd5d9e070a8b53e2bad3f8f67f703e3b",
+      "sha256": "16fde824b7a0edc60b93bcd3ea07866ebdaa672c7512f7ea33f8fba312f726fe",
+      "metaSHA256": "8a12d5ce352756d4d476f969665c3cb5fb2e9f1cc6582a7693f573105dbea2c4",
+      "bytes": 4159407
+    }
+  ],
+  "packageReferences": {
+    "d0353a89b1f911e48b9e16bdc9f2e058": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\My project\\Library\\PackageCache\\com.unity.render-pipelines.universal@327d93d1cbc8\\Editor\\AssetVersion.cs.meta",
+    "933532a4fcc9baf4fa0491de14d08ed7": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\My project\\Library\\PackageCache\\com.unity.render-pipelines.universal@327d93d1cbc8\\Shaders\\Lit.shader.meta"
+  }
+}
