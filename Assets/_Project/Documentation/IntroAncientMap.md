@@ -4,7 +4,7 @@
 
 La introducción presenta las ruinas de Tikal bajo la selva en 1500 d.C., establece la búsqueda de la Fuente del Conocimiento y entrega al explorador un mapa provisional. La última advertencia del anciano, «No confíes en el sistema.», debe conservar el mayor peso dramático de la secuencia.
 
-Esta fase es un blockout para evaluar ritmo, encuadres y claridad narrativa. No contiene personajes, mapa, vegetación, animación ni audio finales.
+La escena conserva el entorno y mapa de blockout. Ahora utiliza el Anciano real con actuación sentada y Dwight como Explorer visual canónico; no incorpora entorno final ni VO. Véase `Characters/ElderCinematicIntegration.md` para fuente, retarget, colocación y límites.
 
 ## Escena y Timeline
 
@@ -14,7 +14,7 @@ Esta fase es un blockout para evaluar ritmo, encuadres y claridad narrativa. No 
 - Authoring: `Tikal/Authoring/Build Ancient Map Intro`
 - Validación: `Tikal/Validation/Validate Ancient Map Intro`
 
-La Timeline controla las cámaras, el movimiento provisional del explorador y del mapa, el fade y los cues narrativos. `IntroSequenceController` controla inicio, finalización, skip y transición de Game Flow. La escena y la Timeline se regeneran de forma idempotente desde el menú de authoring.
+La Timeline controla las cámaras, el movimiento provisional del explorador y del mapa, el fade y los cues narrativos. `IntroSequenceController` controla inicio, finalización, skip y transición de Game Flow. La herramienta histórica Build Ancient Map Intro regenera el blockout original. Para conservar la integración de personajes se utiliza `Tikal/Authoring/Apply Elder Cinematic Character`, que actualiza la escena existente sin rehacerla.
 
 ## Storyboard
 
@@ -44,11 +44,11 @@ Cada personaje tiene `CinematicTargets/HeadLookTarget` y `ChestLookTarget`, sepa
 
 ## Placeholders y reemplazo futuro
 
-`ExplorerAnchor` es la autoridad espacial animada por Timeline. Su hijo `CharacterVisualRoot/ExplorerPlaceholder` es reemplazable sin rehacer cámaras o blocking. Cuando estén disponibles los prefabs finales, `SelectedCharacterId`, `CharacterCatalog` y `CharacterVisualSpawner` podrán resolver el aspecto seleccionado dentro de `CharacterVisualRoot`.
+`ExplorerAnchor` es la autoridad espacial animada por Timeline. Su hijo CharacterVisualRoot contiene ahora el visual canónico Dwight; ExplorerPlaceholder queda inactivo. La Intro usa Timeline y su propio binding visual, sin modificar CharacterCatalog, CharacterVisualSpawner ni la selección guardada.
 
-`ElderAnchor/ElderPlaceholder` representa al anciano sentado. Debe sustituirse dentro del anchor existente para conservar posición, mirada y cobertura de cámaras.
+`ElderAnchor` contiene CHR_Elder_Cinematic y conserva ElderPlaceholder inactivo. Sus targets y las cámaras existentes se mantienen, con framing para el modelo real. Dwight se instancia bajo CharacterVisualRoot sin cambiar su prefab jugable ni utilizar el sistema de selección.
 
-`AncientMap_Proxy` es independiente de ambos personajes. Su track representa la entrega, y el cue conceptual `AncientMapReceived` registra que la entrega narrativa ocurrió. El cue prepara una integración posterior con inventario o progreso sin hacer depender ese estado solo de la animación visual.
+`AncientMap_Proxy` es independiente de ambos personajes. Un ParentConstraint controlado en su track mezcla las manos del Anciano y Dwight entre 70,35 y 71 s y lo mantiene con el receptor durante la partida. El cue conceptual `AncientMapReceived` registra que la entrega narrativa ocurrió. El cue prepara una integración posterior con inventario o progreso sin hacer depender ese estado solo de la animación visual.
 
 ## Subtítulos y audio
 

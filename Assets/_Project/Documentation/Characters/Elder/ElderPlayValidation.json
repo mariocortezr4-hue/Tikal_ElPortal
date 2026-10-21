@@ -1,0 +1,606 @@
+{
+    "passed": true,
+    "enteredPlayMode": true,
+    "idempotent": true,
+    "scope": "Normal interactive Editor Play Mode, natural complete 97-second Timeline playback with existing GameFlow and isolated save. Frame observations/captures are automated, not a human artistic acceptance test.",
+    "checks": [
+        "Normal interactive Editor / no batchmode",
+        "Elder own Humanoid / Timeline Animator / root motion false",
+        "Canonical Dwight visual without gameplay controller",
+        "Elder placeholder hidden",
+        "Visible subtitles match original cue timing @ 1.00",
+        "ElderAnchor remains fixed @ 1.00",
+        "Elder remains on seat without horizontal drift @ 1.00",
+        "Seated pelvis height @ 1.00",
+        "Visible subtitles match original cue timing @ 25.00",
+        "ElderAnchor remains fixed @ 25.00",
+        "Elder remains on seat without horizontal drift @ 25.00",
+        "Seated pelvis height @ 25.00",
+        "Visible subtitles match original cue timing @ 36.00",
+        "ElderAnchor remains fixed @ 36.00",
+        "Elder remains on seat without horizontal drift @ 36.00",
+        "Seated pelvis height @ 36.00",
+        "Visible subtitles match original cue timing @ 46.00",
+        "ElderAnchor remains fixed @ 46.00",
+        "Elder remains on seat without horizontal drift @ 46.00",
+        "Seated pelvis height @ 46.00",
+        "Visible subtitles match original cue timing @ 49.00",
+        "ElderAnchor remains fixed @ 49.00",
+        "Elder remains on seat without horizontal drift @ 49.00",
+        "Seated pelvis height @ 49.00",
+        "Map does not occlude face @ 49.00",
+        "Head visible in CAM_ElderDialogue @ 49.00",
+        "Visible subtitles match original cue timing @ 54.00",
+        "ElderAnchor remains fixed @ 54.00",
+        "Elder remains on seat without horizontal drift @ 54.00",
+        "Seated pelvis height @ 54.00",
+        "Dwight head visible in ExplorerDialogue",
+        "Visible subtitles match original cue timing @ 60.00",
+        "ElderAnchor remains fixed @ 60.00",
+        "Elder remains on seat without horizontal drift @ 60.00",
+        "Seated pelvis height @ 60.00",
+        "Map does not occlude face @ 60.00",
+        "Head visible in CAM_ElderDialogue @ 60.00",
+        "Visible subtitles match original cue timing @ 65.50",
+        "ElderAnchor remains fixed @ 65.50",
+        "Elder remains on seat without horizontal drift @ 65.50",
+        "Seated pelvis height @ 65.50",
+        "Handoff hands within practical sheet reach @ 65.50",
+        "Map visible in approved handoff camera @ 65.50",
+        "Visible subtitles match original cue timing @ 67.00",
+        "ElderAnchor remains fixed @ 67.00",
+        "Elder remains on seat without horizontal drift @ 67.00",
+        "Seated pelvis height @ 67.00",
+        "Handoff hands within practical sheet reach @ 67.00",
+        "Map visible in approved handoff camera @ 67.00",
+        "Visible subtitles match original cue timing @ 70.80",
+        "ElderAnchor remains fixed @ 70.80",
+        "Elder remains on seat without horizontal drift @ 70.80",
+        "Seated pelvis height @ 70.80",
+        "Handoff hands within practical sheet reach @ 70.80",
+        "Map visible in approved handoff camera @ 70.80",
+        "Visible subtitles match original cue timing @ 71.20",
+        "ElderAnchor remains fixed @ 71.20",
+        "Elder remains on seat without horizontal drift @ 71.20",
+        "Seated pelvis height @ 71.20",
+        "Handoff hands within practical sheet reach @ 71.20",
+        "Map visible in approved handoff camera @ 71.20",
+        "Map attached to Explorer after original AncientMapReceived @ 71.20",
+        "Visible subtitles match original cue timing @ 73.00",
+        "ElderAnchor remains fixed @ 73.00",
+        "Elder remains on seat without horizontal drift @ 73.00",
+        "Seated pelvis height @ 73.00",
+        "Handoff hands within practical sheet reach @ 73.00",
+        "Map visible in approved handoff camera @ 73.00",
+        "Map attached to Explorer after original AncientMapReceived @ 73.00",
+        "Visible subtitles match original cue timing @ 78.00",
+        "ElderAnchor remains fixed @ 78.00",
+        "Elder remains on seat without horizontal drift @ 78.00",
+        "Seated pelvis height @ 78.00",
+        "Handoff hands within practical sheet reach @ 78.00",
+        "Map visible in approved handoff camera @ 78.00",
+        "Map attached to Explorer after original AncientMapReceived @ 78.00",
+        "Visible subtitles match original cue timing @ 82.00",
+        "ElderAnchor remains fixed @ 82.00",
+        "Elder remains on seat without horizontal drift @ 82.00",
+        "Seated pelvis height @ 82.00",
+        "Map attached to Explorer after original AncientMapReceived @ 82.00",
+        "Visible subtitles match original cue timing @ 88.00",
+        "ElderAnchor remains fixed @ 88.00",
+        "Elder remains on seat without horizontal drift @ 88.00",
+        "Seated pelvis height @ 88.00",
+        "Map does not occlude face @ 88.00",
+        "Head visible in CAM_FinalWarning @ 88.00",
+        "Visible subtitles match original cue timing @ 91.50",
+        "ElderAnchor remains fixed @ 91.50",
+        "Elder remains on seat without horizontal drift @ 91.50",
+        "Seated pelvis height @ 91.50",
+        "Map does not occlude face @ 91.50",
+        "Head visible in CAM_FinalWarning @ 91.50",
+        "Visible subtitles match original cue timing @ 94.50",
+        "ElderAnchor remains fixed @ 94.50",
+        "Elder remains on seat without horizontal drift @ 94.50",
+        "Seated pelvis height @ 94.50",
+        "Observed complete Timeline from opening through final departure",
+        "AncientMapReceived fired exactly once",
+        "Natural Intro completion persists IntroSeen and enters existing Tutorial",
+        "No seated pelvis teleport larger than 12 cm/frame",
+        "Authoring repeated byte-for-byte without scene/Timeline duplication"
+    ],
+    "errors": [],
+    "samples": [
+        {
+            "time": 1.0000000521540642,
+            "root": {
+                "x": 0.0,
+                "y": -0.03999999910593033,
+                "z": 0.24400000274181366
+            },
+            "hips": {
+                "x": 2.1662988662719727,
+                "y": 0.8992836475372314,
+                "z": 11.705923080444336
+            },
+            "head": {
+                "x": 2.1763367652893066,
+                "y": 1.4464826583862305,
+                "z": 11.687994003295898
+            },
+            "map": {
+                "x": 1.8351293802261353,
+                "y": 1.0769482851028442,
+                "z": 11.58736515045166
+            },
+            "receiverWeight": 0.0,
+            "donorWeight": 1.0,
+            "footMin": 0.10718858242034912,
+            "handDistance": 16.649721145629883,
+            "camera": "CAM_Establishing",
+            "subtitle": ""
+        },
+        {
+            "time": 25.000001303851604,
+            "root": {
+                "x": 0.0,
+                "y": -0.03999999910593033,
+                "z": 0.24400000274181366
+            },
+            "hips": {
+                "x": 2.1662988662719727,
+                "y": 0.8992836475372314,
+                "z": 11.705923080444336
+            },
+            "head": {
+                "x": 2.1763367652893066,
+                "y": 1.4464824199676514,
+                "z": 11.687994003295898
+            },
+            "map": {
+                "x": 1.8351292610168457,
+                "y": 1.0769482851028442,
+                "z": 11.587364196777344
+            },
+            "receiverWeight": 0.0,
+            "donorWeight": 1.0,
+            "footMin": 0.10718858242034912,
+            "handDistance": 16.65159797668457,
+            "camera": "CAM_Establishing",
+            "subtitle": ""
+        },
+        {
+            "time": 36.00000187754631,
+            "root": {
+                "x": 0.0,
+                "y": -0.03999999910593033,
+                "z": 0.24400000274181366
+            },
+            "hips": {
+                "x": 2.165651559829712,
+                "y": 0.8990172147750854,
+                "z": 11.707053184509277
+            },
+            "head": {
+                "x": 2.1588022708892822,
+                "y": 1.4467062950134277,
+                "z": 11.692429542541504
+            },
+            "map": {
+                "x": 1.8312112092971802,
+                "y": 1.0731157064437866,
+                "z": 11.59341812133789
+            },
+            "receiverWeight": 0.0,
+            "donorWeight": 1.0,
+            "footMin": 0.10931587219238281,
+            "handDistance": 16.64349937438965,
+            "camera": "CAM_ExplorerWalk",
+            "subtitle": ""
+        },
+        {
+            "time": 46.00000239908695,
+            "root": {
+                "x": 0.0,
+                "y": -0.03999999910593033,
+                "z": 0.24400000274181366
+            },
+            "hips": {
+                "x": 2.164994478225708,
+                "y": 0.8991644382476807,
+                "z": 11.7057523727417
+            },
+            "head": {
+                "x": 2.1611456871032715,
+                "y": 1.446420431137085,
+                "z": 11.6883544921875
+            },
+            "map": {
+                "x": 1.8294962644577026,
+                "y": 1.0759655237197876,
+                "z": 11.588357925415039
+            },
+            "receiverWeight": 0.0,
+            "donorWeight": 1.0,
+            "footMin": 0.10836243629455566,
+            "handDistance": 0.7521422505378723,
+            "camera": "CAM_TwoShot",
+            "subtitle": "¿Qué hace aquí?"
+        },
+        {
+            "time": 49.000002555549145,
+            "root": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "hips": {
+                "x": 2.173651933670044,
+                "y": 0.9030829668045044,
+                "z": 11.713401794433594
+            },
+            "head": {
+                "x": 2.169267177581787,
+                "y": 1.463836908340454,
+                "z": 11.771852493286133
+            },
+            "map": {
+                "x": 1.8230006694793701,
+                "y": 1.048405408859253,
+                "z": 11.54728889465332
+            },
+            "receiverWeight": 0.0,
+            "donorWeight": 1.0,
+            "footMin": 0.2969921827316284,
+            "handDistance": 0.7128015756607056,
+            "camera": "CAM_ElderDialogue",
+            "subtitle": "Podría preguntarte lo mismo."
+        },
+        {
+            "time": 54.000002816319466,
+            "root": {
+                "x": 0.0,
+                "y": -0.03999999910593033,
+                "z": 0.24400000274181366
+            },
+            "hips": {
+                "x": 2.1662988662719727,
+                "y": 0.8992836475372314,
+                "z": 11.705923080444336
+            },
+            "head": {
+                "x": 2.1763367652893066,
+                "y": 1.4464824199676514,
+                "z": 11.687994003295898
+            },
+            "map": {
+                "x": 1.8351292610168457,
+                "y": 1.0769482851028442,
+                "z": 11.587364196777344
+            },
+            "receiverWeight": 0.0,
+            "donorWeight": 1.0,
+            "footMin": 0.10718858242034912,
+            "handDistance": 0.7581222057342529,
+            "camera": "CAM_ExplorerDialogue",
+            "subtitle": "Busco la Fuente del Conocimiento."
+        },
+        {
+            "time": 60.00000312924385,
+            "root": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "hips": {
+                "x": 2.170309543609619,
+                "y": 0.9076436161994934,
+                "z": 11.720956802368164
+            },
+            "head": {
+                "x": 2.1620662212371826,
+                "y": 1.4650750160217285,
+                "z": 11.80832290649414
+            },
+            "map": {
+                "x": 1.8172080516815186,
+                "y": 1.0312089920043945,
+                "z": 11.592534065246582
+            },
+            "receiverWeight": 0.0,
+            "donorWeight": 1.0,
+            "footMin": 0.29999279975891113,
+            "handDistance": 0.7503487467765808,
+            "camera": "CAM_ElderDialogue",
+            "subtitle": ""
+        },
+        {
+            "time": 65.5000034160912,
+            "root": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "hips": {
+                "x": 2.1647090911865234,
+                "y": 0.8991727828979492,
+                "z": 11.708494186401367
+            },
+            "head": {
+                "x": 2.175075054168701,
+                "y": 1.4635686874389648,
+                "z": 11.731822967529297
+            },
+            "map": {
+                "x": 1.826622724533081,
+                "y": 1.0466071367263794,
+                "z": 11.55288314819336
+            },
+            "receiverWeight": 0.0,
+            "donorWeight": 1.0,
+            "footMin": 0.28724634647369385,
+            "handDistance": 0.7211071848869324,
+            "camera": "CAM_MapHandoff",
+            "subtitle": ""
+        },
+        {
+            "time": 67.0000034943223,
+            "root": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "hips": {
+                "x": 2.165745258331299,
+                "y": 0.9001584053039551,
+                "z": 11.712984085083008
+            },
+            "head": {
+                "x": 2.1734566688537598,
+                "y": 1.464996099472046,
+                "z": 11.733711242675781
+            },
+            "map": {
+                "x": 1.8282724618911743,
+                "y": 1.0486282110214233,
+                "z": 11.546920776367188
+            },
+            "receiverWeight": 0.0,
+            "donorWeight": 1.0,
+            "footMin": 0.2895049452781677,
+            "handDistance": 0.7071760892868042,
+            "camera": "CAM_MapHandoff",
+            "subtitle": "Toma."
+        },
+        {
+            "time": 70.80000369250774,
+            "root": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "hips": {
+                "x": 2.1796913146972656,
+                "y": 0.9093656539916992,
+                "z": 11.703170776367188
+            },
+            "head": {
+                "x": 2.12800669670105,
+                "y": 1.4684994220733643,
+                "z": 11.772103309631348
+            },
+            "map": {
+                "x": 1.6698718070983887,
+                "y": 0.9891415238380432,
+                "z": 11.209270477294922
+            },
+            "receiverWeight": 0.6923130750656128,
+            "donorWeight": 0.3076869249343872,
+            "footMin": 0.2880435585975647,
+            "handDistance": 0.5559532046318054,
+            "camera": "CAM_MapHandoff",
+            "subtitle": "Te ayudará a no perderte."
+        },
+        {
+            "time": 71.20000371336937,
+            "root": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "hips": {
+                "x": 2.1785507202148438,
+                "y": 0.9109841585159302,
+                "z": 11.704208374023438
+            },
+            "head": {
+                "x": 2.125852346420288,
+                "y": 1.4683239459991455,
+                "z": 11.786921501159668
+            },
+            "map": {
+                "x": 1.6347675323486328,
+                "y": 0.9582975506782532,
+                "z": 11.12092399597168
+            },
+            "receiverWeight": 1.0,
+            "donorWeight": 0.0,
+            "footMin": 0.28726857900619507,
+            "handDistance": 0.5587018132209778,
+            "camera": "CAM_MapHandoff",
+            "subtitle": "Te ayudará a no perderte."
+        },
+        {
+            "time": 73.00000380724669,
+            "root": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "hips": {
+                "x": 2.1731107234954834,
+                "y": 0.9032825231552124,
+                "z": 11.713653564453125
+            },
+            "head": {
+                "x": 2.1689810752868652,
+                "y": 1.4639286994934082,
+                "z": 11.773859024047852
+            },
+            "map": {
+                "x": 1.6336395740509033,
+                "y": 0.9570941925048828,
+                "z": 11.1234130859375
+            },
+            "receiverWeight": 1.0,
+            "donorWeight": 0.0,
+            "footMin": 0.2969222664833069,
+            "handDistance": 0.7147934436798096,
+            "camera": "CAM_MapHandoff",
+            "subtitle": "Pero el camino que buscas no está a simple vista."
+        },
+        {
+            "time": 78.000004068017,
+            "root": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "hips": {
+                "x": 2.16452956199646,
+                "y": 0.9034745097160339,
+                "z": 11.712055206298828
+            },
+            "head": {
+                "x": 2.177556037902832,
+                "y": 1.4666249752044678,
+                "z": 11.748875617980957
+            },
+            "map": {
+                "x": 1.6423327922821045,
+                "y": 0.9608272314071655,
+                "z": 11.128209114074707
+            },
+            "receiverWeight": 1.0,
+            "donorWeight": 0.0,
+            "footMin": 0.2884490489959717,
+            "handDistance": 0.7258058190345764,
+            "camera": "CAM_MapHandoff",
+            "subtitle": "Debes encontrar una entrada oculta."
+        },
+        {
+            "time": 82.00000427663326,
+            "root": {
+                "x": 0.0,
+                "y": -0.03999999910593033,
+                "z": 0.24400000274181366
+            },
+            "hips": {
+                "x": 2.164994478225708,
+                "y": 0.8991644382476807,
+                "z": 11.7057523727417
+            },
+            "head": {
+                "x": 2.1611456871032715,
+                "y": 1.446420431137085,
+                "z": 11.6883544921875
+            },
+            "map": {
+                "x": 1.3472269773483276,
+                "y": 0.9525933861732483,
+                "z": 11.576766967773438
+            },
+            "receiverWeight": 1.0,
+            "donorWeight": 0.0,
+            "footMin": 0.10836243629455566,
+            "handDistance": 0.6776099801063538,
+            "camera": "CAM_ExplorerDeparture",
+            "subtitle": "Gracias."
+        },
+        {
+            "time": 88.00000458955765,
+            "root": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "hips": {
+                "x": 2.1773862838745117,
+                "y": 0.9018473029136658,
+                "z": 11.711594581604004
+            },
+            "head": {
+                "x": 2.179710865020752,
+                "y": 1.462672472000122,
+                "z": 11.761987686157227
+            },
+            "map": {
+                "x": 0.3395214080810547,
+                "y": 0.9610752463340759,
+                "z": 15.224553108215332
+            },
+            "receiverWeight": 1.0,
+            "donorWeight": 0.0,
+            "footMin": 0.2982303500175476,
+            "handDistance": 3.8152313232421875,
+            "camera": "CAM_FinalWarning",
+            "subtitle": "Y recuerda..."
+        },
+        {
+            "time": 91.50000477209687,
+            "root": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "hips": {
+                "x": 2.1655735969543457,
+                "y": 0.9063886404037476,
+                "z": 11.717716217041016
+            },
+            "head": {
+                "x": 2.1742799282073975,
+                "y": 1.4666192531585693,
+                "z": 11.786927223205566
+            },
+            "map": {
+                "x": 0.33536267280578613,
+                "y": 0.9563500285148621,
+                "z": 15.345367431640625
+            },
+            "receiverWeight": 1.0,
+            "donorWeight": 0.0,
+            "footMin": 0.29141879081726074,
+            "handDistance": 3.8757030963897705,
+            "camera": "CAM_FinalWarning",
+            "subtitle": "No confíes en el sistema."
+        },
+        {
+            "time": 94.50000492855906,
+            "root": {
+                "x": 0.0,
+                "y": -0.03999999910593033,
+                "z": 0.24400000274181366
+            },
+            "hips": {
+                "x": 2.1652464866638184,
+                "y": 0.8993231058120728,
+                "z": 11.706125259399414
+            },
+            "head": {
+                "x": 2.16559100151062,
+                "y": 1.4465856552124023,
+                "z": 11.689706802368164
+            },
+            "map": {
+                "x": 0.225150465965271,
+                "y": 0.9822851419448853,
+                "z": 19.694778442382813
+            },
+            "receiverWeight": 1.0,
+            "donorWeight": 0.0,
+            "footMin": 0.1076083779335022,
+            "handDistance": 8.107638359069824,
+            "camera": "CAM_ExplorerDeparture",
+            "subtitle": ""
+        }
+    ]
+}
