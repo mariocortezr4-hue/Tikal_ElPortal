@@ -25,7 +25,7 @@ namespace Tikal.Core
         private static CharacterDefinition[] Characters => new CharacterDefinition[]
         {
             new CharacterDefinition(CharacterIds.Default, "Personaje 1"),
-            new CharacterDefinition(CharacterIds.Character02, "Personaje 2"),
+            new CharacterDefinition(CharacterIds.Character02, "Axel", Resources.Load<CharacterVisualAssets>("Characters/GameplayCharacterVisuals")?.AxelVisualPrefab),
             new CharacterDefinition(CharacterIds.Character03, "Mario", Resources.Load<CharacterVisualAssets>("Characters/GameplayCharacterVisuals")?.MarioVisualPrefab),
             new CharacterDefinition(CharacterIds.Character04, "Personaje 4")
         };

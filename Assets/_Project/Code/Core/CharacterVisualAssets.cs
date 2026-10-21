@@ -5,7 +5,9 @@ namespace Tikal.Core
     // Serialized visual references for the existing catalog, not another selection system.
     public sealed class CharacterVisualAssets : ScriptableObject
     {
+        [SerializeField] private GameObject _axelVisualPrefab;
         [SerializeField] private GameObject _marioVisualPrefab;
+        public GameObject AxelVisualPrefab => _axelVisualPrefab;
         public GameObject MarioVisualPrefab => _marioVisualPrefab;
     }
 }
