@@ -38,6 +38,11 @@ namespace Tikal.Tests.Editor
             Require(AssetDatabase.LoadAssetAtPath<SceneAsset>(AncientMapIntroAuthoring.ScenePath) != null, "Intro scene exists");
             Require(EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo(), "Current modified scenes were handled before validation");
             var scene = EditorSceneManager.OpenScene(AncientMapIntroAuthoring.ScenePath, OpenSceneMode.Single);
+            if (UnityEngine.Object.FindAnyObjectByType<IntroMusicEnvelope>() != null)
+            {
+                IntroAudioPolishAuthoring.ValidateLoaded();
+                return;
+            }
             var roots = scene.GetRootGameObjects();
             var components = roots.SelectMany(root => root.GetComponentsInChildren<Component>(true)).ToArray();
             Require(components.All(component => component != null), "Scene has no Missing Scripts");

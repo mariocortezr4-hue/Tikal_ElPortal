@@ -2874,6 +2874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 638631227}
   - component: {fileID: 638631228}
+  - component: {fileID: 638631229}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -2909,7 +2910,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2990,6 +2991,88 @@ AudioSource:
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &638631229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638631226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f71363e96fd284a92682d8ab7a867f, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tikal.Cinematics.IntroMusicEnvelope
+  _director: {fileID: 901789091}
+  _envelope:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.75
+      value: 0.26
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 14
+      value: 0.26
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 16
+      value: 0.039
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 59.004
+      value: 0.039
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 61.504
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 85.5
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -4866,6 +4949,8 @@ PlayableDirector:
     value: {fileID: 1294009782}
   - key: {fileID: 872455658625804478, guid: df6ef0e610ff3f54eab63045be221b74, type: 2}
     value: {fileID: 661283418}
+  - key: {fileID: 6107604993545467236, guid: df6ef0e610ff3f54eab63045be221b74, type: 2}
+    value: {fileID: 638631228}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &901789092
@@ -8860,7 +8945,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 31
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -8886,8 +8971,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032654206}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16352707, y: 0.5561358, z: -0.112690955, w: 0.80701464}
-  m_LocalPosition: {x: -0.2, y: 1.7, z: 10.6}
+  m_LocalRotation: {x: 0.06462491, y: 0.79081464, z: -0.084795855, w: 0.6026985}
+  m_LocalPosition: {x: -2.3, y: 2.15, z: 12.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
