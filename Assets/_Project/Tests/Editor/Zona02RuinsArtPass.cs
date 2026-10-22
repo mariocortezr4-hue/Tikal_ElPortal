@@ -14,6 +14,7 @@ namespace Tikal.Tests.Editor
     public static class Zona02RuinsArtPass
     {
         public const string Evidence="../_Zona02SecondPass_20261022";
+        public const string MassEvidence="../_Zona02MassPass_20261022";
         const string Folder="Assets/_Project/Art/Environment/Level01/Zona02SecondPass";
         const string Root="ENV_L01_Zona02_RuinsSecondPass";
         static Transform root;
@@ -36,6 +37,14 @@ namespace Tikal.Tests.Editor
             if(File.Exists("Temp/Zona02RuinsFront.request"))
             {
                 File.Delete("Temp/Zona02RuinsFront.request");try{ForegroundRuins();}catch(Exception e){File.WriteAllText(Evidence+"/ForegroundError.txt",e.ToString());Debug.LogException(e);}return;
+            }
+            if(File.Exists("Temp/Zona02Mass.request"))
+            {
+                File.Delete("Temp/Zona02Mass.request");Directory.CreateDirectory(MassEvidence);try{MassComposition();}catch(Exception e){File.WriteAllText(MassEvidence+"/Error.txt",e.ToString());Debug.LogException(e);}return;
+            }
+            if(File.Exists("Temp/Zona02MassFinish.request"))
+            {
+                File.Delete("Temp/Zona02MassFinish.request");try{FinishMass();}catch(Exception e){File.WriteAllText(MassEvidence+"/FinishError.txt",e.ToString());Debug.LogException(e);}return;
             }
             if(!File.Exists("Temp/Zona02RuinsApply.request"))return;
             File.Delete("Temp/Zona02RuinsApply.request");Directory.CreateDirectory(Evidence);
@@ -180,6 +189,70 @@ namespace Tikal.Tests.Editor
             Check(props.All(k=>Props(k.Key)==k.Value)&&poses.All(k=>Pose(k.Key)==k.Value),"All existing gameplay/colliders/poses preserved");Check(root.GetComponentsInChildren<Collider>(true).Length==0,"No new colliders");
             var report=JsonUtility.FromJson<Report>(File.ReadAllText(Evidence+"/EditorValidation.json"));report.placements+=placed.Count;report.assets=report.assets.Concat(placed.Select(PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot)).Distinct().ToArray();report.checks=report.checks.Concat(new[]{"Six closer broken wall fragments draped with lianas and ferns; all outside room","All original poses, gameplay components and colliders preserved during foreground addition"}).ToArray();
             EditorSceneManager.MarkSceneDirty(scene);Check(EditorSceneManager.SaveScene(scene),"Final second pass saved");AssetDatabase.SaveAssets();File.WriteAllText(Evidence+"/EditorValidation.json",JsonUtility.ToJson(report,true));Debug.Log("ZONA02_SECOND_PASS_FINAL "+report.placements);
+        }
+        static void MassComposition()
+        {
+            var scene=EditorSceneManager.GetActiveScene();Check(scene.path==Level01EnvironmentInspection.ScenePath&&!EditorApplication.isPlaying,"Level01 Edit Mode only");
+            if(scene.isDirty)Check(EditorSceneManager.SaveScene(scene),"Preserve current scene before art");
+            File.Copy(scene.path,MassEvidence+"/BeforeSaved.unity",true);
+            var env=scene.GetRootGameObjects().Single().transform.Find("Environment");const string name="ENV_L01_Zona02_MassComposition";Check(env.Find(name)==null,"Mass composition already exists; inspect before reapplying");
+            var all=Level01EnvironmentArtPass.All(scene);var props=all.Where(c=>c is Collider||c is MonoBehaviour).ToDictionary(c=>c,Props);var poses=all.OfType<Transform>().ToDictionary(t=>t,Pose);
+            root=new GameObject(name).transform;root.SetParent(env,false);placed.Clear();hanging.Clear();
+            // Broad crowns above the clearing; trunks and roots remain beyond the playable room.
+            foreach(var p in new[]{new Vector3(23.5f,-5.6f,.82f),new Vector3(37,-5.3f,.9f),new Vector3(44,12,.86f),new Vector3(34.8f,27,.8f)})
+                Put("VEG_CeibaTropical_01",p.x,p.y,p.z,placed.Count*71,0,true);
+            foreach(var p in new[]{new Vector2(24.3f,25.4f),new Vector2(34.4f,25.6f),new Vector2(42.8f,4),new Vector2(43.2f,20),new Vector2(29,-4.1f),new Vector2(39,-2.2f)})
+                Put("VEG_CeibaJoven_01",p.x,p.y,1.25f,placed.Count*79,.04f,true);
+            // Five asymmetrical rock/ruin buttresses. No continuous artificial perimeter wall.
+            foreach(var p in new[]{new Vector3(24.2f,23.8f,180),new Vector3(34.4f,23.9f,180),new Vector3(41.9f,7.4f,270),new Vector3(41.8f,17.4f,270),new Vector3(32,-.6f,0)})
+            {
+                int i=placed.Count;var along=Quaternion.Euler(0,p.z,0)*Vector3.right;var back=Quaternion.Euler(0,p.z,0)*Vector3.back;
+                var rock=Put("ROC_RocaMusgo_02",p.x,p.y,new Vector3(1.25f,2.9f,1.8f),p.z+11,.28f,false,6,-7);rock.name="Z02_MossButtress_"+i;
+                var q=new Vector3(p.x,0,p.y)+back*1.8f+along*.35f;
+                var wall=Put("ARQ_MuroMaya_01",q.x,q.z,new Vector3(1.2f,2.1f,1.4f),p.z-9,.16f,false,0,4);Drape(wall,p.z);
+                q=new Vector3(p.x,0,p.y)-along*1.3f+back*.8f;Put("ROC_RocaFragmentada_01",q.x,q.z,new Vector3(1.25f,1.6f,1.3f),p.z+39,.3f);
+                q=new Vector3(p.x,0,p.y)+along*1.2f+back*.6f;Put("VEG_RaizTropical_01",q.x,q.z,1.05f,p.z+42,.13f);
+                q=new Vector3(p.x,0,p.y)+along*.7f-back*.3f;Put("VEG_ArbustoTropical_03",q.x,q.z,1.45f,p.z+65,.07f,true);
+            }
+            // Large side masses near the floor frame the puzzle, without spilling into its floor.
+            foreach(var p in new[]{new Vector3(24.2f,-1.4f,0),new Vector3(38,-.9f,0),new Vector3(42,12,270)})
+            {
+                var r=Put("ROC_RocaFragmentada_01",p.x,p.y,new Vector3(1.9f,2.1f,1.8f),p.z+18,.3f,false,4,-5);Drape(r,p.z);
+                Put("ARQ_ColumnaDerrumbada_01",p.x+.7f,p.y+.2f,1.1f,p.z+27,.28f);
+            }
+            Check(props.All(k=>Props(k.Key)==k.Value)&&poses.All(k=>Pose(k.Key)==k.Value),"Every existing collider, gameplay component and pose retained");
+            FinishMass();
+        }
+        static void FinishMass()
+        {
+            var scene=EditorSceneManager.GetActiveScene();Check(scene.path==Level01EnvironmentInspection.ScenePath&&!EditorApplication.isPlaying,"Level01 Edit Mode");
+            root=scene.GetRootGameObjects().Single().transform.Find("Environment/ENV_L01_Zona02_MassComposition");Check(root!=null,"Existing mass pass retained");
+            placed.Clear();placed.AddRange(root.GetComponentsInChildren<Transform>().Where(t=>PrefabUtility.IsOutermostPrefabInstanceRoot(t.gameObject)).Select(t=>t.gameObject));
+            hanging.Clear();hanging.AddRange(placed.Where(g=>PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(g).Contains("CortinaLianas")||PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(g).Contains("Helecho")));
+            // Seat broad root skirts into the bank, rather than suspending their flat undersides
+            // at the height of the crest. Keep the two widest trunks farther outside the room.
+            foreach(var g in placed.Where(g=>PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(g).Contains("CeibaTropical_01")))
+            {
+                var p=g.transform.position;if(g.name.EndsWith("_002"))p.x=47.8f;if(g.name.EndsWith("_003"))p.z=29;g.transform.position=p;
+                var b=GoldenSliceArtPass.VisualBounds(g);g.transform.position+=Vector3.up*(1.2f-b.min.y);PrefabUtility.RecordPrefabInstancePropertyModifications(g.transform);
+            }
+            foreach(var g in placed.Where(g=>g.name=="Z02_MossButtress_10"||g.name=="Z02_MossButtress_17"))
+            {
+                g.transform.localScale=new Vector3(1.25f,4.2f,1.8f);var b=GoldenSliceArtPass.VisualBounds(g);float h=Mathf.Min(Height(g.transform.position.x,g.transform.position.z),Height(b.min.x,b.min.z),Height(b.max.x,b.max.z));g.transform.position+=Vector3.up*(h-b.min.y-b.size.y*.28f);PrefabUtility.RecordPrefabInstancePropertyModifications(g.transform);
+            }
+            // Conservative footprint guard; it tests body-height vertices, allowing canopy overhead.
+            var room=new Bounds(new Vector3(29,2.15f,12),new Vector3(19.7f,2.5f,17.7f));
+            foreach(var g in placed)
+            {
+                var path=PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(g);bool hard=path.Contains("PFB_ROC_")||path.Contains("PFB_ARQ_")||path.Contains("Ceiba")||path.Contains("Raiz");if(!hard)continue;
+                var lod=g.GetComponentInChildren<LODGroup>();var renderers=lod!=null?lod.GetLODs()[0].renderers:g.GetComponentsInChildren<Renderer>();
+                bool intrusion=false;foreach(var r in renderers){var f=r.GetComponent<MeshFilter>();if(f==null)continue;foreach(var v in f.sharedMesh.vertices){var w=f.transform.TransformPoint(v);if(room.Contains(w)){intrusion=true;break;}}if(intrusion)break;}
+                Check(!intrusion,"Large mass outside playable body volume: "+g.name);
+            }
+            Check(root.GetComponentsInChildren<Collider>(true).Length==0,"No new colliders");
+            Check(placed.Where(g=>!hanging.Contains(g)).All(g=>GoldenSliceArtPass.VisualBounds(g).min.y<=Height(g.transform.position.x,g.transform.position.z)+.04f),"Grounded new large masses and supported drapes");
+            EditorSceneManager.MarkSceneDirty(scene);Check(EditorSceneManager.SaveScene(scene),"Mass composition saved");AssetDatabase.SaveAssets();
+            File.WriteAllText(MassEvidence+"/EditorValidation.json",JsonUtility.ToJson(new Report{placements=placed.Count,readjusted=0,newColliders=0,assets=placed.Select(PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot).Distinct().ToArray(),checks=new[]{"Prior scene saved before authoring; all earlier work retained","Every original pose, gameplay component and collider unchanged","Large rock, ruin, root and canopy groups only within Zone02 banks","No hard geometry vertices in original playable body volume","No decorative stelae or new colliders","Grounded bases; drapes supported by ruin/rock crowns","Saved Level01; local visual review pending"}},true));Debug.Log("ZONA02_MASS_COMPOSITION_SAVED "+placed.Count);
         }
     }
 }
