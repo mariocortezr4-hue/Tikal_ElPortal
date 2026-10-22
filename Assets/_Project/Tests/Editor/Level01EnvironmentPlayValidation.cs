@@ -26,6 +26,7 @@ namespace Tikal.Tests.Editor
         [Serializable] public class Report {public bool passed;public string scope;public string[] checks,errors;public View[] views;}
         static readonly List<string> checks=new List<string>(),errors=new List<string>();static readonly List<View> views=new List<View>();static readonly Stack<IEnumerator> stack=new Stack<IEnumerator>();
         static Gamepad pad;static GamePersistenceService save;static PlayerController player;static PlayerCameraController camera;static InputSettings.BackgroundBehavior oldBackground;static InputSettings.EditorInputBehaviorInPlayMode oldEditor;static int oldCapture,lastFrame;static bool oldRun;static float oldVolume;static double deadline;
+        static bool shell=>SessionState.GetBool(Key+"Shell",false);
         static bool before=>SessionState.GetBool(Key+"Before",false);
         static bool golden=>SessionState.GetBool(Key+"Golden",false);
         static bool entrance=>SessionState.GetBool(Key+"Entrance",false);
@@ -35,7 +36,7 @@ namespace Tikal.Tests.Editor
         static bool access=>SessionState.GetBool(Key+"Access",false);
         static bool puzzle01=>SessionState.GetBool(Key+"Puzzle01",false);
         static bool expansion=>SessionState.GetBool(Key+"Expansion",false);
-        static string Folder=>guardianVisuals?Puzzle02GuardianVisualIntegration.Evidence+(guardianViewsOnly?"/FinalViews":"/Play"):zona02?(SessionState.GetBool(Key+"Zona02Mass",false)?Zona02RuinsArtPass.MassEvidence:SessionState.GetBool(Key+"Zona02Second",false)?Zona02RuinsArtPass.Evidence:Zona02JungleArtPass.Evidence)+(SessionState.GetBool(Key+"Zona02Views",false)?"/FinalViews":"/After"):access?Puzzle02AccessArtPass.Evidence+(SessionState.GetBool(Key+"AccessBefore",false)?"/Before":"/After"):puzzle01?(SessionState.GetBool(Key+"LeftPolish",false)?Puzzle01LeftPolish.Evidence:Puzzle01EnclosureArtPass.Evidence)+(SessionState.GetBool(Key+"PuzzleBefore",false)?"/Before":"/After"):expansion?EntranceExpansionArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceExpansion.Pass",0):entrance?EntranceHeroArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceHero.Pass",0):golden?GoldenSliceArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.Golden.Pass",0):Level01EnvironmentArtPass.Evidence+(before?"/Before":"/After");
+        static string Folder=>shell?Zona02DenseShell.Evidence+(SessionState.GetBool(Key+"ShellViews",false)?"/FinalViews":"/Play"):guardianVisuals?Puzzle02GuardianVisualIntegration.Evidence+(guardianViewsOnly?"/FinalViews":"/Play"):zona02?(SessionState.GetBool(Key+"Zona02Mass",false)?Zona02RuinsArtPass.MassEvidence:SessionState.GetBool(Key+"Zona02Second",false)?Zona02RuinsArtPass.Evidence:Zona02JungleArtPass.Evidence)+(SessionState.GetBool(Key+"Zona02Views",false)?"/FinalViews":"/After"):access?Puzzle02AccessArtPass.Evidence+(SessionState.GetBool(Key+"AccessBefore",false)?"/Before":"/After"):puzzle01?(SessionState.GetBool(Key+"LeftPolish",false)?Puzzle01LeftPolish.Evidence:Puzzle01EnclosureArtPass.Evidence)+(SessionState.GetBool(Key+"PuzzleBefore",false)?"/Before":"/After"):expansion?EntranceExpansionArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceExpansion.Pass",0):entrance?EntranceHeroArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceHero.Pass",0):golden?GoldenSliceArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.Golden.Pass",0):Level01EnvironmentArtPass.Evidence+(before?"/Before":"/After");
         static Level01EnvironmentPlayValidation()
         {
             EditorApplication.update+=Poll;EditorApplication.playModeStateChanged+=Mode;
@@ -44,6 +45,10 @@ namespace Tikal.Tests.Editor
         static void Poll()
         {
             if(EditorApplication.isCompiling||EditorApplication.isUpdating||EditorApplication.isPlayingOrWillChangePlaymode)return;
+            if(File.Exists("Temp/Zona02ShellPlay.request")||File.Exists("Temp/Zona02ShellViews.request"))
+            {
+                bool shellViews=File.Exists("Temp/Zona02ShellViews.request");File.Delete(shellViews?"Temp/Zona02ShellViews.request":"Temp/Zona02ShellPlay.request");SessionState.SetBool(Key+"ShellViews",shellViews);SessionState.SetBool(Key+"Shell",true);foreach(var flag in new[]{"GuardianVisuals","Zona02","Access","Puzzle01","Entrance","Golden","Expansion","Metrics"})SessionState.SetBool(Key+flag,false);Begin();return;
+            }
             if(File.Exists("Temp/Puzzle02FinalVisualPlay.request")||File.Exists("Temp/Puzzle02FinalVisualViews.request"))
             {
                 bool onlyViews=File.Exists("Temp/Puzzle02FinalVisualViews.request");File.Delete(onlyViews?"Temp/Puzzle02FinalVisualViews.request":"Temp/Puzzle02FinalVisualPlay.request");SessionState.SetBool(Key+"GuardianViewsOnly",onlyViews);SessionState.SetBool(Key+"GuardianVisuals",true);foreach(var flag in new[]{"Zona02","Access","Puzzle01","Entrance","Golden","Expansion","Metrics"})SessionState.SetBool(Key+flag,false);Begin();return;
@@ -102,7 +107,7 @@ namespace Tikal.Tests.Editor
             if(state==PlayModeStateChange.EnteredPlayMode)Start();
             if(state==PlayModeStateChange.EnteredEditMode)
             {
-                SessionState.SetBool(Key,false);SessionState.SetBool(Key+"Zona02Second",false);SessionState.SetBool(Key+"Zona02Mass",false);SessionState.SetBool(Key+"GuardianVisuals",false);EditorSceneManager.OpenScene(Level01EnvironmentArtPass.ScenePath);AssetDatabase.Refresh();Debug.Log("LEVEL01_ART_PLAY_FINISHED");
+                SessionState.SetBool(Key,false);SessionState.SetBool(Key+"Shell",false);SessionState.SetBool(Key+"Zona02Second",false);SessionState.SetBool(Key+"Zona02Mass",false);SessionState.SetBool(Key+"GuardianVisuals",false);EditorSceneManager.OpenScene(Level01EnvironmentArtPass.ScenePath);AssetDatabase.Refresh();Debug.Log("LEVEL01_ART_PLAY_FINISHED");
             }
         }
         static void Start()
@@ -133,6 +138,7 @@ namespace Tikal.Tests.Editor
             if(access)scope="Puzzle01 east outlet, connector and Puzzle02 base access only. Native FPS/TPS central and edge-lane walking; torso capsule overlap probes; Puzzle01 original solve and single reward. No final Puzzle02 art approval or build performance claim.";
             if(zona02)scope=SessionState.GetBool(Key+"Zona02Views",false)?"Zone02 final visual captures only; physical route evidence retained separately in After/PlayValidation.json.":"Zone02 only: scene load, short native FPS/TPS access route and four local views. No puzzle interactions, clue checks, outcome or global validation.";
             if(guardianVisuals)scope=guardianViewsOnly?"Puzzle02 final visual captures only. Native interaction, rotation, clue-once and physical FPS/TPS evidence retained in Play/PlayValidation.json.":"Puzzle02 final visuals only: original three guardians, native gamepad focus/interact and coroutines, pivot stability, initial 3/0/0, solution 3/1/2, three-turn solve, single Clue02, six emission marks, local FPS/TPS access and exit. No Puzzle01, global progression or outcome tests.";
+            if(shell){metrics=false;scope=(SessionState.GetBool(Key+"ShellViews",false)?"Final views only; physical FPS/TPS evidence in Play/PlayValidation.json. ":"")+"Zona02 environment shell only: five views, short native FPS/TPS walking, access to three guardians and north exit. No interaction, puzzle solve, clue, Puzzle01 or global regression.";}
             Directory.CreateDirectory(Folder);File.WriteAllText(Folder+(metrics?"/MetricsValidation.json":"/PlayValidation.json"),JsonUtility.ToJson(new Report{passed=errors.Count==0,checks=checks.ToArray(),errors=errors.ToArray(),views=views.ToArray(),scope=scope},true));EditorApplication.ExitPlaymode();
         }
         static void Input(Vector2 move,Vector2 look=default,bool jump=false,bool sprint=false)=>InputSystem.QueueStateEvent(pad,new GamepadState{leftStick=move,rightStick=look}.WithButton(GamepadButton.South,jump).WithButton(GamepadButton.LeftStick,sprint));
@@ -201,6 +207,7 @@ namespace Tikal.Tests.Editor
         }
         static IEnumerator Tests()
         {
+            if(shell){yield return ShellTests();yield break;}
             if(guardianVisuals){yield return GuardianVisualTests();yield break;}
             if(zona02){yield return Zona02LocalTests();yield break;}
             if(access){yield return AccessTests();yield break;}
@@ -305,6 +312,23 @@ namespace Tikal.Tests.Editor
                 Check(tracker.Count==1&&tracker.HasClue("level01.clue02")&&clues==1,"Clue02 delivered exactly once "+mode);foreach(var g in gs)g.Interact();yield return Frames(3);Check(solves==1&&clues==1&&tracker.Count==1&&gs.All(g=>!g.CanInteract),"Solved interactions do not repeat clue or rotations "+mode);
                 Check(fixedParts.All(k=>Vector3.Distance(k.Key.position,k.Value)<.001f),"Pedestals and destination markers remain fixed "+mode);Check(p.GetComponentInChildren<Light>(true).enabled,"Original solved light retained");
                 Place(new Vector3(29,Floor(29,12),12),0);yield return Frames(4);yield return WalkTo(29,19);yield return WalkTo(29,22);Check(player.GameplayActive,"Local Zone02 exit accessible "+mode);
+            }
+        }
+        static IEnumerator ShellTests()
+        {
+            EditorSceneManager.LoadSceneInPlayMode(Level01EnvironmentArtPass.ScenePath,new LoadSceneParameters(LoadSceneMode.Single));yield return Frames(18);Bind();Check(player!=null,"Saved Level01 opens");CameraMode(Tikal.Persistence.CameraMode.ThirdPerson);
+            foreach(var pose in new[]{("A_Frontal",new Vector2(29,12),90f),("B_Left",new Vector2(30,6.5f),20f),("C_Right",new Vector2(36,15),220f),("D_Background",new Vector2(29,14),0f)})
+            {Place(new Vector3(pose.Item2.x,Floor(pose.Item2.x,pose.Item2.y),pose.Item2.y),pose.Item3);yield return Frames(24);ScreenCapture.CaptureScreenshot(Folder+"/"+pose.Item1+".png");yield return Frames(5);}
+            CameraMode(Tikal.Persistence.CameraMode.FirstPerson);Place(new Vector3(29,Floor(29,12),12),70);yield return Frames(8);
+            for(int i=0;i<20;i++){Input(Vector2.zero,new Vector2(0,.7f));yield return null;}yield return Frames(15);ScreenCapture.CaptureScreenshot(Folder+"/E_Canopy.png");yield return Frames(5);
+            if(SessionState.GetBool(Key+"ShellViews",false))yield break;
+            foreach(var mode in new[]{Tikal.Persistence.CameraMode.FirstPerson,Tikal.Persistence.CameraMode.ThirdPerson})
+            {
+                CameraMode(mode);Place(new Vector3(19.4f,Floor(19.4f,12),12),0);yield return Frames(6);
+                foreach(var p in new[]{new Vector2(24,12),new Vector2(29,12),new Vector2(31,12)})yield return WalkTo(p.x,p.y);
+                // Approach points adjacent to the three unchanged guardian colliders; no interaction.
+                foreach(var p in new[]{new Vector2(31,9),new Vector2(31,12),new Vector2(33,12),new Vector2(29,12),new Vector2(29,16),new Vector2(29,19),new Vector2(29,22)})yield return WalkTo(p.x,p.y);
+                Check(player.GameplayActive,"Guardian approaches and north exit accessible "+mode);
             }
         }
         static IEnumerator Zona02LocalTests()
