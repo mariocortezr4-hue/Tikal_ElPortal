@@ -29,9 +29,11 @@ namespace Tikal.Tests.Editor
         static bool before=>SessionState.GetBool(Key+"Before",false);
         static bool golden=>SessionState.GetBool(Key+"Golden",false);
         static bool entrance=>SessionState.GetBool(Key+"Entrance",false);
+        static bool zona02=>SessionState.GetBool(Key+"Zona02",false);
+        static bool access=>SessionState.GetBool(Key+"Access",false);
         static bool puzzle01=>SessionState.GetBool(Key+"Puzzle01",false);
         static bool expansion=>SessionState.GetBool(Key+"Expansion",false);
-        static string Folder=>puzzle01?(SessionState.GetBool(Key+"LeftPolish",false)?Puzzle01LeftPolish.Evidence:Puzzle01EnclosureArtPass.Evidence)+(SessionState.GetBool(Key+"PuzzleBefore",false)?"/Before":"/After"):expansion?EntranceExpansionArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceExpansion.Pass",0):entrance?EntranceHeroArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceHero.Pass",0):golden?GoldenSliceArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.Golden.Pass",0):Level01EnvironmentArtPass.Evidence+(before?"/Before":"/After");
+        static string Folder=>zona02?Zona02JungleArtPass.Evidence+(SessionState.GetBool(Key+"Zona02Views",false)?"/FinalViews":"/After"):access?Puzzle02AccessArtPass.Evidence+(SessionState.GetBool(Key+"AccessBefore",false)?"/Before":"/After"):puzzle01?(SessionState.GetBool(Key+"LeftPolish",false)?Puzzle01LeftPolish.Evidence:Puzzle01EnclosureArtPass.Evidence)+(SessionState.GetBool(Key+"PuzzleBefore",false)?"/Before":"/After"):expansion?EntranceExpansionArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceExpansion.Pass",0):entrance?EntranceHeroArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceHero.Pass",0):golden?GoldenSliceArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.Golden.Pass",0):Level01EnvironmentArtPass.Evidence+(before?"/Before":"/After");
         static Level01EnvironmentPlayValidation()
         {
             EditorApplication.update+=Poll;EditorApplication.playModeStateChanged+=Mode;
@@ -40,6 +42,11 @@ namespace Tikal.Tests.Editor
         static void Poll()
         {
             if(EditorApplication.isCompiling||EditorApplication.isUpdating||EditorApplication.isPlayingOrWillChangePlaymode)return;
+            if(File.Exists("Temp/Zona02LocalPlay.request")||File.Exists("Temp/Zona02LocalViews.request")){bool viewOnly=File.Exists("Temp/Zona02LocalViews.request");File.Delete(viewOnly?"Temp/Zona02LocalViews.request":"Temp/Zona02LocalPlay.request");SessionState.SetBool(Key+"Zona02Views",viewOnly);SessionState.SetBool(Key+"Zona02",true);SessionState.SetBool(Key+"Access",false);SessionState.SetBool(Key+"Puzzle01",false);SessionState.SetBool(Key+"Entrance",false);SessionState.SetBool(Key+"Golden",false);SessionState.SetBool(Key+"Expansion",false);SessionState.SetBool(Key+"Metrics",false);Begin();return;}
+            SessionState.SetBool(Key+"Zona02",false);
+            var accessRequest=new[]{"Temp/Puzzle02AccessBefore.request","Temp/Puzzle02AccessPlay.request"}.FirstOrDefault(File.Exists);
+            if(accessRequest!=null){File.Delete(accessRequest);SessionState.SetBool(Key+"Access",true);SessionState.SetBool(Key+"AccessBefore",accessRequest.Contains("Before"));SessionState.SetBool(Key+"Puzzle01",false);SessionState.SetBool(Key+"Entrance",false);SessionState.SetBool(Key+"Expansion",false);SessionState.SetBool(Key+"Golden",false);SessionState.SetBool(Key+"Metrics",false);Begin();return;}
+            if(Directory.GetFiles("Temp","*.request").Any(f=>Path.GetFileName(f).Contains("Play")||Path.GetFileName(f).Contains("Views")||Path.GetFileName(f).Contains("Before")))SessionState.SetBool(Key+"Access",false);
             if(new[]{"Temp/EntranceExpansionPlay.request","Temp/EntranceExpansionViews.request","Temp/EntranceHeroPlay.request","Temp/EntranceHeroViews.request","Temp/GoldenSliceMetrics.request","Temp/GoldenSlicePlay.request","Temp/Level01ArtPlayBefore.request","Temp/Level01ArtPlay.request","Temp/Level01ArtSurvey.request","Temp/Level01ArtRegression.request"}.Any(File.Exists))SessionState.SetBool(Key+"Puzzle01",false);
             var puzzleRequest=new[]{"Temp/Puzzle01LeftPlay.request","Temp/Puzzle01LeftBefore.request","Temp/Puzzle01Play.request","Temp/Puzzle01BeforeViews.request"}.FirstOrDefault(File.Exists);
             if(puzzleRequest!=null){bool beforeViews=puzzleRequest.Contains("Before");File.Delete(puzzleRequest);SessionState.SetBool(Key+"LeftPolish",puzzleRequest.Contains("Left"));SessionState.SetBool(Key+"Puzzle01",true);SessionState.SetBool(Key+"PuzzleBefore",beforeViews);SessionState.SetBool(Key+"Entrance",false);SessionState.SetBool(Key+"Expansion",false);SessionState.SetBool(Key+"Golden",false);SessionState.SetBool(Key+"Metrics",false);Begin();}
@@ -109,6 +116,8 @@ namespace Tikal.Tests.Editor
             if(entrance){metrics=SessionState.GetBool(Key+"Metrics",false);scope="Entrance only: three production camera views, FPS/TPS physical Spawn-to-Door route, Interact and secret Closed/range/camera/zero-clue matrix. No plaza or puzzle regression. Measurements are frustum/LOD estimates, not build performance.";}
             if(expansion)scope="Entrance expansion: four production camera views (frontal, left, right, further back), FPS/TPS native Spawn-to-Door route, Interact, secret entrance matrix. No plaza/puzzle regression or gameplay edits. Frustum/LOD estimates are not build performance.";
             if(puzzle01)scope="Puzzle01 only: four gameplay views, physical FPS/TPS plaza-to-mural and east-exit routes, fragment line-of-sight, original mural rotations and Clue01 reward. No global regression or build performance benchmark.";
+            if(access)scope="Puzzle01 east outlet, connector and Puzzle02 base access only. Native FPS/TPS central and edge-lane walking; torso capsule overlap probes; Puzzle01 original solve and single reward. No final Puzzle02 art approval or build performance claim.";
+            if(zona02)scope=SessionState.GetBool(Key+"Zona02Views",false)?"Zone02 final visual captures only; physical route evidence retained separately in After/PlayValidation.json.":"Zone02 only: scene load, short native FPS/TPS access route and four local views. No puzzle interactions, clue checks, outcome or global validation.";
             Directory.CreateDirectory(Folder);File.WriteAllText(Folder+(metrics?"/MetricsValidation.json":"/PlayValidation.json"),JsonUtility.ToJson(new Report{passed=errors.Count==0,checks=checks.ToArray(),errors=errors.ToArray(),views=views.ToArray(),scope=scope},true));EditorApplication.ExitPlaymode();
         }
         static void Input(Vector2 move,Vector2 look=default,bool jump=false,bool sprint=false)=>InputSystem.QueueStateEvent(pad,new GamepadState{leftStick=move,rightStick=look}.WithButton(GamepadButton.South,jump).WithButton(GamepadButton.LeftStick,sprint));
@@ -177,6 +186,8 @@ namespace Tikal.Tests.Editor
         }
         static IEnumerator Tests()
         {
+            if(zona02){yield return Zona02LocalTests();yield break;}
+            if(access){yield return AccessTests();yield break;}
             if(puzzle01){yield return Puzzle01Tests();yield break;}
             if(entrance){yield return EntranceTests();yield break;}
             if(golden){yield return GoldenTests();yield break;}
@@ -216,6 +227,59 @@ namespace Tikal.Tests.Editor
             while((bool)typeof(Level01CheckpointValidation).GetField("_running",BindingFlags.Static|BindingFlags.NonPublic).GetValue(null))yield return Frames(1);
             Check(errors.Count==0,"Existing checkpoint runtime matrix reports no errors");
             SecretEntranceValidation.Run();yield return Frames(3);Check(errors.Count==0,"Existing Door closed/open/outside and FPS/TPS secret matrix reports no errors");
+        }
+        static void RouteContact(string name)
+        {
+            var cc=player.GetComponent<CharacterController>();var b=cc.bounds;float radius=Mathf.Max(.05f,cc.radius-.04f);
+            var hits=Physics.OverlapCapsule(new Vector3(b.center.x,b.min.y+radius+.16f,b.center.z),new Vector3(b.center.x,b.max.y-radius-.1f,b.center.z),radius,~0,QueryTriggerInteraction.Ignore).Where(c=>!c.transform.IsChildOf(player.transform)).ToArray();
+            Check(hits.Length==0,"No torso solid overlap "+name+(hits.Length>0?": "+string.Join(",",hits.Select(c=>c.name)):""));
+            float floor=Floor(player.transform.position.x,player.transform.position.z)-.11f;Check(player.transform.position.y>=floor-.08f&&player.transform.position.y<floor+.6f,"Feet on original floor "+name);
+        }
+        static IEnumerator Zona02LocalTests()
+        {
+            EditorSceneManager.LoadSceneInPlayMode(Level01EnvironmentArtPass.ScenePath,new LoadSceneParameters(LoadSceneMode.Single));yield return Frames(15);Bind();Check(player!=null,"Level01 loads with original Player");
+            CameraMode(Tikal.Persistence.CameraMode.ThirdPerson);
+            foreach(var pose in new[]{("01_Access",new Vector2(20,12),90f),("02_Guardians",new Vector2(28,12),115f),("03_NorthBank",new Vector2(29,14),0f),("04_SouthBank",new Vector2(27,10),180f)})
+            {
+                Place(new Vector3(pose.Item2.x,Floor(pose.Item2.x,pose.Item2.y),pose.Item2.y),pose.Item3);yield return Frames(20);ScreenCapture.CaptureScreenshot(Folder+"/"+pose.Item1+".png");yield return Frames(4);
+            }
+            if(SessionState.GetBool(Key+"Zona02Views",false))yield break;
+            foreach(var mode in new[]{Tikal.Persistence.CameraMode.FirstPerson,Tikal.Persistence.CameraMode.ThirdPerson})
+            {
+                CameraMode(mode);Place(new Vector3(19.4f,Floor(19.4f,12),12),0);yield return Frames(6);
+                foreach(var p in new[]{new Vector2(24,12),new Vector2(29,12),new Vector2(31,12),new Vector2(29,15),new Vector2(29,19)})yield return WalkTo(p.x,p.y);
+                Check(player.GameplayActive,"Local Zone02 access clear "+mode);
+            }
+        }
+        static IEnumerator AccessTests()
+        {
+            EditorSceneManager.LoadSceneInPlayMode(Level01EnvironmentArtPass.ScenePath,new LoadSceneParameters(LoadSceneMode.Single));yield return Frames(15);Bind();CameraMode(Tikal.Persistence.CameraMode.ThirdPerson);
+            foreach(var pose in new[]{("01_Puzzle01_EastExit",new Vector2(4,12),90f),("02_Connector",new Vector2(12,12),90f),("03_Puzzle02_Arrival",new Vector2(20,12),90f),("04_Puzzle02_Base",new Vector2(26,12),110f)})
+            {
+                Place(new Vector3(pose.Item2.x,Floor(pose.Item2.x,pose.Item2.y),pose.Item2.y),pose.Item3);yield return Frames(24);views.Add(Measure(pose.Item1,camera.Mode.ToString()));ScreenCapture.CaptureScreenshot(Folder+"/"+pose.Item1+".png");yield return Frames(5);
+            }
+            if(SessionState.GetBool(Key+"AccessBefore",false))yield break;
+            foreach(var mode in new[]{Tikal.Persistence.CameraMode.FirstPerson,Tikal.Persistence.CameraMode.ThirdPerson})
+            {
+                EditorSceneManager.LoadSceneInPlayMode(Level01EnvironmentArtPass.ScenePath,new LoadSceneParameters(LoadSceneMode.Single));yield return Frames(12);Bind();CameraMode(mode);Place(new Vector3(-5.8f,Floor(-5.8f,14),14),0);yield return Frames(8);
+                Check(player.GameplayActive,"Gameplay active "+mode);
+                foreach(var p in new[]{new Vector2(0,12),new Vector2(5,12),new Vector2(9,12),new Vector2(14,12),new Vector2(19,12),new Vector2(24,12),new Vector2(29,12)}){yield return WalkTo(p.x,p.y);RouteContact(mode+" center "+p);}
+                foreach(float z in new[]{10.55f,13.45f})
+                {
+                    Place(new Vector3(5,Floor(5,z),z),0);yield return Frames(5);
+                    foreach(float x in new[]{8f,11,14,17,20,24,27}){yield return WalkTo(x,z);RouteContact(mode+" edge "+x+"/"+z);}
+                }
+                Place(new Vector3(29,Floor(29,12),12),0);yield return Frames(5);
+                foreach(var p in new[]{new Vector2(24,12),new Vector2(19,12),new Vector2(9,12),new Vector2(0,12),new Vector2(-5.8f,14)})yield return WalkTo(p.x,p.y);
+                var mural=UnityEngine.Object.FindAnyObjectByType<Tikal.Puzzles.Level01.MuralFragmentsPuzzle>();var ms=new SerializedObject(mural);var refs=ms.FindProperty("_fragments");var answers=ms.FindProperty("_solution");int solves=0;mural.PuzzleSolved+=_=>solves++;
+                for(int i=0;i<4;i++)
+                {
+                    var f=(Tikal.Puzzles.Level01.MuralFragment)refs.GetArrayElementAtIndex(i).objectReferenceValue;var target=f.GetComponentInChildren<Collider>().bounds.center;var origin=player.GetComponent<PlayerInteraction>().InteractionOrigin.position;
+                    Check(Physics.Raycast(origin,(target-origin).normalized,out var hit,Vector3.Distance(origin,target)+.05f,~0,QueryTriggerInteraction.Ignore)&&hit.collider.GetComponentInParent<Tikal.Puzzles.Level01.MuralFragment>()==f,"Mural fragment remains reachable "+i+" "+mode);
+                    for(int j=0;j<4&&f.CurrentOrientation!=answers.GetArrayElementAtIndex(i).intValue;j++){f.Interact();yield return Frames(14);}
+                }
+                Check(mural.IsSolved&&solves==1,"Puzzle01 solves once after return "+mode);var tracker=UnityEngine.Object.FindAnyObjectByType<Tikal.Puzzles.Clues.ClueTracker>();Check(tracker.Count==1,"Clue01 once after return "+mode);foreach(var f in mural.GetComponentsInChildren<Tikal.Puzzles.Level01.MuralFragment>())f.Interact();yield return Frames(3);Check(solves==1&&tracker.Count==1,"No repeated clue on solved interaction "+mode);
+            }
         }
         static IEnumerator Puzzle01Tests()
         {
