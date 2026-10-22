@@ -33,7 +33,7 @@ namespace Tikal.Tests.Editor
         static bool access=>SessionState.GetBool(Key+"Access",false);
         static bool puzzle01=>SessionState.GetBool(Key+"Puzzle01",false);
         static bool expansion=>SessionState.GetBool(Key+"Expansion",false);
-        static string Folder=>zona02?Zona02JungleArtPass.Evidence+(SessionState.GetBool(Key+"Zona02Views",false)?"/FinalViews":"/After"):access?Puzzle02AccessArtPass.Evidence+(SessionState.GetBool(Key+"AccessBefore",false)?"/Before":"/After"):puzzle01?(SessionState.GetBool(Key+"LeftPolish",false)?Puzzle01LeftPolish.Evidence:Puzzle01EnclosureArtPass.Evidence)+(SessionState.GetBool(Key+"PuzzleBefore",false)?"/Before":"/After"):expansion?EntranceExpansionArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceExpansion.Pass",0):entrance?EntranceHeroArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceHero.Pass",0):golden?GoldenSliceArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.Golden.Pass",0):Level01EnvironmentArtPass.Evidence+(before?"/Before":"/After");
+        static string Folder=>zona02?(SessionState.GetBool(Key+"Zona02Second",false)?Zona02RuinsArtPass.Evidence:Zona02JungleArtPass.Evidence)+(SessionState.GetBool(Key+"Zona02Views",false)?"/FinalViews":"/After"):access?Puzzle02AccessArtPass.Evidence+(SessionState.GetBool(Key+"AccessBefore",false)?"/Before":"/After"):puzzle01?(SessionState.GetBool(Key+"LeftPolish",false)?Puzzle01LeftPolish.Evidence:Puzzle01EnclosureArtPass.Evidence)+(SessionState.GetBool(Key+"PuzzleBefore",false)?"/Before":"/After"):expansion?EntranceExpansionArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceExpansion.Pass",0):entrance?EntranceHeroArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceHero.Pass",0):golden?GoldenSliceArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.Golden.Pass",0):Level01EnvironmentArtPass.Evidence+(before?"/Before":"/After");
         static Level01EnvironmentPlayValidation()
         {
             EditorApplication.update+=Poll;EditorApplication.playModeStateChanged+=Mode;
@@ -42,6 +42,10 @@ namespace Tikal.Tests.Editor
         static void Poll()
         {
             if(EditorApplication.isCompiling||EditorApplication.isUpdating||EditorApplication.isPlayingOrWillChangePlaymode)return;
+            if(File.Exists("Temp/Zona02SecondPlay.request")||File.Exists("Temp/Zona02SecondViews.request"))
+            {
+                bool viewsOnly=File.Exists("Temp/Zona02SecondViews.request");File.Delete(viewsOnly?"Temp/Zona02SecondViews.request":"Temp/Zona02SecondPlay.request");SessionState.SetBool(Key+"Zona02Second",true);File.WriteAllText(viewsOnly?"Temp/Zona02LocalViews.request":"Temp/Zona02LocalPlay.request","Local Zone02 only");
+            }
             if(File.Exists("Temp/Zona02LocalPlay.request")||File.Exists("Temp/Zona02LocalViews.request")){bool viewOnly=File.Exists("Temp/Zona02LocalViews.request");File.Delete(viewOnly?"Temp/Zona02LocalViews.request":"Temp/Zona02LocalPlay.request");SessionState.SetBool(Key+"Zona02Views",viewOnly);SessionState.SetBool(Key+"Zona02",true);SessionState.SetBool(Key+"Access",false);SessionState.SetBool(Key+"Puzzle01",false);SessionState.SetBool(Key+"Entrance",false);SessionState.SetBool(Key+"Golden",false);SessionState.SetBool(Key+"Expansion",false);SessionState.SetBool(Key+"Metrics",false);Begin();return;}
             SessionState.SetBool(Key+"Zona02",false);
             var accessRequest=new[]{"Temp/Puzzle02AccessBefore.request","Temp/Puzzle02AccessPlay.request"}.FirstOrDefault(File.Exists);
@@ -88,7 +92,7 @@ namespace Tikal.Tests.Editor
             if(state==PlayModeStateChange.EnteredPlayMode)Start();
             if(state==PlayModeStateChange.EnteredEditMode)
             {
-                SessionState.SetBool(Key,false);EditorSceneManager.OpenScene(Level01EnvironmentArtPass.ScenePath);AssetDatabase.Refresh();Debug.Log("LEVEL01_ART_PLAY_FINISHED");
+                SessionState.SetBool(Key,false);SessionState.SetBool(Key+"Zona02Second",false);EditorSceneManager.OpenScene(Level01EnvironmentArtPass.ScenePath);AssetDatabase.Refresh();Debug.Log("LEVEL01_ART_PLAY_FINISHED");
             }
         }
         static void Start()
