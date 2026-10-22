@@ -31,7 +31,7 @@ namespace Tikal.Tests.Editor
         static bool entrance=>SessionState.GetBool(Key+"Entrance",false);
         static bool puzzle01=>SessionState.GetBool(Key+"Puzzle01",false);
         static bool expansion=>SessionState.GetBool(Key+"Expansion",false);
-        static string Folder=>puzzle01?Puzzle01EnclosureArtPass.Evidence+(SessionState.GetBool(Key+"PuzzleBefore",false)?"/Before":"/After"):expansion?EntranceExpansionArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceExpansion.Pass",0):entrance?EntranceHeroArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceHero.Pass",0):golden?GoldenSliceArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.Golden.Pass",0):Level01EnvironmentArtPass.Evidence+(before?"/Before":"/After");
+        static string Folder=>puzzle01?(SessionState.GetBool(Key+"LeftPolish",false)?Puzzle01LeftPolish.Evidence:Puzzle01EnclosureArtPass.Evidence)+(SessionState.GetBool(Key+"PuzzleBefore",false)?"/Before":"/After"):expansion?EntranceExpansionArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceExpansion.Pass",0):entrance?EntranceHeroArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceHero.Pass",0):golden?GoldenSliceArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.Golden.Pass",0):Level01EnvironmentArtPass.Evidence+(before?"/Before":"/After");
         static Level01EnvironmentPlayValidation()
         {
             EditorApplication.update+=Poll;EditorApplication.playModeStateChanged+=Mode;
@@ -41,7 +41,8 @@ namespace Tikal.Tests.Editor
         {
             if(EditorApplication.isCompiling||EditorApplication.isUpdating||EditorApplication.isPlayingOrWillChangePlaymode)return;
             if(new[]{"Temp/EntranceExpansionPlay.request","Temp/EntranceExpansionViews.request","Temp/EntranceHeroPlay.request","Temp/EntranceHeroViews.request","Temp/GoldenSliceMetrics.request","Temp/GoldenSlicePlay.request","Temp/Level01ArtPlayBefore.request","Temp/Level01ArtPlay.request","Temp/Level01ArtSurvey.request","Temp/Level01ArtRegression.request"}.Any(File.Exists))SessionState.SetBool(Key+"Puzzle01",false);
-            if(File.Exists("Temp/Puzzle01Play.request")||File.Exists("Temp/Puzzle01BeforeViews.request")){bool beforeViews=File.Exists("Temp/Puzzle01BeforeViews.request");File.Delete(beforeViews?"Temp/Puzzle01BeforeViews.request":"Temp/Puzzle01Play.request");SessionState.SetBool(Key+"Puzzle01",true);SessionState.SetBool(Key+"PuzzleBefore",beforeViews);SessionState.SetBool(Key+"Entrance",false);SessionState.SetBool(Key+"Expansion",false);SessionState.SetBool(Key+"Golden",false);SessionState.SetBool(Key+"Metrics",false);Begin();}
+            var puzzleRequest=new[]{"Temp/Puzzle01LeftPlay.request","Temp/Puzzle01LeftBefore.request","Temp/Puzzle01Play.request","Temp/Puzzle01BeforeViews.request"}.FirstOrDefault(File.Exists);
+            if(puzzleRequest!=null){bool beforeViews=puzzleRequest.Contains("Before");File.Delete(puzzleRequest);SessionState.SetBool(Key+"LeftPolish",puzzleRequest.Contains("Left"));SessionState.SetBool(Key+"Puzzle01",true);SessionState.SetBool(Key+"PuzzleBefore",beforeViews);SessionState.SetBool(Key+"Entrance",false);SessionState.SetBool(Key+"Expansion",false);SessionState.SetBool(Key+"Golden",false);SessionState.SetBool(Key+"Metrics",false);Begin();}
             else if(File.Exists("Temp/EntranceExpansionPlay.request")){File.Delete("Temp/EntranceExpansionPlay.request");SessionState.SetBool(Key+"Entrance",true);SessionState.SetBool(Key+"Expansion",true);SessionState.SetBool(Key+"Metrics",false);Begin();}
             else if(File.Exists("Temp/EntranceExpansionViews.request")){File.Delete("Temp/EntranceExpansionViews.request");SessionState.SetBool(Key+"Entrance",true);SessionState.SetBool(Key+"Expansion",true);SessionState.SetBool(Key+"Metrics",true);Begin();}
             else if(File.Exists("Temp/EntranceHeroPlay.request")){File.Delete("Temp/EntranceHeroPlay.request");SessionState.SetBool(Key+"Entrance",true);SessionState.SetBool(Key+"Expansion",false);SessionState.SetBool(Key+"Metrics",false);Begin();}
@@ -226,6 +227,15 @@ namespace Tikal.Tests.Editor
                 Place(new Vector3(pose.Item2.x,Floor(pose.Item2.x,pose.Item2.y),pose.Item2.y),pose.Item3);yield return Frames(24);
                 Check(player.transform.position.y>0,"Stable ground "+pose.Item1);views.Add(Measure(pose.Item1,camera.Mode.ToString()));ScreenCapture.CaptureScreenshot(Folder+"/"+pose.Item1+".png");yield return Frames(5);
             }
+            if(SessionState.GetBool(Key+"LeftPolish",false))
+            {
+                foreach(var pose in new[]{("06_Left_Enclosure",new Vector2(-2,10),285f),("07_Left_Background",new Vector2(-2,12),305f),("08_Left_FPS",new Vector2(-5.5f,11.4f),285f)})
+                {
+                    CameraMode(pose.Item1.Contains("FPS")?Tikal.Persistence.CameraMode.FirstPerson:Tikal.Persistence.CameraMode.ThirdPerson);
+                    Place(new Vector3(pose.Item2.x,Floor(pose.Item2.x,pose.Item2.y),pose.Item2.y),pose.Item3);yield return Frames(24);
+                    Check(player.transform.position.y>0,"Stable left view "+pose.Item1);views.Add(Measure(pose.Item1,camera.Mode.ToString()));ScreenCapture.CaptureScreenshot(Folder+"/"+pose.Item1+".png");yield return Frames(5);
+                }
+            }
             if(SessionState.GetBool(Key+"PuzzleBefore",false))yield break;
             Place(new Vector3(0,Floor(0,-10),-10),0);yield return Frames(24);ScreenCapture.CaptureScreenshot(Folder+"/05_Entrance_Preserved.png");yield return Frames(5);
             foreach(var mode in new[]{Tikal.Persistence.CameraMode.FirstPerson,Tikal.Persistence.CameraMode.ThirdPerson})
@@ -234,6 +244,7 @@ namespace Tikal.Tests.Editor
                 Place(new Vector3(0,Floor(0,4),4),0);yield return Frames(6);
                 yield return WalkTo(0,12);yield return WalkTo(-5.8f,14);
                 var mural=UnityEngine.Object.FindAnyObjectByType<Tikal.Puzzles.Level01.MuralFragmentsPuzzle>();
+                int solveEvents=0;mural.PuzzleSolved+=_=>solveEvents++;
                 var ms=new SerializedObject(mural);var fragments=ms.FindProperty("_fragments");var solution=ms.FindProperty("_solution");
                 var interaction=player.GetComponent<PlayerInteraction>();
                 for(int i=0;i<4;i++)
@@ -250,6 +261,8 @@ namespace Tikal.Tests.Editor
                 }
                 Check(mural.IsSolved,"Original mural solves "+mode);
                 var tracker=UnityEngine.Object.FindAnyObjectByType<Tikal.Puzzles.Clues.ClueTracker>();Check(tracker.Count==1,"Clue01 rewarded exactly once "+mode);
+                Check(solveEvents==1,"One original PuzzleSolved event "+mode);
+                foreach(var f in mural.GetComponentsInChildren<Tikal.Puzzles.Level01.MuralFragment>())f.Interact();yield return Frames(3);Check(solveEvents==1&&tracker.Count==1,"Repeated solved-fragment interactions do not grant another clue "+mode);
                 // The discovery panel dismisses automatically after six realtime seconds.
                 double until=EditorApplication.timeSinceStartup+6.6;while(EditorApplication.timeSinceStartup<until)yield return Frames(1);
                 yield return WalkTo(0,12);yield return WalkTo(11,12);Check(player.GameplayActive,"Eastern route clear "+mode);
