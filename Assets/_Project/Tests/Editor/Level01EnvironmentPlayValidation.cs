@@ -29,11 +29,13 @@ namespace Tikal.Tests.Editor
         static bool before=>SessionState.GetBool(Key+"Before",false);
         static bool golden=>SessionState.GetBool(Key+"Golden",false);
         static bool entrance=>SessionState.GetBool(Key+"Entrance",false);
+        static bool guardianViewsOnly=>SessionState.GetBool(Key+"GuardianViewsOnly",false);
+        static bool guardianVisuals=>SessionState.GetBool(Key+"GuardianVisuals",false);
         static bool zona02=>SessionState.GetBool(Key+"Zona02",false);
         static bool access=>SessionState.GetBool(Key+"Access",false);
         static bool puzzle01=>SessionState.GetBool(Key+"Puzzle01",false);
         static bool expansion=>SessionState.GetBool(Key+"Expansion",false);
-        static string Folder=>zona02?(SessionState.GetBool(Key+"Zona02Mass",false)?Zona02RuinsArtPass.MassEvidence:SessionState.GetBool(Key+"Zona02Second",false)?Zona02RuinsArtPass.Evidence:Zona02JungleArtPass.Evidence)+(SessionState.GetBool(Key+"Zona02Views",false)?"/FinalViews":"/After"):access?Puzzle02AccessArtPass.Evidence+(SessionState.GetBool(Key+"AccessBefore",false)?"/Before":"/After"):puzzle01?(SessionState.GetBool(Key+"LeftPolish",false)?Puzzle01LeftPolish.Evidence:Puzzle01EnclosureArtPass.Evidence)+(SessionState.GetBool(Key+"PuzzleBefore",false)?"/Before":"/After"):expansion?EntranceExpansionArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceExpansion.Pass",0):entrance?EntranceHeroArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceHero.Pass",0):golden?GoldenSliceArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.Golden.Pass",0):Level01EnvironmentArtPass.Evidence+(before?"/Before":"/After");
+        static string Folder=>guardianVisuals?Puzzle02GuardianVisualIntegration.Evidence+(guardianViewsOnly?"/FinalViews":"/Play"):zona02?(SessionState.GetBool(Key+"Zona02Mass",false)?Zona02RuinsArtPass.MassEvidence:SessionState.GetBool(Key+"Zona02Second",false)?Zona02RuinsArtPass.Evidence:Zona02JungleArtPass.Evidence)+(SessionState.GetBool(Key+"Zona02Views",false)?"/FinalViews":"/After"):access?Puzzle02AccessArtPass.Evidence+(SessionState.GetBool(Key+"AccessBefore",false)?"/Before":"/After"):puzzle01?(SessionState.GetBool(Key+"LeftPolish",false)?Puzzle01LeftPolish.Evidence:Puzzle01EnclosureArtPass.Evidence)+(SessionState.GetBool(Key+"PuzzleBefore",false)?"/Before":"/After"):expansion?EntranceExpansionArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceExpansion.Pass",0):entrance?EntranceHeroArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceHero.Pass",0):golden?GoldenSliceArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.Golden.Pass",0):Level01EnvironmentArtPass.Evidence+(before?"/Before":"/After");
         static Level01EnvironmentPlayValidation()
         {
             EditorApplication.update+=Poll;EditorApplication.playModeStateChanged+=Mode;
@@ -42,6 +44,10 @@ namespace Tikal.Tests.Editor
         static void Poll()
         {
             if(EditorApplication.isCompiling||EditorApplication.isUpdating||EditorApplication.isPlayingOrWillChangePlaymode)return;
+            if(File.Exists("Temp/Puzzle02FinalVisualPlay.request")||File.Exists("Temp/Puzzle02FinalVisualViews.request"))
+            {
+                bool onlyViews=File.Exists("Temp/Puzzle02FinalVisualViews.request");File.Delete(onlyViews?"Temp/Puzzle02FinalVisualViews.request":"Temp/Puzzle02FinalVisualPlay.request");SessionState.SetBool(Key+"GuardianViewsOnly",onlyViews);SessionState.SetBool(Key+"GuardianVisuals",true);foreach(var flag in new[]{"Zona02","Access","Puzzle01","Entrance","Golden","Expansion","Metrics"})SessionState.SetBool(Key+flag,false);Begin();return;
+            }
             if(File.Exists("Temp/Zona02MassPlay.request")||File.Exists("Temp/Zona02MassViews.request"))
             {
                 bool viewsOnly=File.Exists("Temp/Zona02MassViews.request");File.Delete(viewsOnly?"Temp/Zona02MassViews.request":"Temp/Zona02MassPlay.request");SessionState.SetBool(Key+"Zona02Mass",true);File.WriteAllText(viewsOnly?"Temp/Zona02SecondViews.request":"Temp/Zona02SecondPlay.request","Zone02 mass composition local review");
@@ -96,7 +102,7 @@ namespace Tikal.Tests.Editor
             if(state==PlayModeStateChange.EnteredPlayMode)Start();
             if(state==PlayModeStateChange.EnteredEditMode)
             {
-                SessionState.SetBool(Key,false);SessionState.SetBool(Key+"Zona02Second",false);SessionState.SetBool(Key+"Zona02Mass",false);EditorSceneManager.OpenScene(Level01EnvironmentArtPass.ScenePath);AssetDatabase.Refresh();Debug.Log("LEVEL01_ART_PLAY_FINISHED");
+                SessionState.SetBool(Key,false);SessionState.SetBool(Key+"Zona02Second",false);SessionState.SetBool(Key+"Zona02Mass",false);SessionState.SetBool(Key+"GuardianVisuals",false);EditorSceneManager.OpenScene(Level01EnvironmentArtPass.ScenePath);AssetDatabase.Refresh();Debug.Log("LEVEL01_ART_PLAY_FINISHED");
             }
         }
         static void Start()
@@ -126,6 +132,7 @@ namespace Tikal.Tests.Editor
             if(puzzle01)scope="Puzzle01 only: four gameplay views, physical FPS/TPS plaza-to-mural and east-exit routes, fragment line-of-sight, original mural rotations and Clue01 reward. No global regression or build performance benchmark.";
             if(access)scope="Puzzle01 east outlet, connector and Puzzle02 base access only. Native FPS/TPS central and edge-lane walking; torso capsule overlap probes; Puzzle01 original solve and single reward. No final Puzzle02 art approval or build performance claim.";
             if(zona02)scope=SessionState.GetBool(Key+"Zona02Views",false)?"Zone02 final visual captures only; physical route evidence retained separately in After/PlayValidation.json.":"Zone02 only: scene load, short native FPS/TPS access route and four local views. No puzzle interactions, clue checks, outcome or global validation.";
+            if(guardianVisuals)scope=guardianViewsOnly?"Puzzle02 final visual captures only. Native interaction, rotation, clue-once and physical FPS/TPS evidence retained in Play/PlayValidation.json.":"Puzzle02 final visuals only: original three guardians, native gamepad focus/interact and coroutines, pivot stability, initial 3/0/0, solution 3/1/2, three-turn solve, single Clue02, six emission marks, local FPS/TPS access and exit. No Puzzle01, global progression or outcome tests.";
             Directory.CreateDirectory(Folder);File.WriteAllText(Folder+(metrics?"/MetricsValidation.json":"/PlayValidation.json"),JsonUtility.ToJson(new Report{passed=errors.Count==0,checks=checks.ToArray(),errors=errors.ToArray(),views=views.ToArray(),scope=scope},true));EditorApplication.ExitPlaymode();
         }
         static void Input(Vector2 move,Vector2 look=default,bool jump=false,bool sprint=false)=>InputSystem.QueueStateEvent(pad,new GamepadState{leftStick=move,rightStick=look}.WithButton(GamepadButton.South,jump).WithButton(GamepadButton.LeftStick,sprint));
@@ -194,6 +201,7 @@ namespace Tikal.Tests.Editor
         }
         static IEnumerator Tests()
         {
+            if(guardianVisuals){yield return GuardianVisualTests();yield break;}
             if(zona02){yield return Zona02LocalTests();yield break;}
             if(access){yield return AccessTests();yield break;}
             if(puzzle01){yield return Puzzle01Tests();yield break;}
@@ -242,6 +250,62 @@ namespace Tikal.Tests.Editor
             var hits=Physics.OverlapCapsule(new Vector3(b.center.x,b.min.y+radius+.16f,b.center.z),new Vector3(b.center.x,b.max.y-radius-.1f,b.center.z),radius,~0,QueryTriggerInteraction.Ignore).Where(c=>!c.transform.IsChildOf(player.transform)).ToArray();
             Check(hits.Length==0,"No torso solid overlap "+name+(hits.Length>0?": "+string.Join(",",hits.Select(c=>c.name)):""));
             float floor=Floor(player.transform.position.x,player.transform.position.z)-.11f;Check(player.transform.position.y>=floor-.08f&&player.transform.position.y<floor+.6f,"Feet on original floor "+name);
+        }
+        static void GuardianFeedback(Tikal.Puzzles.Level01.PathGuardiansPuzzle p)
+        {
+            var f=new SerializedObject(p.GetComponent<Tikal.Puzzles.Level01.GuardiansAlignmentFeedback>());
+            foreach(var field in new[]{"_individualMarks","_centralMarks"})for(int i=0;i<3;i++)
+            {
+                var r=(Renderer)f.FindProperty(field).GetArrayElementAtIndex(i).objectReferenceValue;var block=new MaterialPropertyBlock();r.GetPropertyBlock(block);var expected=p.IsGuardianAligned(i)?new Color(.8f,.48f,.12f):Color.black;var actual=block.GetColor("_EmissionColor");
+                Check(r.enabled&&r.sharedMaterial.IsKeywordEnabled("_EMISSION")&&Vector3.Distance(new Vector3(actual.r,actual.g,actual.b),new Vector3(expected.r,expected.g,expected.b))<.001f,"Original feedback mark "+field+" "+i+" aligned="+p.IsGuardianAligned(i));
+            }
+        }
+        static IEnumerator FocusGuardian(Tikal.Puzzles.Level01.PathGuardian g)
+        {
+            var interaction=player.GetComponent<PlayerInteraction>();var pos=g.transform.position+Vector3.back*1.8f;Place(new Vector3(pos.x,Floor(pos.x,pos.z),pos.z),0);yield return Frames(8);
+            for(int frame=0;frame<180;frame++)
+            {
+                if(ReferenceEquals(interaction.CurrentInteractable,g)){Input(Vector2.zero);yield return Frames(2);Check(ReferenceEquals(interaction.CurrentInteractable,g),"Native raycast focus "+g.name+" "+camera.Mode);yield break;}
+                var direction=(g.GetComponent<Collider>().bounds.center-ViewCamera.transform.position).normalized;
+                float yaw=Vector3.SignedAngle(Vector3.ProjectOnPlane(ViewCamera.transform.forward,Vector3.up),Vector3.ProjectOnPlane(direction,Vector3.up),Vector3.up);
+                float desiredPitch=-Mathf.Asin(direction.y)*Mathf.Rad2Deg, pitch=Mathf.DeltaAngle(ViewCamera.transform.eulerAngles.x,desiredPitch);
+                float Axis(float e)=>Mathf.Abs(e)<.6f?0:Mathf.Sign(e)*Mathf.Clamp(Mathf.Abs(e)*.04f,.22f,.65f);
+                Input(Vector2.zero,new Vector2(Axis(yaw),-Axis(pitch)));yield return null;
+            }
+            throw new InvalidOperationException("Unable to focus original guardian "+g.name+" "+camera.Mode+" at "+player.transform.position);
+        }
+        static IEnumerator TurnGuardian(Tikal.Puzzles.Level01.PathGuardian g)
+        {
+            var pivot=(Transform)new SerializedObject(g).FindProperty("_visual").objectReferenceValue;var art=pivot.Find("VisualRoot_FinalKit");var position=pivot.position;int expected=(g.CurrentOrientation+1)%4;
+            Check(ReferenceEquals(player.GetComponent<PlayerInteraction>().CurrentInteractable,g),"Focused before native Interact "+g.name);
+            InputSystem.QueueStateEvent(pad,new GamepadState().WithButton(GamepadButton.West));yield return null;yield return Frames(2);
+            Check(g.IsRotating,"Original coroutine rotates final art "+g.name);int frames=0;while(g.IsRotating&&frames++<40)yield return Frames(1);yield return Frames(3);
+            Check(g.CurrentOrientation==expected&&!g.IsRotating,"Rotation completes +90 Y "+g.name);Check(Vector3.Distance(position,pivot.position)<.001f&&art.localPosition.sqrMagnitude<.000001f&&Quaternion.Angle(art.localRotation,Quaternion.identity)<.01f,"Centered final visual pivot without orbit "+g.name);
+            Check(Quaternion.Angle(pivot.localRotation,Quaternion.Euler(0,expected*90,0))<.05f,"Exact discrete visual orientation "+g.name);
+        }
+        static IEnumerator GuardianVisualTests()
+        {
+            EditorSceneManager.LoadSceneInPlayMode(Level01EnvironmentArtPass.ScenePath,new LoadSceneParameters(LoadSceneMode.Single));yield return Frames(18);Bind();CameraMode(Tikal.Persistence.CameraMode.ThirdPerson);
+            foreach(var pose in new[]{("Puzzle02_Frontal",new Vector2(29,12),90f),("Puzzle02_Left",new Vector2(30,6.5f),20f),("Puzzle02_Right",new Vector2(36,15),220f),("Puzzle02_Wide",new Vector2(23.5f,12),90f)})
+            {Place(new Vector3(pose.Item2.x,Floor(pose.Item2.x,pose.Item2.y),pose.Item2.y),pose.Item3);yield return Frames(24);ScreenCapture.CaptureScreenshot(Folder+"/"+pose.Item1+".png");yield return Frames(5);}
+            if(guardianViewsOnly)yield break;
+            foreach(var mode in new[]{Tikal.Persistence.CameraMode.FirstPerson,Tikal.Persistence.CameraMode.ThirdPerson})
+            {
+                EditorSceneManager.LoadSceneInPlayMode(Level01EnvironmentArtPass.ScenePath,new LoadSceneParameters(LoadSceneMode.Single));yield return Frames(15);Bind();CameraMode(mode);
+                var p=UnityEngine.Object.FindAnyObjectByType<Tikal.Puzzles.Level01.PathGuardiansPuzzle>();var ps=new SerializedObject(p);var gs=Enumerable.Range(0,3).Select(i=>(Tikal.Puzzles.Level01.PathGuardian)ps.FindProperty("_guardians").GetArrayElementAtIndex(i).objectReferenceValue).ToArray();
+                var reward=p.GetComponent<Tikal.Puzzles.Clues.PuzzleClueReward>();var tracker=(Tikal.Puzzles.Clues.ClueTracker)new SerializedObject(reward).FindProperty("_tracker").objectReferenceValue;int solves=0,clues=0;p.PuzzleSolved+=_=>solves++;tracker.ClueDiscovered+=c=>{if(c.Id=="level01.clue02")clues++;};
+                Check(gs.Length==3&&gs.Select(g=>g.CurrentOrientation).SequenceEqual(new[]{3,0,0}),"Original initial [3,0,0] "+mode);Check(tracker.Count==0,"Isolated clue state "+mode);Check(gs.All(g=>g.transform.Find("Rotation pivot/VisualRoot_FinalKit")!=null),"Three final guardian visuals assigned "+mode);GuardianFeedback(p);
+                var fixedParts=gs.Select(g=>g.transform.Find("Fixed plinth")).Concat(Enumerable.Range(0,3).Select(i=>((Tikal.Puzzles.Level01.DestinationMarker)ps.FindProperty("_destinations").GetArrayElementAtIndex(i).objectReferenceValue).transform)).ToDictionary(t=>t,t=>t.position);
+                Place(new Vector3(19.4f,Floor(19.4f,12),12),0);yield return Frames(5);yield return WalkTo(24,12);yield return WalkTo(29,12);
+                yield return FocusGuardian(gs[0]);yield return TurnGuardian(gs[0]);Check(!p.IsSolved,"Turning A away does not solve");GuardianFeedback(p);Check(p.ResetPuzzle(),"Local reset restores canonical orientation after A interaction");yield return Frames(3);
+                Check(gs.Select(g=>g.CurrentOrientation).SequenceEqual(new[]{3,0,0}),"Canonical state restored before minimum-turn solve");
+                yield return FocusGuardian(gs[1]);yield return TurnGuardian(gs[1]);Check(!p.IsSolved&&p.AlignedCount==2,"B gives two aligned guardians");GuardianFeedback(p);
+                yield return FocusGuardian(gs[2]);yield return TurnGuardian(gs[2]);Check(!p.IsSolved,"First C turn does not solve");yield return TurnGuardian(gs[2]);GuardianFeedback(p);
+                Check(p.IsSolved&&solves==1&&p.RotationCount==3&&gs.Select(g=>g.CurrentOrientation).SequenceEqual(new[]{3,1,2}),"Canonical [3,1,2] solves with MinimumTurns 3 "+mode);
+                Check(tracker.Count==1&&tracker.HasClue("level01.clue02")&&clues==1,"Clue02 delivered exactly once "+mode);foreach(var g in gs)g.Interact();yield return Frames(3);Check(solves==1&&clues==1&&tracker.Count==1&&gs.All(g=>!g.CanInteract),"Solved interactions do not repeat clue or rotations "+mode);
+                Check(fixedParts.All(k=>Vector3.Distance(k.Key.position,k.Value)<.001f),"Pedestals and destination markers remain fixed "+mode);Check(p.GetComponentInChildren<Light>(true).enabled,"Original solved light retained");
+                Place(new Vector3(29,Floor(29,12),12),0);yield return Frames(4);yield return WalkTo(29,19);yield return WalkTo(29,22);Check(player.GameplayActive,"Local Zone02 exit accessible "+mode);
+            }
         }
         static IEnumerator Zona02LocalTests()
         {
