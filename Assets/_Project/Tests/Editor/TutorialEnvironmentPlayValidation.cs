@@ -39,9 +39,12 @@ namespace Tikal.Tests.Editor
         static void Poll()
         {
             if (EditorApplication.isCompiling || EditorApplication.isUpdating || EditorApplication.isPlayingOrWillChangePlaymode) return;
+            if (File.Exists("Temp/TutorialDepthPair.request")) { File.Delete("Temp/TutorialDepthPair.request"); RunComparisonPair(); return; }
+            if (File.Exists("Temp/TutorialDepthBefore.request")) { File.Delete("Temp/TutorialDepthBefore.request"); RunBeforeComparison(); return; }
             if(File.Exists("Temp/TutorialGuidanceMeasure.request")){File.Delete("Temp/TutorialGuidanceMeasure.request");SessionState.SetBool(Key+"Measure",true);Run();return;}
             if(!File.Exists("Temp/TutorialArtPlay.request"))return;
             SessionState.SetBool(Key+"Measure",false);
+            SessionState.SetBool(Key+"ApprovedVisualBaseline",false);
             File.Delete("Temp/TutorialArtPlay.request"); Run();
         }
         [MenuItem("Tikal/Validation/Run Tutorial Environment Play Tests")]
@@ -53,6 +56,16 @@ namespace Tikal.Tests.Editor
             SessionState.SetString(Key + "Setup", JsonUtility.ToJson(new Setup { scenes = EditorSceneManager.GetSceneManagerSetup() }));
             EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single); SessionState.SetBool(Key, true); EditorApplication.EnterPlaymode();
         }
+        [MenuItem("Tikal/Validation/Run Tutorial Jungle Depth Before Comparison")]
+        public static void RunBeforeComparison()
+        {
+            SessionState.SetBool(Key+"ApprovedVisualBaseline",true); SessionState.SetBool(Key+"Measure",false); Run();
+        }
+        [MenuItem("Tikal/Validation/Run Tutorial Jungle Depth Comparison Pair")]
+        public static void RunComparisonPair()
+        {
+            SessionState.SetBool(Key+"Pair",true); RunBeforeComparison();
+        }
         static void Resume() { if (SessionState.GetBool(Key, false) && EditorApplication.isPlaying) Start(); }
         static void Mode(PlayModeStateChange state)
         {
@@ -62,6 +75,11 @@ namespace Tikal.Tests.Editor
             {
                 SessionState.SetBool(Key, false); EditorSceneManager.RestoreSceneManagerSetup(JsonUtility.FromJson<Setup>(SessionState.GetString(Key + "Setup", "")).scenes);
                 AssetDatabase.Refresh(); Debug.Log("TUTORIAL_ART_PLAY_FINISHED");
+                if (SessionState.GetBool(Key+"QueueAfter",false))
+                {
+                    SessionState.SetBool(Key+"QueueAfter",false); SessionState.SetBool(Key+"Pair",false);
+                    EditorApplication.delayCall += () => { SessionState.SetBool(Key+"ApprovedVisualBaseline",false); SessionState.SetBool(Key+"Measure",false); Run(); };
+                }
             }
         }
         static void Set(object obj, string field, object value) => obj.GetType().GetField(field, BindingFlags.Instance | BindingFlags.NonPublic).SetValue(obj, value);
@@ -70,6 +88,7 @@ namespace Tikal.Tests.Editor
         {
             foreach (var flow in scene.GetRootGameObjects().SelectMany(g => g.GetComponentsInChildren<GameFlowController>(true))) { Set(flow, "_persistence", save); Set(flow, "_progress", save.LoadProgress()); }
             foreach (var spawn in scene.GetRootGameObjects().SelectMany(g => g.GetComponentsInChildren<CharacterVisualSpawner>(true))) spawn.Apply(character);
+            if (SessionState.GetBool(Key+"ApprovedVisualBaseline",false)) TutorialJungleDepthPlayTests.ApplyApprovedVisualBaseline(scene);
         }
         static void Start()
         {
@@ -96,8 +115,17 @@ namespace Tikal.Tests.Editor
             Time.captureFramerate = oldCapture; Application.runInBackground = oldBackground; AudioListener.volume = oldVolume;
             var sorted = frameTimes.OrderBy(t => t).ToArray();
             Directory.CreateDirectory(TutorialEnvironmentArtPass.Evidence);
-            File.WriteAllText(TutorialEnvironmentArtPass.Evidence + "/PlayValidation.json", JsonUtility.ToJson(new Report { passed = errors.Count == 0, enteredPlayMode = true, checks = checks.ToArray(), errors = errors.ToArray(), views = views.ToArray(), meanFrameMs = sorted.Length == 0 ? 0 : sorted.Average(), p95FrameMs = sorted.Length == 0 ? 0 : sorted[(int)((sorted.Length - 1) * .95)], scope = "Normal interactive Editor. Virtual gamepad drives unchanged Player/Tutorial code through real physics in Dwight TPS and FPS. Camera is reset to straight ahead after Look. Intro skip uses real UI.Cancel. Saves isolated; frame timings exclude initial warm-up and five frames after captures but retain Editor overhead and are not a standalone GPU benchmark. Visible triangles use frustum and selected LOD, without occlusion or shadow passes." }, true));
+            File.WriteAllText(TutorialEnvironmentArtPass.Evidence + "/PlayValidation.json", JsonUtility.ToJson(new Report { passed = errors.Count == 0, enteredPlayMode = true, checks = checks.ToArray(), errors = errors.ToArray(), views = views.ToArray(), meanFrameMs = sorted.Length == 0 ? 0 : sorted.Average(), p95FrameMs = sorted.Length == 0 ? 0 : sorted[(int)((sorted.Length - 1) * .95)], scope = (SessionState.GetBool(Key+"ApprovedVisualBaseline",false) ? "COMPARABLE BEFORE: approved 18869e0 visuals restored only in transient Play Mode. " : "") + "Normal interactive Editor. Virtual gamepad drives unchanged Player/Tutorial code through real physics in Dwight TPS and FPS. Camera is reset to straight ahead after Look. Intro skip uses real UI.Cancel. Saves isolated; frame timings exclude initial warm-up and five frames after captures but retain Editor overhead and are not a standalone GPU benchmark. Visible triangles use frustum and selected LOD, without occlusion or shadow passes." }, true));
             if(SessionState.GetBool(Key+"Measure",false))File.WriteAllText(TutorialEnvironmentArtPass.Evidence+"/CrouchMeasurements.json",JsonUtility.ToJson(new MeasurementReport{passed=errors.Count==0,characters=measurements.ToArray(),scope="Real unchanged production Player/Animator in interactive Play Mode. Tops are world-space maximum CPU-skinned geometry, including head/hair/clothing; capsule tops include actual player floor elevation. Crouch walk sampled for two simulated seconds."},true));
+            if (SessionState.GetBool(Key+"ApprovedVisualBaseline",false))
+            {
+                File.Copy(TutorialEnvironmentArtPass.Evidence + "/PlayValidation.json", TutorialEnvironmentArtPass.Evidence + "/BeforeComparablePlayValidation.json", true);
+                string folder = TutorialEnvironmentArtPass.Evidence + "/ComparableBefore"; Directory.CreateDirectory(folder);
+                foreach (string path in Directory.GetFiles(TutorialEnvironmentArtPass.Evidence, "*.png")) File.Copy(path, folder + "/" + Path.GetFileName(path), true);
+                foreach (string name in new[] { "PlayValidation.json", "GuidancePlayValidation.json", "JungleDepthPlayValidation.json" }) File.Copy(TutorialEnvironmentArtPass.Evidence + "/" + name, folder + "/" + name, true);
+                if (SessionState.GetBool(Key+"Pair",false) && errors.Count == 0) SessionState.SetBool(Key+"QueueAfter",true);
+            }
+            SessionState.SetBool(Key+"ApprovedVisualBaseline",false);
             EditorApplication.ExitPlaymode();
         }
         static void Input(Vector2 move, Vector2 look = default, GamepadButton? button = null)
@@ -142,6 +170,7 @@ namespace Tikal.Tests.Editor
             Check(spawn.CurrentVisual.name == CharacterIds.Default && spawn.CurrentVisual.activeInHierarchy == (mode == CameraMode.ThirdPerson), prefix + " canonical Dwight visibility"); Capture(prefix + "_01_Start");
             yield return Until(() => !Active(TutorialPromptAction.Move), 100, prefix + " Move completes with real locomotion", Vector2.up);
             yield return Until(() => Active(TutorialPromptAction.Look), 60, prefix + " Look activates after feedback", Vector2.zero);
+            Capture(prefix + "_01b_Look");
             for (int i = 0; i < 90 && Active(TutorialPromptAction.Look); i++) { Input(Vector2.zero, new Vector2(.85f, 0)); yield return null; }
             Input(Vector2.zero); Check(!Active(TutorialPromptAction.Look), prefix + " Look completes from real look input");
             player.transform.rotation = Quaternion.identity; player.GetComponent<PlayerLook>().SynchronizePlayerYaw(); camera.SnapAfterTeleport();
@@ -199,6 +228,7 @@ namespace Tikal.Tests.Editor
             InputSystem.QueueStateEvent(keyboard, new KeyboardState()); for (int i = 0; i < 8; i++) yield return null;
             Check(SceneManager.GetActiveScene().path == TutorialEnvironmentArtPass.ScenePath && save.LoadProgress().IntroSeen, "Unchanged Intro skip actually enters dressed Tutorial");
             yield return TutorialGuidancePlayTests.Run(pad, save, Check);
+            yield return TutorialJungleDepthPlayTests.Run(pad, Check);
             yield return Route(CameraMode.ThirdPerson);
             save.SaveProgress(GameProgressData.CreateDefault()); StaticSet("_tutorialReplayToMenu", false);
             EditorSceneManager.LoadSceneInPlayMode(TutorialEnvironmentArtPass.ScenePath, new LoadSceneParameters(LoadSceneMode.Single)); for (int i = 0; i < 8; i++) yield return null;

@@ -30,7 +30,7 @@ namespace Tikal.Tests.Editor
         [Serializable] public class Stats
         {
             public bool passed;
-            public int instances, trees, bushes, plants, rocks, ruins, props, lodGroups, materials, textures, shadowCasters, artColliders, sceneColliders, largestMesh;
+            public int instances, trees, bushes, plants, rocks, ruins, props, lodGroups, materials, textures, shadowCasters, artColliders, sceneColliders, largestMesh, terrainPieces;
             public string largestMeshName, largestTexture, scope;
             public string[] resolutions, checks;
             public long allLodTriangles, lod0Triangles;
@@ -49,7 +49,9 @@ namespace Tikal.Tests.Editor
                 var files = new[] { ScenePath }.Concat(AssetDatabase.FindAssets("t:Prefab", new[] { Prefabs.TrimEnd('/') }).Select(g => AssetDatabase.GUIDToAssetPath(g))).ToArray();
                 var before = files.Select(File.ReadAllBytes).ToArray();
                 Apply();
-                Require(files.Select((p, i) => before[i].SequenceEqual(File.ReadAllBytes(p))).All(v => v), "Authoring twice byte-identical");
+                var changed = files.Select((p, i) => new { path = p, index = i }).Where(x => !before[x.index].SequenceEqual(File.ReadAllBytes(x.path))).ToArray();
+                foreach (var item in changed) File.WriteAllBytes(Evidence + "/IdempotenceBefore_" + Path.GetFileName(item.path), before[item.index]);
+                Require(changed.Length == 0, "Authoring twice byte-identical: " + string.Join(", ", changed.Select(x => x.path)));
                 File.WriteAllText(Evidence + "/Apply.txt", "PASS: deterministic placements, scene and prefabs byte-identical after second application");
             }
             catch (Exception e) { File.WriteAllText(Evidence + "/Apply.txt", e.ToString()); Debug.LogException(e); }
@@ -80,6 +82,21 @@ namespace Tikal.Tests.Editor
         }
         static Signature CaptureComponent(Component component) => new Signature { id = Id(component), value = Properties(component) };
         static Signature CaptureTransform(Transform t) => new Signature { id = Id(t), value = Id(t.parent) + "|" + t.localPosition.ToString("F6") + "|" + t.localRotation.ToString("F6") + "|" + t.localScale.ToString("F6") + "|" + t.gameObject.activeSelf };
+        static void CaptureDepthProtection()
+        {
+            if (File.Exists(TutorialJungleDepthAuthoring.Protection)) return;
+            var all = UnityEngine.Object.FindObjectsByType<Component>(FindObjectsInactive.Include).Where(c => c != null).ToArray();
+            var physical = all.OfType<Collider>().Where(c => c.enabled || c.name.StartsWith("Vegetation proxy ")).ToArray();
+            var protectedComponents = all.Where(c => physical.Contains(c) || (c is MonoBehaviour && c.GetType().Namespace != null && c.GetType().Namespace.StartsWith("Tikal."))).ToArray();
+            File.WriteAllText(TutorialJungleDepthAuthoring.Protection, JsonUtility.ToJson(new Baseline { components = protectedComponents.Select(CaptureComponent).ToArray(), transforms = physical.Select(c => c.transform).Distinct().Select(CaptureTransform).ToArray() }, true));
+        }
+        static void ValidateDepthProtection(Action<bool, string> check)
+        {
+            var baseline = JsonUtility.FromJson<Baseline>(File.ReadAllText(TutorialJungleDepthAuthoring.Protection));
+            var current = UnityEngine.Object.FindObjectsByType<Component>(FindObjectsInactive.Include).Where(c => c != null).ToDictionary(Id);
+            foreach (var item in baseline.components) check(current.TryGetValue(item.id, out var component) && Properties(component) == item.value, "Approved 18869e0 gameplay/boundary/safety component unchanged: " + item.id);
+            foreach (var item in baseline.transforms) check(current.TryGetValue(item.id, out var component) && CaptureTransform((Transform)component).value == item.value, "Approved physical transform unchanged: " + item.id);
+        }
         static Baseline CaptureBaseline() => new Baseline
         {
             components = UnityEngine.Object.FindObjectsByType<Component>(FindObjectsInactive.Include).Where(c => c != null && (c is MonoBehaviour || c is Collider)).Select(CaptureComponent).ToArray(),
@@ -149,6 +166,7 @@ namespace Tikal.Tests.Editor
             Require(!EditorSceneManager.GetActiveScene().isDirty, "Save current scene before applying art");
             PreparePrefabs();
             var scene = EditorSceneManager.OpenScene(ScenePath);
+            CaptureDepthProtection();
             var environment = Find("Environment");
             if (!File.Exists(Docs + "TutorialEnvironmentBaseline.json"))
             {
@@ -207,6 +225,7 @@ namespace Tikal.Tests.Editor
             RenderSettings.ambientMode = AmbientMode.Trilight; RenderSettings.ambientSkyColor = new Color(.46f, .57f, .57f); RenderSettings.ambientEquatorColor = new Color(.29f, .39f, .32f); RenderSettings.ambientGroundColor = new Color(.18f, .22f, .16f);
             RenderSettings.fog = true; RenderSettings.fogMode = FogMode.Linear; RenderSettings.fogStartDistance = 28; RenderSettings.fogEndDistance = 72; RenderSettings.fogColor = new Color(.29f, .38f, .34f);
             TutorialGuidanceAuthoring.Apply();
+            TutorialJungleDepthAuthoring.Apply();
             EditorSceneManager.MarkSceneDirty(scene); EditorSceneManager.SaveScene(scene); AssetDatabase.SaveAssets(); Validate();
         }
         [MenuItem("Tikal/Validation/Validate Tutorial Environment Art Pass")]
@@ -271,7 +290,9 @@ namespace Tikal.Tests.Editor
             check(filters.Max(f => f.sharedMesh.triangles.Length / 3) < 50000, "No high-poly source mesh");
             var largest = filters.OrderByDescending(f => f.sharedMesh.triangles.Length).First(); var largestTex = textures.OrderByDescending(t => t.width * t.height).First();
             TutorialGuidanceAuthoring.Validate(check);
-            var report = new Stats { passed = true, instances = placements.Length, trees = placements.Count(g => g.name.StartsWith("Tree_") || g.name.StartsWith("Canopy_")), bushes = placements.Count(g => g.name.StartsWith("Bush_") || g.name.StartsWith("EdgeMass_")), plants = placements.Count(g => g.name.StartsWith("Plant_") || g.name.StartsWith("LeafLitter_")), rocks = placements.Count(g => g.name.StartsWith("Rock_")), ruins = placements.Count(g => g.name.StartsWith("Wall_") || g.name.Contains("Columna") || g.name.Contains("LowLintel") || g.name.StartsWith("InteractPillar_")), props = placements.Count(g => g.name.Contains("LiftStone") || g.name.Contains("JumpObstacle")), lodGroups = placements.Sum(g => g.GetComponentsInChildren<LODGroup>(true).Length), materials = mats.Length, textures = textures.Length, shadowCasters = rs.Count(r => r.shadowCastingMode != ShadowCastingMode.Off), artColliders = placements.Sum(g => g.GetComponentsInChildren<Collider>(true).Count(c => c.enabled)), sceneColliders = all.OfType<Collider>().Count(c => c.enabled), largestMesh = largest.sharedMesh.triangles.Length / 3, largestMeshName = largest.sharedMesh.name, largestTexture = largestTex.name + " " + largestTex.width + "x" + largestTex.height, allLodTriangles = filters.Sum(f => (long)f.sharedMesh.triangles.Length / 3), lod0Triangles = placements.Sum(g => { var group = g.GetComponentInChildren<LODGroup>(); return group != null ? group.GetLODs()[0].renderers.Sum(r => (long)r.GetComponent<MeshFilter>().sharedMesh.triangles.Length / 3) : g.GetComponentsInChildren<MeshFilter>().Sum(f => (long)f.sharedMesh.triangles.Length / 3); }), resolutions = textures.Select(t => t.name + ":" + t.width + "x" + t.height).ToArray(), checks = checks.ToArray(), scope = "Editor integrity and scene geometry; visibility and frame timings are measured separately in real Play Mode." };
+            ValidateDepthProtection(check);
+            TutorialJungleDepthAuthoring.Validate(check);
+            var report = new Stats { passed = true, instances = placements.Length, trees = placements.Count(g => g.name.StartsWith("Tree_") || g.name.StartsWith("Canopy_")), bushes = placements.Count(g => g.name.StartsWith("Bush_") || g.name.StartsWith("EdgeMass_")), plants = placements.Count(g => g.name.StartsWith("Plant_") || g.name.StartsWith("LeafLitter_")), rocks = placements.Count(g => g.name.StartsWith("Rock_")), ruins = placements.Count(g => g.name.StartsWith("Wall_") || g.name.Contains("Columna") || g.name.Contains("LowLintel") || g.name.StartsWith("InteractPillar_")), terrainPieces = placements.Count(g => g.name.StartsWith("Relief_Mound_")), props = placements.Count(g => g.name.Contains("LiftStone") || g.name.Contains("JumpObstacle")), lodGroups = placements.Sum(g => g.GetComponentsInChildren<LODGroup>(true).Length), materials = mats.Length, textures = textures.Length, shadowCasters = rs.Count(r => r.shadowCastingMode != ShadowCastingMode.Off), artColliders = placements.Sum(g => g.GetComponentsInChildren<Collider>(true).Count(c => c.enabled)), sceneColliders = all.OfType<Collider>().Count(c => c.enabled), largestMesh = largest.sharedMesh.triangles.Length / 3, largestMeshName = largest.sharedMesh.name, largestTexture = largestTex.name + " " + largestTex.width + "x" + largestTex.height, allLodTriangles = filters.Sum(f => (long)f.sharedMesh.triangles.Length / 3), lod0Triangles = placements.Sum(g => { var group = g.GetComponentInChildren<LODGroup>(); return group != null ? group.GetLODs()[0].renderers.Sum(r => (long)r.GetComponent<MeshFilter>().sharedMesh.triangles.Length / 3) : g.GetComponentsInChildren<MeshFilter>().Sum(f => (long)f.sharedMesh.triangles.Length / 3); }), resolutions = textures.Select(t => t.name + ":" + t.width + "x" + t.height).ToArray(), checks = checks.ToArray(), scope = "Editor integrity and scene geometry; visibility and frame timings are measured separately in real Play Mode." };
             Directory.CreateDirectory(Evidence); File.WriteAllText(Evidence + "/EditorValidation.json", JsonUtility.ToJson(report, true)); Debug.Log("TUTORIAL_ART_EDITOR_PASS " + report.instances);
         }
     }

@@ -1,6 +1,6 @@
 # Tutorial — Environment Art Pass
 
-> Historial: las secciones hasta «Path Containment & Tutorial Guidance» describen la primera pasada aprobada (`eb33dc9`, `f1f51ac`). La sección final documenta el estado vigente y sus excepciones autorizadas: elevación del dintel, sustitución de colisiones placeholder por boundaries y safety local.
+> Historial: las primeras secciones conservan las pasadas aprobadas `eb33dc9`, `f1f51ac` y `18869e0`. «Final Jungle Depth Pass» describe el cierre visual vigente; las medidas de gameplay, boundaries, safety y obstáculos aprobadas en `18869e0` se conservan.
 
 ## Alcance y fuentes
 
@@ -269,3 +269,98 @@ El rango pasa de **269964–391462** a **295140–426208** triángulos visibles 
 Mismo Editor normal, instrumentación de ruta, captura a 30 fps simulados, warm-up de 45 frames y exclusión de cinco frames tras cada screenshot. Las sondas CPU de deformación/boundaries ocurren fuera de la ventana de timing. La media cambia +1.00% y P95 +2.92%; no permiten atribuir una mejora ni certificar rendimiento standalone/60FPS. Persisten los límites de Editor, instrumentación, shader/cache y alpha overdraw ya documentados.
 
 Evidencia final y fallos de desarrollo: `D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Tikal_ElPortal/_TutorialGuidance_20261021`. Playtest humano A–J pendiente para esta segunda pasada; no se inventa aprobación humana. La auditoría por hashes y bloques YAML verifica el alcance antes del commit.
+
+## Final Jungle Depth Pass
+
+Última pasada artística sobre `feature/tutorial-environment-art-pass`, desde `18869e0`. Estado de autoría: **VISUALMENTE CERRADO / FROZEN, salvo bugs**. No se abre una fase adicional de decoración o mecánicas. La inspección de capturas y los tests aquí registrados no se presentan como aprobación humana.
+
+### Composición y capas
+
+Root equivalente solicitado: `Environment/ENV_TutorialArt/BackgroundForest`.
+
+- `MidForest`: seis árboles, tres por lateral, aproximadamente X=±16–20 y Z=-4/25/52, con variación de profundidad.
+- `FarSilhouettes`: cuatro árboles, X=±29–35, Z≈11/47; copas bajas para cerrar huecos de la masa media.
+- `Continuation`: dos árboles y siete masas de arbustos, cuatro detrás del spawn y tres más allá de Exit. El contracampo también queda vestido.
+- `Relief`: doce lomas, ocho laterales y dos en cada extremo; bounds fuera de X=±7,8 o antes de Z=-8 / después de Z=55.
+
+Seed reproducible: **210623**. Se añaden **12 árboles** de tres recursos existentes (`VEG_ArbolTropical_02`, `VEG_ArbolTropical_04`, `VEG_PalmeraTropical_02`): yaw variado, distribución irregular y escala uniforme 0,90–1,15. Los seis árboles medios se apoyan en las lomas con base ligeramente enterrada; los seis lejanos/de continuación entierran parte del tronco para acercar las copas al horizonte. Esto es una silueta de fondo, no un árbol preparado para inspección cercana. Los árboles de framing existentes `Tree_00` y `Tree_09` conservan sus escalas aprobadas 0,7630355 y 0,83371395. No se añaden árboles hero de alto detalle.
+
+`FinalEdgeClusters` incorpora **cuatro clusters de tres rocas**, de tres prefabs ya importados, alrededor de Z=6/19/34/46. Sus escalas son 0,90–1,15 y su base se entierra parcialmente en la superficie visual. Se combinan con **ocho masas medias de arbusto** y **dos plantas de foreground**, sin formar una fila continua de rocas. Los arbustos de agrupación conservan proporciones con escala 2,6–3,4 en laterales y 3,2–4 en los cierres lejanos: excepción compositiva a la variación moderada de árboles/rocas, para obtener masa con pocos placements.
+
+El centro mantiene lectura de sendero, Jump, Crouch e Interact. Los bordes combinan vegetación cercana aprobada, clusters, vegetación elevada, relieve y copas. Exit mantiene su apertura y superpone las ruinas existentes con vegetación y árboles más allá; el spawn conserva el eje despejado. Las capturas de órbita muestran silueta irregular de terreno/plantas en vez de una gran línea de suelo terminando contra cielo. Se mantiene cielo abierto; no se promete ocultar todas las superficies desde cualquier cámara o posición exterior inaccesible.
+
+### Relieve visual
+
+Las doce lomas reutilizan la **esfera integrada de Unity**, compartida y con menos de 1.000 triángulos por instancia. No se crea mesh asset, FBX ni textura. Los elipsoides miden 24–30 m de ancho, 25–30 de profundidad y 8–9,5 de altura total, centro Y=-1,8: solo emerge una cresta redondeada de aproximadamente 2,2–2,95 m. No exponen caras inferiores. La colocación vegetal se calcula sobre la superficie elipsoidal.
+
+Un único material local nuevo, `MAT_Tutorial_JungleBanks`, deriva del material de roca con musgo ya importado, reutiliza sus mapas y modifica tinte/tiling. Se distingue de los materiales compartidos originales, que no cambian. No se reconstruye Terrain ni se altera la superficie física central. Todo el relieve queda detrás de la autoridad física aprobada y carece de collider.
+
+El piloto inicial con rocas muy ampliadas fue descartado por caras inferiores negras y silueta angulosa. También se redujo la prueba de 24 a 12 árboles nuevos para contener coste. Estos pilotos se conservan como evidencia de desarrollo, no como resultado final.
+
+### LOD y sombras
+
+Nueve prefabs visuales locales en `Assets/_Project/Prefabs/Environment/Tutorial/Depth`: tres árboles, tres rocas, un arbusto, una planta y la loma. Reutilizan meshes/texturas existentes. Las ocho variantes vegetales/rocosas contienen únicamente los meshes originales **LOD1 / LOD2**, sin LOD0 ni colliders/scripts; umbrales locales 0,95 / 0,002, sin crossfade. El primer nivel local significa LOD1 de la fuente. El tamaño de referencia de LOD se calibra al 45 % del recalculado para favorecer LOD2: afecta selección/cull, no dimensiones ni escala de la malla. Revisar popping si se cambian cámara o distancias. No se utiliza ForceLOD.
+
+Los seis árboles existentes del fondo conservan transformaciones y sombras, con overrides de escena para el mismo perfil de LOD; sus renderers de LOD0 quedan deshabilitados. Los árboles importantes del sendero conservan sus perfiles y sombras. Todas las nuevas capas visuales tienen ShadowCastingMode Off, cero colliders y cero scripts de gameplay. Flags static de oclusión no equivalen a un bake nuevo de occlusion culling. Luz, niebla y cielo permanecen iguales.
+
+Se pasa de 22 a **23 materiales**, conservando **37 texturas**. No se descargan recursos ni se importan fuentes high-poly. Ningún prefab compartido anterior cambia; la biblioteca externa permanece intacta.
+
+### Authoring y protección
+
+Los menús canónicos `Tikal/Authoring/Apply Tutorial Environment Art Pass` y `Tikal/Validation/Validate Tutorial Environment Art Pass` incluyen esta pasada. La ejecución doble produce escena y prefabs byte-idénticos, sin duplicar roots, capas ni clusters. La validación final supera **1.350 checks Editor**: roots, LOD, meshes, shaders URP soportados, referencias, Missing Scripts, mallas ligeras, relief fuera del corredor y conservación física.
+
+`TutorialJungleDepthProtection.json` conserva firmas del estado aprobado: componentes Tikal de gameplay/safety, colliders físicos, proxies anteriores y transformaciones físicas. Se exige igualdad después del authoring. La auditoría externa de 1.314 archivos rastreados confirma que solo cambian escena Tutorial, este documento y dos herramientas Editor; los otros 1.310 permanecen byte-idénticos. El análisis YAML no encuentra eliminaciones de objetos originales ni cambios efectivos en componentes runtime, colliders o transformaciones físicas. Solo se añaden dos hijos al root artístico y overrides visuales de seis copas existentes.
+
+No cambian Player, movimiento, cámara, FPS/TPS, secuencia/steps, Jump, Crouch, Interact, Exit, safety, Intro, Level01, ProjectSettings o Packages. La prueba completa activa la transición existente a Level01, sin modificar esa escena.
+
+### Play Mode e inspección
+
+Unity normal interactivo 6000.6.3f1, URP, sin batchmode. **85 checks Play Mode aprobados**, cero errores capturados en la ejecución final. Recorrido completo con entrada real en ambos modos, siete etapas, Interact y Exit; contención/safety, guardado aislado, visibilidad de personajes y Crouch de Dwight/Axel/Mario siguen pasando. El modo de medición no crea guardados del usuario.
+
+La nueva sonda recorre **360,62°** mediante input real de TPS y captura nueve ángulos; conserva distancia de cámara normal en spawn. Seis capturas adicionales junto a ambos límites (Z=4/26/43). La revisión de las 14 vistas centrales FPS/TPS y de la órbita conserva sendero/objetivos legibles y fondo vestido. Las comprobaciones numéricas de cámara no prueban por sí mismas ausencia de hojas: al presionar el borde aparecen hojas próximas en algunas vistas, particularmente izquierda Z=4 y derecha Z=26. La comparación anterior reproduce ese solapamiento con vegetación ya aprobada; permanece como limitación visual conocida, no se declara eliminado ni se cambia la cámara para ocultarlo. El recorrido central FPS/TPS y la órbita de spawn no presentan bloqueo permanente por los nuevos acentos.
+
+### Comparación de rendimiento
+
+`Tikal/Validation/Run Tutorial Jungle Depth Comparison Pair` ejecuta automáticamente referencia y final consecutivos. El modo anterior restaura únicamente en memoria las ocho entradas de `TutorialJungleDepthApprovedVisuals.json`, extraídas del YAML de `18869e0`, y desactiva las nuevas capas durante Play. Nunca guarda esa restauración. Los doce encuadres históricos reproducen exactamente su geometría visible. Se añaden dos encuadres Look a ambos lados de la comparación.
+
+Misma sesión, Game View/capturas 1920×1080, ruta, warm-up e instrumentación. 30 fps simulados; se excluyen del timing sondas de deformación/bordes/órbita y cinco frames tras screenshots. La referencia tiene los assets nuevos cargados pero inactivos: no equivale a ejecutar una build antigua independiente. Los 49,08 / 58,28 ms históricos quedan como antecedente; no se mezclan con estos tiempos para atribuir coste incremental.
+
+| Métrica | Antes comparable | Final |
+|---|---:|---:|
+| Placements | 126 | 179 |
+| Árboles | 20 | 32 |
+| LODGroups | 123 | 164 |
+| Shadow-casting renderers (todos los LOD) | 137 | 137 |
+| Colliders habilitados de escena | 26 | 26 |
+| Colliders artísticos habilitados | 0 | 0 |
+| Materiales | 22 | 23 |
+| Texturas | 37 | 37 |
+| Media Editor ms | 70.656 | 73.302 (+3,75 %) |
+| P95 Editor ms | 83.848 | 86.335 (+2,97 %) |
+
+| Vista | Triángulos antes | Triángulos final | Delta |
+|---|---:|---:|---:|
+| TPS_01_Start | 418597 | 474085 | +13.26% |
+| TPS_01b_Look | 422537 | 467764 | +10.70% |
+| TPS_02_Jump | 418308 | 459168 | +9.77% |
+| TPS_03_CrouchExit | 376335 | 379798 | +0.92% |
+| TPS_04_Sprint | 340408 | 316724 | -6.96% |
+| TPS_05_Interact | 299807 | 270345 | -9.83% |
+| TPS_06_Exit | 298007 | 267345 | -10.29% |
+| FPS_01_Start | 426208 | 474935 | +11.43% |
+| FPS_01b_Look | 416938 | 459266 | +10.15% |
+| FPS_02_Jump | 416357 | 457217 | +9.81% |
+| FPS_03_CrouchExit | 381848 | 358932 | -6.00% |
+| FPS_04_Sprint | 299234 | 270671 | -9.55% |
+| FPS_05_Interact | 295140 | 243668 | -17.44% |
+| FPS_06_Exit | 296840 | 245368 | -17.34% |
+
+Rango de 14 vistas: **295.140–426.208 → 243.668–474.935**. Media aritmética de esas vistas: **364.754,57 → 367.520,43 (+0,76 %)**; es una media de encuadres, no de frames ni una media ponderada por tiempo de juego. El máximo relativo es **+13,26 % en spawn TPS**: **no se cumple la preferencia +5–8 % en todos los encuadres**. Seis vistas superan +8 %; siete reducen geometría. La reducción del fondo beneficia el final del recorrido; no compensa automáticamente el pico inicial. Se conserva como excepción explícita del presupuesto orientativo no rígido para mantener el cierre visual con los assets disponibles, después de reducir instancias y usar LOD2. Si ese pico resulta inaceptable en hardware objetivo, corresponde tratarlo como bug de rendimiento con perfilado GPU.
+
+Los triángulos se estiman por frustum, selección LOD y mallas, sin occlusion ni pases de sombras. No son un contador GPU completo. Los renderers con sombras cuentan todos los LOD almacenados, no emisores simultáneos. Editor instrumentado, caches, carga del equipo y alpha overdraw limitan la interpretación de timing; estos resultados **no certifican FPS de build ni 60 FPS**.
+
+### Evidencia, limitaciones y cierre
+
+Evidencia local: `D:/ARCHIVOS/TREVIX/Proyectos/Videojuegos/Tikal_ElPortal/_TutorialFinalDepth_20261021/FinalEvidence`. Incluye JSON Editor/Play/Guidance/Depth, aplicación doble, 29 vistas de ruta/órbita/bordes más tres Crouch, referencia comparable y hojas de contacto. Los pilotos fallidos/intermedios quedan fuera de los assets del proyecto.
+
+Las lomas son elipsoides estilizados con material reutilizado, no terreno esculpido ni superficie navegable. Persisten la repetición/alpha overdraw de los kits, vistas puntuales de hojas al pegarse a los bordes y el pico geométrico del inicio. No se afirma playtest humano de esta pasada. La autoría queda **FROZEN salvo bugs**, sin extender el trabajo a Level01 ni añadir una nueva ronda de decoración.

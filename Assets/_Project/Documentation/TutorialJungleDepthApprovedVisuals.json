@@ -1,0 +1,85 @@
+{
+  "scope": "Exact affected visual transforms/source GUIDs extracted from approved 18869e0 scene for isolated same-session Play Mode comparison only; never applied to saved production assets.",
+  "entries": [
+    {
+      "name": "Canopy_01",
+      "guid": "3608415f22d741afae979a3959043c14",
+      "scale": {
+        "x": 0.90967387,
+        "y": 0.90967387,
+        "z": 0.90967387
+      },
+      "restoreLods": true
+    },
+    {
+      "name": "Canopy_00",
+      "guid": "393c560a598245a5b71a77186096497f",
+      "scale": {
+        "x": 1.0387584,
+        "y": 1.0387584,
+        "z": 1.0387584
+      },
+      "restoreLods": true
+    },
+    {
+      "name": "Canopy_05",
+      "guid": "48a2a70c2a93dd94b8311ef97a90d8d5",
+      "scale": {
+        "x": 0.9859712,
+        "y": 0.9859712,
+        "z": 0.9859712
+      },
+      "restoreLods": true
+    },
+    {
+      "name": "Tree_09",
+      "guid": "48a2a70c2a93dd94b8311ef97a90d8d5",
+      "scale": {
+        "x": 0.83371395,
+        "y": 0.83371395,
+        "z": 0.83371395
+      },
+      "restoreLods": false
+    },
+    {
+      "name": "Canopy_03",
+      "guid": "393c560a598245a5b71a77186096497f",
+      "scale": {
+        "x": 0.8822012,
+        "y": 0.8822012,
+        "z": 0.8822012
+      },
+      "restoreLods": true
+    },
+    {
+      "name": "Canopy_02",
+      "guid": "48a2a70c2a93dd94b8311ef97a90d8d5",
+      "scale": {
+        "x": 0.89527905,
+        "y": 0.89527905,
+        "z": 0.89527905
+      },
+      "restoreLods": true
+    },
+    {
+      "name": "Tree_00",
+      "guid": "48a2a70c2a93dd94b8311ef97a90d8d5",
+      "scale": {
+        "x": 0.7630355,
+        "y": 0.7630355,
+        "z": 0.7630355
+      },
+      "restoreLods": false
+    },
+    {
+      "name": "Canopy_04",
+      "guid": "3608415f22d741afae979a3959043c14",
+      "scale": {
+        "x": 0.90643054,
+        "y": 0.90643054,
+        "z": 0.90643054
+      },
+      "restoreLods": true
+    }
+  ]
+}
