@@ -1,0 +1,2337 @@
+{
+  "scope": "Original material assignments captured before authoring. Used only to preserve Renderer references owned by gameplay and reserved puzzle visuals; not a wholesale reset of environment presentation.",
+  "entries": [
+    {
+      "path": "Level01_SecretEntrance/Environment/SpawnArea/ApproachBaffle",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/SpawnArea/ApproachFloorBand",
+      "material": "Assets/_Project/Art/Materials/Level01/Route.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/SpawnArea/ApproachFloorBand",
+      "material": "Assets/_Project/Art/Materials/Level01/Route.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Boundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Boundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Boundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Entrance/Facade",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Entrance/ThresholdBoundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Entrance/Facade",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Entrance/ThresholdBoundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Entrance/EntranceDoor_Blockout/Frame/Left",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Entrance/EntranceDoor_Blockout/Frame/Right",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Entrance/EntranceDoor_Blockout/Frame/Header",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Entrance/EntranceDoor_Blockout/Pivot/DoorMesh",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Entrance/SecretCommandTarget/Provisional entrance seal",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Stone backing",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Outer border",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Outer border",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Outer border",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Outer border",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Stone fragment",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment A/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Stone fragment",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment B/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Stone fragment",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment C/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Stone fragment",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Fragment D/Rotation pivot/Quarter of circular path/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone01_MuralFragments/PuzzleAnchor/MuralFragments/Intact pattern reference/Carved stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Stone monolith",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Brow",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Eye recess",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Eye recess",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Facing nose",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Fixed plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian A/Pedestal alignment engraving",
+      "material": "Assets/_Project/Art/Materials/Level01/GuardiansAlignment.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Intact marker stone",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Marker footing",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker A/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Rotation pivot/Stone monolith",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Rotation pivot/Brow",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Rotation pivot/Eye recess",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Rotation pivot/Eye recess",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Rotation pivot/Facing nose",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Fixed plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian B/Pedestal alignment engraving",
+      "material": "Assets/_Project/Art/Materials/Level01/GuardiansAlignment.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker B/Intact marker stone",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker B/Marker footing",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker B/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker B/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker B/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker B/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker B/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker B/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Stone monolith",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Brow",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Eye recess",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Eye recess",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Facing nose",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Abstract matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Rotation pivot/Rear identity carving/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Fixed plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Guardian C/Pedestal alignment engraving",
+      "material": "Assets/_Project/Art/Materials/Level01/GuardiansAlignment.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Intact marker stone",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Marker footing",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Matching abstract symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/DestinationMarker C/Rear matching symbol/Neutral symbol stroke",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralCarving.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Central neutral stone/Low central platform",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Central neutral stone/Progress engraving A",
+      "material": "Assets/_Project/Art/Materials/Level01/GuardiansAlignment.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Central neutral stone/Progress engraving B",
+      "material": "Assets/_Project/Art/Materials/Level01/GuardiansAlignment.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/PuzzleAnchor/PathGuardians/Central neutral stone/Progress engraving C",
+      "material": "Assets/_Project/Art/Materials/Level01/GuardiansAlignment.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/OrientationPillar",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/OrientationPillar",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/OrientationPillar",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/LocalRouteEast",
+      "material": "Assets/_Project/Art/Materials/Level01/Route.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/LocalRouteWest",
+      "material": "Assets/_Project/Art/Materials/Level01/Route.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone02_PathGuardians/Guidance inscription/Provisional inscription stone",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/Ceiling",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/PuzzleAnchor/Echo sequence mechanism/SoundStone_A/Stone plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/EchoStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/PuzzleAnchor/Echo sequence mechanism/SoundStone_A/Low square slab",
+      "material": "Assets/_Project/Art/Materials/Level01/EchoStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/PuzzleAnchor/Echo sequence mechanism/SoundStone_B/Stone plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/EchoStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/PuzzleAnchor/Echo sequence mechanism/SoundStone_B/Round resonator",
+      "material": "Assets/_Project/Art/Materials/Level01/EchoStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/PuzzleAnchor/Echo sequence mechanism/SoundStone_C/Stone plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/EchoStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/PuzzleAnchor/Echo sequence mechanism/SoundStone_C/Tall fork resonator",
+      "material": "Assets/_Project/Art/Materials/Level01/EchoStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/PuzzleAnchor/Echo sequence mechanism/SoundStone_C/Fork prong 0",
+      "material": "Assets/_Project/Art/Materials/Level01/EchoStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/PuzzleAnchor/Echo sequence mechanism/SoundStone_C/Fork prong 1",
+      "material": "Assets/_Project/Art/Materials/Level01/EchoStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/AudioAnchor/EchoSource/Central listening stone",
+      "material": "Assets/_Project/Art/Materials/Level01/EchoStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/AudioAnchor/EchoSource/Listening crest",
+      "material": "Assets/_Project/Art/Materials/Level01/EchoStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/AudioAnchor/EchoSource/Echo progress mark 0",
+      "material": "Assets/_Project/Art/Materials/Level01/GuardiansAlignment.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/AudioAnchor/EchoSource/Echo progress mark 1",
+      "material": "Assets/_Project/Art/Materials/Level01/GuardiansAlignment.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/AudioAnchor/EchoSource/Echo progress mark 2",
+      "material": "Assets/_Project/Art/Materials/Level01/GuardiansAlignment.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/AlcoveDivider",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone03_EchoChamber/Echo guidance inscription/Provisional inscription stone",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_3/Plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_3/Vertical slab",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_3/Count marks/Neutral mark 0",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_3/Count marks/Neutral mark 1",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_3/Count marks/Neutral mark 2",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_1/Plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_1/Vertical slab",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_1/Count marks/Neutral mark 0",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_5/Plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_5/Vertical slab",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_5/Count marks/Neutral mark 0",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_5/Count marks/Neutral mark 1",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_5/Count marks/Neutral mark 2",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_5/Count marks/Neutral mark 3",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_5/Count marks/Neutral mark 4",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_2/Plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_2/Vertical slab",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_2/Count marks/Neutral mark 0",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_2/Count marks/Neutral mark 1",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_7/Plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_7/Vertical slab",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_7/Count marks/Neutral mark 0",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_7/Count marks/Neutral mark 1",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_7/Count marks/Neutral mark 2",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_7/Count marks/Neutral mark 3",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_7/Count marks/Neutral mark 4",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_7/Count marks/Neutral mark 5",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_7/Count marks/Neutral mark 6",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_4/Plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_4/Vertical slab",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_4/Count marks/Neutral mark 0",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_4/Count marks/Neutral mark 1",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_4/Count marks/Neutral mark 2",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_4/Count marks/Neutral mark 3",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_6/Plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_6/Vertical slab",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_6/Count marks/Neutral mark 0",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_6/Count marks/Neutral mark 1",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_6/Count marks/Neutral mark 2",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_6/Count marks/Neutral mark 3",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_6/Count marks/Neutral mark 4",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Glyph sequence mechanism/GlyphStone_6/Count marks/Neutral mark 5",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Observation alignment mechanism/Observation altar/Low step",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Observation alignment mechanism/Observation altar/Observation platform",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Observation alignment mechanism/Observation altar/Eastern approach step",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Observation alignment mechanism/Perspective pattern VisualProxy/Perspective fragment 0",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Observation alignment mechanism/Perspective pattern VisualProxy/Perspective fragment 1",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Observation alignment mechanism/Perspective pattern VisualProxy/Perspective fragment 2",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Observation alignment mechanism/Perspective pattern VisualProxy/Perspective fragment 3",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/PuzzleAnchor/Observation alignment mechanism/Perspective pattern VisualProxy/Perspective fragment 4",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/GlyphWallAnchor/Seven-place progress frieze/Frieze stone",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/GlyphWallAnchor/Seven-place progress frieze/Progress mark 0",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/GlyphWallAnchor/Seven-place progress frieze/Progress mark 1",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/GlyphWallAnchor/Seven-place progress frieze/Progress mark 2",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/GlyphWallAnchor/Seven-place progress frieze/Progress mark 3",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/GlyphWallAnchor/Seven-place progress frieze/Progress mark 4",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/GlyphWallAnchor/Seven-place progress frieze/Progress mark 5",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/GlyphWallAnchor/Seven-place progress frieze/Progress mark 6",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/BlankObservationPanel",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/BlankObservationPanel",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/BlankObservationPanel",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/BlankObservationPanel",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone04_GlyphGallery/Glyph guidance inscription/Provisional inscription stone",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/SolidBoundaries/Boundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/SolidBoundaries/SolidBoundary",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Ceremonial plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Upright stele",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Pattern elements/Broken cycle segment 1",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Pattern elements/Broken cycle segment 2",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Pattern elements/Broken cycle segment 3",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Pattern elements/Broken cycle segment 4",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Pattern elements/Broken cycle segment 5",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Pattern elements/Broken cycle segment 6",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Pattern elements/Broken cycle segment 7",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Pattern elements/Broken cycle segment 8",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Pattern elements/Broken cycle segment 9",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Pattern elements/Broken cycle segment 10",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_A/Pattern elements/Broken cycle segment 11",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_B/Ceremonial plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_B/Upright stele",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_B/Pattern elements/Angular left",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_B/Pattern elements/Angular right",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_B/Pattern elements/Angular lower",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Ceremonial plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Upright stele",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Pattern elements/Broken cycle segment 1",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Pattern elements/Broken cycle segment 2",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Pattern elements/Broken cycle segment 3",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Pattern elements/Broken cycle segment 4",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Pattern elements/Broken cycle segment 5",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Pattern elements/Broken cycle segment 6",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Pattern elements/Broken cycle segment 7",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Pattern elements/Broken cycle segment 8",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Pattern elements/Broken cycle segment 9",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Pattern elements/Broken cycle segment 10",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Pattern elements/Broken cycle segment 11",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_C/Secondary wear notch",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_D/Ceremonial plinth",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_D/Upright stele",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_D/Pattern elements/Radial spoke 0",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_D/Pattern elements/Radial spoke 1",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_D/Pattern elements/Radial spoke 2",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_D/Pattern elements/Radial spoke 3",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_D/Pattern elements/Radial spoke 4",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_D/Pattern elements/Radial spoke 5",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_D/Pattern elements/Radial spoke 6",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/PuzzleAnchor/Revelation matching mechanism/RevelationStele_D/Pattern elements/Radial spoke 7",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/RevelationAnchor/Sealed revelation panel/Warm interior",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationPattern.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/RevelationAnchor/Sealed revelation panel/Movable stone seal",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/RevelationAnchor/Secret key revelation content/KeyDiscoveryStele_Root/DiscoveryStele_VisualProxy/Discovery slab",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/RevelationAnchor/Secret key revelation content/KeySymbol_VisualProxy/Key bow left",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/RevelationAnchor/Secret key revelation content/KeySymbol_VisualProxy/Key bow right",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/RevelationAnchor/Secret key revelation content/KeySymbol_VisualProxy/Key bow top",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/RevelationAnchor/Secret key revelation content/KeySymbol_VisualProxy/Key bow bottom",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/RevelationAnchor/Secret key revelation content/KeySymbol_VisualProxy/Key shaft",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/RevelationAnchor/Secret key revelation content/KeySymbol_VisualProxy/Key tooth",
+      "material": "Assets/_Project/Art/Materials/Level01/GlyphMarks.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/LowTerminalDais",
+      "material": "Assets/_Project/Art/Materials/Level01/EntranceStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/MonumentalPillar",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/MonumentalPillar",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/MonumentalPillar",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/MonumentalPillar",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/Revelation guidance inscription/Provisional inscription stone",
+      "material": "Assets/_Project/Art/Materials/Level01/MuralStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/Revelation side seal",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/FalsePath/Corridor floor",
+      "material": "Assets/_Project/Art/Materials/Level01/EarthProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/FalsePath/Western corridor rock",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/FalsePath/Eastern corridor rock",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/FalsePath/Natural corridor closure",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/FalsePath/Closing passage",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Zone05_Revelation/FalsePath/FinalWarningSteleAnchor/FinalWarningStele_Root/FinalWarningStele_Proxy/FinalWarningStele_Blockout",
+      "material": "Assets/_Project/Art/Materials/Level01/RevelationStone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Connectors/01_to_02/SolidBoundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Connectors/01_to_02/SolidBoundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Connectors/02_to_03/SolidBoundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Connectors/02_to_03/SolidBoundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Connectors/03_to_04/SolidBoundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Connectors/03_to_04/SolidBoundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Connectors/04_to_05/SolidBoundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Connectors/04_to_05/SolidBoundary",
+      "material": "Assets/_Project/Art/Materials/Level01/Stone.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Terrain/Surface_SpawnArea",
+      "material": "Assets/_Project/Art/Materials/Level01/EarthProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Terrain/Surface_Entrance",
+      "material": "Assets/_Project/Art/Materials/Level01/EarthProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Terrain/Surface_Zone01_MuralFragments",
+      "material": "Assets/_Project/Art/Materials/Level01/EarthProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Terrain/Surface_Zone02_PathGuardians",
+      "material": "Assets/_Project/Art/Materials/Level01/EarthProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Terrain/Surface_Zone03_EchoChamber",
+      "material": "Assets/_Project/Art/Materials/Level01/EarthProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Terrain/Surface_Zone04_GlyphGallery",
+      "material": "Assets/_Project/Art/Materials/Level01/EarthProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Terrain/Surface_Zone05_Revelation",
+      "material": "Assets/_Project/Art/Materials/Level01/EarthProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Terrain/Surface_01_to_02",
+      "material": "Assets/_Project/Art/Materials/Level01/EarthProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Terrain/Surface_02_to_03",
+      "material": "Assets/_Project/Art/Materials/Level01/EarthProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Terrain/Surface_03_to_04",
+      "material": "Assets/_Project/Art/Materials/Level01/EarthProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Terrain/Surface_04_to_05",
+      "material": "Assets/_Project/Art/Materials/Level01/EarthProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Dense",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationDenseProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Medium",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationMediumProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Medium",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationMediumProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Medium",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationMediumProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Vegetation_Blockout/VegetationMass_Low",
+      "material": "Assets/_Project/Art/Materials/Level01/VegetationLowProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_00",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_03",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_05",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_07",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_10",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_13",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_15",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_17",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_20",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_23",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_25",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_27",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_30",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_32",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_34",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_36",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_38",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_41",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_43",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_45",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_48",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_50",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_52",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_55",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_58",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_60",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_62",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_65",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_67",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_69",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_71",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_73",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_76",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_79",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_82",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_85",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_88",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_91",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_94",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_97",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_100",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Talud_103",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/ApproachRockCut",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/GateRockShoulder",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/GateRockShoulder",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/EchoRoofRockCover",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/GalleryRuinRockShoulder",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/NaturalBoundaries/Revelation eastern rock shoulder",
+      "material": "Assets/_Project/Art/Materials/Level01/RockProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/PlazaPlatformStep",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/PlazaPlatformStep",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/PlazaPlatformStep",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/PlazaStela",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/PlazaBrokenStela",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/PlazaLowRuin",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/PathLandmarkLintel",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/EchoEntranceLeft",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/EchoEntranceRight",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/EchoEntranceLintel",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/GalleryBlankRuinWall",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/TerminalMonumentTier",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/TerminalMonumentTier",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/TerminalMonumentTier",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/TerminalMonumentTier",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    },
+    {
+      "path": "Level01_SecretEntrance/Environment/Ruins_Blockout/TerminalMonumentCrown",
+      "material": "Assets/_Project/Art/Materials/Level01/RuinProxy.mat"
+    }
+  ]
+}
