@@ -26,7 +26,7 @@ namespace Tikal.Tests.Editor
         static void Poll()
         {
             if(EditorApplication.isCompiling||EditorApplication.isUpdating||EditorApplication.isPlayingOrWillChangePlaymode)return;
-            if(!File.Exists("Temp/Level01MapHUDApply.request"))return;File.Delete("Temp/Level01MapHUDApply.request");try{Apply();Apply();Level01MapHUDValidation.ValidateStatic();}catch(Exception e){Directory.CreateDirectory(Evidence);File.WriteAllText(Evidence+"/AuthoringError.txt",e.ToString());Debug.LogException(e);}
+            if(!File.Exists("Temp/Level01MapHUDApply.request"))return;File.Delete("Temp/Level01MapHUDApply.request");try{Apply();Apply();Level01MapPresentationValidation.ValidateStatic();}catch(Exception e){Directory.CreateDirectory(Evidence);File.WriteAllText(Evidence+"/AuthoringError.txt",e.ToString());Debug.LogException(e);}
         }
         public static T[] All<T>() where T:Component=>EditorSceneManager.GetActiveScene().GetRootGameObjects().SelectMany(g=>g.GetComponentsInChildren<T>(true)).ToArray();
         static void Set(UnityEngine.Object target,string field,UnityEngine.Object value)
@@ -42,7 +42,7 @@ namespace Tikal.Tests.Editor
             {
                 action=global.AddAction("Map",InputActionType.Button,expectedControlLayout:"Button");action.AddBinding("<Keyboard>/m",groups:"KeyboardMouse");action.AddBinding("<Gamepad>/dpad/up",groups:"Gamepad");File.WriteAllText(AssetDatabase.GetAssetPath(asset),asset.ToJson());AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(asset));File.WriteAllText("Temp/Level01MapHUDApply.request","Resume after wrapper regeneration");return;
             }
-            if(All<LevelMapHUD>().Length>0){if(All<LevelMapHUD>().Length!=1||!All<LevelMapHUD>().Single().IsConfigured)throw new Exception("Existing Map HUD is not valid; preserve for inspection.");Debug.Log("LEVEL01_MAP_HUD_IDEMPOTENT");return;}
+            if(All<LevelMapHUD>().Length>0){if(All<LevelMapHUD>().Length!=1||!All<LevelMapHUD>().Single().IsConfigured)throw new Exception("Existing Map HUD is not valid; preserve for inspection.");Level01MapHUDStyling.Apply(All<LevelMapHUD>().Single());EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);Debug.Log("LEVEL01_MAP_HUD_IDEMPOTENT");return;}
             var player=All<PlayerController>().Single();var canvas=All<ReticlePresenter>().Single().GetComponentInParent<Canvas>();var pause=All<PauseMenuController>().Single();
             var definition=AssetDatabase.LoadAssetAtPath<LevelMapDefinition>(DefinitionPath);
             if(definition==null)
@@ -68,7 +68,7 @@ namespace Tikal.Tests.Editor
             var legend=Rect("Map legend",card,new Vector2(.1f,.085f),new Vector2(.9f,.13f));Text(legend,"TU POSICIÓN · NORTE ARRIBA",14,TextAlignmentOptions.Center).color=new Color(.7f,.74f,.65f);
             Set(hud,"_player",player);Set(hud,"_input",player.GetComponent<PlayerInputReader>());Set(hud,"_devices",player.GetComponent<InputDeviceManager>());Set(hud,"_journal",All<ClueJournalPresenter>().Single());Set(hud,"_pause",pause);Set(hud,"_outcome",All<LevelOutcomeController>().Single());Set(hud,"_checkpoints",All<CheckpointManager>().Single());Set(hud,"_flow",All<GameFlowController>().Single());Set(hud,"_definition",definition);Set(hud,"_small",small.gameObject);Set(hud,"_expanded",expanded.gameObject);Set(hud,"_smallMap",smallMap);Set(hud,"_largeMap",largeMap);Set(hud,"_smallMarker",smallMarker);Set(hud,"_largeMarker",largeMarker);Set(hud,"_mapHint",mapHint);Set(hud,"_journalHint",journalHint);Set(hud,"_closeHint",closeHint);
             var pauseRoot=pause.transform;while(pauseRoot.parent!=canvas.transform)pauseRoot=pauseRoot.parent;root.SetSiblingIndex(pauseRoot.GetSiblingIndex());expanded.gameObject.SetActive(false);
-            if(!hud.IsConfigured)throw new Exception("Map HUD references incomplete");EditorSceneManager.MarkSceneDirty(scene);if(!EditorSceneManager.SaveScene(scene))throw new Exception("Map HUD scene save failed");AssetDatabase.SaveAssets();Debug.Log("LEVEL01_MAP_HUD_AUTHORED");
+            if(!hud.IsConfigured)throw new Exception("Map HUD references incomplete");Level01MapHUDStyling.Apply(hud);EditorSceneManager.MarkSceneDirty(scene);if(!EditorSceneManager.SaveScene(scene))throw new Exception("Map HUD scene save failed");AssetDatabase.SaveAssets();Debug.Log("LEVEL01_MAP_HUD_AUTHORED");
         }
         static RectTransform Rect(string name,Transform parent,Vector2 min,Vector2 max)
         {var r=new GameObject(name,typeof(RectTransform)).GetComponent<RectTransform>();r.SetParent(parent,false);r.anchorMin=min;r.anchorMax=max;r.offsetMin=r.offsetMax=Vector2.zero;return r;}

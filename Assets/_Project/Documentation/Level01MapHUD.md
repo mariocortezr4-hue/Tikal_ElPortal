@@ -82,3 +82,29 @@ posteriormente como una política sobre áreas autorizadas, sin introducir un se
 Autoría aplicada dos veces sin duplicados. Pasaron 14 comprobaciones de Editor y 42 de Play Mode, sin errores reportados. Las pruebas usaron dispositivos virtuales del Input System (teclado, Xbox, PlayStation y Generic), no mandos físicos. Se capturaron las vistas normal/expandida y FPS/TPS. Los archivos personales de progreso y ajustes conservaron sus hashes.
 
 La comparación semántica de la escena conservó todos los bloques originales; la única modificación preexistente fue añadir el HUD al Canvas. El resto son objetos nuevos del HUD. El playtest humano con hardware físico queda como aceptación adicional.
+
+## Acabado visual final del mapa
+
+La presentación conserva Global/Map, PlayerInputReader, LevelMapHUD, el resolver de prompts,
+las reglas modales y todas las coordenadas de LevelMapDefinition sin cambios. No existía
+registro de áreas visitadas en esta arquitectura: no se añadió descubrimiento ni fog-of-war.
+
+- Contenedor de piedra existente, más oscuro, con transparencia, grano tenue, sombra interior,
+  doble filete de oro envejecido y esquinas escalonadas discretas. La versión pequeña omite ornamentos.
+- Cabecera NIVEL 1 / LA ENTRADA SECRETA / MAPA, separada por una regla con rombo.
+- Áreas con contornos biselados e irregulares, trazos interrumpidos y marcas de mampostería;
+  conectores con trazo crema erosionado. Son ilustración de las mismas áreas públicas, no navegación.
+- Flecha de 17 unidades en minimapa y 25 en mapa grande, con halo estático y borde oscuro;
+  misma proyección y rotación aprobadas. Rosa de los vientos fija y leyenda inferior discreta.
+- ExplorationMapGraphic consulta únicamente Player root y los rectángulos públicos para iluminar
+  suavemente la zona ocupada. Solo reconstruye su geometría al cambiar de área, además de los
+  refrescos normales de Canvas; no guarda progreso, ni consulta puzzles u objetos ocultos.
+- MapHintTypography aplica énfasis TMP a los bindings y separa los controles del footer mediante
+  preprocesado visual. Las cadenas originales y su resolución dinámica permanecen intactas.
+
+Apply Level01 Map HUD actualiza también una instancia previa, por nombres estables, sin duplicar
+marcos, cabecera, leyenda, marcadores ni controles. Validate Level01 Map Presentation realiza
+solo validación focalizada de presentación/controles, con capturas a 1920×1080, guardado aislado
+y dispositivos virtuales. No se añaden cámaras, RenderTextures, paquetes, shaders o postprocessing.
+
+Resultado: 9 comprobaciones de Editor y 25 de Play Mode aprobadas. Autoría ejecutada dos veces sin duplicados. Se verificaron los seis PNG a 1920×1080 en `_Level01MapPresentation_20261023`. Dispositivos virtuales, sin afirmar prueba con hardware físico. Guardados personales sin cambios (hashes verificados).
