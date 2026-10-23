@@ -1,3 +1,96 @@
+# Intro Ancient Map — estado final de branding, audio y mapa
+
+## Especificación vigente (2026-10-23)
+
+Esta pasada modifica únicamente Intro_AncientMap, su Timeline y dependencias directas. No
+retima sus 85,5 s, diálogos, subtítulos, cámaras o evento AncientMapReceived (59,5 s). La lógica
+IntroSequenceController/GameFlowController y los destinos Intro → Tutorial / replay → MainMenu
+permanecen intactos. No se modifica Menu, Tutorial, Level01 ni gameplay.
+
+### Branding
+
+El cue final y TitleText dicen exactamente `TIKAL EL EXPLORADOR`; se elimina el título anterior
+de la escena y del Timeline activos. La tarjeta reutiliza el logo final
+`Assets/_Project/Art/UI/MainMenu/UI_Tikal_StoneGold_Logo.png` y la piedra existente del menú.
+El texto TMP conserva el contenido semántico del cue, deshabilitado visualmente para evitar
+superponerlo al logo completo. El arte se muestra bajo la misma activación de TitleCard.
+No se modifica el asset ni la escena del menú. Encuadre central amplio, marco dorado discreto.
+
+### Música, duck y continuidad
+
+Se conserva el master `MUS_Intro_Suspenso.wav` sin cambios. Se deriva
+`Assets/_Project/Audio/Music/Cinematics/MUS_Intro_Suspenso_Continuous.wav`:
+PCM 24-bit, 48 kHz estéreo, 85,5 s. Conserva el comienzo original; entre 57,504 y 61,504 s
+funde durante 4 s con una reprise del propio archivo desde el segundo 18. Ganancias lineales
+complementarias, sin normalización, cambios de velocidad o un reinicio abrupto. No se promete
+que el empalme sea musicalmente imperceptible sin aceptación auditiva humana.
+
+Timeline conserva una sola pista Music, un solo clip y el mismo AudioSource 2D. La importación
+es Streaming/Vorbis 0,85; no se agregan fuentes, mixers ni lógica de reproducción runtime.
+IntroMusicEnvelope conserva su código y multiplicadores de MusicVolume/MasterVolume.
+
+| Fase | Ganancia lineal antes de MusicVolume |
+|---|---:|
+| Entrada desde 0 a 0,75 s | 0 → 0,20 |
+| Narración o diálogo | 0,006 |
+| Ambiente entre bloques y tras último diálogo | 0,10 |
+| Salida final de 84,9 a 85,5 s | 0,10 → 0 |
+
+La envolvente se deriva de los cues Narrative/Subtitle. Ataque anticipado de 0,65 s y recuperación
+de 1,1 s; pausas menores de 1,6 s se agrupan para evitar bombeo. No hay sidechain ni nuevas voces.
+Duck frente al ambiente: −24,44 dB. El antiguo suelo de 0,039 pasa a 0,006: **16,26 dB más bajo**.
+La recuperación ya no devuelve el nivel inicial de 0,26: solo 0,10 ambiental. La música cubre
+el resto de la película con su fade deliberado de salida; se elimina el silencio desde 61,504 s.
+
+La auditoría no encontró clips VO en las pistas Voice/VOICE_NARRATOR. El duck está sincronizado
+con las ventanas canónicas de narración/diálogo de Timeline; el balance frente a voces grabadas
+requerirá aceptación al incorporarlas. No se inventan voces ni se afirma escucha humana.
+
+### Prop de mapa utilizado
+
+`Assets/Tikal/NonCharacterKit/Prologue/Prefabs/PFB_PRP_MapaAntiguo_01.prefab`
+
+Procede del paquete local `TIKAL_NON_CHARACTER_INTEGRATION_KIT/UnityPayload`, con GUIDs conservados
+y sin colisiones. No estaba importado en este proyecto. Las otras coincidencias de librería son
+revisiones del mismo PRP_MapaAntiguo_01: se elige el prefab Unity preparado del kit en lugar de
+regenerar o importar el Blender/FBX de staging sin su contrato de ejes y materiales.
+
+- Modelo: `Assets/Tikal/NonCharacterKit/Prologue/Models/PRP_MapaAntiguo_01.fbx`.
+- Material: `Assets/Tikal/NonCharacterKit/Prologue/Materials/PRP_MapaAntiguo_01_Map_Geometry_0.mat`.
+- 3.032 triángulos, 1 material URP/Lit, BaseColor/NormalGL/MetallicSmoothness existentes.
+- Dimensiones del prefab: 0,62 × 0,008 × 0,42 m; conserva corrección de ejes y referencias Grip_L/R.
+- Instancia `Ancient map final visual` bajo `AncientMap_Proxy`. El carrier conserva Animator,
+  ParentConstraint de dos manos y bindings de Timeline; su renderer/collider de bloque se deshabilitan.
+- La escala local inversa compensa la escala no unitaria del antiguo cubo sin modificar su
+  animación, su posición, su rotación ni la transferencia de manos. Sin colliders nuevos.
+
+### Herramientas y evidencia
+
+Aplicar: `Tikal/Authoring/Apply Intro Cinematic Final Polish`.
+Validar: `Tikal/Validation/Run Intro Final Polish Play Tests`.
+No ejecutar Build Ancient Map Intro ni la autoría histórica de audio sobre la versión final:
+esos comandos representan el blockout/mix previo. La autoría final se ejecutó dos veces con
+escena y Timeline idénticos en bytes. Evidencia fuera de Assets: `_IntroFinalPolish_20261023`.
+Resultado: 176 comprobaciones de reproducción completa/skips y 3 de captura final de branding aprobadas, sin errores. Guardados personales sin cambios (hashes verificados).
+Las pruebas usan guardado temporal y teclado virtual; comprueban película completa, audio PCM
+tras el antiguo corte, subtítulos, mapa visible, título y skips de primera partida/replay.
+
+### Próxima pasada artística (pendiente)
+
+1. Iluminación de rostros/manos y separación suave del fondo, conservando tono de suspenso.
+2. Sustituir cilindros/bloques de entorno por vegetación y asiento/ruina con profundidad.
+3. Refinar contraste y lectura del dibujo del mapa en el plano de entrega.
+4. Refinar contacto fino de dedos y gesto Give Map: sigue siendo la actuación provisional
+   existente; esta pasada no crea animación ni altera rigs.
+5. Revisar composición de fondo y salida, y aceptación auditiva del empalme/duck con VO real.
+
+---
+
+## Registro histórico de la pasada anterior (sustituido por la especificación vigente)
+
+Las cifras, limitaciones de silencio y título legado que siguen describen exclusivamente el
+estado anterior; no son requisitos de la implementación final indicada arriba.
+
 # Introducción: Ancient Map
 
 ## Estado y alcance
