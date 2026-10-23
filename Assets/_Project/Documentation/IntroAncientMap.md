@@ -3,7 +3,9 @@
 ## Especificación vigente (2026-10-23)
 
 Esta pasada modifica únicamente Intro_AncientMap, su Timeline y dependencias directas. No
-retima sus 85,5 s, diálogos, subtítulos, cámaras o evento AncientMapReceived (59,5 s). La lógica
+retima diálogos, subtítulos, cámaras anteriores o el evento AncientMapReceived (59,5 s).
+La microcorrección de cierre extiende 85,5 → 87,6 s: título desde 84,3 s, 1,5 s adicionales
+de lectura hasta 87,0 s y fade final de 0,6 s hasta 87,6 s, seguido inmediatamente de Tutorial. La lógica
 IntroSequenceController/GameFlowController y los destinos Intro → Tutorial / replay → MainMenu
 permanecen intactos. No se modifica Menu, Tutorial, Level01 ni gameplay.
 
@@ -20,7 +22,8 @@ No se modifica el asset ni la escena del menú. Encuadre central amplio, marco d
 
 Se conserva el master `MUS_Intro_Suspenso.wav` sin cambios. Se deriva
 `Assets/_Project/Audio/Music/Cinematics/MUS_Intro_Suspenso_Continuous.wav`:
-PCM 24-bit, 48 kHz estéreo, 85,5 s. Conserva el comienzo original; entre 57,504 y 61,504 s
+PCM 24-bit, 48 kHz estéreo, 87,6 s. Los primeros 85,5 s de PCM son idénticos a la versión
+aprobada; solo se añaden 2,1 s de la misma continuación para cubrir hold y fade. Conserva el comienzo original; entre 57,504 y 61,504 s
 funde durante 4 s con una reprise del propio archivo desde el segundo 18. Ganancias lineales
 complementarias, sin normalización, cambios de velocidad o un reinicio abrupto. No se promete
 que el empalme sea musicalmente imperceptible sin aceptación auditiva humana.
@@ -34,13 +37,13 @@ IntroMusicEnvelope conserva su código y multiplicadores de MusicVolume/MasterVo
 | Entrada desde 0 a 0,75 s | 0 → 0,20 |
 | Narración o diálogo | 0,006 |
 | Ambiente entre bloques y tras último diálogo | 0,10 |
-| Salida final de 84,9 a 85,5 s | 0,10 → 0 |
+| Salida final de 87,0 a 87,6 s | 0,10 → 0 |
 
 La envolvente se deriva de los cues Narrative/Subtitle. Ataque anticipado de 0,65 s y recuperación
 de 1,1 s; pausas menores de 1,6 s se agrupan para evitar bombeo. No hay sidechain ni nuevas voces.
 Duck frente al ambiente: −24,44 dB. El antiguo suelo de 0,039 pasa a 0,006: **16,26 dB más bajo**.
 La recuperación ya no devuelve el nivel inicial de 0,26: solo 0,10 ambiental. La música cubre
-el resto de la película con su fade deliberado de salida; se elimina el silencio desde 61,504 s.
+el resto de la película y el nuevo hold con su fade deliberado de salida; se elimina el silencio desde 61,504 s.
 
 La auditoría no encontró clips VO en las pistas Voice/VOICE_NARRATOR. El duck está sincronizado
 con las ventanas canónicas de narración/diálogo de Timeline; el balance frente a voces grabadas
