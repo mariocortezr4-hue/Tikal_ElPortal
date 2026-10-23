@@ -26,6 +26,7 @@ namespace Tikal.Tests.Editor
         [Serializable] public class Report {public bool passed;public string scope;public string[] checks,errors;public View[] views;}
         static readonly List<string> checks=new List<string>(),errors=new List<string>();static readonly List<View> views=new List<View>();static readonly Stack<IEnumerator> stack=new Stack<IEnumerator>();
         static Gamepad pad;static GamePersistenceService save;static PlayerController player;static PlayerCameraController camera;static InputSettings.BackgroundBehavior oldBackground;static InputSettings.EditorInputBehaviorInPlayMode oldEditor;static int oldCapture,lastFrame;static bool oldRun;static float oldVolume;static double deadline;
+        static bool puzzle04Visuals=>SessionState.GetBool(Key+"Puzzle04Visuals",false);
         static bool zone04Views=>SessionState.GetBool(Key+"Zone04Views",false);
         static bool zone04=>SessionState.GetBool(Key+"Zone04",false);
         static bool echoVisuals=>SessionState.GetBool(Key+"EchoVisuals",false);
@@ -40,7 +41,7 @@ namespace Tikal.Tests.Editor
         static bool access=>SessionState.GetBool(Key+"Access",false);
         static bool puzzle01=>SessionState.GetBool(Key+"Puzzle01",false);
         static bool expansion=>SessionState.GetBool(Key+"Expansion",false);
-        static string Folder=>zone04?Zone04ObservationArtPass.Evidence+(zone04Views?"/FinalViews":"/Play"):echoVisuals?EchoChamberVisualPass.Evidence+"/Play":zone03?Zone03EnvironmentArtPass.Evidence+(SessionState.GetBool(Key+"Zone03Views",false)?"/FinalViews":"/Play"):shell?Zona02DenseShell.Evidence+(SessionState.GetBool(Key+"ShellViews",false)?"/FinalViews":"/Play"):guardianVisuals?Puzzle02GuardianVisualIntegration.Evidence+(guardianViewsOnly?"/FinalViews":"/Play"):zona02?(SessionState.GetBool(Key+"Zona02Mass",false)?Zona02RuinsArtPass.MassEvidence:SessionState.GetBool(Key+"Zona02Second",false)?Zona02RuinsArtPass.Evidence:Zona02JungleArtPass.Evidence)+(SessionState.GetBool(Key+"Zona02Views",false)?"/FinalViews":"/After"):access?Puzzle02AccessArtPass.Evidence+(SessionState.GetBool(Key+"AccessBefore",false)?"/Before":"/After"):puzzle01?(SessionState.GetBool(Key+"LeftPolish",false)?Puzzle01LeftPolish.Evidence:Puzzle01EnclosureArtPass.Evidence)+(SessionState.GetBool(Key+"PuzzleBefore",false)?"/Before":"/After"):expansion?EntranceExpansionArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceExpansion.Pass",0):entrance?EntranceHeroArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceHero.Pass",0):golden?GoldenSliceArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.Golden.Pass",0):Level01EnvironmentArtPass.Evidence+(before?"/Before":"/After");
+        static string Folder=>puzzle04Visuals?Puzzle04ObservationVisualPass.Evidence+"/Play":zone04?Zone04ObservationArtPass.Evidence+(zone04Views?"/FinalViews":"/Play"):echoVisuals?EchoChamberVisualPass.Evidence+"/Play":zone03?Zone03EnvironmentArtPass.Evidence+(SessionState.GetBool(Key+"Zone03Views",false)?"/FinalViews":"/Play"):shell?Zona02DenseShell.Evidence+(SessionState.GetBool(Key+"ShellViews",false)?"/FinalViews":"/Play"):guardianVisuals?Puzzle02GuardianVisualIntegration.Evidence+(guardianViewsOnly?"/FinalViews":"/Play"):zona02?(SessionState.GetBool(Key+"Zona02Mass",false)?Zona02RuinsArtPass.MassEvidence:SessionState.GetBool(Key+"Zona02Second",false)?Zona02RuinsArtPass.Evidence:Zona02JungleArtPass.Evidence)+(SessionState.GetBool(Key+"Zona02Views",false)?"/FinalViews":"/After"):access?Puzzle02AccessArtPass.Evidence+(SessionState.GetBool(Key+"AccessBefore",false)?"/Before":"/After"):puzzle01?(SessionState.GetBool(Key+"LeftPolish",false)?Puzzle01LeftPolish.Evidence:Puzzle01EnclosureArtPass.Evidence)+(SessionState.GetBool(Key+"PuzzleBefore",false)?"/Before":"/After"):expansion?EntranceExpansionArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceExpansion.Pass",0):entrance?EntranceHeroArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.EntranceHero.Pass",0):golden?GoldenSliceArtPass.Evidence+"/Pass"+SessionState.GetInt("Tikal.Golden.Pass",0):Level01EnvironmentArtPass.Evidence+(before?"/Before":"/After");
         static Level01EnvironmentPlayValidation()
         {
             EditorApplication.update+=Poll;EditorApplication.playModeStateChanged+=Mode;
@@ -49,6 +50,8 @@ namespace Tikal.Tests.Editor
         static void Poll()
         {
             if(EditorApplication.isCompiling||EditorApplication.isUpdating||EditorApplication.isPlayingOrWillChangePlaymode)return;
+            if(File.Exists("Temp/Puzzle04VisualPlay.request"))
+            {File.Delete("Temp/Puzzle04VisualPlay.request");SessionState.SetBool(Key+"Puzzle04Visuals",true);foreach(var flag in new[]{"Zone04","Zone04Views","EchoVisuals","Zone03","Shell","GuardianVisuals","Zona02","Access","Puzzle01","Entrance","Golden","Expansion","Metrics"})SessionState.SetBool(Key+flag,false);Begin();return;}
             if(File.Exists("Temp/Zone04Play.request")||File.Exists("Temp/Zone04Views.request"))
             {bool onlyViews=File.Exists("Temp/Zone04Views.request");File.Delete(onlyViews?"Temp/Zone04Views.request":"Temp/Zone04Play.request");SessionState.SetBool(Key+"Zone04Views",onlyViews);SessionState.SetBool(Key+"Zone04",true);foreach(var flag in new[]{"EchoVisuals","Zone03","Shell","GuardianVisuals","Zona02","Access","Puzzle01","Entrance","Golden","Expansion","Metrics"})SessionState.SetBool(Key+flag,false);Begin();return;}
             if(File.Exists("Temp/EchoVisualPlay.request"))
@@ -96,7 +99,7 @@ namespace Tikal.Tests.Editor
         static void Begin()
         {
             if(EditorSceneManager.GetActiveScene().isDirty)throw new InvalidOperationException("Save scene before validation");
-            if(zone04){var gv=EditorWindow.GetWindow(Type.GetType("UnityEditor.GameView,UnityEditor"));SessionState.SetBool(Key+"Zone04OldMaximized",gv.maximized);gv.maximized=true;}
+            if(zone04||puzzle04Visuals){var gv=EditorWindow.GetWindow(Type.GetType("UnityEditor.GameView,UnityEditor"));SessionState.SetBool(Key+"Zone04OldMaximized",gv.maximized);gv.maximized=true;}
             Directory.CreateDirectory(Folder);SessionState.SetBool(Key,true);EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);EditorApplication.EnterPlaymode();
         }
         static void EnsureSave(){if(save==null)save=new GamePersistenceService(Path.Combine(Path.GetTempPath(),"TikalLevel01Art-"+Guid.NewGuid().ToString("N")));}
@@ -118,8 +121,8 @@ namespace Tikal.Tests.Editor
             if(state==PlayModeStateChange.EnteredPlayMode)Start();
             if(state==PlayModeStateChange.EnteredEditMode)
             {
-                if(zone04)EditorWindow.GetWindow(Type.GetType("UnityEditor.GameView,UnityEditor")).maximized=SessionState.GetBool(Key+"Zone04OldMaximized",false);
-                SessionState.SetBool(Key,false);SessionState.SetBool(Key+"Zone04",false);SessionState.SetBool(Key+"EchoVisuals",false);SessionState.SetBool(Key+"Zone03",false);SessionState.SetBool(Key+"Shell",false);SessionState.SetBool(Key+"Zona02Second",false);SessionState.SetBool(Key+"Zona02Mass",false);SessionState.SetBool(Key+"GuardianVisuals",false);EditorSceneManager.OpenScene(Level01EnvironmentArtPass.ScenePath);AssetDatabase.Refresh();Debug.Log("LEVEL01_ART_PLAY_FINISHED");
+                if(zone04||puzzle04Visuals)EditorWindow.GetWindow(Type.GetType("UnityEditor.GameView,UnityEditor")).maximized=SessionState.GetBool(Key+"Zone04OldMaximized",false);
+                SessionState.SetBool(Key,false);SessionState.SetBool(Key+"Puzzle04Visuals",false);SessionState.SetBool(Key+"Zone04",false);SessionState.SetBool(Key+"EchoVisuals",false);SessionState.SetBool(Key+"Zone03",false);SessionState.SetBool(Key+"Shell",false);SessionState.SetBool(Key+"Zona02Second",false);SessionState.SetBool(Key+"Zona02Mass",false);SessionState.SetBool(Key+"GuardianVisuals",false);EditorSceneManager.OpenScene(Level01EnvironmentArtPass.ScenePath);AssetDatabase.Refresh();Debug.Log("LEVEL01_ART_PLAY_FINISHED");
             }
         }
         static void Start()
@@ -154,6 +157,7 @@ namespace Tikal.Tests.Editor
             if(zone03){metrics=false;scope=(SessionState.GetBool(Key+"Zone03Views",false)?"Final captures only; native FPS/TPS route retained in Play/PlayValidation.json. ":"")+"Zone03 Echo Chamber environment only: scene load, short native FPS/TPS route from Zone02 exit through south connector, chamber walking and western outlet approach, five views. No puzzle interactions, clues, outcomes or global regressions.";}
             if(echoVisuals){metrics=false;scope="Echo Chamber visuals only: native local source listen and B/A/C input sequence, preserved tone/emission/progress/clue events, FPS/TPS local traversal, western exit and four captures. No other puzzles, doors, outcomes or global regressions.";}
             if(zone04){metrics=false;scope=(zone04Views?"Final views and live sightline only; native FPS/TPS, alignment and Clue04 evidence retained in Play/PlayValidation.json. ":"")+"Zone04 only: native FPS/TPS entry, physical altar ascent, protected fragment sightlines, native camera alignment, Clue04 once, north outlet, six captures. No other puzzle or global regression.";}
+            if(puzzle04Visuals){metrics=false;scope="Puzzle04 visual replacement only: original five renderers/meshes/poses/references and .97/.35 authority, native physical FPS/TPS altar access and alignment, recorded held time on solve, PBR emission, Clue04 once and north outlet. Five gameplay captures. No other puzzle or global regression.";}
             Directory.CreateDirectory(Folder);File.WriteAllText(Folder+(metrics?"/MetricsValidation.json":"/PlayValidation.json"),JsonUtility.ToJson(new Report{passed=errors.Count==0,checks=checks.ToArray(),errors=errors.ToArray(),views=views.ToArray(),scope=scope},true));EditorApplication.ExitPlaymode();
         }
         static void Input(Vector2 move,Vector2 look=default,bool jump=false,bool sprint=false)=>InputSystem.QueueStateEvent(pad,new GamepadState{leftStick=move,rightStick=look}.WithButton(GamepadButton.South,jump).WithButton(GamepadButton.LeftStick,sprint));
@@ -222,6 +226,7 @@ namespace Tikal.Tests.Editor
         }
         static IEnumerator Tests()
         {
+            if(puzzle04Visuals){yield return Puzzle04VisualTests();yield break;}
             if(zone04){yield return Zone04Tests();yield break;}
             if(echoVisuals){yield return EchoVisualTests();yield break;}
             if(zone03){yield return Zone03Tests();yield break;}
@@ -331,6 +336,22 @@ namespace Tikal.Tests.Editor
                 Check(fixedParts.All(k=>Vector3.Distance(k.Key.position,k.Value)<.001f),"Pedestals and destination markers remain fixed "+mode);Check(p.GetComponentInChildren<Light>(true).enabled,"Original solved light retained");
                 Place(new Vector3(29,Floor(29,12),12),0);yield return Frames(4);yield return WalkTo(29,19);yield return WalkTo(29,22);Check(player.GameplayActive,"Local Zone02 exit accessible "+mode);
             }
+        }
+        static IEnumerator Puzzle04VisualTests()
+        {
+            foreach(var mode in new[]{Tikal.Persistence.CameraMode.FirstPerson,Tikal.Persistence.CameraMode.ThirdPerson})
+            {
+                EditorSceneManager.LoadSceneInPlayMode(Level01EnvironmentArtPass.ScenePath,new LoadSceneParameters(LoadSceneMode.Single));yield return Frames(18);Bind();CameraMode(mode);var p=UnityEngine.Object.FindAnyObjectByType<Tikal.Puzzles.Level01.ObservationAlignmentPuzzle>();Check(p!=null&&!p.IsSolved,"Puzzle04 saved scene loads "+mode);Check(Mathf.Abs(p.MinimumDot-.97f)<.000001f&&Mathf.Abs(p.HoldSeconds-.35f)<.000001f,"Original .97 dot / .35 second configuration "+mode);
+                var ps=new SerializedObject(p);var point=(Tikal.Puzzles.Level01.ObservationPoint)ps.FindProperty("_point").objectReferenceValue;var target=(Transform)ps.FindProperty("_target").objectReferenceValue;var fragments=Enumerable.Range(0,5).Select(i=>(Renderer)ps.FindProperty("_fragments").GetArrayElementAtIndex(i).objectReferenceValue).ToArray();Check(fragments.All(r=>r!=null&&r.enabled&&r.transform.Find("VisualRoot_ObservationStone")!=null),"Five original live fragment renderer references retained "+mode);var fixedPoses=fragments.ToDictionary(r=>r,r=>r.transform.localToWorldMatrix);
+                var reward=UnityEngine.Object.FindObjectsByType<Tikal.Puzzles.Clues.PuzzleClueReward>(FindObjectsInactive.Include).Single(r=>new SerializedObject(r).FindProperty("_puzzle").objectReferenceValue==p);var rs=new SerializedObject(reward);var tracker=(Tikal.Puzzles.Clues.ClueTracker)rs.FindProperty("_tracker").objectReferenceValue;var clue=(Tikal.Puzzles.Clues.ClueDefinition)rs.FindProperty("_clue").objectReferenceValue;int solves=0,clues=0;float held=-1;p.PuzzleSolved+=_=>{solves++;held=(float)typeof(Tikal.Puzzles.Level01.ObservationAlignmentPuzzle).GetField("_held",BindingFlags.Instance|BindingFlags.NonPublic).GetValue(p);};tracker.ClueDiscovered+=c=>{if(c.Id==clue.Id)clues++;};
+                Place(new Vector3(0,Floor(0,39),39),0);yield return Frames(5);yield return WalkTo(-3.2f,39);yield return WalkTo(-5,39);yield return Frames(10);Check(point.IsOccupied,"Original ObservationZone reached physically "+mode);yield return ObservationAim(target);yield return Frames(24);Check(p.IsSolved&&solves==1,"Native alignment solves once "+mode);Check(held>=p.HoldSeconds-.0001f&&held<=p.HoldSeconds+1f/30+.001f,"Original confirmation time observed held="+held.ToString("F4")+" "+mode);Check(tracker.HasClue(clue.Id)&&clues==1,"Original Clue04 delivered once "+mode);
+                foreach(var r in fragments){Check(r.transform.localToWorldMatrix==fixedPoses[r],"Functional fragment pose stable "+r.name);var block=new MaterialPropertyBlock();r.GetPropertyBlock(block);Check(r.sharedMaterial.shader.name=="Universal Render Pipeline/Lit"&&r.sharedMaterial.IsKeywordEnabled("_EMISSION")&&block.GetColor("_EmissionColor").r>=.15f,"Original solved emission reaches PBR stone "+r.name);}
+                if(mode==Tikal.Persistence.CameraMode.FirstPerson){yield return Frames(150);ScreenCapture.CaptureScreenshot(Folder+"/Puzzle04_AlignmentSolvedView.png");yield return Frames(5);}
+                Place(player.transform.position,0);yield return Frames(5);yield return WalkTo(0,39);yield return WalkTo(0,45);yield return WalkTo(0,49.5f);Check(player.GameplayActive&&clues==1&&solves==1,"North outlet accessible, reward remains single "+mode);
+            }
+            CameraMode(Tikal.Persistence.CameraMode.ThirdPerson);
+            foreach(var pose in new[]{("Puzzle04_ObservationPoint",new Vector2(-2,40.8f),225f),("Puzzle04_Left",new Vector2(-7.8f,43),190f),("Puzzle04_Right",new Vector2(7.5f,43),235f),("Puzzle04_Wide",new Vector2(0,45),180f)})
+            {Place(new Vector3(pose.Item2.x,Floor(pose.Item2.x,pose.Item2.y),pose.Item2.y),pose.Item3);yield return Frames(24);ScreenCapture.CaptureScreenshot(Folder+"/"+pose.Item1+".png");yield return Frames(5);}
         }
         static IEnumerator ObservationAim(Transform target)
         {
