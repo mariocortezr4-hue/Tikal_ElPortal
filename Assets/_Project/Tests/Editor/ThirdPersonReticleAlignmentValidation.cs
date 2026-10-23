@@ -143,7 +143,7 @@ namespace Tikal.Tests.Editor
                 Check(interaction.HasResolvedAimPoint && interaction.CurrentInteractable != null, "production two-stage hit is exposed read-only");
                 void CheckProjection(string message)
                 {
-                    Check(ReticlePresenter.TryGetScreenOffset(camera, (RectTransform)reticle.transform, interaction.ResolvedAimPoint, out var expected) &&
+                    Check(ReticlePresenter.TryGetViewportCenterOffset(camera, (RectTransform)reticle.transform, out var expected) &&
                         Vector2.Distance(reticle.ScreenOffset, expected) < .02f, message);
                 }
                 settings.SetMode(ReticleMode.Dot); Refresh(); Check(dot.activeSelf && !cross.activeSelf && reticle.IsVisible, "Dot visible"); CheckProjection("Dot resolved projection");
@@ -154,7 +154,7 @@ namespace Tikal.Tests.Editor
                 Refresh();
                 Check(interaction.CurrentInteractable == null && interaction.HasResolvedAimPoint &&
                     wall.GetComponent<BoxCollider>().bounds.Contains(interaction.ResolvedAimPoint), "physical wall is resolved; target is not interactable");
-                CheckProjection("occluder projection"); Check(reticle.ScreenOffset.magnitude > .1f, "shoulder parallax yields nonzero screen offset");
+                CheckProjection("camera aim remains centered despite physical occluder"); Check(reticle.ScreenOffset.magnitude < .02f, "physical shoulder parallax never moves the camera reticle");
                 wall.SetActive(false);
                 target.transform.position = origin + Vector3.forward * 3.5f; Aim(origin + Vector3.right * 3.4f, target.transform.position); Refresh();
                 Check(interaction.HasResolvedAimPoint && interaction.CurrentInteractable == null && interaction.InteractionDistance == 3, "out-of-reach aim without valid interaction");

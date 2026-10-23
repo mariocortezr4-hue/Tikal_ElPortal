@@ -1,56 +1,40 @@
-# Third-person reticle parallax
+# Retículo TPS y aim de cámara
 
-The old ReticlePresenter always drew at viewport center. PlayerInteraction already resolved
-TPS in two stages: the MainCamera center ray selected a visual aim surface, then a ray from
-the stable InteractionOrigin checked physical reach and occlusion. A shoulder-offset camera
-and the player's chest are different origins. The final physical ray can hit a protrusion or
-blocking wall at a point that projects away from the original center-ray surface. Center anchors
-alone cannot represent that result; valid unoccluded surfaces can still project at center.
+La posición autorada ya tenía anchors y pivot `(0.5, 0.5)` y `anchoredPosition=(0,0)`.
+La causa era dinámica: el presenter proyectaba `PlayerInteraction.ResolvedAimPoint`,
+que puede ser reemplazado por el primer impacto físico desde el pecho. Con shoulder
+offset y una obstrucción, ese impacto se aparta del rayo central. La auditoría nativa
+reprodujo un offset de Canvas `(-33.43,-18.98)`, aunque el aim de cámara seguía centrado.
 
-PlayerInteraction now exposes read-only HasResolvedAimPoint, ResolvedAimPoint, ViewCamera and
-UsesThirdPersonAim. It publishes the existing visual hit, then replaces that point with the
-existing first physical reach hit if the algorithm reaches that stage. This includes a wall
-that rejects the visually selected interactable. No extra raycast, enlarged search, changed
-InteractionOrigin or interaction eligibility rule was introduced. FPS queries remain unchanged.
+La intención canónica es `Camera.ViewportPointToRay(new Vector3(.5f,.5f,0))`.
+Su AimPoint es el impacto visible de ese rayo, o cualquier punto sobre él cuando no
+hay impacto. Todos esos puntos proyectan al centro del viewport. En TPS,
+`ReticlePresenter.TryGetViewportCenterOffset` convierte
+`Camera.ViewportToScreenPoint((.5,.5,0))` al plano del padre mediante
+`RectTransformUtility.ScreenPointToLocalPointInRectangle`, restando `parent.rect.center`.
+Respeta CanvasScaler, Canvas camera y el rectángulo real de cámara. No sigue el
+personaje, el hombro, Player.forward ni un impacto físico fuera del rayo central.
 
-If the existing chain rejects the target before the reach stage (out of range, no interactable,
-or character facing), the visual hit remains available as normal aim. CurrentInteractable still
-remains null whenever the original algorithm rejects interaction. No valid-target color or
-extra feedback was added. If no useful hit exists or gameplay is locked, the resolved flag clears.
+FPS mantiene exactamente `anchoredPosition=(0,0)`. Dot, Cross y None comparten la
+posición del mismo contenedor; solo cambia su visibilidad. Pause/Journal mantienen
+su ocultación y Settings/persistencia mantienen los modos existentes. LateUpdate
+100 consume la pose final de cámara, sin suavizado ni jitter añadido.
 
-ReticlePresenter resolves its PlayerInteraction from the existing PlayerInputReader and uses
-that source's camera. Serialized references are optional for compatibility with existing scenes;
-canonical ThirdPersonCameraFoundationAuthoring now writes both explicitly. No scene rebuild is
-required for existing gameplay scenes and no new preference/reticle mode was created.
+`PlayerInteraction` no cambia: CameraRay selecciona intención y `InteractionOrigin`
+verifica alcance físico de 3 m, orientación y obstrucciones. La distancia del boom
+no reduce ese alcance. `ResolvedAimPoint` sigue siendo diagnóstico del resultado
+físico, no la autoridad visual del retículo. No se modifican parámetros de cámara,
+shoulder, boom, colisión ni environment.
 
-FPS stays at anchoredPosition zero. TPS projects the resolved world point with WorldToScreenPoint,
-then ScreenPointToLocalPointInRectangle into the reticle parent's plane. Subtracting the parent
-rect center yields the correct centered-anchor offset even if its pivot differs. Overlay Canvas
-uses no UI camera; ScreenSpaceCamera and WorldSpace use Canvas.worldCamera. This respects the
-actual Canvas transform and CanvasScaler rather than treating pixels as anchored coordinates.
+`Tikal/Debug/Reticle Camera Aim Gizmos` activa gizmos exclusivos del Editor:
+cian CameraRay, amarillo AimPoint, magenta InteractionRay y blanco la posición
+del retículo con sus coordenadas de viewport. El alcance de dibujo de 30 m es
+solo diagnóstico; no cambia el alcance de interacción. No añade UI a la build.
 
-No hit, points behind the view camera, missing projection references, NaN/Infinity or failed
-plane conversion safely fall back to center. Dot and Cross share the same container offset;
-None stays hidden. Existing Journal/Pause visibility is preserved. FPS/TPS switches are consumed
-before rendering, and FPS immediately clears the prior offset on the next presentation update.
-Position runs at LateUpdate order 100, after camera (-50) and interaction (0), so the rendered
-reticle uses the current frame's camera pose and resolved hit. Settings/gameplay refresh also
-updates positioning. There is no smoothing, extra lag or arbitrary maximum-offset clamp.
+La validación local `Temp/ReticleCameraAim.request` acepta `audit` (reproducción
+anterior) o `validate` (FPS/TPS, None/Dot/Cross, blancos a 2/5/10 m de cámara,
+oclusor físico, interacción simple/Door y retracción real del boom). Usa Level01
+en Play Mode, fixtures temporales y guardado aislado. No resuelve puzzles ni
+modifica la escena guardada. Evidencia local: `_ReticleCameraAim_20261023`.
 
-Camera collision/orbit simply change the real camera projection; no CameraDistance approximation
-is used. SecretCommand and the closed-Door secret solution remain independent of the reticle.
-Camera profiles, movement, sensitivity, reach, Door, puzzles, Pause, Journal and Tutorial are
-unchanged by this feature.
-
-Run `Tikal/Validation/Validate Third Person Reticle Alignment` in Edit Mode for Tutorial/Level01
-references, duplicate reticles, Missing Scripts and projection checks. The projection fixtures
-compare Unity conversion to independent perspective/CanvasScaler math at 1920x1080, 1280x720,
-1920x1200 and 1280x800, including screen round trips and invalid-point fallback.
-Run the same menu in Play Mode for isolated physics fixtures using the real Explorer/reticle:
-FPS center, TPS no-hit center, Dot/Cross/None, real two-stage hit, shoulder-offset occlusion,
-out-of-reach aim, shortened camera poses, FPS reset and UI lock. Temporary settings are not saved.
-
-Source compilation and an independent numerical four-resolution check are performed without
-Unity batchmode. Native Editor/Play Mode validation and physical playtest must still be run in
-Unity; they are not inferred from compilation. Manually test door/stele corners, lateral motion,
-camera collision, orbit, and switching TPS to FPS through Pause Settings with Dot/Cross/None.
+Validación nativa en Unity 6.6: 46 comprobaciones locales aprobadas, error de posición medido de 0 píxeles en las muestras FPS/TPS, blancos a 2/5/10 m, oclusor, interacción simple/Door y cámara retraída durante ocho frames. Cero Missing Scripts. Guardados personales sin cambios; escenas, environment y perfil de cámara sin modificaciones.
