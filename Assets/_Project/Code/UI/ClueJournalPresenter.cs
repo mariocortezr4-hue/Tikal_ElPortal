@@ -24,6 +24,7 @@ namespace Tikal.UI
         private CursorLockMode _previousCursor;
         private bool _previousCursorVisible;
         public bool IsOpen {get;private set;}
+        public event System.Action Opening;
         private void OnEnable()
         {
             if(_subscribed)return;
@@ -42,6 +43,7 @@ namespace Tikal.UI
         public void Open()
         {
             if(IsOpen||!_subscribed||!isActiveAndEnabled)return;
+            Opening?.Invoke(); // A Level01 map relinquishes its modal lock before Journal snapshots it.
             _previousGameplay=_player.GameplayActive;_previousPlayerMap=_inputReader.GameplayEnabled;_previousCursor=Cursor.lockState;_previousCursorVisible=Cursor.visible;
             IsOpen=true;_player.SetGameplayActive(false);Refresh();RefreshHint();_panel.SetActive(true);
         }
