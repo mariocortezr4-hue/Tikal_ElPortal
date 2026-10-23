@@ -78,14 +78,63 @@ Resultado: 176 comprobaciones de reproducción completa/skips y 3 de captura fin
 Las pruebas usan guardado temporal y teclado virtual; comprueban película completa, audio PCM
 tras el antiguo corte, subtítulos, mapa visible, título y skips de primera partida/replay.
 
-### Próxima pasada artística (pendiente)
+### Pasada artística final de Intro (2026-10-23)
 
-1. Iluminación de rostros/manos y separación suave del fondo, conservando tono de suspenso.
-2. Sustituir cilindros/bloques de entorno por vegetación y asiento/ruina con profundidad.
-3. Refinar contraste y lectura del dibujo del mapa en el plano de entrega.
-4. Refinar contacto fino de dedos y gesto Give Map: sigue siendo la actuación provisional
-   existente; esta pasada no crea animación ni altera rigs.
-5. Revisar composición de fondo y salida, y aceptación auditiva del empalme/duck con VO real.
+Solo cambia la escena Intro_AncientMap y recursos/editor tools locales. **Timeline, música,
+envelope, subtítulos, branding, hold y fade de 87,6 s quedan intactos**. Comparación externa
+SHA256 confirma Timeline y audio idénticos a 1862ac6. No hay cambios runtime, de Menu,
+Tutorial, Level01, personajes compartidos, input, guardado, puzzles o journal.
+
+Auditoría: ocho cámaras de las pistas Activation reales; imágenes y frustums en
+`_IntroArtPass_20261023/Audit.json`. La evaluación en Edit Mode se usó para escenografía,
+no para juzgar contacto de manos: los constraints se revisaron en reproducción real.
+
+| Plano | Foreground / sujeto / background auditados | Resolución visual |
+|---|---|---|
+| Establishing | Cilindros, plano y borde vacío; actores pequeños | Franja de selva, sendero y arco al fondo; cámara dentro del corredor para evitar una copa cercana |
+| ExplorerWalk | Camino prismático, fondo abierto; Dwight entraba tarde | Camino con bordes vegetales, ruina y asiento visibles; encuadre local más atrasado para incluir caminata |
+| TwoShot | Cubo de asiento y cilindros, poco contraste | Rocas estratificadas, ambos sujetos visibles y espacio entre ellos despejado |
+| ExplorerDialogue | Dwight, hombro del Anciano, fondo plano | Fill suave sobre rostro/torso y vegetación escalonada de fondo sin hojas sobre el rostro |
+| ElderDialogue | Cara del Anciano oscura y cubo visible | Luz cálida, asiento de piedra y contrapunto de musgo/ruina parcial |
+| MapHandoff | Intercambio amplio, manos provisionales y mapa | Mismo FOV 40°, cámara algo más alta/retirada, prop inclinado y bajado localmente; sin IK ni retiming |
+| FinalWarning | Rostro contra suelo plano/cilindros | Rostro legible, piedra y vegetación tras la silueta, subtítulo original conservado |
+| Departure | Rama/cilindro en primer plano y salida vacía | Cámara dentro del corredor, Dwight saliendo hacia el arco con fondo cerrado y Anciano visible |
+
+Iluminación localizada: se reutiliza la única directional, ahora cálida (RGB 1/0,85/0,66,
+intensidad 1,35), con sombras suaves. Dos spots locales sin sombras: fill frío/verde tenue
+(3,1; rango 12 m) y rim cálido (3,8; rango 12 m). Ambient trilight y niebla exponencial suave
+son propiedades de esta escena. **No se crean ni modifican Volumes o perfiles compartidos**.
+
+164 placements de prefabs existentes: árboles tropicales 02/03/04, ceibas adultas/jóvenes,
+arbustos 02/03, helechos, plantas tropicales, lianas, raíces, rocas planas/con musgo y ruinas
+(arco, muros parciales, columna derrumbada y escombros). Se retiraron las tarjetas de hojas
+que daban una lectura plana. No se importó paquete ni modelo nuevo.
+
+Los renderers del blockout Environment se deshabilitan; los objetos y colliders originales
+se conservan. El suelo visual usa dos mallas locales (relieve de 15.360 triángulos y sendero
+de 1.280) y dos materiales propios derivados de materiales ya integrados; nunca se edita el
+material compartido de otra escena. Los placements de arte no tienen colliders. Fondo con
+LOD1 explícito y sin sombras; follaje cercano sin sombras. Solo la directional aporta una
+sombra nueva; fill/rim no generan shadow maps. No se declara un benchmark de FPS.
+
+Mapa: se conserva PFB_PRP_MapaAntiguo_01 y su carrier/ParentConstraint/animación/evento. Se
+añade un offset visual normalizado que conserva dimensiones: desplazamiento local
+(-0,025; -0,065; 0,015 m), inclinación 9° y roll 3°. El plano de entrega sigue siendo amplio.
+La actuación Give Map sigue siendo la animación provisional existente: no se promete
+contacto de cada dedo desde cualquier ángulo, ni se modifica el rig.
+
+Herramientas: `Tikal/Authoring/Apply Intro Cinematic Art Pass` conserva el estado integrado
+al repetirse, sin duplicados. `Tikal/Validation/Run Intro Cinematic Art Play Tests` reproduce
+la Intro completa, captura los ocho planos y título/fade y comprueba flujo/skip con guardado
+aislado. Resultado: 190 comprobaciones aprobadas, sin errores; sin Missing Scripts/Materials,
+mapa recibido una sola vez, Tutorial y skips de primera partida/replay correctos. Audio y
+timing congelados se verifican por hash y binding/envelope; no se rediseña ni recalifica la mezcla.
+
+Capturas finales: `Intro_Establishing_Final`, `Intro_ExplorerWalk_Final`, `Intro_TwoShot_Final`,
+`Intro_ExplorerDialogue_Final`, `Intro_ElderDialogue_Final`, `Intro_MapHandoff_Final`,
+`Intro_FinalWarning_Final`, `Intro_Departure_Final`, `Intro_Title_Final` (PNG, carpeta de evidencia).
+La primera es un render limpio de la cámara activa en Play Mode, sin UI/fade superpuesto,
+para revisar escenografía; las otras son capturas de la reproducción con UI original.
 
 ---
 
