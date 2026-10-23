@@ -666,6 +666,16 @@ namespace Tikal.Input
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Map"",
+                    ""type"": ""Button"",
+                    ""id"": ""1dce5681-7bc9-49e9-8de7-6b1b46c08bf7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -710,6 +720,28 @@ namespace Tikal.Input
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Journal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8c0fffb-5bce-46b6-b9cc-e306e2ff964b"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Map"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""717f01ba-207f-47e9-8e2d-736dd6fe75ff"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Map"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -767,6 +799,7 @@ namespace Tikal.Input
             m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
             m_Global_Pause = m_Global.FindAction("Pause", throwIfNotFound: true);
             m_Global_Journal = m_Global.FindAction("Journal", throwIfNotFound: true);
+            m_Global_Map = m_Global.FindAction("Map", throwIfNotFound: true);
         }
 
         ~@TikalInputActions()
@@ -1164,6 +1197,7 @@ namespace Tikal.Input
         private List<IGlobalActions> m_GlobalActionsCallbackInterfaces = new List<IGlobalActions>();
         private readonly InputAction m_Global_Pause;
         private readonly InputAction m_Global_Journal;
+        private readonly InputAction m_Global_Map;
         /// <summary>
         /// Provides access to input actions defined in input action map "Global".
         /// </summary>
@@ -1183,6 +1217,10 @@ namespace Tikal.Input
             /// Provides access to the underlying input action "Global/Journal".
             /// </summary>
             public InputAction @Journal => m_Wrapper.m_Global_Journal;
+            /// <summary>
+            /// Provides access to the underlying input action "Global/Map".
+            /// </summary>
+            public InputAction @Map => m_Wrapper.m_Global_Map;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1215,6 +1253,9 @@ namespace Tikal.Input
                 @Journal.started += instance.OnJournal;
                 @Journal.performed += instance.OnJournal;
                 @Journal.canceled += instance.OnJournal;
+                @Map.started += instance.OnMap;
+                @Map.performed += instance.OnMap;
+                @Map.canceled += instance.OnMap;
             }
 
             /// <summary>
@@ -1232,6 +1273,9 @@ namespace Tikal.Input
                 @Journal.started -= instance.OnJournal;
                 @Journal.performed -= instance.OnJournal;
                 @Journal.canceled -= instance.OnJournal;
+                @Map.started -= instance.OnMap;
+                @Map.performed -= instance.OnMap;
+                @Map.canceled -= instance.OnMap;
             }
 
             /// <summary>
@@ -1419,6 +1463,13 @@ namespace Tikal.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnJournal(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Map" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnMap(InputAction.CallbackContext context);
         }
     }
 }

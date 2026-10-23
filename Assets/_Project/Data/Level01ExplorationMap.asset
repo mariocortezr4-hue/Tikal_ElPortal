@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810ee9fcc1611f546b77d0bfffbf80d3, type: 3}
+  m_Name: Level01ExplorationMap
+  m_EditorClassIdentifier: Assembly-CSharp::Tikal.UI.LevelMapDefinition
+  levelTitle: LEVEL 1
+  worldBounds:
+    serializedVersion: 2
+    x: -13
+    y: -18
+    width: 54
+    height: 98
+  publicAreas:
+  - id: Surface_SpawnArea
+    worldXZ:
+      serializedVersion: 2
+      x: -8
+      y: -16
+      width: 16
+      height: 16
+  - id: Surface_Entrance
+    worldXZ:
+      serializedVersion: 2
+      x: -2.2
+      y: 0
+      width: 4.4
+      height: 2
+  - id: Surface_Zone01_MuralFragments
+    worldXZ:
+      serializedVersion: 2
+      x: -9
+      y: 2
+      width: 18
+      height: 20
+  - id: Surface_Zone02_PathGuardians
+    worldXZ:
+      serializedVersion: 2
+      x: 19
+      y: 3
+      width: 20
+      height: 18
+  - id: Surface_Zone03_EchoChamber
+    worldXZ:
+      serializedVersion: 2
+      x: 21
+      y: 31
+      width: 16
+      height: 16
+  - id: Surface_Zone04_GlyphGallery
+    worldXZ:
+      serializedVersion: 2
+      x: -11
+      y: 32
+      width: 22
+      height: 14
+  - id: Surface_Zone05_Revelation
+    worldXZ:
+      serializedVersion: 2
+      x: -11
+      y: 56
+      width: 22
+      height: 22
+  - id: Surface_01_to_02
+    worldXZ:
+      serializedVersion: 2
+      x: 9
+      y: 10
+      width: 10
+      height: 4
+  - id: Surface_02_to_03
+    worldXZ:
+      serializedVersion: 2
+      x: 27
+      y: 21
+      width: 4
+      height: 10
+  - id: Surface_03_to_04
+    worldXZ:
+      serializedVersion: 2
+      x: 11
+      y: 37
+      width: 10
+      height: 4
+  - id: Surface_04_to_05
+    worldXZ:
+      serializedVersion: 2
+      x: -2
+      y: 46
+      width: 4
+      height: 10
