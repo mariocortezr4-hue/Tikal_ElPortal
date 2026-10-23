@@ -1,0 +1,755 @@
+{
+  "scope": "Selective optimized assets only; sources read-only; existing project GUID dependencies reused. Source prefab diagnostic colliders are removed later only from these new local copies. No puzzle kit visuals. ROC_RocaMusgo_01 and ARQ_EscombrosMaya_01 retain their original single geometry level: library LOD-labelled duplicates provide no triangle reduction and are excluded. RocaMusgo_01 used only as a near entry framing prop.",
+  "assets": [
+    {
+      "name": "VEG_CeibaJoven_01",
+      "sourcePrefab": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Arboles\\VEG_CeibaJoven_01\\Prefabs\\PFB_VEG_CeibaJoven_01.prefab",
+      "prefab": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_CeibaJoven_01.prefab",
+      "category": "Trees"
+    },
+    {
+      "name": "VEG_ArbolTropical_03",
+      "sourcePrefab": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_03\\Prefabs\\PFB_VEG_ArbolTropical_03.prefab",
+      "prefab": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+      "category": "Trees"
+    },
+    {
+      "name": "ROC_RocaMusgo_01",
+      "sourcePrefab": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_01\\Prefabs\\PFB_ROC_RocaMusgo_01.prefab",
+      "prefab": "Assets/_Project/Prefabs/Environment/Level01/PFB_ROC_RocaMusgo_01.prefab",
+      "category": "Rocks"
+    },
+    {
+      "name": "ROC_RocaFragmentada_01",
+      "sourcePrefab": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaFragmentada_01\\Prefabs\\PFB_ROC_RocaFragmentada_01.prefab",
+      "prefab": "Assets/_Project/Prefabs/Environment/Level01/PFB_ROC_RocaFragmentada_01.prefab",
+      "category": "Rocks"
+    },
+    {
+      "name": "ARQ_ArcoMaya_01",
+      "sourcePrefab": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Portales\\ARQ_ArcoMaya_01\\Prefabs\\PFB_ARQ_ArcoMaya_01.prefab",
+      "prefab": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ArcoMaya_01.prefab",
+      "category": "Ruins"
+    },
+    {
+      "name": "ARQ_ColumnaDerrumbada_01",
+      "sourcePrefab": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Columnas\\ARQ_ColumnaDerrumbada_01\\Prefabs\\PFB_ARQ_ColumnaDerrumbada_01.prefab",
+      "prefab": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ColumnaDerrumbada_01.prefab",
+      "category": "Ruins"
+    },
+    {
+      "name": "ARQ_EscalinataMaya_01",
+      "sourcePrefab": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_EscalinataMaya_01\\Prefabs\\PFB_ARQ_EscalinataMaya_01.prefab",
+      "prefab": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_EscalinataMaya_01.prefab",
+      "category": "Ruins"
+    },
+    {
+      "name": "ARQ_EscombrosMaya_01",
+      "sourcePrefab": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Escombros\\ARQ_EscombrosMaya_01\\Prefabs\\PFB_ARQ_EscombrosMaya_01.prefab",
+      "prefab": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_EscombrosMaya_01.prefab",
+      "category": "Ruins"
+    },
+    {
+      "name": "ARQ_EstelaFragmentada_01",
+      "sourcePrefab": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Estelas\\ARQ_EstelaFragmentada_01\\Prefabs\\PFB_ARQ_EstelaFragmentada_01.prefab",
+      "prefab": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_EstelaFragmentada_01.prefab",
+      "category": "Ruins"
+    },
+    {
+      "name": "ARQ_PisoPiedraMaya_01",
+      "sourcePrefab": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PisoPiedraMaya_01\\Prefabs\\PFB_ARQ_PisoPiedraMaya_01.prefab",
+      "prefab": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PisoPiedraMaya_01.prefab",
+      "category": "Ruins"
+    },
+    {
+      "name": "ARQ_PlataformaElevada_01",
+      "sourcePrefab": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PlataformaElevada_01\\Prefabs\\PFB_ARQ_PlataformaElevada_01.prefab",
+      "prefab": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+      "category": "Ruins"
+    },
+    {
+      "name": "ARQ_BloqueMaya_02",
+      "sourcePrefab": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_BloqueMaya_02\\Prefabs\\PFB_ARQ_BloqueMaya_02.prefab",
+      "prefab": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_BloqueMaya_02.prefab",
+      "category": "Ruins"
+    }
+  ],
+  "files": [
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Arboles\\VEG_CeibaJoven_01\\Prefabs\\PFB_VEG_CeibaJoven_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_CeibaJoven_01.prefab",
+      "guid": "c87440de47f48df479797a3b4ff9a04f",
+      "sha256": "405f7f70ac613caa6a240702fc03394bdeba16d4b4a3b819099c927a9443e43c",
+      "metaSHA256": "b5a6b6855f6a3d8e1288b6e2678fabaa628d700a6fded21af1764bc7a8f59374",
+      "bytes": 7892
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Arboles\\VEG_CeibaJoven_01\\Models\\VEG_CeibaJoven_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/VEG_CeibaJoven_01/Models/VEG_CeibaJoven_01_LOD1.fbx",
+      "guid": "1570d92372b67a84bb6386e88a65b48c",
+      "sha256": "bdcd29b6b733a7b0c38f4dd2b05ff35c81e875e7879768ccd0a89f9891ff022d",
+      "metaSHA256": "9beb37b3d0c4b0418deb06499bc7be8daee2332148ed6feef5a6b34953b8b63b",
+      "bytes": 383308
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Arboles\\VEG_CeibaJoven_01\\Materials\\VEG_CeibaJoven_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Level01/VEG_CeibaJoven_01/Materials/VEG_CeibaJoven_01_MAT00.mat",
+      "guid": "70bdb621f4f6062439d311c225f80ea7",
+      "sha256": "966b8e6a1c7678cf9118ea69a1cee9e43bb1fcf463219d7cf4b0d355ad80299d",
+      "metaSHA256": "f01855b051936cc39f873fd0be92054837047f7c70a4828cdefdfc44d2cbd479",
+      "bytes": 4084
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Arboles\\VEG_CeibaJoven_01\\Textures\\VEG_CeibaJoven_01_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Level01/VEG_CeibaJoven_01/Textures/VEG_CeibaJoven_01_BaseColor.jpg",
+      "guid": "adae6a5c10554874e9f883f67d8b8eeb",
+      "sha256": "9f15eb5fadcf5b4874e056b6af0ee9eb425c5497591ce2fb2b6d335776006e95",
+      "metaSHA256": "87e20c9726f90161825c5addf22c0a9fc0126432cf051bbb8eb1a505b74616ea",
+      "bytes": 996298
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Arboles\\VEG_CeibaJoven_01\\Textures\\VEG_CeibaJoven_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/VEG_CeibaJoven_01/Textures/VEG_CeibaJoven_01_Normal.png",
+      "guid": "be6c22b3a44854b4ea69dd8643f86b82",
+      "sha256": "80bd85960f224abd4f8bada1fd36389bf97fda0f29175b48e1cc452f53605641",
+      "metaSHA256": "bbac78a4e4ac5ef86ad22302e3bc81639ecbff013ce958240e758da2adcced3d",
+      "bytes": 10471952
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Arboles\\VEG_CeibaJoven_01\\Models\\VEG_CeibaJoven_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/VEG_CeibaJoven_01/Models/VEG_CeibaJoven_01_LOD0.fbx",
+      "guid": "df68252836da12f4caab8beeedfe0e98",
+      "sha256": "27aa3f8c3b5e43bfe338701cd8800fb14471a0523cf5052a73947b0287464ba2",
+      "metaSHA256": "f9463044a603f325e9fbb4430cb3eb27c752acf6d14a2c9d6bd846ef9f03a843",
+      "bytes": 569964
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_03\\Prefabs\\PFB_VEG_ArbolTropical_03.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+      "guid": "dad71c721dd748b09acdc384a9fe92a7",
+      "sha256": "91e41bf66f1a49c279eb467dc8a38dbb7398200277c0665fb6bd4fbc512db3e4",
+      "metaSHA256": "f72eaa71ce719f8cd8855fddd01247c1e6c78cf155dd2edf8e165923c9f4fc89",
+      "bytes": 10556
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_03\\Models\\VEG_ArbolTropical_03_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/VEG_ArbolTropical_03/Models/VEG_ArbolTropical_03_LOD0.fbx",
+      "guid": "80cc91377ec3401992d42f6ac44d6eb0",
+      "sha256": "529f067e650e1e8a432d102f2dae7fc0819efa31947f819e30d50c7dede5e5d9",
+      "metaSHA256": "11e9e7c186096d0bc8dc4b4c77a011cc7c6c871a7ccd28a21a69fbb7d82ea142",
+      "bytes": 506348
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_03\\Materials\\VEG_ArbolTropical_03_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Level01/VEG_ArbolTropical_03/Materials/VEG_ArbolTropical_03_MAT00.mat",
+      "guid": "92694986d15444fab70e273f7323e90d",
+      "sha256": "30ee62527c7f1c9e6b70d3c5f0403e54d75e04d4de7a13f7bbcf5ad71c413302",
+      "metaSHA256": "2e1fa6c29d1b73b4393ec51977d03daf181b6ebb34b70637296fc0e77087ddc5",
+      "bytes": 4086
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_03\\Textures\\VEG_ArbolTropical_03_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Level01/VEG_ArbolTropical_03/Textures/VEG_ArbolTropical_03_BaseColor.jpg",
+      "guid": "9646036cf7924a7aad26ebe55ef8f515",
+      "sha256": "e2616a2bf6f757547cb32e7fffdb774f9c23adf620ef628a9cd447f61e7378b8",
+      "metaSHA256": "cffdcb6ab3638c5b36eed4dcf3917335f8ddad40923ac82293860fdc043e4841",
+      "bytes": 1254004
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_03\\Textures\\VEG_ArbolTropical_03_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/VEG_ArbolTropical_03/Textures/VEG_ArbolTropical_03_Normal.png",
+      "guid": "fcf0d2b2ebae4ab8bccf8791d7f3cc1d",
+      "sha256": "8398ec90dd56bb4e0f87d5e2f2ef169bbaccb38a799a3c351330500ea85d549f",
+      "metaSHA256": "44c739d40c52fd6d81f4f81e2fcfbfe3edb59cc2a29f010feef2149b8d24afe1",
+      "bytes": 9231192
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_03\\Models\\VEG_ArbolTropical_03_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/VEG_ArbolTropical_03/Models/VEG_ArbolTropical_03_LOD1.fbx",
+      "guid": "139f52db72aa49ea948529f0dffaa959",
+      "sha256": "07802e9ac17869c4de945aa126eda37d0c57a9df11e94b749258384cd58b8efc",
+      "metaSHA256": "2b11d004fdc1e9ef0619f9a7ea05adbdc78354b9f28d345ba88f6380440a0ba2",
+      "bytes": 377772
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\VEG_ArbolTropical_03\\Models\\VEG_ArbolTropical_03_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/VEG_ArbolTropical_03/Models/VEG_ArbolTropical_03_LOD2.fbx",
+      "guid": "edb925f95c874b2aaa1ff061f7ee170c",
+      "sha256": "bb063eb70fc720ab27d31be75cdfb9385ec7a8b89f2b8109f3698c0ab6b67ee5",
+      "metaSHA256": "d46554202b7c1b95725b0f1cef2bbce5911f6d1f2c49d69eb2c583564ad9c306",
+      "bytes": 203068
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_01\\Prefabs\\PFB_ROC_RocaMusgo_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Level01/PFB_ROC_RocaMusgo_01.prefab",
+      "guid": "de423c14692c4f5898d9a901eeae96fb",
+      "sha256": "8ddc2048995ca9a8604c9eb01331c0144483e37d92a566b6a77ee6dcae9efb22",
+      "metaSHA256": "c8bc3a8ca0058d34295722e5b47dc5deed772eb886362abeda82116a22f35041",
+      "bytes": 4454
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_01\\Models\\ROC_RocaMusgo_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ROC_RocaMusgo_01/Models/ROC_RocaMusgo_01_LOD0.fbx",
+      "guid": "ea8e6fe52f3e4a248d46be23836a843c",
+      "sha256": "03f6fe7c92645fc41e0153f2616feff97fbd0ccf89c9a3e30139989c943b26d3",
+      "metaSHA256": "736ddb1b911b5c85720175cb268f2a925b97c2f5dedc3678ea1f5efe0bb909ee",
+      "bytes": 236332
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_01\\Materials\\ROC_RocaMusgo_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Level01/ROC_RocaMusgo_01/Materials/ROC_RocaMusgo_01_MAT00.mat",
+      "guid": "882a69eaea2140afa384ac8f5e3002ab",
+      "sha256": "938ff08ea17dc7674f9f930a1f3bbad08b04da930bd8080ce59bf9cca5f94a34",
+      "metaSHA256": "2610e58fe5d0b0fdd22c08cb81f833b31e893be6aa9ec38cf60017d9632750dc",
+      "bytes": 4081
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_01\\Textures\\ROC_RocaMusgo_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ROC_RocaMusgo_01/Textures/ROC_RocaMusgo_01_Normal.png",
+      "guid": "4ed92a675fae47bbbbc0a38d23bcac29",
+      "sha256": "1227647563506fb626b76dddac1b3ae38df63541c70943dd75739154bd090a20",
+      "metaSHA256": "837aae62087ca09490c10f2c3c78130d807e24e724942897c573bf8ed8140edc",
+      "bytes": 8822949
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ROC_RocaMusgo_01\\Textures\\ROC_RocaMusgo_01_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Level01/ROC_RocaMusgo_01/Textures/ROC_RocaMusgo_01_BaseColor.jpg",
+      "guid": "2b0175878909411eb223649cd9b9d934",
+      "sha256": "129b3798cf01d913bb2676f0e1e900b60d6e37c8a47bebe18a404a5a1990c70b",
+      "metaSHA256": "93662e7f451aeabd53eff79502f83e6194641a2c9cf0f8b4838047955cc9dc4f",
+      "bytes": 2217206
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaFragmentada_01\\Prefabs\\PFB_ROC_RocaFragmentada_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Level01/PFB_ROC_RocaFragmentada_01.prefab",
+      "guid": "24edb782b8871e84db3553ec558833ea",
+      "sha256": "e7b11249241250edadce4f727033bb4734c51f90dee2c2d044dd863783520e8a",
+      "metaSHA256": "af3ce147f7e67e58e7aff4a4912ce06d2094be3e59960c48e047e0b6d8a11e5b",
+      "bytes": 12699
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaFragmentada_01\\Models\\ROC_RocaFragmentada_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Models/ROC_RocaFragmentada_01_LOD1.fbx",
+      "guid": "b806e4fb13e40b3469777071ed1c2c98",
+      "sha256": "077490db579a17b20bc8aae0944ea2c8a4fcc4826adefe3231cd56422724f8db",
+      "metaSHA256": "6c2a3c0efebb1f1224b7d1d0fc22193459e96491aa5fb32c3d3fdfb76588bab5",
+      "bytes": 173964
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaFragmentada_01\\Materials\\ROC_RocaFragmentada_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Materials/ROC_RocaFragmentada_01_MAT00.mat",
+      "guid": "e9520755f47b30541aec2dfa8fef0ba4",
+      "sha256": "6b8519779b6db3236cb8f083b5d6d63aec6a42e921f160bb93cdef07735f1755",
+      "metaSHA256": "1b7cce420b6b85cf658a1ffef0b1b892ad7bbdaa1ad14cd5ab51a37b58f70690",
+      "bytes": 4167
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaFragmentada_01\\Textures\\ROC_RocaFragmentada_01_MetallicSmoothness_URP.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Textures/ROC_RocaFragmentada_01_MetallicSmoothness_URP.png",
+      "guid": "6f31571d172659345bc28fc8abee8041",
+      "sha256": "cdb3f282bf9d5154da6f5586b7f4bb102662ed1e5a919bd96364d639b6249b5c",
+      "metaSHA256": "b59accac2b172fa5f77929cee499571a70f463ff98a1e4a24f7bcf57b70d93ac",
+      "bytes": 4419909
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaFragmentada_01\\Textures\\ROC_RocaFragmentada_01_BaseColor.jpeg",
+      "destination": "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Textures/ROC_RocaFragmentada_01_BaseColor.jpeg",
+      "guid": "b147932f63c4da547aefdd3cbc7f9257",
+      "sha256": "fe934210ea102d146d4a758811490b1f82ab5af7da83514494b7a7428440ff72",
+      "metaSHA256": "58472e17515ea84eda19cc34cc572262755bc790ab20c4c75af00f9dd58fb9ab",
+      "bytes": 1831204
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaFragmentada_01\\Textures\\ROC_RocaFragmentada_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Textures/ROC_RocaFragmentada_01_Normal.png",
+      "guid": "0f643f28438e5ce42a4e00a364c1209c",
+      "sha256": "8fa58436824348d915728cb58245a439f59515ad42430b0facc019e0350b6b54",
+      "metaSHA256": "fcaf4c57596f797c8ca36bae31aca812b3006ff21a3465b3ffa7d3adc5646d41",
+      "bytes": 5241756
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaFragmentada_01\\Models\\ROC_RocaFragmentada_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Models/ROC_RocaFragmentada_01_LOD0.fbx",
+      "guid": "1552f0a10b6d8de4a95cde22d4086a7b",
+      "sha256": "43a62f6ccc2f3ed9d85651a49845eb8631f8320bd66a6d55cb10e97c956b3868",
+      "metaSHA256": "124e241c0330e4a8555c2029d8a5afb1cfa560e60916521d5177e0a1663de8ec",
+      "bytes": 284588
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch61_75_R2\\Rocas_Tropicales\\ROC_RocaFragmentada_01\\Models\\ROC_RocaFragmentada_01_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Models/ROC_RocaFragmentada_01_LOD2.fbx",
+      "guid": "c05d06aba6f144a4f904a6c14427bbc7",
+      "sha256": "0901cbb92ff749d0b4b784f9a357f046edee963289b3a6ccba8aa949e17b3bb2",
+      "metaSHA256": "fcb533443916129ec7aac189609474b8bb5d8bd328fe971fab07c4c61e415fb3",
+      "bytes": 81452
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Portales\\ARQ_ArcoMaya_01\\Prefabs\\PFB_ARQ_ArcoMaya_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ArcoMaya_01.prefab",
+      "guid": "7afadd2d947d82348831c827a7c3a44b",
+      "sha256": "0ba7f5bd8abedb07c087beb30d6efdf14876afae6530ae600a5b152a1e139408",
+      "metaSHA256": "b3ece23b6524168bc1ccbdd94e8556204d6b13842f310a889694db1d691e5054",
+      "bytes": 12172
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Portales\\ARQ_ArcoMaya_01\\Models\\ARQ_ArcoMaya_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Models/ARQ_ArcoMaya_01_LOD0.fbx",
+      "guid": "3ac8a8f009681fb4fa5dfbf20cff4e7d",
+      "sha256": "c2bf887f5ad6e97c362a49714f9dba646476f86687c794ccc95e2b5cb7005e57",
+      "metaSHA256": "93ed9092a25bd429ca539fab8ec8fc4a72f763cd419258aa6ed46fff92452064",
+      "bytes": 482460
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Portales\\ARQ_ArcoMaya_01\\Materials\\ARQ_ArcoMaya_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Materials/ARQ_ArcoMaya_01_MAT00.mat",
+      "guid": "0aa09c0c8ea7f074c8cb183dacf3043c",
+      "sha256": "37f9320ddcf0965c4b80589ca27422ecbc51811143f7e293bcb8dcad20c77329",
+      "metaSHA256": "036218f4a2a69b141a8346e5fbd0309bff1b95421fce4356756c69946874658a",
+      "bytes": 4158
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Portales\\ARQ_ArcoMaya_01\\Textures\\ARQ_ArcoMaya_01_BaseColor.jpeg",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Textures/ARQ_ArcoMaya_01_BaseColor.jpeg",
+      "guid": "84596d2c329f3b742b20a6bf8fbdf0c6",
+      "sha256": "84ca6b0c009c48280b407ce587c5f243e0d891143685d67fef8d11cde1906a26",
+      "metaSHA256": "31556dcc1db43d62356cab08405a0427b7dc7b3dbf86324fbbdba52e2c4d9ed4",
+      "bytes": 2029945
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Portales\\ARQ_ArcoMaya_01\\Textures\\ARQ_ArcoMaya_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Textures/ARQ_ArcoMaya_01_Normal.png",
+      "guid": "5e83f151b3313fb4991e3f2f96af8778",
+      "sha256": "d882e2e39145b343e3f466af78f9373772a81ef0d8c527b87e1b2cfe903bef88",
+      "metaSHA256": "549659a10a283f1b9cf918056c60d7a3e8775a4b2a854e2d5c7915f176c84d5d",
+      "bytes": 4847400
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Portales\\ARQ_ArcoMaya_01\\Textures\\ARQ_ArcoMaya_01_MetallicSmoothness_URP.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Textures/ARQ_ArcoMaya_01_MetallicSmoothness_URP.png",
+      "guid": "199eec3ee604a4c49b76b7d01a042ab1",
+      "sha256": "8bcb80aaaf18e32536e838a593be92262363f8744fd0c27e27b969d665a39d67",
+      "metaSHA256": "9cfbed1072b18833d8a0f6e80a0acad455cd3d490afab786ea297f408a1f049a",
+      "bytes": 3255237
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Portales\\ARQ_ArcoMaya_01\\Models\\ARQ_ArcoMaya_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Models/ARQ_ArcoMaya_01_LOD1.fbx",
+      "guid": "b78a38548e366674490c8125a69fb859",
+      "sha256": "9582ff2ee9b9b5bd4d25ea3536d1bb966d77f8409af2c8756a079e2cb5d6d9e3",
+      "metaSHA256": "70cfa41a0befb70914cc0f47bf0d02bc92739223b8b5a470d7f99fbf56769d5f",
+      "bytes": 292412
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Portales\\ARQ_ArcoMaya_01\\Models\\ARQ_ArcoMaya_01_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Models/ARQ_ArcoMaya_01_LOD2.fbx",
+      "guid": "b15c63c4eb7f0d74aa9ecfc7164f608f",
+      "sha256": "b9f502bddeae683419b7c41a6812f0ae5eeb4f06edd28f599e1045ff6b990210",
+      "metaSHA256": "f1657af3cb00146b31e14e3d4f097698c642ea70738467001a68d371260b9e9b",
+      "bytes": 134956
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Columnas\\ARQ_ColumnaDerrumbada_01\\Prefabs\\PFB_ARQ_ColumnaDerrumbada_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ColumnaDerrumbada_01.prefab",
+      "guid": "abf6c3575733f4f45808642c76b97286",
+      "sha256": "853136f07be61768071e2b04271f7408b9352ac6cba4105619ac8c7249504177",
+      "metaSHA256": "76427111bd8e3da7626750c1bd903d2e3ec975130e6bc9f60f49f9ee192e61e6",
+      "bytes": 12176
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Columnas\\ARQ_ColumnaDerrumbada_01\\Models\\ARQ_ColumnaDerrumbada_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Models/ARQ_ColumnaDerrumbada_01_LOD0.fbx",
+      "guid": "daa102f794749d24dbe99779eb41a8cc",
+      "sha256": "dccc8342fe640fe4ac3fd224a559435e368f0941d82f0b5bf615c12d9cb6f3b7",
+      "metaSHA256": "c30b46d795fb70d48e3e93b812a8362f63ef76b9d4dcc5fdbc6917425abe3f28",
+      "bytes": 320524
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Columnas\\ARQ_ColumnaDerrumbada_01\\Materials\\ARQ_ColumnaDerrumbada_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Materials/ARQ_ColumnaDerrumbada_01_MAT00.mat",
+      "guid": "209cd32b76ad01d44b7f81a6d1f723b6",
+      "sha256": "7f5df09097fbf749b91452f8f67757de2627771452615e621735e79e78866791",
+      "metaSHA256": "d644fe646a5eb15bfccc4391ef5cc0c329e1fa5e0add5f29787442444d90ca26",
+      "bytes": 4168
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Columnas\\ARQ_ColumnaDerrumbada_01\\Textures\\ARQ_ColumnaDerrumbada_01_MetallicSmoothness_URP.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Textures/ARQ_ColumnaDerrumbada_01_MetallicSmoothness_URP.png",
+      "guid": "c0dd7c7608992e345b9ebda22ba1fa24",
+      "sha256": "9c0e11a913b931e596033d47f9b7bf67f49326a7f6238109df2e706642228bf4",
+      "metaSHA256": "3b257ada9eac8b54df0c8bef541fb574006c7645bb2193d39cfd97a5a5647331",
+      "bytes": 2895951
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Columnas\\ARQ_ColumnaDerrumbada_01\\Textures\\ARQ_ColumnaDerrumbada_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Textures/ARQ_ColumnaDerrumbada_01_Normal.png",
+      "guid": "5e4f09c614adfab45884378cc79e56ac",
+      "sha256": "84a5d4da29a4211f2c83d44c69ef21cd065f54fb9e4c0455e03d34b2405cbb88",
+      "metaSHA256": "7e424f14e72e1e4fad93ff401f572c414537f20b0fd3e8f16983234359d2ddc9",
+      "bytes": 4646673
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Columnas\\ARQ_ColumnaDerrumbada_01\\Textures\\ARQ_ColumnaDerrumbada_01_BaseColor.jpeg",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Textures/ARQ_ColumnaDerrumbada_01_BaseColor.jpeg",
+      "guid": "e493f9477e5b4ca49b47dca37b851c2a",
+      "sha256": "a44a40a65ec29bd40e714fddb8df3c6a272b6a8e17e1e5e6517b3d94a5bc89c3",
+      "metaSHA256": "9ef6ae7a14aa0b765f326dd5a696f56418a9d6da66b82c05b7e2c9e0a321f82d",
+      "bytes": 1433515
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Columnas\\ARQ_ColumnaDerrumbada_01\\Models\\ARQ_ColumnaDerrumbada_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Models/ARQ_ColumnaDerrumbada_01_LOD1.fbx",
+      "guid": "13fee20afe928784990d17da3e72826b",
+      "sha256": "41c9805c5912c887da41843d4fc2c168e2300382b02926a3fbc79559de0ef677",
+      "metaSHA256": "883c9fc59df083eeb17db8968866f633fef1941b95a398b973922fb4e8d3b959",
+      "bytes": 187212
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Columnas\\ARQ_ColumnaDerrumbada_01\\Models\\ARQ_ColumnaDerrumbada_01_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Models/ARQ_ColumnaDerrumbada_01_LOD2.fbx",
+      "guid": "306c21286fe47214d8d27e870f6b6c77",
+      "sha256": "ea06b032577387ce566be56c09d5ee5f66d35575b33e2b894880b8cc2dc5aee2",
+      "metaSHA256": "67a6b8689d7bc7761d1ee327d1a882c8e4de700dfaeb13d97058a31b16a7b2aa",
+      "bytes": 91308
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_EscalinataMaya_01\\Prefabs\\PFB_ARQ_EscalinataMaya_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_EscalinataMaya_01.prefab",
+      "guid": "907594e9f34a4204b48593e0c0ca874e",
+      "sha256": "aeedb60f059ef8841f31de410f442280002ccf965f5942781039617f944e1398",
+      "metaSHA256": "61fdd53207cb1d3ea6fc4e2ae13241e33455bf8846300b402b47fdb8f95000bb",
+      "bytes": 30416
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_EscalinataMaya_01\\Models\\ARQ_EscalinataMaya_01_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EscalinataMaya_01/Models/ARQ_EscalinataMaya_01_LOD2.fbx",
+      "guid": "07b00857bfa447089d94cc1ac97f5fe3",
+      "sha256": "fcd0242205d3c4a02e1f696086e1bcc9906de3931a577847f1883ca6ea42c39f",
+      "metaSHA256": "beb692fa6b1bd23cac3ad7dd0a32505df4dc0cdb27e6f9add84a123727bcbeaf",
+      "bytes": 72796
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_EscalinataMaya_01\\Materials\\ARQ_EscalinataMaya_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EscalinataMaya_01/Materials/ARQ_EscalinataMaya_01_MAT00.mat",
+      "guid": "e763db7fdf6644969320918d3425d945",
+      "sha256": "7682cd83eae1fa5553a04582fdb1a5dbfaf17de5e705f239db3da765cfcc107f",
+      "metaSHA256": "4307f81912bff7c0c3c1b4a92a71008ced8c7130e6b9dad508574b8c68e58a4d",
+      "bytes": 4087
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_EscalinataMaya_01\\Textures\\ARQ_EscalinataMaya_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EscalinataMaya_01/Textures/ARQ_EscalinataMaya_01_Normal.png",
+      "guid": "32ef06d5c459416bac4e80e72d444317",
+      "sha256": "95025310be058c287252afae314c6789aab7a4418d4929e756f12c69619baa7c",
+      "metaSHA256": "2425ef1a8b2f21e168b1c2e61b400443b0fc01428df61c3953ddc79e386bd613",
+      "bytes": 9125542
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_EscalinataMaya_01\\Textures\\ARQ_EscalinataMaya_01_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EscalinataMaya_01/Textures/ARQ_EscalinataMaya_01_BaseColor.jpg",
+      "guid": "c0d2fdd38dd14194a2bf8a91aa0081bc",
+      "sha256": "91e697c175bd0d921ee1e7bfec99523e7108b1ef5ce6fe2d7b56c4d5ad76feeb",
+      "metaSHA256": "2e880fdec8d39865227dac9d6b63369d699b1859676a0708e94422bcd3fe173b",
+      "bytes": 2364215
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_EscalinataMaya_01\\Models\\ARQ_EscalinataMaya_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EscalinataMaya_01/Models/ARQ_EscalinataMaya_01_LOD0.fbx",
+      "guid": "074c91ea95df4fffaf5929eb14a1c4d3",
+      "sha256": "404b5b6316eff569380f31b081730e017fdd49b647077aaa8fe3665cf3a602b7",
+      "metaSHA256": "245d6d1afc0019eb231f18e080dad2e244fa3b921447e2ca2c39dda227fc59b6",
+      "bytes": 201004
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_EscalinataMaya_01\\Models\\ARQ_EscalinataMaya_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EscalinataMaya_01/Models/ARQ_EscalinataMaya_01_LOD1.fbx",
+      "guid": "a071a3f7c54547b98fe182deac2af652",
+      "sha256": "f8a0ab78d33cdc354b6c9287f0e5d8ba6b4e1fe20701542bf8ad5cbcc77f564c",
+      "metaSHA256": "61b802d2ee53377068d6dd30ef4bf54748ed54f0b4db06106be75bf1ba13b389",
+      "bytes": 149404
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Escombros\\ARQ_EscombrosMaya_01\\Prefabs\\PFB_ARQ_EscombrosMaya_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_EscombrosMaya_01.prefab",
+      "guid": "c27a0c4fae736994bb7cfa38ed1fda33",
+      "sha256": "f0b332aec57803f124afd110d776776effd1b91f925ecc1e1bd8c6fdd5938507",
+      "metaSHA256": "bb8f707b3b7be959e46e02aba4d3c13810f6dfcabfc90fce426aeb36f3a36cd5",
+      "bytes": 7137
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Escombros\\ARQ_EscombrosMaya_01\\Models\\ARQ_EscombrosMaya_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EscombrosMaya_01/Models/ARQ_EscombrosMaya_01_LOD0.fbx",
+      "guid": "2f6e05d9ec3ca8647b3d2a050cc904a7",
+      "sha256": "3128d1e922f1160694acc18a4403bd20fabd17b577c1014d5ce82b2aee0beca1",
+      "metaSHA256": "0eef78cd19a15620c623b9d9a3a11641afe21e90e967d1d86d6820acab4d8361",
+      "bytes": 448140
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Escombros\\ARQ_EscombrosMaya_01\\Materials\\ARQ_EscombrosMaya_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EscombrosMaya_01/Materials/ARQ_EscombrosMaya_01_MAT00.mat",
+      "guid": "84f83922d9f083148aea0da79792f1aa",
+      "sha256": "67d73f2153051107618e6838dfba9a5782379275185356e127823de92490261c",
+      "metaSHA256": "0e999e0f9ef5c6190f031d446441f6cac3d48297a2116a37c26ca66eb4737588",
+      "bytes": 4085
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Escombros\\ARQ_EscombrosMaya_01\\Textures\\ARQ_EscombrosMaya_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EscombrosMaya_01/Textures/ARQ_EscombrosMaya_01_Normal.png",
+      "guid": "9102387d312b19547bc0fb650f3bd284",
+      "sha256": "0ebf073f6550ff2b25fb39f0aafabc520b6f8217de23e5cf54592b079e664eae",
+      "metaSHA256": "dea82529de407a04b3f86448d3a6dab1b53411b6f0c31298151d2ddccfd5f5ad",
+      "bytes": 9078129
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Revisions3145\\Escombros\\ARQ_EscombrosMaya_01\\Textures\\ARQ_EscombrosMaya_01_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EscombrosMaya_01/Textures/ARQ_EscombrosMaya_01_BaseColor.jpg",
+      "guid": "71b58f9986347ed40aa59616b44b0909",
+      "sha256": "0ef101b6c96fc3c961b7e02421519531d9687ce0d362546f4d791131ee161c60",
+      "metaSHA256": "a4142bb03ff5772128351c5b212da1b22699256f62c1b5166171110c7e8c5808",
+      "bytes": 1821308
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Estelas\\ARQ_EstelaFragmentada_01\\Prefabs\\PFB_ARQ_EstelaFragmentada_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_EstelaFragmentada_01.prefab",
+      "guid": "d8e0bb068dc9c5c45bf978742e6f4679",
+      "sha256": "c47dcd32c34d731a513ca0075f1ea9080243b13f7b7aeb4800ba0b57a64156a2",
+      "metaSHA256": "2447fb017ba95d22c65dd927e752d9f63954fd4d6fb7f0ffb9190ef80dec1539",
+      "bytes": 12188
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Estelas\\ARQ_EstelaFragmentada_01\\Models\\ARQ_EstelaFragmentada_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EstelaFragmentada_01/Models/ARQ_EstelaFragmentada_01_LOD1.fbx",
+      "guid": "ff14051333b7435439e76413fec0b6f1",
+      "sha256": "53cc978489d60332c6a0ad480b0c5aa91672aab5fc8a3603067315bb595d0889",
+      "metaSHA256": "26f7b8832f73806550b57e36026c9d174e89b7a9a666ea23256782aae27f7d60",
+      "bytes": 253340
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Estelas\\ARQ_EstelaFragmentada_01\\Materials\\ARQ_EstelaFragmentada_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EstelaFragmentada_01/Materials/ARQ_EstelaFragmentada_01_MAT00.mat",
+      "guid": "71193983d588c454a84ea31883bfc6e1",
+      "sha256": "492002d81d963af45912ed3a146aa802f3565508d66911077e3053d50f697142",
+      "metaSHA256": "cd1b13136f412d9005c26bbb18e3246e66cc00298708eb6acd763d75b7431373",
+      "bytes": 4169
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Estelas\\ARQ_EstelaFragmentada_01\\Textures\\ARQ_EstelaFragmentada_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EstelaFragmentada_01/Textures/ARQ_EstelaFragmentada_01_Normal.png",
+      "guid": "02d247a25bab5964e92317453de44f00",
+      "sha256": "1c48ff911c8b38ba4ea75260dcc9a0aa719a465dd300b8c82d837d870fa3a31c",
+      "metaSHA256": "9d6ed348db6fe12f81df56b55dd910115f96c7666969c8d397534e8589647f7b",
+      "bytes": 5138649
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Estelas\\ARQ_EstelaFragmentada_01\\Textures\\ARQ_EstelaFragmentada_01_MetallicSmoothness_URP.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EstelaFragmentada_01/Textures/ARQ_EstelaFragmentada_01_MetallicSmoothness_URP.png",
+      "guid": "72d0cd4a3cfb64b4097c6b3b5afd415f",
+      "sha256": "0c643adeea6b46731d4b4062e63c926c1761b09b0945e4cfffeaec09833baab8",
+      "metaSHA256": "57fb222fcd97e5a5410784b0d81c7946621a2084b0cb2cae501b115739d40cf0",
+      "bytes": 4843135
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Estelas\\ARQ_EstelaFragmentada_01\\Textures\\ARQ_EstelaFragmentada_01_BaseColor.jpeg",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EstelaFragmentada_01/Textures/ARQ_EstelaFragmentada_01_BaseColor.jpeg",
+      "guid": "b7aefa6447510ef4195a3780888289c0",
+      "sha256": "c483c8474dc3e013edb9ec87c9aa9c100b7f5403c791f0b1c25ba409464797df",
+      "metaSHA256": "221e4547cfe2bd66758b232e3555a9fc2a2233c331b0268b267d1fb3fe64fae7",
+      "bytes": 1771560
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Estelas\\ARQ_EstelaFragmentada_01\\Models\\ARQ_EstelaFragmentada_01_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EstelaFragmentada_01/Models/ARQ_EstelaFragmentada_01_LOD2.fbx",
+      "guid": "40c1dc9b38604cb4fa5337335895c116",
+      "sha256": "76428b814c2f8b973f57f68d70ebb1527c384e5823779a91837a4d9ba21a45d9",
+      "metaSHA256": "c7837f3125465930a2357e907b1746442cfa614f9993177c9d75145ba53188c7",
+      "bytes": 116412
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_Batch76_90\\Estelas\\ARQ_EstelaFragmentada_01\\Models\\ARQ_EstelaFragmentada_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_EstelaFragmentada_01/Models/ARQ_EstelaFragmentada_01_LOD0.fbx",
+      "guid": "489d5686516637147aeb28e82af69347",
+      "sha256": "b42316bd8914559dc71b4cc4f8bd6a9907a729d79a15c156618a54af0dc71c1a",
+      "metaSHA256": "ce035ad6b32786d53b6ce1ed33fbeb482053d67bee63c05fecf05a00d1230891",
+      "bytes": 419932
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PisoPiedraMaya_01\\Prefabs\\PFB_ARQ_PisoPiedraMaya_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PisoPiedraMaya_01.prefab",
+      "guid": "652c5d42d0a8405fad0c4c05aa0bb365",
+      "sha256": "edce52580b81aaedebb9e8d60c190a0864730f43c2d507bde7247e7c10bfbdb5",
+      "metaSHA256": "16d09d12bfe396ab3d4263c8a7f8fd61c2caa7243932748646e47cf7b6cdbd59",
+      "bytes": 12166
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PisoPiedraMaya_01\\Models\\ARQ_PisoPiedraMaya_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Models/ARQ_PisoPiedraMaya_01_LOD0.fbx",
+      "guid": "5d58780747a1439592c37dc7289ac2a3",
+      "sha256": "0e026c0998e4dff18d0b3051acb9639ba0b3d3ed4a7554f120857a21234d65a4",
+      "metaSHA256": "18cfca65e0074c867c26396daf82975d32c2ee535cc98b5c738057b3093abf2d",
+      "bytes": 260252
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PisoPiedraMaya_01\\Materials\\ARQ_PisoPiedraMaya_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Materials/ARQ_PisoPiedraMaya_01_MAT00.mat",
+      "guid": "e00ef25427c046679b61b7a5f9885f43",
+      "sha256": "2b2fcab5b7dee7ac7144f31e0c53678108b1256e0228b87de21b8522170067f5",
+      "metaSHA256": "e4bf5005b78620786b88f5eef0e5e9927744b9760399309df7beb795516cfde9",
+      "bytes": 4164
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PisoPiedraMaya_01\\Textures\\ARQ_PisoPiedraMaya_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Textures/ARQ_PisoPiedraMaya_01_Normal.png",
+      "guid": "ab2482c7c2bb4133a399a594fe1b7b90",
+      "sha256": "11b0fc3bdccaba65ae4a8881dbae2f2146719d1b6b5010104ef77d59c7809e8f",
+      "metaSHA256": "dc1891ff0fc1776f60574b55b4d554c1af49fd40ea4677eba848d8f150eb8012",
+      "bytes": 5078629
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PisoPiedraMaya_01\\Textures\\ARQ_PisoPiedraMaya_01_MetallicSmoothness_URP.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Textures/ARQ_PisoPiedraMaya_01_MetallicSmoothness_URP.png",
+      "guid": "71ed6184e557444d9dbc4571024d083c",
+      "sha256": "8a942f08f2b42fe6d61a85e86ee697df791fed86250490ea642fa41039347cee",
+      "metaSHA256": "3526f0e3db37d8f7a38eff76a21c1972cf176a3bd0793e1b2f769e4f6d6b48bf",
+      "bytes": 4170973
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PisoPiedraMaya_01\\Textures\\ARQ_PisoPiedraMaya_01_BaseColor.jpeg",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Textures/ARQ_PisoPiedraMaya_01_BaseColor.jpeg",
+      "guid": "ec4792e4f0b34e55816010bf1a232232",
+      "sha256": "9091b5c252fac28faf47bf610e2989d1b27cc9e95838c62f94edce27f9c39d96",
+      "metaSHA256": "299f24074f1a005e40ae699ec3ad46c5ada2452cda6fa35c7834fe1c8594f396",
+      "bytes": 1856094
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PisoPiedraMaya_01\\Models\\ARQ_PisoPiedraMaya_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Models/ARQ_PisoPiedraMaya_01_LOD1.fbx",
+      "guid": "207bded0c97e404fbee0ff20d317da5d",
+      "sha256": "9e74dffdb79547f60be5f4ef2fa0d11d28609c992f4d179fae46474f937ee52c",
+      "metaSHA256": "9f6d8805835d114488009f51b4b55fd59c357185af6b4ea984f94d50e8baf092",
+      "bytes": 158172
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PisoPiedraMaya_01\\Models\\ARQ_PisoPiedraMaya_01_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Models/ARQ_PisoPiedraMaya_01_LOD2.fbx",
+      "guid": "e7aafccd9f7c496ca54ffa46f1a0086a",
+      "sha256": "31238aee528c492e45f1ea3ded76ee55e675b7ee483cc1a8c2a368a519989b81",
+      "metaSHA256": "ffa0810b940b6097e07fd276036b56d2a07c88ad327c3ca461dee319b0e3f98f",
+      "bytes": 72700
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PlataformaElevada_01\\Prefabs\\PFB_ARQ_PlataformaElevada_01.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+      "guid": "f3838629b66949418c54f46c21dcb3ce",
+      "sha256": "9c4d5212cbb15c53c27c8b4948fa48d196fcedafa0e4d15282adbb772af8076a",
+      "metaSHA256": "14ccf10019d1fce189b342dc7a1a29b577fe946b31cb2fc27423a1f438244517",
+      "bytes": 12179
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PlataformaElevada_01\\Models\\ARQ_PlataformaElevada_01_LOD2.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Models/ARQ_PlataformaElevada_01_LOD2.fbx",
+      "guid": "0b30c80b0cdf4772b636ca2423a879a9",
+      "sha256": "ba90be66b7e6f861d779fcb6156010ac53dceb7c7eb86f63cab8fb919824cf75",
+      "metaSHA256": "c7cb997c6217d730ace9aa9c04fe7388b1649554cb670f132dec596ae55e667b",
+      "bytes": 179260
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PlataformaElevada_01\\Materials\\ARQ_PlataformaElevada_01_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Materials/ARQ_PlataformaElevada_01_MAT00.mat",
+      "guid": "7c4cb24579e240ec8a3a6b63d2131119",
+      "sha256": "df9f1fe31e24283c8e7da0a5d0b9980f92285915b79771e733416177d96c35dd",
+      "metaSHA256": "697d9c5a1d6f55b0fa9661068581e8cde2c0b8790ac38a7b93aed4c4cd987fe4",
+      "bytes": 4168
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PlataformaElevada_01\\Textures\\ARQ_PlataformaElevada_01_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Textures/ARQ_PlataformaElevada_01_Normal.png",
+      "guid": "d7de945c07684385989c44ab0259df35",
+      "sha256": "472cf108756eb7b37af4b62fd1c61f973296217f0250db0b3a3ea3296de1a9ba",
+      "metaSHA256": "901eb6a6dda8fe6b91107af0c3b34768e646bbd0238c49e172d93f21ad8dff42",
+      "bytes": 5490437
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PlataformaElevada_01\\Textures\\ARQ_PlataformaElevada_01_BaseColor.jpeg",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Textures/ARQ_PlataformaElevada_01_BaseColor.jpeg",
+      "guid": "b5bdea540aad4618b3408e069a552cc8",
+      "sha256": "b4c4c4dcbe4951ca09d2452cfd1769f119273f8bc262fb2879e0a8358af5b413",
+      "metaSHA256": "4912e5a50124a3b06cd5f58280de247ab045fb5a248677a8a5f91228e7e14aa5",
+      "bytes": 2014317
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PlataformaElevada_01\\Textures\\ARQ_PlataformaElevada_01_MetallicSmoothness_URP.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Textures/ARQ_PlataformaElevada_01_MetallicSmoothness_URP.png",
+      "guid": "aec57b7bbda84dacaaee13651d182c95",
+      "sha256": "5432b298a73705e1760b00ec48c70656145916955b0caa89706fa550a5b3ffde",
+      "metaSHA256": "77bc4daeed753d125caed35cc7915c56e6b2e6dd584ce5d6044d74ccad1cec4c",
+      "bytes": 4617894
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PlataformaElevada_01\\Models\\ARQ_PlataformaElevada_01_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Models/ARQ_PlataformaElevada_01_LOD0.fbx",
+      "guid": "ed01ef8ef84c4adc97134b696cb71f8d",
+      "sha256": "37b0644f6dac398b6550c0cbb4d05e20b08f7d1b24baa5336cbc8c31d0a724da",
+      "metaSHA256": "fcee9aeb2b9ac9a28313f31962a4a13a4a05fa9ed9c03b94a21c47bcc319391d",
+      "bytes": 654012
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_GeometryFix80_83_20261019\\ARQ_PlataformaElevada_01\\Models\\ARQ_PlataformaElevada_01_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Models/ARQ_PlataformaElevada_01_LOD1.fbx",
+      "guid": "d4562585fcb64e039d35a23741d90795",
+      "sha256": "02c7cab1af125bf80a4586d15e6cab2a0cc8d3c90839f85eb0f2dd72ae446fbc",
+      "metaSHA256": "e24ddcf72d671931516e1281ea4b57da97c1de70912921ea49674a5028f97662",
+      "bytes": 394652
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_BloqueMaya_02\\Prefabs\\PFB_ARQ_BloqueMaya_02.prefab",
+      "destination": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_BloqueMaya_02.prefab",
+      "guid": "f780b2edcf7e4210938736a3efd26199",
+      "sha256": "272f3cb36ccc83adc17d8c5861eda4d27bbc1181f628aaec52ff3636dafd039f",
+      "metaSHA256": "a0652f927cd9ca126a1a5aa2b3f069e145aece19dd47d51e60f4b7f6eb3906f1",
+      "bytes": 10352
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_BloqueMaya_02\\Models\\ARQ_BloqueMaya_02_LOD1.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_BloqueMaya_02/Models/ARQ_BloqueMaya_02_LOD1.fbx",
+      "guid": "c0a03f16417b4fe2abfc8a1fdc7f594d",
+      "sha256": "9e958d37141031e77cc8e6865ab9f40ada3671bb700568b04b90cdead205ac5e",
+      "metaSHA256": "ae980b128233c34755a6e5c1e4a258e6d82c48ded69bd41cdd6619e6c9f53d57",
+      "bytes": 62284
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_BloqueMaya_02\\Materials\\ARQ_BloqueMaya_02_MAT00.mat",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_BloqueMaya_02/Materials/ARQ_BloqueMaya_02_MAT00.mat",
+      "guid": "d45603e1baba446099f4902eca1a8ad2",
+      "sha256": "9f62b5d255eadaf50ee5fae7b9e2dcbccc31d6d4b43d46039910ea5b22bfd51a",
+      "metaSHA256": "4187b4cfe9c8bc6f90ce03769b66fe765fddac92f1309275096607301ec7ba0c",
+      "bytes": 4081
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_BloqueMaya_02\\Textures\\ARQ_BloqueMaya_02_Normal.png",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_BloqueMaya_02/Textures/ARQ_BloqueMaya_02_Normal.png",
+      "guid": "250c37be000d40c9845800b31bd659ab",
+      "sha256": "2efeb73764a7073210876472cecc1c8d7c765a01bab693e6411682c7656c4907",
+      "metaSHA256": "166fd38adfa27fd375b79a963bf762b788273c8fb350e919d4c1739dc3a79bee",
+      "bytes": 9084087
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_BloqueMaya_02\\Textures\\ARQ_BloqueMaya_02_BaseColor.jpg",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_BloqueMaya_02/Textures/ARQ_BloqueMaya_02_BaseColor.jpg",
+      "guid": "dd3da70169e442b1b9e4ba60b3807942",
+      "sha256": "2c8fb5b60bec018a3f37b01b9ff4cefe70d7d8497f3f28278fe5f7bd07673d16",
+      "metaSHA256": "1621bc6fce184e1eb21169f94997ed7f4db3b3d1f8f2e92f4252efea9801c086",
+      "bytes": 2169821
+    },
+    {
+      "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Pruebas Assets\\Assets\\_AssetTests\\_PlayMode25_20261019\\ARQ_BloqueMaya_02\\Models\\ARQ_BloqueMaya_02_LOD0.fbx",
+      "destination": "Assets/_Project/Art/Environment/Level01/ARQ_BloqueMaya_02/Models/ARQ_BloqueMaya_02_LOD0.fbx",
+      "guid": "98dfb619d2274d8592fbbfcac37a8fb7",
+      "sha256": "ff6f75d333fa9ce1fb43f8b3eb10cad3d97bd5a9d2a6a21642cac9800b141519",
+      "metaSHA256": "d342baf5094612d6dc8bedd748dbed57790b24e0522fb90867d8101c34d82371",
+      "bytes": 104780
+    }
+  ],
+  "externalPackageGuids": [
+    "933532a4fcc9baf4fa0491de14d08ed7",
+    "d0353a89b1f911e48b9e16bdc9f2e058"
+  ]
+}
