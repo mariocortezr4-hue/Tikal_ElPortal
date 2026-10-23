@@ -36,6 +36,12 @@ namespace Tikal.UI
         private static readonly Color Ivory = MenuVisualPalette.Ivory;
         private static readonly Color Disabled = new Color(.055f, .07f, .075f, .72f);
 
+        [SerializeField] private bool _finalPolish;
+        [SerializeField] private GameObject _hoverOutline;
+        public bool HasFocus => _selected && (_selectable == null || _selectable.IsInteractable());
+        public bool IsPersistent => _persistentMarker != null && _persistentMarker.activeSelf;
+        public void ConfigureFinalPolish(GameObject hoverOutline)
+        { _finalPolish = true; _hoverOutline = hoverOutline; RefreshVisual(); }
         private bool _selected;
         private bool _hovered;
         private bool _pressed;
@@ -69,13 +75,15 @@ namespace Tikal.UI
             var saved = _persistentMarker != null && _persistentMarker.activeSelf;
             if (_focusIndicator != null) _focusIndicator.SetActive(hasFocus);
             if (_focusOutline != null) _focusOutline.SetActive(hasFocus);
-            if (_savedOutline != null) _savedOutline.SetActive(saved);
+            if (_savedOutline != null) _savedOutline.SetActive(saved && (!_finalPolish || interactable));
+            if (_hoverOutline != null) _hoverOutline.SetActive(_hovered && interactable && !hasFocus);
             if (_background != null)
             {
                 if (!interactable) _background.color = Disabled;
+                else if (_finalPolish && saved) _background.color = hasFocus ? new Color(.29f,.23f,.115f,1) : new Color(.20f,.16f,.085f,1);
                 else if (saved) _background.color = MenuVisualPalette.Jade;
                 else if (_pressed) _background.color = Hover;
-                else if (hasFocus) _background.color = Hover;
+                else if (hasFocus) _background.color = _finalPolish ? new Color(.25f,.225f,.15f,1) : Hover;
                 else if (_hovered) _background.color = Hover;
                 else _background.color = _primary ? new Color(.21f, .17f, .095f, .97f) : Stone;
             }
@@ -102,7 +110,7 @@ namespace Tikal.UI
         public void OnPointerEnter(PointerEventData eventData)
         {
             _hovered = true;
-            if (_selectable != null && _selectable.IsInteractable() && EventSystem.current != null)
+            if (!_finalPolish && _selectable != null && _selectable.IsInteractable() && EventSystem.current != null)
                 EventSystem.current.SetSelectedGameObject(gameObject);
             RefreshVisual();
         }
