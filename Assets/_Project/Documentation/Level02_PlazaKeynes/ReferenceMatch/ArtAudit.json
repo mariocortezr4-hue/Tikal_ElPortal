@@ -1,0 +1,2042 @@
+{
+    "baseCommit": "0e221c3",
+    "scope": "Second additive Level02 art pass only. Original terrain, statue, playable stairs, HUD/Pause and player systems preserved. No new gameplay. Final two monument accents seated at existing second-terrace height 0.48 m.",
+    "before": {
+        "placements": 723,
+        "meshRenderers": 1615,
+        "lodGroups": 723,
+        "enabledColliders": 299,
+        "shadowCasters": 1017,
+        "realtimeLights": 1,
+        "highestLodTriangles": 5260388,
+        "lowestLodTriangles": 2412184
+    },
+    "after": {
+        "placements": 905,
+        "meshRenderers": 2071,
+        "lodGroups": 905,
+        "enabledColliders": 327,
+        "shadowCasters": 1004,
+        "realtimeLights": 1,
+        "highestLodTriangles": 6378390,
+        "lowestLodTriangles": 2822026
+    },
+    "additions": [
+        {
+            "name": "RM_MonumentStone_000_ARQ_BloqueMaya_02",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_BloqueMaya_02.prefab",
+            "category": "MonumentStone",
+            "position": {
+                "x": -7.599999904632568,
+                "y": 0.48,
+                "z": -5.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_MonumentStone_001_ARQ_BloqueMaya_02",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_BloqueMaya_02.prefab",
+            "category": "MonumentStone",
+            "position": {
+                "x": 7.599999904632568,
+                "y": 0.48,
+                "z": 5.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CityTempleTier_002_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": -104.0,
+                "y": -0.028027653694152832,
+                "z": 110.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_003_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": -104.0,
+                "y": 5.55197286605835,
+                "z": 110.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_004_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": -104.0,
+                "y": 11.131972312927246,
+                "z": 110.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_005_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": -104.0,
+                "y": 16.711973190307617,
+                "z": 110.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleCrest_006_ARQ_ArcoMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ArcoMaya_01.prefab",
+            "category": "CityTempleCrest",
+            "position": {
+                "x": -104.0,
+                "y": 22.09197235107422,
+                "z": 110.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleStair_007_ARQ_EscalinataMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_EscalinataMaya_01.prefab",
+            "category": "CityTempleStair",
+            "position": {
+                "x": -108.37619018554688,
+                "y": -0.028026938438415527,
+                "z": 99.69034576416016
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_008_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": 117.0,
+                "y": 7.514845371246338,
+                "z": 135.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_009_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": 117.0,
+                "y": 13.994845390319824,
+                "z": 135.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_010_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": 117.0,
+                "y": 20.47484588623047,
+                "z": 135.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_011_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": 117.0,
+                "y": 26.954845428466797,
+                "z": 135.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleCrest_012_ARQ_ArcoMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ArcoMaya_01.prefab",
+            "category": "CityTempleCrest",
+            "position": {
+                "x": 117.0,
+                "y": 33.23484420776367,
+                "z": 135.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleStair_013_ARQ_EscalinataMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_EscalinataMaya_01.prefab",
+            "category": "CityTempleStair",
+            "position": {
+                "x": 122.84739685058594,
+                "y": 7.5148468017578125,
+                "z": 123.52383422851562
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_014_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": -49.0,
+                "y": 27.93927764892578,
+                "z": 232.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_015_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": -49.0,
+                "y": 32.979278564453125,
+                "z": 232.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_016_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": -49.0,
+                "y": 38.01927947998047,
+                "z": 232.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_017_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": -49.0,
+                "y": 43.05928039550781,
+                "z": 232.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleCrest_018_ARQ_ArcoMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ArcoMaya_01.prefab",
+            "category": "CityTempleCrest",
+            "position": {
+                "x": -49.0,
+                "y": 47.8992805480957,
+                "z": 232.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleStair_019_ARQ_EscalinataMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_EscalinataMaya_01.prefab",
+            "category": "CityTempleStair",
+            "position": {
+                "x": -50.45864486694336,
+                "y": 27.93927764892578,
+                "z": 223.7276153564453
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_020_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": 83.0,
+                "y": 26.616764068603516,
+                "z": 276.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_021_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": 83.0,
+                "y": 32.5567626953125,
+                "z": 276.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_022_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": 83.0,
+                "y": 38.49676513671875,
+                "z": 276.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleTier_023_ARQ_PlataformaElevada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+            "category": "CityTempleTier",
+            "position": {
+                "x": 83.0,
+                "y": 44.43675994873047,
+                "z": 276.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleCrest_024_ARQ_ArcoMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ArcoMaya_01.prefab",
+            "category": "CityTempleCrest",
+            "position": {
+                "x": 83.0,
+                "y": 50.1767578125,
+                "z": 276.0
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CityTempleStair_025_ARQ_EscalinataMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_EscalinataMaya_01.prefab",
+            "category": "CityTempleStair",
+            "position": {
+                "x": 85.53643035888672,
+                "y": 26.616764068603516,
+                "z": 266.533935546875
+            },
+            "background": true
+        },
+        {
+            "name": "RM_CourtWall_026_ARQ_MuroMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+            "category": "CourtWall",
+            "position": {
+                "x": -52.804290771484375,
+                "y": 0.0,
+                "z": -39.02231216430664
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtWall_027_ARQ_MuroMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+            "category": "CourtWall",
+            "position": {
+                "x": -47.779788970947266,
+                "y": 0.0,
+                "z": -41.25936508178711
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtWall_028_ARQ_MuroMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+            "category": "CourtWall",
+            "position": {
+                "x": -42.75529098510742,
+                "y": 0.0,
+                "z": -43.49641418457031
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Columns_029_ARQ_ColumnaMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_ColumnaMaya_01.prefab",
+            "category": "Columns",
+            "position": {
+                "x": -56.208290100097656,
+                "y": 0.0,
+                "z": -42.97993469238281
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Columns_030_ARQ_ColumnaMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_ColumnaMaya_01.prefab",
+            "category": "Columns",
+            "position": {
+                "x": -43.41865539550781,
+                "y": 0.0,
+                "z": -48.67424774169922
+            },
+            "background": false
+        },
+        {
+            "name": "RM_BrokenColumn_031_ARQ_ColumnaDerrumbada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ColumnaDerrumbada_01.prefab",
+            "category": "BrokenColumn",
+            "position": {
+                "x": -54.0777587890625,
+                "y": 0.0,
+                "z": -45.57046127319336
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtPortal_032_ARQ_ArcoMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ArcoMaya_01.prefab",
+            "category": "CourtPortal",
+            "position": {
+                "x": -47.37305450439453,
+                "y": 0.0,
+                "z": -40.34581756591797
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtWall_033_ARQ_MuroMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+            "category": "CourtWall",
+            "position": {
+                "x": 39.86320877075195,
+                "y": 0.0,
+                "z": -33.73912811279297
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtWall_034_ARQ_MuroMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+            "category": "CourtWall",
+            "position": {
+                "x": 45.122886657714844,
+                "y": 0.0,
+                "z": -32.13108444213867
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtWall_035_ARQ_MuroMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+            "category": "CourtWall",
+            "position": {
+                "x": 50.38256072998047,
+                "y": 0.0,
+                "z": -30.523040771484375
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Columns_036_ARQ_ColumnaMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_ColumnaMaya_01.prefab",
+            "category": "Columns",
+            "position": {
+                "x": 39.89060974121094,
+                "y": 0.0,
+                "z": -38.95921325683594
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Columns_037_ARQ_ColumnaMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_ColumnaMaya_01.prefab",
+            "category": "Columns",
+            "position": {
+                "x": 53.27887725830078,
+                "y": 0.0,
+                "z": -34.86600875854492
+            },
+            "background": false
+        },
+        {
+            "name": "RM_BrokenColumn_038_ARQ_ColumnaDerrumbada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ColumnaDerrumbada_01.prefab",
+            "category": "BrokenColumn",
+            "position": {
+                "x": 43.198081970214844,
+                "y": 0.0,
+                "z": -39.51655197143555
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtPortal_039_ARQ_ArcoMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ArcoMaya_01.prefab",
+            "category": "CourtPortal",
+            "position": {
+                "x": 44.83051300048828,
+                "y": 0.0,
+                "z": -31.174781799316406
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtWall_040_ARQ_MuroMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+            "category": "CourtWall",
+            "position": {
+                "x": -71.75607299804688,
+                "y": 0.0,
+                "z": 38.07795715332031
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtWall_041_ARQ_MuroMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+            "category": "CourtWall",
+            "position": {
+                "x": -66.37626647949219,
+                "y": 0.0,
+                "z": 36.934444427490234
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtWall_042_ARQ_MuroMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+            "category": "CourtWall",
+            "position": {
+                "x": -60.99645233154297,
+                "y": 0.0,
+                "z": 35.79092788696289
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Columns_043_ARQ_ColumnaMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_ColumnaMaya_01.prefab",
+            "category": "Columns",
+            "position": {
+                "x": -74.26285552978516,
+                "y": 0.0,
+                "z": 33.499088287353516
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Columns_044_ARQ_ColumnaMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_ColumnaMaya_01.prefab",
+            "category": "Columns",
+            "position": {
+                "x": -60.568790435791016,
+                "y": 0.0,
+                "z": 30.58832359313965
+            },
+            "background": false
+        },
+        {
+            "name": "RM_BrokenColumn_045_ARQ_ColumnaDerrumbada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ColumnaDerrumbada_01.prefab",
+            "category": "BrokenColumn",
+            "position": {
+                "x": -71.6402816772461,
+                "y": 0.0,
+                "z": 31.408130645751953
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtPortal_046_ARQ_ArcoMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ArcoMaya_01.prefab",
+            "category": "CourtPortal",
+            "position": {
+                "x": -66.16835021972656,
+                "y": 0.0,
+                "z": 37.91259002685547
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtWall_047_ARQ_MuroMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+            "category": "CourtWall",
+            "position": {
+                "x": 51.73516082763672,
+                "y": 0.0,
+                "z": 53.95740509033203
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtWall_048_ARQ_MuroMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+            "category": "CourtWall",
+            "position": {
+                "x": 56.545570373535156,
+                "y": 0.0,
+                "z": 56.62385940551758
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtWall_049_ARQ_MuroMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+            "category": "CourtWall",
+            "position": {
+                "x": 61.355979919433594,
+                "y": 0.0,
+                "z": 59.290313720703125
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Columns_050_ARQ_ColumnaMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_ColumnaMaya_01.prefab",
+            "category": "Columns",
+            "position": {
+                "x": 52.84728240966797,
+                "y": 0.0,
+                "z": 48.857093811035156
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Columns_051_ARQ_ColumnaMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_ColumnaMaya_01.prefab",
+            "category": "Columns",
+            "position": {
+                "x": 65.09195709228516,
+                "y": 0.0,
+                "z": 55.64442825317383
+            },
+            "background": false
+        },
+        {
+            "name": "RM_BrokenColumn_052_ARQ_ColumnaDerrumbada_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ColumnaDerrumbada_01.prefab",
+            "category": "BrokenColumn",
+            "position": {
+                "x": 56.19835662841797,
+                "y": 0.0,
+                "z": 48.99959182739258
+            },
+            "background": false
+        },
+        {
+            "name": "RM_CourtPortal_053_ARQ_ArcoMaya_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ArcoMaya_01.prefab",
+            "category": "CourtPortal",
+            "position": {
+                "x": 56.060760498046875,
+                "y": 0.0,
+                "z": 57.498477935791016
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_054_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": -50.65495300292969,
+                "y": -0.07999999821186066,
+                "z": -41.8731689453125
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_055_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": 52.649452209472656,
+                "y": -0.07999999821186066,
+                "z": -38.788909912109375
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_056_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": -72.46707916259766,
+                "y": -0.07999999821186066,
+                "z": 35.483238220214844
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_057_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": 55.6617317199707,
+                "y": -0.07999999821186066,
+                "z": 53.26131820678711
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_058_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": -42.533084869384766,
+                "y": -0.07999999821186066,
+                "z": -48.71477127075195
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_059_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": 45.92876052856445,
+                "y": -0.07999999821186066,
+                "z": -35.55036544799805
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_060_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": -65.33890533447266,
+                "y": -0.07999999821186066,
+                "z": 33.06438064575195
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_061_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": 58.32421875,
+                "y": -0.07999999821186066,
+                "z": 52.878814697265625
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_062_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": -50.63626480102539,
+                "y": -0.07999999821186066,
+                "z": -39.769500732421875
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_063_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": 52.74913787841797,
+                "y": -0.07999999821186066,
+                "z": -30.730976104736328
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_064_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": -66.94210052490234,
+                "y": -0.07999999821186066,
+                "z": 30.131616592407227
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_065_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": 51.840694427490234,
+                "y": -0.07999999821186066,
+                "z": 55.30331802368164
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_066_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": -46.31193542480469,
+                "y": -0.07999999821186066,
+                "z": -44.3986701965332
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_067_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": 52.51059341430664,
+                "y": -0.07999999821186066,
+                "z": -37.027156829833984
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_068_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": -72.8490982055664,
+                "y": -0.07999999821186066,
+                "z": 29.597570419311523
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_069_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": 54.554283142089844,
+                "y": -0.07999999821186066,
+                "z": 56.285648345947266
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_070_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": -49.84621810913086,
+                "y": -0.07999999821186066,
+                "z": -38.02764129638672
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_071_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": 50.58233642578125,
+                "y": -0.07999999821186066,
+                "z": -36.390316009521484
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_072_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": -71.52606201171875,
+                "y": -0.07999999821186066,
+                "z": 37.45387268066406
+            },
+            "background": false
+        },
+        {
+            "name": "RM_Rocks_073_ROC_RocaMusgo_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ROC_RocaMusgo_02.prefab",
+            "category": "Rocks",
+            "position": {
+                "x": 50.625423431396484,
+                "y": -0.07999999821186066,
+                "z": 56.97764587402344
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_074_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -70.60890197753906,
+                "y": -0.04999999701976776,
+                "z": -67.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_075_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 80.652099609375,
+                "y": -0.05000002682209015,
+                "z": -67.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_076_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -71.78512573242188,
+                "y": -0.04999999701976776,
+                "z": -58.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_077_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 76.24616241455078,
+                "y": -0.05000000447034836,
+                "z": -58.499996185302734
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_078_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -78.38194274902344,
+                "y": -0.04999999701976776,
+                "z": -50.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_079_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 73.60040283203125,
+                "y": -0.05000002682209015,
+                "z": -50.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_080_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -79.17721557617188,
+                "y": -0.04999999701976776,
+                "z": -41.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_081_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 68.14923858642578,
+                "y": -0.05000000447034836,
+                "z": -41.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_082_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -73.55719757080078,
+                "y": -0.04999999701976776,
+                "z": -33.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_083_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 81.46240234375,
+                "y": -0.04999999701976776,
+                "z": -33.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_084_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -73.66873168945312,
+                "y": -0.04999999701976776,
+                "z": -24.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_085_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 70.0883560180664,
+                "y": -0.05000000447034836,
+                "z": -24.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_086_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -80.44524383544922,
+                "y": -0.04999999701976776,
+                "z": -16.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_087_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 80.33203887939453,
+                "y": -0.05000002682209015,
+                "z": -16.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_088_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -73.58253479003906,
+                "y": -0.04999999701976776,
+                "z": -7.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_089_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 78.84261322021484,
+                "y": -0.05000000447034836,
+                "z": -7.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_090_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -72.08690643310547,
+                "y": -0.04999999701976776,
+                "z": 1.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_091_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 69.94615173339844,
+                "y": -0.05000002682209015,
+                "z": 1.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_092_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -76.00602722167969,
+                "y": -0.04999999701976776,
+                "z": 9.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_093_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 73.95353698730469,
+                "y": -0.05000000447034836,
+                "z": 9.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_094_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -69.58200073242188,
+                "y": -0.04999999701976776,
+                "z": 18.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_095_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 76.41337585449219,
+                "y": -0.05000002682209015,
+                "z": 18.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_096_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -73.27107238769531,
+                "y": -0.04999999701976776,
+                "z": 26.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_097_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 79.2121353149414,
+                "y": -0.05000000447034836,
+                "z": 26.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_098_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -69.14827728271484,
+                "y": -0.04999999701976776,
+                "z": 35.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_099_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 78.36849975585938,
+                "y": -0.04999999701976776,
+                "z": 34.999996185302734
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_100_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -77.32378387451172,
+                "y": -0.04999999701976776,
+                "z": 43.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_101_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 76.25543212890625,
+                "y": -0.05000000447034836,
+                "z": 43.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_102_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -78.05317687988281,
+                "y": -0.04999999701976776,
+                "z": 52.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_103_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 75.45147705078125,
+                "y": -0.05000002682209015,
+                "z": 52.0
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_104_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -75.7800064086914,
+                "y": -0.04999999701976776,
+                "z": 60.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_105_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 73.10921478271484,
+                "y": -0.05000000447034836,
+                "z": 60.5
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_106_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -50.02464294433594,
+                "y": -0.02500000037252903,
+                "z": -45.319610595703125
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_107_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 48.932716369628906,
+                "y": -0.02500000037252903,
+                "z": -36.847434997558594
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_108_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -72.59806823730469,
+                "y": -0.02500000037252903,
+                "z": 26.275611877441406
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_109_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 57.27478790283203,
+                "y": -0.02500000037252903,
+                "z": 61.58842468261719
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_110_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -58.435523986816406,
+                "y": -0.02500000037252903,
+                "z": -38.692901611328125
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_111_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 41.01613998413086,
+                "y": -0.02500000037252903,
+                "z": -33.842933654785156
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_112_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -64.12328338623047,
+                "y": -0.02500000037252903,
+                "z": 41.868507385253906
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_113_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 57.37660217285156,
+                "y": -0.02500000037252903,
+                "z": 61.83108139038086
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_114_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -51.44657897949219,
+                "y": -0.02500000037252903,
+                "z": -41.431121826171875
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_115_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 46.220794677734375,
+                "y": -0.02500000037252903,
+                "z": -39.47551345825195
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_116_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -74.08866882324219,
+                "y": -0.02500000037252903,
+                "z": 28.492263793945312
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_117_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 66.3771743774414,
+                "y": -0.02500000037252903,
+                "z": 61.19517517089844
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_118_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -41.44910430908203,
+                "y": -0.02500000037252903,
+                "z": -51.768585205078125
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_119_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 47.111724853515625,
+                "y": -0.02500000037252903,
+                "z": -42.32037353515625
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_120_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -62.626625061035156,
+                "y": -0.02500000037252903,
+                "z": 26.893463134765625
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_121_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 57.94681167602539,
+                "y": -0.02500000037252903,
+                "z": 54.584075927734375
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_122_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -49.04202651977539,
+                "y": -0.02500000037252903,
+                "z": -46.50189208984375
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_123_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 44.232173919677734,
+                "y": -0.02500000037252903,
+                "z": -28.463144302368164
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_124_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -71.59849548339844,
+                "y": -0.02500000037252903,
+                "z": 31.625585556030273
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_125_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 56.48704147338867,
+                "y": -0.02500000037252903,
+                "z": 60.52678298950195
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_126_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -55.463951110839844,
+                "y": -0.02500000037252903,
+                "z": -44.292335510253906
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_127_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 47.54469680786133,
+                "y": -0.02500000037252903,
+                "z": -42.841064453125
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_128_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -66.83805847167969,
+                "y": -0.02500000037252903,
+                "z": 36.97946548461914
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_129_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 51.24455261230469,
+                "y": -0.02500000037252903,
+                "z": 60.50823211669922
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_130_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -56.550533294677734,
+                "y": -0.02500000037252903,
+                "z": -37.32303237915039
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_131_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 45.79510498046875,
+                "y": -0.02500000037252903,
+                "z": -42.81128692626953
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_132_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -62.4767951965332,
+                "y": -0.02500000037252903,
+                "z": 35.66822814941406
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_133_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 55.29097366333008,
+                "y": -0.02500000037252903,
+                "z": 46.91867446899414
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_134_VEG_HelechoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -53.71234130859375,
+                "y": -0.02500000037252903,
+                "z": -46.1773567199707
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_135_VEG_PlantaTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 51.54912567138672,
+                "y": -0.02500000037252903,
+                "z": -33.73717498779297
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_136_VEG_ArbustoTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": -76.86346435546875,
+                "y": -0.02500000037252903,
+                "z": 27.99597930908203
+            },
+            "background": false
+        },
+        {
+            "name": "RM_LowVegetation_137_VEG_HojasSecasMonton_01",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HojasSecasMonton_01.prefab",
+            "category": "LowVegetation",
+            "position": {
+                "x": 60.51652526855469,
+                "y": -0.02500000037252903,
+                "z": 59.329681396484375
+            },
+            "background": false
+        },
+        {
+            "name": "RM_MidgroundTrees_138_VEG_CeibaJoven_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_CeibaJoven_01.prefab",
+            "category": "MidgroundTrees",
+            "position": {
+                "x": 49.94172668457031,
+                "y": -0.20500001311302185,
+                "z": -120.61763000488281
+            },
+            "background": true
+        },
+        {
+            "name": "RM_MidgroundTrees_139_VEG_CeibaJoven_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_CeibaJoven_01.prefab",
+            "category": "MidgroundTrees",
+            "position": {
+                "x": 129.72315979003906,
+                "y": -0.20500001311302185,
+                "z": 40.841827392578125
+            },
+            "background": true
+        },
+        {
+            "name": "RM_MidgroundTrees_140_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "MidgroundTrees",
+            "position": {
+                "x": -73.09618377685547,
+                "y": -0.19716891646385193,
+                "z": -126.443359375
+            },
+            "background": true
+        },
+        {
+            "name": "RM_MidgroundTrees_141_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "MidgroundTrees",
+            "position": {
+                "x": 128.13258361816406,
+                "y": 0.5330262184143066,
+                "z": -89.8792724609375
+            },
+            "background": true
+        },
+        {
+            "name": "RM_MidgroundTrees_142_VEG_CeibaJoven_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_CeibaJoven_01.prefab",
+            "category": "MidgroundTrees",
+            "position": {
+                "x": -143.45579528808594,
+                "y": -0.20500001311302185,
+                "z": -18.743860244750977
+            },
+            "background": true
+        },
+        {
+            "name": "RM_MidgroundTrees_143_VEG_CeibaJoven_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_CeibaJoven_01.prefab",
+            "category": "MidgroundTrees",
+            "position": {
+                "x": 6.674137115478516,
+                "y": 0.5488561391830444,
+                "z": -157.39613342285156
+            },
+            "background": true
+        },
+        {
+            "name": "RM_MidgroundTrees_144_VEG_CeibaJoven_01",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_CeibaJoven_01.prefab",
+            "category": "MidgroundTrees",
+            "position": {
+                "x": 147.9601593017578,
+                "y": -0.1551297903060913,
+                "z": -6.6875176429748535
+            },
+            "background": true
+        },
+        {
+            "name": "RM_MidgroundTrees_145_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "MidgroundTrees",
+            "position": {
+                "x": -114.32437896728516,
+                "y": -0.10889603942632675,
+                "z": -95.60395812988281
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_146_VEG_ArbolTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 217.02809143066406,
+                "y": 29.783912658691406,
+                "z": 101.20185089111328
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_147_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -115.12730407714844,
+                "y": 17.399887084960938,
+                "z": -277.832275390625
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_148_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -71.68634033203125,
+                "y": 23.756366729736328,
+                "z": 197.12783813476562
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_149_VEG_ArbolTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 182.27413940429688,
+                "y": 11.244451522827148,
+                "z": -94.98292541503906
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_150_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -251.84487915039062,
+                "y": 29.50969123840332,
+                "z": -67.33100128173828
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_151_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 149.6681365966797,
+                "y": 62.63679504394531,
+                "z": 234.57064819335938
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_152_VEG_ArbolTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 37.62750244140625,
+                "y": 25.894386291503906,
+                "z": -214.44570922851562
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_153_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -172.57720947265625,
+                "y": 39.241817474365234,
+                "z": 132.6911163330078
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_154_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 306.3384094238281,
+                "y": 18.46207618713379,
+                "z": 26.45667266845703
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_155_VEG_ArbolTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -168.68055725097656,
+                "y": 13.048473358154297,
+                "z": -183.61915588378906
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_156_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 0.38292038440704346,
+                "y": 18.384170532226562,
+                "z": 274.5003662109375
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_157_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 151.909423828125,
+                "y": 21.480558395385742,
+                "z": -166.29161071777344
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_158_VEG_ArbolTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -200.8614959716797,
+                "y": 27.309986114501953,
+                "z": 17.911951065063477
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_159_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 220.55746459960938,
+                "y": 65.17438507080078,
+                "z": 168.60513305664062
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_160_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -40.68943405151367,
+                "y": 20.393484115600586,
+                "z": -228.15492248535156
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_161_VEG_ArbolTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -114.23040771484375,
+                "y": 27.81761932373047,
+                "z": 180.13645935058594
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_162_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 269.98309326171875,
+                "y": 17.37639808654785,
+                "z": -72.98795318603516
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_163_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -248.5400848388672,
+                "y": 15.674211502075195,
+                "z": -128.63363647460938
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_164_VEG_ArbolTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 99.65514373779297,
+                "y": 33.82185363769531,
+                "z": 271.67596435546875
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_165_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 80.90673828125,
+                "y": 26.54896354675293,
+                "z": -196.7997283935547
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_166_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -187.10623168945312,
+                "y": 28.109432220458984,
+                "z": 87.88536834716797
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_167_VEG_ArbolTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 233.29641723632812,
+                "y": 22.153995513916016,
+                "z": 72.8074722290039
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_168_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -150.51779174804688,
+                "y": 18.227710723876953,
+                "z": -258.8666687011719
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_169_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -43.0432014465332,
+                "y": 15.483657836914062,
+                "z": 197.1463165283203
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_170_VEG_ArbolTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 210.04635620117188,
+                "y": 17.845050811767578,
+                "z": -148.12640380859375
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_171_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -221.44497680664062,
+                "y": 34.412498474121094,
+                "z": -28.368568420410156
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_172_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 144.60043334960938,
+                "y": 45.39092254638672,
+                "z": 171.06436157226562
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_173_VEG_ArbolTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 9.772905349731445,
+                "y": 32.49592208862305,
+                "z": -245.00636291503906
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_174_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -199.35714721679688,
+                "y": 70.3992919921875,
+                "z": 200.9219512939453
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_175_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 265.9376220703125,
+                "y": 15.789064407348633,
+                "z": -12.68903636932373
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_176_VEG_ArbolTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -205.40798950195312,
+                "y": 9.997036933898926,
+                "z": -170.89688110351562
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_177_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 29.84842300415039,
+                "y": 20.61777114868164,
+                "z": 219.38681030273438
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_178_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 152.4641876220703,
+                "y": 43.805824279785156,
+                "z": -219.82496643066406
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_179_VEG_ArbolTropical_02",
+            "source": "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -230.7939910888672,
+                "y": 68.7557144165039,
+                "z": 52.281455993652344
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_180_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": 204.00648498535156,
+                "y": 35.64361572265625,
+                "z": 116.4957275390625
+            },
+            "background": true
+        },
+        {
+            "name": "RM_BackgroundTrees_181_VEG_ArbolTropical_03",
+            "source": "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+            "category": "BackgroundTrees",
+            "position": {
+                "x": -70.37649536132812,
+                "y": 19.01073455810547,
+                "z": -219.46417236328125
+            },
+            "background": true
+        }
+    ],
+    "resizedTemples": 3,
+    "pathSections": 48,
+    "supportPatches": 7,
+    "impostorClusters": 158,
+    "statuePosition": {
+        "x": 0.0,
+        "y": 0.7200005054473877,
+        "z": 0.0
+    },
+    "statueScale": {
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0
+    }
+}

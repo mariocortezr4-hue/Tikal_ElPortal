@@ -1,0 +1,1 @@
+Seven visual foundations rebuilt from full bottom TempleTier bounds, excluding stair-foot bounds. No colliders, original terrain or existing assets changed.
