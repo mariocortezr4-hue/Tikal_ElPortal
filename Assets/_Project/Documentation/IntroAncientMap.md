@@ -1,3 +1,148 @@
+# Intro Ancient Map — estado final de branding, audio y mapa
+
+## Especificación vigente (2026-10-23)
+
+Esta pasada modifica únicamente Intro_AncientMap, su Timeline y dependencias directas. No
+retima diálogos, subtítulos, cámaras anteriores o el evento AncientMapReceived (59,5 s).
+La microcorrección de cierre extiende 85,5 → 87,6 s: título desde 84,3 s, 1,5 s adicionales
+de lectura hasta 87,0 s y fade final de 0,6 s hasta 87,6 s, seguido inmediatamente de Tutorial. La lógica
+IntroSequenceController/GameFlowController y los destinos Intro → Tutorial / replay → MainMenu
+permanecen intactos. No se modifica Menu, Tutorial, Level01 ni gameplay.
+
+### Branding
+
+El cue final y TitleText dicen exactamente `TIKAL EL EXPLORADOR`; se elimina el título anterior
+de la escena y del Timeline activos. La tarjeta reutiliza el logo final
+`Assets/_Project/Art/UI/MainMenu/UI_Tikal_StoneGold_Logo.png` y la piedra existente del menú.
+El texto TMP conserva el contenido semántico del cue, deshabilitado visualmente para evitar
+superponerlo al logo completo. El arte se muestra bajo la misma activación de TitleCard.
+No se modifica el asset ni la escena del menú. Encuadre central amplio, marco dorado discreto.
+
+### Música, duck y continuidad
+
+Se conserva el master `MUS_Intro_Suspenso.wav` sin cambios. Se deriva
+`Assets/_Project/Audio/Music/Cinematics/MUS_Intro_Suspenso_Continuous.wav`:
+PCM 24-bit, 48 kHz estéreo, 87,6 s. Los primeros 85,5 s de PCM son idénticos a la versión
+aprobada; solo se añaden 2,1 s de la misma continuación para cubrir hold y fade. Conserva el comienzo original; entre 57,504 y 61,504 s
+funde durante 4 s con una reprise del propio archivo desde el segundo 18. Ganancias lineales
+complementarias, sin normalización, cambios de velocidad o un reinicio abrupto. No se promete
+que el empalme sea musicalmente imperceptible sin aceptación auditiva humana.
+
+Timeline conserva una sola pista Music, un solo clip y el mismo AudioSource 2D. La importación
+es Streaming/Vorbis 0,85; no se agregan fuentes, mixers ni lógica de reproducción runtime.
+IntroMusicEnvelope conserva su código y multiplicadores de MusicVolume/MasterVolume.
+
+| Fase | Ganancia lineal antes de MusicVolume |
+|---|---:|
+| Entrada desde 0 a 0,75 s | 0 → 0,20 |
+| Narración o diálogo | 0,006 |
+| Ambiente entre bloques y tras último diálogo | 0,10 |
+| Salida final de 87,0 a 87,6 s | 0,10 → 0 |
+
+La envolvente se deriva de los cues Narrative/Subtitle. Ataque anticipado de 0,65 s y recuperación
+de 1,1 s; pausas menores de 1,6 s se agrupan para evitar bombeo. No hay sidechain ni nuevas voces.
+Duck frente al ambiente: −24,44 dB. El antiguo suelo de 0,039 pasa a 0,006: **16,26 dB más bajo**.
+La recuperación ya no devuelve el nivel inicial de 0,26: solo 0,10 ambiental. La música cubre
+el resto de la película y el nuevo hold con su fade deliberado de salida; se elimina el silencio desde 61,504 s.
+
+La auditoría no encontró clips VO en las pistas Voice/VOICE_NARRATOR. El duck está sincronizado
+con las ventanas canónicas de narración/diálogo de Timeline; el balance frente a voces grabadas
+requerirá aceptación al incorporarlas. No se inventan voces ni se afirma escucha humana.
+
+### Prop de mapa utilizado
+
+`Assets/Tikal/NonCharacterKit/Prologue/Prefabs/PFB_PRP_MapaAntiguo_01.prefab`
+
+Procede del paquete local `TIKAL_NON_CHARACTER_INTEGRATION_KIT/UnityPayload`, con GUIDs conservados
+y sin colisiones. No estaba importado en este proyecto. Las otras coincidencias de librería son
+revisiones del mismo PRP_MapaAntiguo_01: se elige el prefab Unity preparado del kit en lugar de
+regenerar o importar el Blender/FBX de staging sin su contrato de ejes y materiales.
+
+- Modelo: `Assets/Tikal/NonCharacterKit/Prologue/Models/PRP_MapaAntiguo_01.fbx`.
+- Material: `Assets/Tikal/NonCharacterKit/Prologue/Materials/PRP_MapaAntiguo_01_Map_Geometry_0.mat`.
+- 3.032 triángulos, 1 material URP/Lit, BaseColor/NormalGL/MetallicSmoothness existentes.
+- Dimensiones del prefab: 0,62 × 0,008 × 0,42 m; conserva corrección de ejes y referencias Grip_L/R.
+- Instancia `Ancient map final visual` bajo `AncientMap_Proxy`. El carrier conserva Animator,
+  ParentConstraint de dos manos y bindings de Timeline; su renderer/collider de bloque se deshabilitan.
+- La escala local inversa compensa la escala no unitaria del antiguo cubo sin modificar su
+  animación, su posición, su rotación ni la transferencia de manos. Sin colliders nuevos.
+
+### Herramientas y evidencia
+
+Aplicar: `Tikal/Authoring/Apply Intro Cinematic Final Polish`.
+Validar: `Tikal/Validation/Run Intro Final Polish Play Tests`.
+No ejecutar Build Ancient Map Intro ni la autoría histórica de audio sobre la versión final:
+esos comandos representan el blockout/mix previo. La autoría final se ejecutó dos veces con
+escena y Timeline idénticos en bytes. Evidencia fuera de Assets: `_IntroFinalPolish_20261023`.
+Resultado: 176 comprobaciones de reproducción completa/skips y 3 de captura final de branding aprobadas, sin errores. Guardados personales sin cambios (hashes verificados).
+Las pruebas usan guardado temporal y teclado virtual; comprueban película completa, audio PCM
+tras el antiguo corte, subtítulos, mapa visible, título y skips de primera partida/replay.
+
+### Pasada artística final de Intro (2026-10-23)
+
+Solo cambia la escena Intro_AncientMap y recursos/editor tools locales. **Timeline, música,
+envelope, subtítulos, branding, hold y fade de 87,6 s quedan intactos**. Comparación externa
+SHA256 confirma Timeline y audio idénticos a 1862ac6. No hay cambios runtime, de Menu,
+Tutorial, Level01, personajes compartidos, input, guardado, puzzles o journal.
+
+Auditoría: ocho cámaras de las pistas Activation reales; imágenes y frustums en
+`_IntroArtPass_20261023/Audit.json`. La evaluación en Edit Mode se usó para escenografía,
+no para juzgar contacto de manos: los constraints se revisaron en reproducción real.
+
+| Plano | Foreground / sujeto / background auditados | Resolución visual |
+|---|---|---|
+| Establishing | Cilindros, plano y borde vacío; actores pequeños | Franja de selva, sendero y arco al fondo; cámara dentro del corredor para evitar una copa cercana |
+| ExplorerWalk | Camino prismático, fondo abierto; Dwight entraba tarde | Camino con bordes vegetales, ruina y asiento visibles; encuadre local más atrasado para incluir caminata |
+| TwoShot | Cubo de asiento y cilindros, poco contraste | Rocas estratificadas, ambos sujetos visibles y espacio entre ellos despejado |
+| ExplorerDialogue | Dwight, hombro del Anciano, fondo plano | Fill suave sobre rostro/torso y vegetación escalonada de fondo sin hojas sobre el rostro |
+| ElderDialogue | Cara del Anciano oscura y cubo visible | Luz cálida, asiento de piedra y contrapunto de musgo/ruina parcial |
+| MapHandoff | Intercambio amplio, manos provisionales y mapa | Mismo FOV 40°, cámara algo más alta/retirada, prop inclinado y bajado localmente; sin IK ni retiming |
+| FinalWarning | Rostro contra suelo plano/cilindros | Rostro legible, piedra y vegetación tras la silueta, subtítulo original conservado |
+| Departure | Rama/cilindro en primer plano y salida vacía | Cámara dentro del corredor, Dwight saliendo hacia el arco con fondo cerrado y Anciano visible |
+
+Iluminación localizada: se reutiliza la única directional, ahora cálida (RGB 1/0,85/0,66,
+intensidad 1,35), con sombras suaves. Dos spots locales sin sombras: fill frío/verde tenue
+(3,1; rango 12 m) y rim cálido (3,8; rango 12 m). Ambient trilight y niebla exponencial suave
+son propiedades de esta escena. **No se crean ni modifican Volumes o perfiles compartidos**.
+
+164 placements de prefabs existentes: árboles tropicales 02/03/04, ceibas adultas/jóvenes,
+arbustos 02/03, helechos, plantas tropicales, lianas, raíces, rocas planas/con musgo y ruinas
+(arco, muros parciales, columna derrumbada y escombros). Se retiraron las tarjetas de hojas
+que daban una lectura plana. No se importó paquete ni modelo nuevo.
+
+Los renderers del blockout Environment se deshabilitan; los objetos y colliders originales
+se conservan. El suelo visual usa dos mallas locales (relieve de 15.360 triángulos y sendero
+de 1.280) y dos materiales propios derivados de materiales ya integrados; nunca se edita el
+material compartido de otra escena. Los placements de arte no tienen colliders. Fondo con
+LOD1 explícito y sin sombras; follaje cercano sin sombras. Solo la directional aporta una
+sombra nueva; fill/rim no generan shadow maps. No se declara un benchmark de FPS.
+
+Mapa: se conserva PFB_PRP_MapaAntiguo_01 y su carrier/ParentConstraint/animación/evento. Se
+añade un offset visual normalizado que conserva dimensiones: desplazamiento local
+(-0,025; -0,065; 0,015 m), inclinación 9° y roll 3°. El plano de entrega sigue siendo amplio.
+La actuación Give Map sigue siendo la animación provisional existente: no se promete
+contacto de cada dedo desde cualquier ángulo, ni se modifica el rig.
+
+Herramientas: `Tikal/Authoring/Apply Intro Cinematic Art Pass` conserva el estado integrado
+al repetirse, sin duplicados. `Tikal/Validation/Run Intro Cinematic Art Play Tests` reproduce
+la Intro completa, captura los ocho planos y título/fade y comprueba flujo/skip con guardado
+aislado. Resultado: 190 comprobaciones aprobadas, sin errores; sin Missing Scripts/Materials,
+mapa recibido una sola vez, Tutorial y skips de primera partida/replay correctos. Audio y
+timing congelados se verifican por hash y binding/envelope; no se rediseña ni recalifica la mezcla.
+
+Capturas finales: `Intro_Establishing_Final`, `Intro_ExplorerWalk_Final`, `Intro_TwoShot_Final`,
+`Intro_ExplorerDialogue_Final`, `Intro_ElderDialogue_Final`, `Intro_MapHandoff_Final`,
+`Intro_FinalWarning_Final`, `Intro_Departure_Final`, `Intro_Title_Final` (PNG, carpeta de evidencia).
+La primera es un render limpio de la cámara activa en Play Mode, sin UI/fade superpuesto,
+para revisar escenografía; las otras son capturas de la reproducción con UI original.
+
+---
+
+## Registro histórico de la pasada anterior (sustituido por la especificación vigente)
+
+Las cifras, limitaciones de silencio y título legado que siguen describen exclusivamente el
+estado anterior; no son requisitos de la implementación final indicada arriba.
+
 # Introducción: Ancient Map
 
 ## Estado y alcance
