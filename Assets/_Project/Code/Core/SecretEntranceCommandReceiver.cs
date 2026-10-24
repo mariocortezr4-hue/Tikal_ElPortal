@@ -59,7 +59,7 @@ namespace Tikal.Core
         private void OnDisable(){if(_subscribed)_input.SecretCommandPressed-=Receive;_subscribed=false;}
         private void Receive()
         {
-            if (CanExecuteCommand) _outcome.TriggerVictory();
+            if (CanExecuteCommand) Tikal.Cinematics.Level01PlazaTransition.TriggerSecretVictory(_outcome);
         }
     }
 }

@@ -23,5 +23,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/_Project/Scenes/Cinematics/Transition_Level01_PlazaKeynes.unity
+    guid: 8a895771a7baba047b72a005b39ef107
+  - enabled: 1
+    path: Assets/_Project/Scenes/Levels/Level02_PlazaKeynes.unity
+    guid: a7ce78e1980c6bf40b4ee02a8225352b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

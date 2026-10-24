@@ -1,0 +1,82 @@
+{
+    "passed": true,
+    "scene": "Assets/_Project/Scenes/Cinematics/Transition_Level01_PlazaKeynes.unity",
+    "timelineTracks": 4,
+    "dependencies": 57,
+    "missingScripts": 0,
+    "missingMaterials": 0,
+    "cameras": 1,
+    "listeners": 1,
+    "gameplayPlayers": 0,
+    "duration": 10.499999999999,
+    "testedFiles": [
+        {
+            "path": "Assets/_Project/Timelines/PlazaTransition/Camera_Passage.anim",
+            "sha256": "b27dede247fd8ee843b358b4517f097c3f3c82ee40b03597155fa56027ce72ed"
+        },
+        {
+            "path": "Assets/_Project/Timelines/PlazaTransition/Camera_Passage.anim.meta",
+            "sha256": "a3f7035f7c72dc9d299a49318a6f5aace7ad163abd1d664aaf604c09ba999f3e"
+        },
+        {
+            "path": "Assets/_Project/Timelines/PlazaTransition/Character_Passage.anim",
+            "sha256": "36183c8660d792b4fd313946912b0b3ec0e6e76c8aa26df236b5794116f912d3"
+        },
+        {
+            "path": "Assets/_Project/Timelines/PlazaTransition/Character_Passage.anim.meta",
+            "sha256": "1e7b6675c500d68e6cbbbe6ff825c5eb8d0c89883a80ae2af7c10ba873d6ac32"
+        },
+        {
+            "path": "Assets/_Project/Timelines/PlazaTransition/Door_Lift.anim",
+            "sha256": "38e87b7bc34520a3e1147380681c7bb4479a0e628971ed5c2b4a1ac084e59170"
+        },
+        {
+            "path": "Assets/_Project/Timelines/PlazaTransition/Door_Lift.anim.meta",
+            "sha256": "9910ffe8a1c5ed4c320fb849699c08afae76a61b3ab51f5a8a0d4a5fe086fa57"
+        },
+        {
+            "path": "Assets/_Project/Timelines/PlazaTransition/Passage_Fade.anim",
+            "sha256": "469e9ac27e4f24f01fdf75e39336aa8c4067809530e13bfc560c36324e5c7b68"
+        },
+        {
+            "path": "Assets/_Project/Timelines/PlazaTransition/Passage_Fade.anim.meta",
+            "sha256": "e3edb3f839c0dfa8aabb03a4517559a11de31dbd01c30caa6e0fae1a9b9e6d5d"
+        },
+        {
+            "path": "Assets/_Project/Timelines/PlazaTransition/TL_Level01_PlazaKeynes.playable",
+            "sha256": "2f2b80b6a8655872e4c8195ce39f0febe571cd0b26c9358ae73961d7c836962f"
+        },
+        {
+            "path": "Assets/_Project/Timelines/PlazaTransition/TL_Level01_PlazaKeynes.playable.meta",
+            "sha256": "7309b29ee74ce35f81c5a623445c194a451fa0a5b50b5f894a006a25ed0b1b06"
+        },
+        {
+            "path": "Assets/_Project/Scenes/Cinematics/Transition_Level01_PlazaKeynes.unity",
+            "sha256": "538bc85ee83a81323773c68d09b0b2bad9ec8d577b18dcbdfbaf284961aa3845"
+        },
+        {
+            "path": "Assets/_Project/Code/Cinematics/Level01PlazaTransition.cs",
+            "sha256": "c72dbdf3f70cd8dc5a623ad4ff1923603978affad302d98f82ff5636843ce4d5"
+        },
+        {
+            "path": "Assets/_Project/Code/Cinematics/PlazaPassageSequence.cs",
+            "sha256": "0e485f384ae5f5d6b605002246af22f7ef1474d1ba29f50d5a2c4be99c9a2073"
+        },
+        {
+            "path": "Assets/_Project/Code/Core/SecretEntranceCommandReceiver.cs",
+            "sha256": "4881207a1ff46692f1b16f98b97b5b42fada480aff31b2cc2f70d733d740cba5"
+        },
+        {
+            "path": "Assets/_Project/Code/UI/LevelResultPresenter.cs",
+            "sha256": "bb24d106c9a59f57aa7ec48b0cdcd9edecbbfdf3806a157f7bce4ccf7661d4df"
+        },
+        {
+            "path": "Assets/_Project/Code/Core/SceneCatalog.cs",
+            "sha256": "30d2e2c64ffeee938e824a27a14c2b10df6a9ee36b5b40b218b42f6d3e274520"
+        },
+        {
+            "path": "ProjectSettings/EditorBuildSettings.asset",
+            "sha256": "30405ec0d8b81d03a5d1f4fdac7a65ce50d41acedc76046064f03c81e3b1dcc8"
+        }
+    ]
+}

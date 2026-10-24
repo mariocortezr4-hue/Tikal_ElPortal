@@ -42,6 +42,7 @@ namespace Tikal.UI
                 _panel.SetActive(false); _fade.alpha = 0;
                 return;
             }
+            if (outcome == LevelOutcome.Victory && Tikal.Cinematics.Level01PlazaTransition.TryBegin(_outcome)) return;
             _title.text=outcome==LevelOutcome.Victory?"NIVEL COMPLETADO":"HAS QUEDADO ATRAPADO";
             _subtitle.text=outcome==LevelOutcome.Victory?"La Entrada Secreta":"";
             _panel.SetActive(true);_fade.alpha=0;

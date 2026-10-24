@@ -1,0 +1,14 @@
+Source scene: Assets/_Project/Scenes/Levels/Level01_SecretEntrance.unity
+Door: Level01_SecretEntrance/Environment/Entrance/EntranceDoor_Blockout
+Pivot: Level01_SecretEntrance/Environment/Entrance/EntranceDoor_Blockout/Pivot
+Door world bounds: Center: (0.0000, 2.4000, 0.0000), Extents: (1.8000, 2.4000, 0.1200)
+Receiver range: 3
+Dwight | Assets/_Project/Prefabs/Characters/CHR_Dwight_PlayerVisual.prefab | avatar=True
+  CHR_Explorer_Walk | Assets/_Project/Art/Characters/Mario/Animations/CHR_Explorer_Walk.anim
+  CHR_Explorer_CrouchWalk | Assets/_Project/Art/Characters/Mario/Animations/CHR_Explorer_CrouchWalk.anim
+Axel | Assets/_Project/Prefabs/Characters/CHR_Axel_PlayerVisual.prefab | avatar=True
+  CHR_Explorer_Walk | Assets/_Project/Art/Characters/Mario/Animations/CHR_Explorer_Walk.anim
+  CHR_Explorer_CrouchWalk | Assets/_Project/Art/Characters/Mario/Animations/CHR_Explorer_CrouchWalk.anim
+Mario | Assets/_Project/Prefabs/Characters/CHR_Mario_PlayerVisual.prefab | avatar=True
+  CHR_Explorer_Walk | Assets/_Project/Art/Characters/Mario/Animations/CHR_Explorer_Walk.anim
+  CHR_Explorer_CrouchWalk | Assets/_Project/Art/Characters/Mario/Animations/CHR_Explorer_CrouchWalk.anim

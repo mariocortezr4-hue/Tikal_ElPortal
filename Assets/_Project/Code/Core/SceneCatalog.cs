@@ -28,7 +28,7 @@ namespace Tikal.Core
             new SceneInfo(GameSceneIds.Intro, "Assets/_Project/Scenes/Cinematics/Intro_AncientMap.unity", "Introducción", false),
             new SceneInfo(GameSceneIds.Tutorial, "Assets/_Project/Scenes/Tutorial/TUT_ExplorerBasics.unity", "Tutorial", false),
             new SceneInfo(GameSceneIds.Level01, "Assets/_Project/Scenes/Levels/Level01_SecretEntrance.unity", "Nivel 1 - La Entrada Secreta", true),
-            new SceneInfo(GameSceneIds.Level02, string.Empty, "Nivel 2", true)
+            new SceneInfo(GameSceneIds.Level02, "Assets/_Project/Scenes/Levels/Level02_PlazaKeynes.unity", "Nivel 2", true)
         };
 
         public static IReadOnlyList<SceneInfo> All => Scenes;
