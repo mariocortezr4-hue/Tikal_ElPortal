@@ -1,0 +1,4805 @@
+{
+    "passed": true,
+    "sceneUnchanged": true,
+    "dependencies": [
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PlantaTropical_02/Models/VEG_PlantaTropical_02_LOD2.fbx",
+        "Assets/_Project/Scenes/Levels/Level02_PlazaKeynes.unity",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Materials/ARQ_ColumnaDerrumbada_01_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level01/EntranceHero/VEG_CeibaTropical_01/Materials/VEG_CeibaTropical_01_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_5.asset",
+        "Assets/_Project/Art/Environment/Level01/EntranceHero/VEG_RaizTropical_01/Models/VEG_RaizTropical_01_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Level01/EntranceHero/VEG_RaizTropical_01/Materials/VEG_RaizTropical_01_MAT00.mat",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ArcoMaya_01.prefab",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Textures/ARQ_ColumnaDerrumbada_01_Normal.png",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_03/Models/VEG_ArbustoTropical_03_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HelechoTropical_02/Materials/VEG_HelechoTropical_02_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level02/MAT_PlazaKeynes_Sky.mat",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_EscombrosMaya_01.prefab",
+        "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Textures/ROC_RocaFragmentada_01_BaseColor.jpeg",
+        "Assets/_Project/Art/Environment/Level01/VEG_CeibaJoven_01/Models/VEG_CeibaJoven_01_LOD0.fbx",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_RaizTropical_01.prefab",
+        "Assets/_Project/Art/Environment/Level01/ARQ_EscalinataMaya_01/Materials/ARQ_EscalinataMaya_01_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level01/ARQ_EscombrosMaya_01/Materials/ARQ_EscombrosMaya_01_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level02/Keynes/Materials/MAT_EstatuaKeynes.mat",
+        "Assets/_Project/Art/Environment/Level02/Keynes/Textures/EST_Keynes_BaseColor.jpg",
+        "Assets/_Project/Art/Environment/Level01/VEG_ArbolTropical_03/Models/VEG_ArbolTropical_03_LOD1.fbx",
+        "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab",
+        "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_MuroMaya_01/Textures/ARQ_MuroMaya_01_Normal.png",
+        "Assets/_Project/Art/Environment/Level01/ARQ_EscombrosMaya_01/Models/ARQ_EscombrosMaya_01_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Level02/Keynes/Models/EST_Keynes_LOD0.fbx",
+        "Assets/_Project/Code/Player/ThirdPersonCameraProfile.cs",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Textures/ARQ_PisoPiedraMaya_01_Normal.png",
+        "Assets/_Project/Prefabs/Player/Explorer.prefab",
+        "Assets/_Project/Code/Player/PlayerController.cs",
+        "Assets/_Project/Art/Environment/Level01/EntranceHero/VEG_RaizTropical_01/Textures/VEG_RaizTropical_01_Normal.png",
+        "Assets/_Project/Art/Environment/Level01/VEG_ArbolTropical_03/Textures/VEG_ArbolTropical_03_BaseColor.jpg",
+        "Assets/_Project/Art/Environment/Level01/ROC_RocaMusgo_01/Textures/ROC_RocaMusgo_01_BaseColor.jpg",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Models/ARQ_PisoPiedraMaya_01_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Textures/ROC_RocaFragmentada_01_MetallicSmoothness_URP.png",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_03/Textures/VEG_ArbustoTropical_03_Normal.png",
+        "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_MuroMaya_01/Models/ARQ_MuroMaya_01_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Level01/VEG_ArbolTropical_03/Models/VEG_ArbolTropical_03_LOD0.fbx",
+        "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_MuroMaya_01.prefab",
+        "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_HelechoTropical_02.prefab",
+        "Assets/_Project/Art/Environment/Level01/VEG_ArbolTropical_03/Textures/VEG_ArbolTropical_03_Normal.png",
+        "Packages/com.unity.render-pipelines.universal/Runtime/Materials/Lit.mat",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Textures/ARQ_PisoPiedraMaya_01_BaseColor.jpeg",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_ColumnaDerrumbada_01.prefab",
+        "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_ColumnaMaya_01/Models/ARQ_ColumnaMaya_01_LOD2.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_02/Textures/VEG_ArbustoTropical_02_BaseColor.jpg",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PisoPiedraMaya_01.prefab",
+        "Assets/_Project/Art/Environment/Level01/ROC_RocaMusgo_01/Materials/ROC_RocaMusgo_01_MAT00.mat",
+        "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_PlantaTropical_02.prefab",
+        "Assets/_Project/Art/Environment/Level01/VEG_CeibaJoven_01/Models/VEG_CeibaJoven_01_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PlantaTropical_02/Textures/VEG_PlantaTropical_02_BaseColor.jpg",
+        "Assets/_Project/Art/Environment/Tutorial/Ground/JungleGround/Textures/VALIDATION_ONLY_Ground_Surfaces_Demo_Curved_Repeat_0_MetallicSmoothness.png",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_0.asset",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_CeibaJoven_01.prefab",
+        "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Models/ROC_RocaFragmentada_01_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PlantaTropical_02/Textures/VEG_PlantaTropical_02_Normal.png",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_4.asset",
+        "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_ColumnaMaya_01/Textures/ARQ_ColumnaMaya_01_BaseColor.jpg",
+        "Assets/_Project/Art/Environment/Level01/VEG_ArbolTropical_03/Materials/VEG_ArbolTropical_03_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level01/ARQ_EscalinataMaya_01/Models/ARQ_EscalinataMaya_01_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Materials/ROC_RocaFragmentada_01_MAT00.mat",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_02/Textures/VEG_ArbolTropical_02_Normal.png",
+        "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+        "Assets/_Project/Art/Environment/Level01/VEG_CeibaJoven_01/Textures/VEG_CeibaJoven_01_BaseColor.jpg",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_2.asset",
+        "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_MuroMaya_01/Materials/ARQ_MuroMaya_01_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level01/ARQ_EscalinataMaya_01/Textures/ARQ_EscalinataMaya_01_Normal.png",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_03/Materials/VEG_ArbustoTropical_03_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Textures/ARQ_ColumnaDerrumbada_01_BaseColor.jpeg",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Models/ARQ_ArcoMaya_01_LOD1.fbx",
+        "Assets/_Project/Code/Input/InputDeviceManager.cs",
+        "Assets/_Project/Art/Environment/Level02/MAT_PlazaKeynes_JungleFloor.mat",
+        "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_ColumnaMaya_01/Materials/ARQ_ColumnaMaya_01_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Textures/ROC_RocaFragmentada_01_Normal.png",
+        "Assets/_Project/Code/Player/PlayerCameraController.cs",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Models/ARQ_ArcoMaya_01_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Level01/EntranceHero/VEG_CeibaTropical_01/Models/VEG_CeibaTropical_01_LOD1.fbx",
+        "Assets/_Project/Art/Materials/Level01/Stone.mat",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HelechoTropical_02/Textures/VEG_HelechoTropical_02_BaseColor.jpg",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_ROC_RocaFragmentada_01.prefab",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_03/Models/VEG_ArbustoTropical_03_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_EscombrosMaya_01/Textures/ARQ_EscombrosMaya_01_Normal.png",
+        "Assets/_Project/Prefabs/Environment/Tutorial/PFB_ARQ_ColumnaMaya_01.prefab",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Models/ARQ_ColumnaDerrumbada_01_LOD0.fbx",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_CeibaTropical_01.prefab",
+        "Assets/_Project/Art/Environment/Level01/ARQ_EscalinataMaya_01/Models/ARQ_EscalinataMaya_01_LOD2.fbx",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_3.asset",
+        "Packages/com.unity.render-pipelines.universal/Editor/AssetVersion.cs",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HelechoTropical_02/Models/VEG_HelechoTropical_02_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Models/ARQ_PlataformaElevada_01_LOD0.fbx",
+        "Assets/_Project/Code/Interaction/PlayerInteraction.cs",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_02/Models/VEG_ArbolTropical_02_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_ColumnaMaya_01/Models/ARQ_ColumnaMaya_01_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Models/ARQ_PisoPiedraMaya_01_LOD2.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Textures/ARQ_ArcoMaya_01_MetallicSmoothness_URP.png",
+        "Assets/_Project/Art/Environment/Tutorial/Ground/JungleGround/Textures/TEX_JungleGround_01_BaseColor.png",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_02/Models/VEG_ArbustoTropical_02_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_02/Models/VEG_ArbolTropical_02_LOD2.fbx",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_PlataformaElevada_01.prefab",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Models/ARQ_PisoPiedraMaya_01_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_02/Materials/VEG_ArbustoTropical_02_MAT00.mat",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_02/Models/VEG_ArbustoTropical_02_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PlantaTropical_02/Materials/VEG_PlantaTropical_02_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level01/VEG_CeibaJoven_01/Textures/VEG_CeibaJoven_01_Normal.png",
+        "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_MuroMaya_01/Models/ARQ_MuroMaya_01_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_MuroMaya_01/Textures/ARQ_MuroMaya_01_BaseColor.jpg",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PlantaTropical_02/Models/VEG_PlantaTropical_02_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Textures/ARQ_PlataformaElevada_01_Normal.png",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_7.asset",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Models/ARQ_ColumnaDerrumbada_01_LOD2.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_EscombrosMaya_01/Textures/ARQ_EscombrosMaya_01_BaseColor.jpg",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Textures/ARQ_ArcoMaya_01_BaseColor.jpeg",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_1.asset",
+        "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Models/ROC_RocaFragmentada_01_LOD2.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Models/ARQ_PlataformaElevada_01_LOD2.fbx",
+        "Assets/_Project/Code/Player/CharacterVisualSpawner.cs",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_02/Materials/VEG_ArbolTropical_02_MAT00.mat",
+        "Assets/_Project/Code/Player/PlayerLook.cs",
+        "Assets/_Project/Settings/Camera/ThirdPersonCameraProfile_Default.asset",
+        "Assets/_Project/Art/Environment/Level02/Keynes/Models/EST_Keynes_LOD2.fbx",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_6.asset",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_02/Models/VEG_ArbustoTropical_02_LOD2.fbx",
+        "Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader",
+        "Assets/_Project/Art/Environment/Level02/Forest/MAT_PlazaKeynes_ForestImpostor.mat",
+        "Assets/_Project/Code/Input/PlayerInputReader.cs",
+        "Assets/_Project/Art/Environment/Level01/EntranceHero/VEG_RaizTropical_01/Models/VEG_RaizTropical_01_LOD2.fbx",
+        "Assets/_Project/Code/Persistence/PersistentSettingsApplier.cs",
+        "Assets/_Project/Art/Environment/Level01/ROC_RocaMusgo_01/Models/ROC_RocaMusgo_01_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Textures/ARQ_PlataformaElevada_01_MetallicSmoothness_URP.png",
+        "Assets/_Project/Art/Environment/Level01/ROC_RocaFragmentada_01/Models/ROC_RocaFragmentada_01_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_02/Models/VEG_ArbolTropical_02_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_PlantaTropical_02/Models/VEG_PlantaTropical_02_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_ColumnaMaya_01/Models/ARQ_ColumnaMaya_01_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Materials/ARQ_ArcoMaya_01_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level01/VEG_CeibaJoven_01/Materials/VEG_CeibaJoven_01_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level01/EntranceHero/VEG_CeibaTropical_01/Textures/VEG_CeibaTropical_01_BaseColor.jpg",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_02/Textures/VEG_ArbustoTropical_02_Normal.png",
+        "Assets/_Project/Art/Environment/Level01/EntranceHero/VEG_RaizTropical_01/Textures/VEG_RaizTropical_01_BaseColor.jpg",
+        "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_03.prefab",
+        "Assets/_Project/Art/Environment/Level02/SM_PlazaKeynes_Terrain_R3.asset",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Textures/ARQ_PisoPiedraMaya_01_MetallicSmoothness_URP.png",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_ROC_RocaMusgo_01.prefab",
+        "Assets/_Project/Art/Environment/Level02/Keynes/Prefabs/PFB_EstatuaKeynes.prefab",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Textures/ARQ_ColumnaDerrumbada_01_MetallicSmoothness_URP.png",
+        "Assets/_Project/Art/Environment/Level02/Keynes/Models/EST_Keynes_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ColumnaDerrumbada_01/Models/ARQ_ColumnaDerrumbada_01_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HelechoTropical_02/Textures/VEG_HelechoTropical_02_Normal.png",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PisoPiedraMaya_01/Materials/ARQ_PisoPiedraMaya_01_MAT00.mat",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Textures/ARQ_PlataformaElevada_01_BaseColor.jpeg",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HelechoTropical_02/Models/VEG_HelechoTropical_02_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_EscalinataMaya_01/Textures/ARQ_EscalinataMaya_01_BaseColor.jpg",
+        "Assets/_Project/Code/Player/PlayerMovement.cs",
+        "Packages/com.unity.render-pipelines.universal/Runtime/UniversalAdditionalCameraData.cs",
+        "Assets/_Project/Art/Environment/Level01/EntranceHero/VEG_CeibaTropical_01/Models/VEG_CeibaTropical_01_LOD0.fbx",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_ARQ_EscalinataMaya_01.prefab",
+        "Assets/_Project/Art/Environment/Tutorial/Ruins/ARQ_ColumnaMaya_01/Textures/ARQ_ColumnaMaya_01_Normal.png",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_HelechoTropical_02/Models/VEG_HelechoTropical_02_LOD2.fbx",
+        "Assets/_Project/Art/Environment/Level01/EntranceHero/VEG_RaizTropical_01/Models/VEG_RaizTropical_01_LOD1.fbx",
+        "Assets/_Project/Code/Player/Debug/PlayerMovementDebugProbe.cs",
+        "Assets/_Project/Art/Environment/Level02/Forest/T_PlazaKeynes_ForestAtlas.png",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Materials/ARQ_PlataformaElevada_01_MAT00.mat",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbolTropical_02/Textures/VEG_ArbolTropical_02_BaseColor.jpg",
+        "Assets/_Project/Art/Environment/Level01/ROC_RocaMusgo_01/Textures/ROC_RocaMusgo_01_Normal.png",
+        "Assets/_Project/Art/Environment/Tutorial/Vegetation/VEG_ArbustoTropical_03/Textures/VEG_ArbustoTropical_03_BaseColor.jpg",
+        "Assets/_Project/Art/Environment/Level01/ARQ_PlataformaElevada_01/Models/ARQ_PlataformaElevada_01_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_EscalinataMaya_01/Models/ARQ_EscalinataMaya_01_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Textures/ARQ_ArcoMaya_01_Normal.png",
+        "Assets/_Project/Art/Environment/Level01/EntranceHero/VEG_CeibaTropical_01/Textures/VEG_CeibaTropical_01_Normal.png",
+        "Assets/_Project/Art/Environment/Level02/MAT_PlazaKeynes_Paving.mat",
+        "Assets/_Project/Art/Environment/Tutorial/Ground/JungleGround/Textures/TEX_JungleGround_01_NormalGL.png",
+        "Assets/_Project/Art/Environment/Level01/ARQ_ArcoMaya_01/Models/ARQ_ArcoMaya_01_LOD2.fbx",
+        "Assets/_Project/Art/Environment/Level01/VEG_ArbolTropical_03/Models/VEG_ArbolTropical_03_LOD2.fbx",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab"
+    ],
+    "newDependencies": [
+        "Assets/_Project/Scenes/Levels/Level02_PlazaKeynes.unity",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_5.asset",
+        "Assets/_Project/Art/Environment/Level02/MAT_PlazaKeynes_Sky.mat",
+        "Assets/_Project/Art/Environment/Level02/Keynes/Materials/MAT_EstatuaKeynes.mat",
+        "Assets/_Project/Art/Environment/Level02/Keynes/Textures/EST_Keynes_BaseColor.jpg",
+        "Assets/_Project/Art/Environment/Level02/Keynes/Models/EST_Keynes_LOD0.fbx",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_0.asset",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_4.asset",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_2.asset",
+        "Assets/_Project/Art/Environment/Level02/MAT_PlazaKeynes_JungleFloor.mat",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_3.asset",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_7.asset",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_1.asset",
+        "Assets/_Project/Art/Environment/Level02/Keynes/Models/EST_Keynes_LOD2.fbx",
+        "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_6.asset",
+        "Assets/_Project/Art/Environment/Level02/Forest/MAT_PlazaKeynes_ForestImpostor.mat",
+        "Assets/_Project/Art/Environment/Level02/SM_PlazaKeynes_Terrain_R3.asset",
+        "Assets/_Project/Art/Environment/Level02/Keynes/Prefabs/PFB_EstatuaKeynes.prefab",
+        "Assets/_Project/Art/Environment/Level02/Keynes/Models/EST_Keynes_LOD1.fbx",
+        "Assets/_Project/Art/Environment/Level02/Forest/T_PlazaKeynes_ForestAtlas.png",
+        "Assets/_Project/Art/Environment/Level02/MAT_PlazaKeynes_Paving.mat"
+    ],
+    "missingFiles": [],
+    "contacts": [
+        {
+            "name": "Ruins_0088_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0089_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0090_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0091_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0092_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0093_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0094_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0095_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0096_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0097_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0098_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0099_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0100_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0101_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0102_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0103_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0104_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0105_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0106_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0107_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0108_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0109_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0110_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0111_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0112_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0113_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0114_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0115_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0116_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0117_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0118_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0119_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0120_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0121_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0122_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0123_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0124_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0125_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0126_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0127_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0128_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0129_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0130_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0131_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0132_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0133_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0134_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0135_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0136_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0137_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0138_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0139_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0140_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0141_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0142_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0143_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0144_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0145_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0146_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0147_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0148_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0149_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0150_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0151_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0152_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0153_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0154_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0155_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0156_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0157_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0158_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0159_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0160_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0161_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0162_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0163_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0164_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0165_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0166_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0167_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0168_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0169_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0170_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0171_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0172_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0173_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0174_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0175_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0176_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0177_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0178_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0179_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0180_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0181_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0182_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0183_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0184_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0185_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0186_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0187_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0188_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0189_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0190_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0191_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0192_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0193_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0194_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0195_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0196_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0197_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0198_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0199_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0200_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0201_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0202_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0203_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0204_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0205_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0206_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0207_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0208_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0209_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0210_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0211_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0212_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0213_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0214_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0215_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0216_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0217_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0218_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0219_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0220_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0221_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0222_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0223_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0224_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0225_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0226_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0227_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0228_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0229_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0230_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0231_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0232_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0233_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0234_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0235_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0236_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0237_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0238_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0239_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0240_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0241_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0242_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0243_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0244_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0245_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0246_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0247_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0248_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0249_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0250_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0251_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0252_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0253_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0254_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0255_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0256_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0257_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0258_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0259_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0260_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0261_ARQ_ArcoMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0262_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0263_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0264_ARQ_EscombrosMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Ruins_0265_ARQ_MuroMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0266_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Columns_0267_ARQ_ColumnaMaya_01",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0268_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0269_ROC_RocaFragmentada_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0270_ROC_RocaMusgo_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0271_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0272_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0273_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0274_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0275_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0276_ROC_RocaFragmentada_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0277_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0278_ROC_RocaFragmentada_01",
+            "baseY": -0.15000003576278687,
+            "groundY": 0.0,
+            "gap": -0.15000003576278687,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0279_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0280_ROC_RocaFragmentada_01",
+            "baseY": -0.15000003576278687,
+            "groundY": 0.0,
+            "gap": -0.15000003576278687,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0281_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0282_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0283_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0284_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0285_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0286_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0287_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0288_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0289_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0290_ROC_RocaFragmentada_01",
+            "baseY": -0.15000003576278687,
+            "groundY": 0.0,
+            "gap": -0.15000003576278687,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0291_ROC_RocaMusgo_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0292_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0293_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0294_ROC_RocaFragmentada_01",
+            "baseY": -0.15000003576278687,
+            "groundY": 0.0,
+            "gap": -0.15000003576278687,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0295_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0296_ROC_RocaFragmentada_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0297_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0298_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0299_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0300_ROC_RocaFragmentada_01",
+            "baseY": -0.15000003576278687,
+            "groundY": 0.0,
+            "gap": -0.15000003576278687,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0301_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0302_ROC_RocaFragmentada_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0303_ROC_RocaMusgo_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0304_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0305_ROC_RocaFragmentada_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0306_ROC_RocaFragmentada_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0307_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0308_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0309_ROC_RocaFragmentada_01",
+            "baseY": -0.15000003576278687,
+            "groundY": 0.0,
+            "gap": -0.15000003576278687,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0310_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0311_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0312_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0313_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0314_ROC_RocaFragmentada_01",
+            "baseY": -0.1499999761581421,
+            "groundY": 0.0,
+            "gap": -0.1499999761581421,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0315_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0316_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0317_ROC_RocaMusgo_01",
+            "baseY": -0.15000000596046448,
+            "groundY": 0.0,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "Rocks_0318_ROC_RocaFragmentada_01",
+            "baseY": -0.15000003576278687,
+            "groundY": 0.0,
+            "gap": -0.15000003576278687,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0319_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0320_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0321_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0322_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0323_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0324_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0325_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0326_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0327_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0328_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0329_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0330_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0331_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0332_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0333_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0334_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0335_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0336_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0337_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0338_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0339_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0340_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0341_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0342_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0343_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0344_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0345_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0346_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0347_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0348_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0349_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0350_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0351_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0352_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0353_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0354_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0355_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0356_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0357_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0358_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0359_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0360_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0361_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0362_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0363_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0364_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0365_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0366_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0367_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0368_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0369_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0370_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0371_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0372_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0373_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0374_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0375_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0376_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0377_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0378_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0379_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0380_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0381_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0382_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0383_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0384_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0385_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0386_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0387_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0388_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0389_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0390_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0391_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0392_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0393_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0394_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0395_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0396_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0397_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0398_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0399_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0400_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0401_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0402_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0403_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0404_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0405_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0406_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0407_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0408_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0409_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0410_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0411_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0412_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0413_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0414_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0415_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0416_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0417_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0418_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0419_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0420_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0421_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0422_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0423_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0424_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0425_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0426_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0427_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0428_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0429_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0430_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0431_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0432_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0433_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0434_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0435_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0436_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0437_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0438_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0439_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0440_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0441_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0442_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0443_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0444_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0445_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0446_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0447_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0448_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0449_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0450_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0451_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0452_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0453_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0454_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0455_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0456_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0457_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0458_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0459_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0460_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0461_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0462_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0463_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0464_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0465_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0466_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0467_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0468_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0469_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0470_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0471_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0472_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0473_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0474_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0475_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0476_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0477_VEG_ArbustoTropical_03",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0478_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0479_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0480_VEG_PlantaTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0481_VEG_ArbustoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "SmallVegetation_0482_VEG_HelechoTropical_02",
+            "baseY": 0.0,
+            "groundY": 0.0,
+            "gap": 0.0,
+            "intendedBurial": false,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0543_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0544_VEG_ArbolTropical_02",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0545_VEG_ArbolTropical_03",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0546_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0547_VEG_ArbolTropical_02",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0548_VEG_ArbolTropical_03",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0549_VEG_CeibaJoven_01",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0550_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0551_VEG_ArbolTropical_02",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0552_VEG_CeibaJoven_01",
+            "baseY": 0.12104201316833496,
+            "groundY": 0.27104201912879944,
+            "gap": -0.15000000596046448,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0553_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0554_VEG_ArbolTropical_02",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0555_VEG_ArbolTropical_03",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0556_VEG_CeibaJoven_01",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0557_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0558_VEG_ArbolTropical_02",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0559_VEG_ArbolTropical_03",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0560_VEG_CeibaJoven_01",
+            "baseY": -0.05695962905883789,
+            "groundY": 0.09304039925336838,
+            "gap": -0.15000003576278687,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0561_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0562_VEG_ArbolTropical_02",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0563_VEG_ArbolTropical_03",
+            "baseY": 0.003964424133300781,
+            "groundY": 0.1539640724658966,
+            "gap": -0.14999964833259583,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0564_VEG_CeibaJoven_01",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0565_VEG_ArbolTropical_02",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0566_VEG_ArbolTropical_03",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0567_VEG_CeibaJoven_01",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0568_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0569_VEG_ArbolTropical_02",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0570_VEG_ArbolTropical_03",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0571_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0572_VEG_ArbolTropical_02",
+            "baseY": 0.3915529251098633,
+            "groundY": 0.5415531396865845,
+            "gap": -0.1500002145767212,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0573_VEG_ArbolTropical_03",
+            "baseY": -0.14979934692382813,
+            "groundY": 0.00020059286907780915,
+            "gap": -0.1499999463558197,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0574_VEG_CeibaJoven_01",
+            "baseY": 0.2106952667236328,
+            "groundY": 0.3606951832771301,
+            "gap": -0.14999991655349731,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0575_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0576_VEG_ArbolTropical_02",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0577_VEG_ArbolTropical_03",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0578_VEG_CeibaJoven_01",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0579_VEG_CeibaTropical_01",
+            "baseY": -0.1405963897705078,
+            "groundY": 0.009403890930116177,
+            "gap": -0.15000027418136597,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0580_VEG_ArbolTropical_02",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0581_VEG_ArbolTropical_03",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0582_VEG_CeibaJoven_01",
+            "baseY": 0.37317943572998047,
+            "groundY": 0.5231795310974121,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0583_VEG_CeibaTropical_01",
+            "baseY": -0.14890003204345703,
+            "groundY": 0.001099844346754253,
+            "gap": -0.14999987185001373,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0584_VEG_ArbolTropical_03",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0585_VEG_CeibaJoven_01",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0586_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0587_VEG_ArbolTropical_02",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0588_VEG_ArbolTropical_03",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0589_VEG_CeibaJoven_01",
+            "baseY": 0.04492521286010742,
+            "groundY": 0.19492535293102264,
+            "gap": -0.15000014007091522,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0590_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0591_VEG_ArbolTropical_02",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0592_VEG_ArbolTropical_03",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0593_VEG_CeibaJoven_01",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0594_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0595_VEG_CeibaJoven_01",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0596_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0597_VEG_ArbolTropical_02",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0598_VEG_ArbolTropical_03",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0599_VEG_CeibaJoven_01",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0600_VEG_CeibaTropical_01",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0601_VEG_ArbolTropical_03",
+            "baseY": -0.14999961853027344,
+            "groundY": 0.0,
+            "gap": -0.14999961853027344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "MidgroundTrees_0602_VEG_CeibaJoven_01",
+            "baseY": -0.15000009536743164,
+            "groundY": 0.0,
+            "gap": -0.15000009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0603_VEG_CeibaTropical_01",
+            "baseY": 2.3216519355773926,
+            "groundY": 2.5702648162841797,
+            "gap": -0.2486128807067871,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0604_VEG_ArbolTropical_02",
+            "baseY": 12.965829849243164,
+            "groundY": 13.231867790222168,
+            "gap": -0.2660379409790039,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0605_VEG_ArbolTropical_03",
+            "baseY": 4.550610542297363,
+            "groundY": 4.800610542297363,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0606_VEG_CeibaJoven_01",
+            "baseY": 9.926372528076172,
+            "groundY": 10.176373481750488,
+            "gap": -0.2500009536743164,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0607_VEG_CeibaTropical_01",
+            "baseY": 5.264571189880371,
+            "groundY": 5.512752532958984,
+            "gap": -0.24818134307861328,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0608_VEG_ArbolTropical_02",
+            "baseY": 2.9331917762756348,
+            "groundY": 3.2007343769073486,
+            "gap": -0.26754260063171387,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0609_VEG_ArbolTropical_03",
+            "baseY": 9.538870811462402,
+            "groundY": 9.788870811462402,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0610_VEG_CeibaJoven_01",
+            "baseY": 1.6510345935821533,
+            "groundY": 1.9010347127914429,
+            "gap": -0.25000011920928955,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0611_VEG_CeibaTropical_01",
+            "baseY": 12.71969985961914,
+            "groundY": 12.968255996704102,
+            "gap": -0.24855613708496094,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0612_VEG_ArbolTropical_02",
+            "baseY": 14.64150333404541,
+            "groundY": 14.911826133728027,
+            "gap": -0.2703227996826172,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0613_VEG_ArbolTropical_03",
+            "baseY": 3.076181411743164,
+            "groundY": 3.326180934906006,
+            "gap": -0.2499995231628418,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0614_VEG_CeibaJoven_01",
+            "baseY": 1.869480848312378,
+            "groundY": 2.119481086730957,
+            "gap": -0.2500002384185791,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0615_VEG_CeibaTropical_01",
+            "baseY": 9.97311782836914,
+            "groundY": 10.221417427062988,
+            "gap": -0.24829959869384766,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0616_VEG_ArbolTropical_02",
+            "baseY": 3.952968120574951,
+            "groundY": 4.224258899688721,
+            "gap": -0.27129077911376953,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0617_VEG_ArbolTropical_03",
+            "baseY": 4.744965553283691,
+            "groundY": 4.994965076446533,
+            "gap": -0.2499995231628418,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0618_VEG_CeibaJoven_01",
+            "baseY": 6.143503665924072,
+            "groundY": 6.393503189086914,
+            "gap": -0.2499995231628418,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0619_VEG_CeibaTropical_01",
+            "baseY": 5.636981964111328,
+            "groundY": 5.885075569152832,
+            "gap": -0.2480936050415039,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0620_VEG_ArbolTropical_02",
+            "baseY": 3.861727714538574,
+            "groundY": 4.131581783294678,
+            "gap": -0.2698540687561035,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0621_VEG_ArbolTropical_03",
+            "baseY": 27.07138442993164,
+            "groundY": 27.321382522583008,
+            "gap": -0.2499980926513672,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0622_VEG_CeibaJoven_01",
+            "baseY": 10.179769515991211,
+            "groundY": 10.429769515991211,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0623_VEG_CeibaTropical_01",
+            "baseY": 4.453489303588867,
+            "groundY": 4.701858997344971,
+            "gap": -0.24836969375610352,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0624_VEG_ArbolTropical_02",
+            "baseY": 5.047891616821289,
+            "groundY": 5.317585468292236,
+            "gap": -0.26969385147094727,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0625_VEG_ArbolTropical_03",
+            "baseY": 7.099695682525635,
+            "groundY": 7.349695682525635,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0626_VEG_ArbolTropical_02",
+            "baseY": 56.87119674682617,
+            "groundY": 57.139060974121094,
+            "gap": -0.2678642272949219,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0627_VEG_ArbolTropical_03",
+            "baseY": 20.90460205078125,
+            "groundY": 21.154603958129883,
+            "gap": -0.2500019073486328,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0628_VEG_CeibaTropical_01",
+            "baseY": 16.642738342285156,
+            "groundY": 16.891071319580078,
+            "gap": -0.24833297729492188,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0629_VEG_ArbolTropical_02",
+            "baseY": 13.635348320007324,
+            "groundY": 13.903327941894531,
+            "gap": -0.26797962188720703,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0630_VEG_ArbolTropical_03",
+            "baseY": 26.458616256713867,
+            "groundY": 26.708614349365234,
+            "gap": -0.2499980926513672,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0631_VEG_CeibaJoven_01",
+            "baseY": 49.08820724487305,
+            "groundY": 49.33820724487305,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0632_VEG_CeibaTropical_01",
+            "baseY": 39.646549224853516,
+            "groundY": 39.89484786987305,
+            "gap": -0.24829864501953125,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0633_VEG_ArbolTropical_02",
+            "baseY": 24.40268898010254,
+            "groundY": 24.670879364013672,
+            "gap": -0.2681903839111328,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0634_VEG_ArbolTropical_03",
+            "baseY": 18.303077697753906,
+            "groundY": 18.553077697753906,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0635_VEG_CeibaJoven_01",
+            "baseY": 23.34876823425293,
+            "groundY": 23.59876823425293,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0636_VEG_CeibaTropical_01",
+            "baseY": 17.671756744384766,
+            "groundY": 17.920005798339844,
+            "gap": -0.24824905395507813,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0637_VEG_ArbolTropical_02",
+            "baseY": 33.25792694091797,
+            "groundY": 33.5279655456543,
+            "gap": -0.2700386047363281,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0638_VEG_CeibaJoven_01",
+            "baseY": 37.07277297973633,
+            "groundY": 37.32277297973633,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0639_VEG_CeibaTropical_01",
+            "baseY": 52.205196380615234,
+            "groundY": 52.45356750488281,
+            "gap": -0.24837112426757813,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0640_VEG_ArbolTropical_02",
+            "baseY": 16.7567138671875,
+            "groundY": 17.028371810913086,
+            "gap": -0.27165794372558594,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0641_VEG_ArbolTropical_03",
+            "baseY": 11.825031280517578,
+            "groundY": 12.075031280517578,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0642_VEG_CeibaTropical_01",
+            "baseY": 34.27346420288086,
+            "groundY": 34.52168273925781,
+            "gap": -0.24821853637695313,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0643_VEG_ArbolTropical_02",
+            "baseY": 70.98564147949219,
+            "groundY": 71.25591278076172,
+            "gap": -0.27027130126953125,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0644_VEG_ArbolTropical_03",
+            "baseY": 38.03474044799805,
+            "groundY": 38.28474044799805,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0645_VEG_CeibaJoven_01",
+            "baseY": 19.840253829956055,
+            "groundY": 20.090253829956055,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0646_VEG_ArbolTropical_03",
+            "baseY": 15.23133373260498,
+            "groundY": 15.48133373260498,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0647_VEG_CeibaJoven_01",
+            "baseY": 11.910440444946289,
+            "groundY": 12.160440444946289,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0648_VEG_CeibaTropical_01",
+            "baseY": 24.495563507080078,
+            "groundY": 24.743803024291992,
+            "gap": -0.24823951721191406,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0649_VEG_ArbolTropical_02",
+            "baseY": 64.11187744140625,
+            "groundY": 64.38604736328125,
+            "gap": -0.274169921875,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0650_VEG_ArbolTropical_03",
+            "baseY": 73.79825592041016,
+            "groundY": 74.04825592041016,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0651_VEG_CeibaJoven_01",
+            "baseY": 26.475799560546875,
+            "groundY": 26.725801467895508,
+            "gap": -0.2500019073486328,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0652_VEG_CeibaTropical_01",
+            "baseY": 18.664981842041016,
+            "groundY": 18.91337013244629,
+            "gap": -0.24838829040527344,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0653_VEG_ArbolTropical_02",
+            "baseY": 30.455909729003906,
+            "groundY": 30.729169845581055,
+            "gap": -0.27326011657714844,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0654_VEG_ArbolTropical_03",
+            "baseY": 18.988998413085938,
+            "groundY": 19.23900032043457,
+            "gap": -0.2500019073486328,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0655_VEG_CeibaJoven_01",
+            "baseY": 33.856689453125,
+            "groundY": 34.106689453125,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0656_VEG_ArbolTropical_02",
+            "baseY": 46.99055480957031,
+            "groundY": 47.259376525878906,
+            "gap": -0.26882171630859375,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0657_VEG_ArbolTropical_03",
+            "baseY": 66.83792114257813,
+            "groundY": 67.08792114257813,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0658_VEG_CeibaJoven_01",
+            "baseY": 17.83509063720703,
+            "groundY": 18.0850887298584,
+            "gap": -0.2499980926513672,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0659_VEG_CeibaTropical_01",
+            "baseY": 11.94699478149414,
+            "groundY": 12.195189476013184,
+            "gap": -0.24819469451904297,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0660_VEG_ArbolTropical_03",
+            "baseY": 33.38043975830078,
+            "groundY": 33.63043975830078,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0661_VEG_CeibaJoven_01",
+            "baseY": 92.27447509765625,
+            "groundY": 92.52447509765625,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0662_VEG_CeibaTropical_01",
+            "baseY": 56.47269058227539,
+            "groundY": 56.72102355957031,
+            "gap": -0.24833297729492188,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0663_VEG_ArbolTropical_02",
+            "baseY": 20.6348876953125,
+            "groundY": 20.9061279296875,
+            "gap": -0.271240234375,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0664_VEG_ArbolTropical_03",
+            "baseY": 53.861328125,
+            "groundY": 54.111328125,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0665_VEG_CeibaJoven_01",
+            "baseY": 18.052978515625,
+            "groundY": 18.302978515625,
+            "gap": -0.25,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundTrees_0666_VEG_CeibaTropical_01",
+            "baseY": 17.389638900756836,
+            "groundY": 17.638185501098633,
+            "gap": -0.24854660034179688,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0667_VEG_ArbustoTropical_02",
+            "baseY": 21.237611770629883,
+            "groundY": 21.53761100769043,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0668_VEG_ArbustoTropical_02",
+            "baseY": 17.389129638671875,
+            "groundY": 17.689128875732422,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0669_VEG_ArbustoTropical_02",
+            "baseY": 84.28694915771484,
+            "groundY": 84.58695220947266,
+            "gap": -0.3000030517578125,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0670_VEG_ArbustoTropical_02",
+            "baseY": 4.1232757568359375,
+            "groundY": 4.423275947570801,
+            "gap": -0.3000001907348633,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0671_VEG_ArbustoTropical_02",
+            "baseY": 59.10329818725586,
+            "groundY": 59.403297424316406,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0672_VEG_ArbustoTropical_02",
+            "baseY": 2.617508888244629,
+            "groundY": 2.917508840560913,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0673_VEG_ArbustoTropical_02",
+            "baseY": 14.84157943725586,
+            "groundY": 15.141578674316406,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0674_VEG_ArbustoTropical_02",
+            "baseY": 0.5778411626815796,
+            "groundY": 0.8778411149978638,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0675_VEG_ArbustoTropical_02",
+            "baseY": 0.6113760471343994,
+            "groundY": 0.9113759994506836,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0676_VEG_ArbustoTropical_02",
+            "baseY": 65.59607696533203,
+            "groundY": 65.89608001708984,
+            "gap": -0.3000030517578125,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0677_VEG_ArbustoTropical_02",
+            "baseY": -0.24360179901123047,
+            "groundY": 0.05639829486608505,
+            "gap": -0.3000001013278961,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0678_VEG_ArbustoTropical_02",
+            "baseY": 18.293882369995117,
+            "groundY": 18.593881607055664,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0679_VEG_ArbustoTropical_02",
+            "baseY": -0.2999999523162842,
+            "groundY": 0.0,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0680_VEG_ArbustoTropical_02",
+            "baseY": 2.673663854598999,
+            "groundY": 2.973663806915283,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0681_VEG_ArbustoTropical_02",
+            "baseY": 48.0078010559082,
+            "groundY": 48.30780029296875,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0682_VEG_ArbustoTropical_02",
+            "baseY": 5.070577621459961,
+            "groundY": 5.370577335357666,
+            "gap": -0.2999997138977051,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0683_VEG_ArbustoTropical_02",
+            "baseY": 70.98278045654297,
+            "groundY": 71.28278350830078,
+            "gap": -0.3000030517578125,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0684_VEG_ArbustoTropical_02",
+            "baseY": 7.786098480224609,
+            "groundY": 8.086098670959473,
+            "gap": -0.3000001907348633,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0685_VEG_ArbustoTropical_02",
+            "baseY": 10.571065902709961,
+            "groundY": 10.871066093444824,
+            "gap": -0.3000001907348633,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0686_VEG_ArbustoTropical_02",
+            "baseY": -0.30000007152557373,
+            "groundY": 0.0,
+            "gap": -0.30000007152557373,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0687_VEG_ArbustoTropical_02",
+            "baseY": 28.54764175415039,
+            "groundY": 28.847640991210938,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0688_VEG_ArbustoTropical_02",
+            "baseY": -0.2999999523162842,
+            "groundY": 0.0,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0689_VEG_ArbustoTropical_02",
+            "baseY": 41.789249420166016,
+            "groundY": 42.08924865722656,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0690_VEG_ArbustoTropical_02",
+            "baseY": 1.8688127994537354,
+            "groundY": 2.1688129901885986,
+            "gap": -0.3000001907348633,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0691_VEG_ArbustoTropical_02",
+            "baseY": 2.213667869567871,
+            "groundY": 2.5136678218841553,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0692_VEG_ArbustoTropical_02",
+            "baseY": 4.425085067749023,
+            "groundY": 4.725085258483887,
+            "gap": -0.3000001907348633,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0693_VEG_ArbustoTropical_02",
+            "baseY": 14.24776554107666,
+            "groundY": 14.547764778137207,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0694_VEG_ArbustoTropical_02",
+            "baseY": 16.755348205566406,
+            "groundY": 17.055349349975586,
+            "gap": -0.3000011444091797,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0695_VEG_ArbustoTropical_02",
+            "baseY": -0.30000007152557373,
+            "groundY": 0.0,
+            "gap": -0.30000007152557373,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0696_VEG_ArbustoTropical_02",
+            "baseY": 40.06326675415039,
+            "groundY": 40.36326599121094,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0697_VEG_ArbustoTropical_02",
+            "baseY": 16.376066207885742,
+            "groundY": 16.67606544494629,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0698_VEG_ArbustoTropical_02",
+            "baseY": -0.2999999523162842,
+            "groundY": 0.0,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0699_VEG_ArbustoTropical_02",
+            "baseY": 23.59616470336914,
+            "groundY": 23.896163940429688,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0700_VEG_ArbustoTropical_02",
+            "baseY": 21.19391632080078,
+            "groundY": 21.493915557861328,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0701_VEG_ArbustoTropical_02",
+            "baseY": 5.121853828430176,
+            "groundY": 5.421854019165039,
+            "gap": -0.3000001907348633,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0702_VEG_ArbustoTropical_02",
+            "baseY": 55.03646469116211,
+            "groundY": 55.336463928222656,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0703_VEG_ArbustoTropical_02",
+            "baseY": 2.7383716106414795,
+            "groundY": 3.0383715629577637,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0704_VEG_ArbustoTropical_02",
+            "baseY": 11.712926864624023,
+            "groundY": 12.012927055358887,
+            "gap": -0.3000001907348633,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0705_VEG_ArbustoTropical_02",
+            "baseY": -0.2999999523162842,
+            "groundY": 0.0,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0706_VEG_ArbustoTropical_02",
+            "baseY": -0.2999999523162842,
+            "groundY": 0.0,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0707_VEG_ArbustoTropical_02",
+            "baseY": -0.2951045036315918,
+            "groundY": 0.004895533435046673,
+            "gap": -0.30000004172325134,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0708_VEG_ArbustoTropical_02",
+            "baseY": 63.18859100341797,
+            "groundY": 63.488590240478516,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0709_VEG_ArbustoTropical_02",
+            "baseY": 1.566753625869751,
+            "groundY": 1.8667535781860352,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0710_VEG_ArbustoTropical_02",
+            "baseY": 18.672832489013672,
+            "groundY": 18.97283172607422,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0711_VEG_ArbustoTropical_02",
+            "baseY": 29.002025604248047,
+            "groundY": 29.302024841308594,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0712_VEG_ArbustoTropical_02",
+            "baseY": -0.2999999523162842,
+            "groundY": 0.0,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0713_VEG_ArbustoTropical_02",
+            "baseY": 5.750373840332031,
+            "groundY": 6.0503740310668945,
+            "gap": -0.3000001907348633,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0714_VEG_ArbustoTropical_02",
+            "baseY": 0.17080402374267578,
+            "groundY": 0.4708039164543152,
+            "gap": -0.2999998927116394,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0715_VEG_ArbustoTropical_02",
+            "baseY": -0.2999999523162842,
+            "groundY": 0.0,
+            "gap": -0.2999999523162842,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0716_VEG_ArbustoTropical_02",
+            "baseY": -0.2843151092529297,
+            "groundY": 0.015684958547353745,
+            "gap": -0.30000007152557373,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0717_VEG_ArbustoTropical_02",
+            "baseY": 17.54181671142578,
+            "groundY": 17.841815948486328,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0718_VEG_ArbustoTropical_02",
+            "baseY": 1.0079700946807861,
+            "groundY": 1.3079701662063599,
+            "gap": -0.30000007152557373,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0719_VEG_ArbustoTropical_02",
+            "baseY": 33.5069580078125,
+            "groundY": 33.80695724487305,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0720_VEG_ArbustoTropical_02",
+            "baseY": 86.78889465332031,
+            "groundY": 87.08889770507813,
+            "gap": -0.3000030517578125,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0721_VEG_ArbustoTropical_02",
+            "baseY": 45.182674407958984,
+            "groundY": 45.48267364501953,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        },
+        {
+            "name": "BackgroundUnderstorey_0722_VEG_ArbustoTropical_02",
+            "baseY": 19.02365493774414,
+            "groundY": 19.323654174804688,
+            "gap": -0.2999992370605469,
+            "intendedBurial": true,
+            "reviewRequired": false
+        }
+    ],
+    "contactReviews": 0
+}

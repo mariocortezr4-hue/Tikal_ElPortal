@@ -1,0 +1,18 @@
+{
+  "references": [
+    {
+      "path": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Para_Nivel_2\\Imagen_Reference1.png",
+      "sha256": "4f6869004dbd4112fabd65041c05efd9f461eebb52c4bdb37d7e424c06abc9c4"
+    },
+    {
+      "path": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\Para_Nivel_2\\Imagen_Reference2.png",
+      "sha256": "1006c4175d8734e4a3fd3d41318b8c818a99043257aa7a45afe4ae680df6d085"
+    }
+  ],
+  "mainBeforeFiles": 2177,
+  "sourceStatue": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_KeynesUnity_20261023\\Assets\\Tikal\\EstatuaKeynes",
+  "sourceSceneCatalogLevel02": "empty; no authored scene/spawn/transition path",
+  "newScene": "Assets/_Project/Scenes/Levels/Level02_PlazaKeynes.unity",
+  "branch": "feature/level2-plaza-keynes-environment",
+  "authoringSeed": 241026
+}

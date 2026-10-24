@@ -1,0 +1,292 @@
+[
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/MAT_PlazaKeynes_ForestImpostor.mat",
+    "sha256": "b7f6171e3f6323fa09a87f54ce1649282e91c13046ebced9b5130ad9740de5da",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\MAT_PlazaKeynes_ForestImpostor.mat"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/MAT_PlazaKeynes_ForestImpostor.mat.meta",
+    "sha256": "271e16da7b1d9b882d1cdb30d5c2ec36c025683dc4a0af6693949f68b80902a2",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\MAT_PlazaKeynes_ForestImpostor.mat.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest.meta",
+    "sha256": "4a0341b5011025664923dc8f207fc0f0ada5435bd41532541e1511042dfa0746",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02.meta",
+    "sha256": "c02223481c04540b1f6a0aef4185a6fb23b3f221f240896da09075cdfd760361",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_0.asset",
+    "sha256": "668f2f9bae4ecd45cbfbc5c47c32d3f97b978327735ef5bc5cf8713620b3cfb3",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_0.asset"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_0.asset.meta",
+    "sha256": "fec2954e663ea5b533e2a103a2c870672c91b403b140e166df148a46d86a3849",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_0.asset.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_1.asset",
+    "sha256": "4b9b2d523049ae08c5024ea2ac64f14ee0ca1e28efba2e1284cca44328c7806d",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_1.asset"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_1.asset.meta",
+    "sha256": "e2d2479df58b0166e4caba229988740d4c2729619d95b4affeaae19b90e7f0a1",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_1.asset.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_2.asset",
+    "sha256": "2c6e1fd19462d28ba37d433a2b89ade4d236748b86ecaeed6a2f68883c647868",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_2.asset"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_2.asset.meta",
+    "sha256": "a6492bf4f2c1e7f9bd1d86d5d3e7acf24221562979e64c94ec5c3b38e1188957",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_2.asset.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_3.asset",
+    "sha256": "fffd334565726d05b87353bb750af06c243eb444dbc24b986b1786b77fc83fcb",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_3.asset"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_3.asset.meta",
+    "sha256": "ec04d8e61edecc826bc81d06751f60628ff11ac51301dd1bd21ae1174e8b20f0",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_3.asset.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_4.asset",
+    "sha256": "a16b37fcf941a9b9d67ed1866f6391724fad7d4aa0228c44bd160edfd7f3cd50",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_4.asset"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_4.asset.meta",
+    "sha256": "7699a6f6034cd0836fe858935ff67f99330c676049bf24b31acb04cee0d3302b",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_4.asset.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_5.asset",
+    "sha256": "a730aadf77fdb0864aaaa02211c225c6d9bee0ce6a87d551a7441b665e3821df",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_5.asset"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_5.asset.meta",
+    "sha256": "14c2d0d30767602804a50bbdcd45272a3143058e0cab0b06f56c54833b634601",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_5.asset.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_6.asset",
+    "sha256": "1b78420e3c766f754d6f7617483bd781a33c64497dd8c9391a7b50d0b9511b09",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_6.asset"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_6.asset.meta",
+    "sha256": "a35f63c04e891f666789a444423048e7dca4d3f563c04a8f44955873119fb9d9",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_6.asset.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_7.asset",
+    "sha256": "f3c44c6ca85669dad67f6a5e1a7897fe0b256df4a53658fc2f725cef6b85dd8e",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_7.asset"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/SM_Forest_Sector_7.asset.meta",
+    "sha256": "f070eb3717325c1cf08092a2359d2bec5bc3c11407f664f448c7f89bb1cda306",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\SM_Forest_Sector_7.asset.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/T_PlazaKeynes_ForestAtlas.png",
+    "sha256": "1c701f0a14138415f737c6f7b4239de208fc20ecef12de05ea628eefd7c8f78a",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\T_PlazaKeynes_ForestAtlas.png"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Forest/T_PlazaKeynes_ForestAtlas.png.meta",
+    "sha256": "4f0a9966c1b6be2c291ce2bb2e34aabffbf2b621b2583530b7a7d3ba864f8365",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Forest\\T_PlazaKeynes_ForestAtlas.png.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Materials/MAT_EstatuaKeynes.mat",
+    "sha256": "a9ce62f0e028de8f715b32bb1a0e50f9759b44329582f7b9e45ed05500c25691",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Materials\\MAT_EstatuaKeynes.mat"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Materials/MAT_EstatuaKeynes.mat.meta",
+    "sha256": "133413eb8deb03eeb3401669d0bbd3238e8fb06a879b7e142d906f67fc995989",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Materials\\MAT_EstatuaKeynes.mat.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Materials.meta",
+    "sha256": "f30c91e470418aec8201265926a0a71b6fc160672708acbe6e92914510e5549d",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Materials.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes.meta",
+    "sha256": "b454d7cfc8d9debfad89a1cb1563482fd15da4e7b311c82d398a428b161b6688",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Models/EST_Keynes_LOD0.fbx",
+    "sha256": "c29d936ab3d91b517dcc27efdd158bef8e7385b9103e06dc070aebc2c41b5d13",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Models\\EST_Keynes_LOD0.fbx"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Models/EST_Keynes_LOD0.fbx.meta",
+    "sha256": "07bbb393f244e0a9cb141ebf38657a3f5b82fa0e7c97dd1ae1a7565ffb873f79",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Models\\EST_Keynes_LOD0.fbx.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Models.meta",
+    "sha256": "0cca658e9a5e52ff5df052b1b5d4a4bdba77192f77ee70106084cc2a20cf703d",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Models.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Models/EST_Keynes_LOD1.fbx",
+    "sha256": "b9baccb1a0d762fa48aaab6a4e155c4044ee3b33479937f790679df57cf1365e",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Models\\EST_Keynes_LOD1.fbx"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Models/EST_Keynes_LOD1.fbx.meta",
+    "sha256": "b877494a228ffddbadc845ba0e9e297128223bc89e148d8a34ec2ab94d139c5e",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Models\\EST_Keynes_LOD1.fbx.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Models/EST_Keynes_LOD2.fbx",
+    "sha256": "67352581fa3212812dcf73aa289bd2d8101df63ee0f909108f46f3a0848e2fae",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Models\\EST_Keynes_LOD2.fbx"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Models/EST_Keynes_LOD2.fbx.meta",
+    "sha256": "0601a57de008de156a10823c4634326446158101464de2beeeb426ad4b1ef5bc",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Models\\EST_Keynes_LOD2.fbx.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Prefabs/PFB_EstatuaKeynes.prefab",
+    "sha256": "9301eab2f92b5f46670a9a9f1094929c273bf07ee85c2c1828dec6656563a7d4",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Prefabs\\PFB_EstatuaKeynes.prefab"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Prefabs/PFB_EstatuaKeynes.prefab.meta",
+    "sha256": "f93e1014e1463ebddb8dc9213481e1287eddcac29d91e30e0bfb9f6dbee366b3",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Prefabs\\PFB_EstatuaKeynes.prefab.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Prefabs.meta",
+    "sha256": "3cd40ea7bd01e42c2c5dbef828f4d790d15411752054d33f857aca099a09dc76",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Prefabs.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Textures/EST_Keynes_BaseColor.jpg",
+    "sha256": "d0bcee2402f16bf82d107e2d9039825227f5a4f5adf4d7cb586a4fd30cfd6da8",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Textures\\EST_Keynes_BaseColor.jpg"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Textures/EST_Keynes_BaseColor.jpg.meta",
+    "sha256": "87faeca1050985620b99886062c4ac0dc8a6823e2c05c1e04acaa4c7603801a5",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Textures\\EST_Keynes_BaseColor.jpg.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/Keynes/Textures.meta",
+    "sha256": "c91ded63b0372ceb10354979df02f8232afab908b11fbcdae07eb2ad079b642f",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\Keynes\\Textures.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/MAT_PlazaKeynes_JungleFloor.mat",
+    "sha256": "f3a206ddb6031888d4a3db462f28072416d7a620d8cafd98a6a76fbf7ed83b8e",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\MAT_PlazaKeynes_JungleFloor.mat"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/MAT_PlazaKeynes_JungleFloor.mat.meta",
+    "sha256": "3ad7eafcd5df089aaf7d992946e2e19e0842efc36a3750de54289f63dd6e816a",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\MAT_PlazaKeynes_JungleFloor.mat.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/MAT_PlazaKeynes_Paving.mat",
+    "sha256": "9ccf43611bd5d73c7d6caa75fe4e859c192fed7ba254528dade9a4b59d7a755e",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\MAT_PlazaKeynes_Paving.mat"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/MAT_PlazaKeynes_Paving.mat.meta",
+    "sha256": "13b56a72689283194a6dd5ec72924dab900e9d4367690bc00922a37be80a2336",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\MAT_PlazaKeynes_Paving.mat.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/MAT_PlazaKeynes_Sky.mat",
+    "sha256": "a1eb88d54210e813718d9e1c83608d100b9bcd3f0e5ac9fbeeb07b84203be469",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\MAT_PlazaKeynes_Sky.mat"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/MAT_PlazaKeynes_Sky.mat.meta",
+    "sha256": "d43a019ed12f267d3c50d1cfd67f63026f7313f42ac7c054d0e10d652538740c",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\MAT_PlazaKeynes_Sky.mat.meta"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/SM_PlazaKeynes_Terrain_R3.asset",
+    "sha256": "79641e27c6d832a469b494058649b0c46527a9d51b5fd329eb346361e3f9e11f",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\SM_PlazaKeynes_Terrain_R3.asset"
+  },
+  {
+    "path": "Assets/_Project/Art/Environment/Level02/SM_PlazaKeynes_Terrain_R3.asset.meta",
+    "sha256": "ad298c456203126dcac89248aad5a9f5fec337024d40c6d17ad0bfe4bb46e660",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Art\\Environment\\Level02\\SM_PlazaKeynes_Terrain_R3.asset.meta"
+  },
+  {
+    "path": "Assets/_Project/Scenes/Levels/Level02_PlazaKeynes.unity",
+    "sha256": "3f2ca8ced77315cd0dcbe5378147ba33bd37f090f1b92d56658a5f20cfd89915",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Scenes\\Levels\\Level02_PlazaKeynes.unity"
+  },
+  {
+    "path": "Assets/_Project/Scenes/Levels/Level02_PlazaKeynes.unity.meta",
+    "sha256": "e354b251179fd96ba850e1b0f5bd56e27665ba760febd4eed7f93e6b2f729d01",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Scenes\\Levels\\Level02_PlazaKeynes.unity.meta"
+  },
+  {
+    "path": "Assets/_Project/Tests/Editor/PlazaKeynes/PlazaKeynesAuthoring.cs",
+    "sha256": "af37511c23db5591ca2cfd95b51f299919de4d75026c52f1bf37ef80492932f4",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Tests\\Editor\\PlazaKeynes\\PlazaKeynesAuthoring.cs"
+  },
+  {
+    "path": "Assets/_Project/Tests/Editor/PlazaKeynes/PlazaKeynesAuthoring.cs.meta",
+    "sha256": "89b7be4733c9348a176e8a95333ac94375c0d14742d194aa921d5cd52f0d9d85",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Tests\\Editor\\PlazaKeynes\\PlazaKeynesAuthoring.cs.meta"
+  },
+  {
+    "path": "Assets/_Project/Tests/Editor/PlazaKeynes.meta",
+    "sha256": "2afd1376fb726bffa90db0f7742915954e0cd4958557075f8c40a61e1457de0a",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Tests\\Editor\\PlazaKeynes.meta"
+  },
+  {
+    "path": "Assets/_Project/Tests/Editor/PlazaKeynes/PlazaKeynesDeliveryAudit.cs",
+    "sha256": "7c5c5a3f9a5ce6365e29d6a44ce9295d8c0aba4236693f6113d52dcdc797a7c3",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Tests\\Editor\\PlazaKeynes\\PlazaKeynesDeliveryAudit.cs"
+  },
+  {
+    "path": "Assets/_Project/Tests/Editor/PlazaKeynes/PlazaKeynesDeliveryAudit.cs.meta",
+    "sha256": "633dd870f088bf2fb1fc10db2965d9852c6a2f92132520244c7c383c4784805b",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Tests\\Editor\\PlazaKeynes\\PlazaKeynesDeliveryAudit.cs.meta"
+  },
+  {
+    "path": "Assets/_Project/Tests/Editor/PlazaKeynes/PlazaKeynesForest.cs",
+    "sha256": "3606c48d270e2cc5a8de4714cd245ba1f30b5f033b0cdfe72ebe8a3e1d5dc9e7",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Tests\\Editor\\PlazaKeynes\\PlazaKeynesForest.cs"
+  },
+  {
+    "path": "Assets/_Project/Tests/Editor/PlazaKeynes/PlazaKeynesForest.cs.meta",
+    "sha256": "fd6ba00c69faead3c17bea6199eacf90ed2fdcc92a5a129c6c455e588bb74d2b",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Tests\\Editor\\PlazaKeynes\\PlazaKeynesForest.cs.meta"
+  },
+  {
+    "path": "Assets/_Project/Tests/Editor/PlazaKeynes/PlazaKeynesValidation.cs",
+    "sha256": "74e39d74312d6c082bb810ae1671e4acdd6e59e3a372e5ce5ccbf1f6e559800e",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Tests\\Editor\\PlazaKeynes\\PlazaKeynesValidation.cs"
+  },
+  {
+    "path": "Assets/_Project/Tests/Editor/PlazaKeynes/PlazaKeynesValidation.cs.meta",
+    "sha256": "491034fdac5cbddc8784300f3f87e36ff036ea334d39b2edbb8302619ac03b4c",
+    "source": "D:\\ARCHIVOS\\TREVIX\\Proyectos\\Videojuegos\\Tikal_ElPortal\\_PlazaKeynes_20261024\\Assets\\_Project\\Tests\\Editor\\PlazaKeynes\\PlazaKeynesValidation.cs.meta"
+  }
+]

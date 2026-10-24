@@ -1,0 +1,37 @@
+{
+    "sourcePrefabs": [
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_CeibaTropical_01.prefab",
+        "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbolTropical_02.prefab",
+        "Assets/_Project/Prefabs/Environment/Level01/PFB_VEG_ArbolTropical_03.prefab",
+        "Assets/_Project/Prefabs/Environment/Tutorial/PFB_VEG_ArbustoTropical_02.prefab"
+    ],
+    "atlas": "Assets/_Project/Art/Environment/Level02/Forest/T_PlazaKeynes_ForestAtlas.png",
+    "material": "Assets/_Project/Art/Environment/Level02/Forest/MAT_PlazaKeynes_ForestImpostor.mat",
+    "impostorClusters": 620,
+    "sectors": 8,
+    "triangles": 2480,
+    "colliders": false,
+    "shadows": false,
+    "sourceDimensions": [
+        {
+            "x": 23.64598846435547,
+            "y": 22.002113342285156,
+            "z": 24.05152130126953
+        },
+        {
+            "x": 16.24833869934082,
+            "y": 16.0,
+            "z": 16.47334861755371
+        },
+        {
+            "x": 11.04285717010498,
+            "y": 19.0,
+            "z": 10.447421073913574
+        },
+        {
+            "x": 1.5723016262054443,
+            "y": 1.399999976158142,
+            "z": 1.44307541847229
+        }
+    ]
+}
