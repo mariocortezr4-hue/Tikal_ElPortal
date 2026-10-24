@@ -172,3 +172,69 @@ Unity emitió al cargar un aviso de 8 AudioListeners presentes antes de que Time
 Límite de validación: la medición PCM confirma presencia, niveles y sincronización técnica; no sustituye aprobación humana de inteligibilidad, actuación, ruido de grabación ni sutileza perceptual del empalme. No se declara una escucha humana aprobada ni medición LUFS. La aprobación auditiva final queda para el usuario.
 
 Herramientas de esta pasada: IntroFinalVoiceIntegration (authoring de una sola ejecución desde auditoría temporal; protección frente a retiming duplicado) e IntroFinalVoiceValidation (reproducción local con la metadata de esta pasada). Evidencia de ejecución actual en Temp/IntroFinalVO/PlayValidation.json; Temp puede limpiarse al reiniciar Unity.
+
+## REEMPLAZO POR VOCES LIMPIAS — revisión posterior a 2de110d
+
+Esta revisión sustituye los 14 WAV de la integración anterior por las versiones limpiadas entregadas por el usuario. Los datos de FINAL VO INTEGRATION anteriores permanecen como historial; las especificaciones y gains vigentes de VO son los de esta revisión.
+
+Fuente de solo lectura: `D:\ARCHIVOS\TREVIX\Proyectos\Videojuegos\Materiales_Tikal_El_Explorador\AUDIO\VO\Intro\Sin Ruido`. Destino conservado: `Assets/_Project/Audio/VO/Intro/`. Se reemplaza exclusivamente el contenido WAV con los mismos nombres; los 14 .meta, GUIDs, referencias, fuentes, tracks y bindings se conservan.
+
+Formato de los 14 nuevos WAV: **48 kHz, mono, PCM 16-bit**. El formato anterior era 24-bit; los archivos limpios ya fueron entregados a 16-bit. No se reconvierten artificialmente a 24-bit, no se aplica otro denoise, normalización, EQ, compresión ni procesamiento destructivo. Unity mantiene PCM / Decompress On Load / Preload / Preserve Sample Rate y Force To Mono desactivado.
+
+Cada WAV nuevo contiene exactamente **dos muestras adicionales** respecto al sustituido: **0.000041667 s** a 48 kHz. Se amplía solo su duración de AudioPlayable en esas dos muestras para reproducirlo íntegro. Se conservan todos los inicios VO, tiempos de subtítulos, cámaras, animaciones, handoff, branding, fade, música y ducking. Duración global sin cambios: **116.095166 s**.
+
+### Auditoría de archivos limpios
+
+Pico y RMS en dBFS de archivo completo antes del gain; silencio aproximado con bloques RMS de 10 ms y umbral -45 dBFS. Estos umbrales no determinan límites de palabras ni acreditan por sí solos calidad perceptual del denoise. No se midió LUFS.
+
+| Archivo | WAV (s) | Pico (dBFS) | RMS (dBFS) | Silencio inicial (s) | Silencio final (s) | Ventana actual (s) | WAV − ventana (s) | Estado |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| `VO_Intro_Dwight_01.wav` | 4.713542 | -8.69 | -29.88 | 2.320 | 1.584 | 4.993500 | -0.279958 | FITS |
+| `VO_Intro_Dwight_02.wav` | 4.673542 | -7.60 | -29.35 | 2.130 | 1.014 | 4.953500 | -0.279958 | FITS |
+| `VO_Intro_Dwight_03.wav` | 3.073542 | -8.29 | -31.39 | 1.560 | 1.044 | 3.353500 | -0.279958 | FITS |
+| `VO_Intro_Elder_01.wav` | 3.262708 | -9.34 | -27.72 | 1.070 | 0.503 | 3.542667 | -0.279958 | FITS |
+| `VO_Intro_Elder_02.wav` | 3.262708 | -9.26 | -28.68 | 1.080 | 0.903 | 3.542667 | -0.279958 | FITS |
+| `VO_Intro_Elder_03.wav` | 4.969375 | -9.89 | -28.52 | 1.680 | 0.909 | 5.249333 | -0.279958 | FITS |
+| `VO_Intro_Elder_04.wav` | 5.481375 | -11.40 | -28.90 | 1.780 | 1.171 | 5.761333 | -0.279958 | FITS |
+| `VO_Intro_Elder_05.wav` | 4.542708 | -12.68 | -29.74 | 1.660 | 1.433 | 4.822667 | -0.279958 | FITS |
+| `VO_Intro_Elder_06.wav` | 2.324042 | -11.16 | -28.57 | 1.020 | 0.684 | 2.604000 | -0.279958 | FITS |
+| `VO_Intro_Elder_07.wav` | 3.774708 | -12.25 | -28.03 | 0.840 | 0.995 | 4.054667 | -0.279958 | FITS |
+| `VO_Intro_Elder_08.wav` | 5.054708 | -8.76 | -26.89 | 0.740 | 0.455 | 5.334667 | -0.279958 | FITS |
+| `VO_Intro_Elder_09.wav` | 4.969375 | -12.06 | -27.84 | 1.480 | 0.949 | 5.249333 | -0.279958 | FITS |
+| `VO_Intro_Elder_10.wav` | 4.969375 | -13.56 | -30.55 | 2.040 | 1.509 | 5.249333 | -0.279958 | FITS |
+| `VO_Intro_Elder_11.wav` | 3.604042 | -9.09 | -26.31 | 0.760 | 0.564 | 3.884000 | -0.279958 | FITS |
+
+Total: **14 WAV (3 Dwight y 11 Elder/Keynes), 58.675750 s** de archivos. Contra las ventanas actuales ya extendidas: **14 FITS, 0 TIGHT, 0 OVERFLOW**. Las clasificaciones OVERFLOW de la primera integración se referían a las ventanas históricas de la Intro de 87.6 s.
+
+### Gains vigentes y sincronización
+
+Se recalculan las atenuaciones de clip a partir del PCM limpio, en vez de reutilizar la reducción de nivel de la grabación ruidosa. Criterio: aproximar -29 dBFS RMS de archivo completo mediante atenuación únicamente; si un archivo ya queda por debajo, gain 1 (0 dB), sin amplificación artificial. La voz hablada y las pausas internas siguen completas.
+
+| Archivo | Gain anterior (dB) | Gain nuevo (dB) | Gain lineal nuevo | VO inicio (s) | VO fin (s) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `VO_Intro_Dwight_01.wav` | -7.10 | 0.00 | 1.000000 | 33.980000 | 38.693542 |
+| `VO_Intro_Dwight_02.wav` | -7.54 | 0.00 | 1.000000 | 47.458833 | 52.132375 |
+| `VO_Intro_Dwight_03.wav` | -6.13 | 0.00 | 1.000000 | 92.788333 | 95.861875 |
+| `VO_Intro_Elder_01.wav` | -2.69 | -1.28 | 0.863348 | 39.473500 | 42.736208 |
+| `VO_Intro_Elder_02.wav` | -2.33 | -0.32 | 0.963590 | 43.316167 | 46.578875 |
+| `VO_Intro_Elder_03.wav` | -4.49 | -0.48 | 0.946081 | 53.312333 | 58.281708 |
+| `VO_Intro_Elder_04.wav` | -4.18 | -0.10 | 0.989034 | 58.861667 | 64.343042 |
+| `VO_Intro_Elder_05.wav` | -1.78 | 0.00 | 1.000000 | 65.023000 | 69.565708 |
+| `VO_Intro_Elder_06.wav` | -3.68 | -0.43 | 0.951636 | 71.045667 | 73.369708 |
+| `VO_Intro_Elder_07.wav` | -5.56 | -0.97 | 0.894367 | 75.249667 | 79.024375 |
+| `VO_Intro_Elder_08.wav` | -5.82 | -2.11 | 0.784710 | 80.004333 | 85.059042 |
+| `VO_Intro_Elder_09.wav` | -4.51 | -1.16 | 0.875456 | 85.939000 | 90.908375 |
+| `VO_Intro_Elder_10.wav` | -0.07 | 0.00 | 1.000000 | 101.241833 | 106.211208 |
+| `VO_Intro_Elder_11.wav` | -4.26 | -2.69 | 0.733628 | 107.191166 | 110.795208 |
+
+El subtítulo sigue empezando 0.08 s antes del WAV y finaliza aproximadamente 0.199958 s después. Las pausas/silencios internos del archivo se conservan; no se hace trimming ni se adelantan frases al primer bloque detectado. Se mantiene la interpretación y el montaje existente.
+
+Música y mezcla musical sin cambios: duck VO **0.018**, recuperación ambiental **0.10**, rampas existentes, empalme de la pista extendida y fade final **0.60 s**. No se vuelve a generar ni modificar la música. No se modifica código runtime, escena, texto ni flujo canónico de Intro/Tutorial/Skip.
+
+### Validación de la sustitución
+
+Validación técnica repetida en Play Mode interactivo, a tiempo real 1x y con partida aislada: reproducción completa; señal de los 14 WAV limpios y música; subtítulos exactos; ningún WAV cortado ni solapado; bindings válidos y sin nuevos Missing AudioClips/Scripts/Materials. Handoff visible y evento AncientMapReceived una sola vez. Branding, hold, fade y recuperación musical comprobados. Final natural carga Tutorial. Skip de primera partida llega a Tutorial y replay a MainMenu, sin VO residual. No se añadieron fuentes ni listeners.
+
+Comprobaciones de archivos: las 14 copias coinciden por SHA-256 con Sin Ruido; GUIDs y metadatos VO originales intactos; escena y WAV musicales idénticos a antes de la sustitución. Timeline difiere únicamente en 14 gains y 14 duraciones (+2 muestras por WAV), con todos los demás datos conservados.
+
+Se conserva el aviso previo de listeners durante la carga, documentado en la integración anterior. La validación no acredita escucha humana ni calidad subjetiva de inteligibilidad/denoise; esa aprobación queda al usuario. No se midió LUFS. Evidencia temporal: Temp/IntroFinalVO/PlayValidation.json y Temp/IntroCleanVO/Audit.json.
