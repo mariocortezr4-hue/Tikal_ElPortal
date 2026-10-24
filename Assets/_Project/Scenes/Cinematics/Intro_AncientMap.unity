@@ -3359,6 +3359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DwightCinematicVisual
       objectReference: {fileID: 0}
+    - target: {fileID: 7718725746012107996, guid: e63317eb7835658409f368c95d0b9a0f, type: 3}
+      propertyPath: m_Mesh
+      value:
+      objectReference: {fileID: 4300000, guid: b426f21de0267a54ea90ebab02d43946, type: 2}
     - target: {fileID: 8203875844994010783, guid: e63317eb7835658409f368c95d0b9a0f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3402,7 +3406,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 535630756172471000, guid: e63317eb7835658409f368c95d0b9a0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 661283422}
   m_SourcePrefab: {fileID: 100100000, guid: e63317eb7835658409f368c95d0b9a0f, type: 3}
 --- !u!95 &661283418 stripped
 Animator:
@@ -6911,6 +6918,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6057774949654796714, guid: ace328a22f8d1fa44be5d08e417cf0e6, type: 3}
+      propertyPath: m_Mesh
+      value:
+      objectReference: {fileID: 4300000, guid: 37599755a1bc71646a66f3df74966eae, type: 2}
     - target: {fileID: 8413245805487262212, guid: ace328a22f8d1fa44be5d08e417cf0e6, type: 3}
       propertyPath: m_Name
       value: CHR_Elder_Cinematic
@@ -6918,7 +6929,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5555467318275915970, guid: ace328a22f8d1fa44be5d08e417cf0e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1294009786}
   m_SourcePrefab: {fileID: 100100000, guid: ace328a22f8d1fa44be5d08e417cf0e6, type: 3}
 --- !u!95 &1294009782 stripped
 Animator:
@@ -24133,3 +24147,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1449172129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &661283421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 535630756172471000, guid: e63317eb7835658409f368c95d0b9a0f, type: 3}
+  m_PrefabInstance: {fileID: 661283417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &661283422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661283421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4bdc553567f2134eb786df53dce0a85, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tikal.Experiments.SimpleVoiceMouthFlap
+  _voice: {fileID: 315228161}
+  _director: {fileID: 901789091}
+  _shape: Experimental_LocalMouthOpen
+  _maximumDisplacementMm: 3
+  _silenceThreshold: 0.0015
+  _fullOpenRms: 0.03
+  _attackSeconds: 0.045
+  _releaseSeconds: 0.14
+--- !u!1 &1294009785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5555467318275915970, guid: ace328a22f8d1fa44be5d08e417cf0e6, type: 3}
+  m_PrefabInstance: {fileID: 1294009781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1294009786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294009785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4bdc553567f2134eb786df53dce0a85, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tikal.Experiments.SimpleVoiceMouthFlap
+  _voice: {fileID: 1289422685}
+  _director: {fileID: 901789091}
+  _shape: Experimental_LocalMouthOpen
+  _maximumDisplacementMm: 3
+  _silenceThreshold: 0.0015
+  _fullOpenRms: 0.06
+  _attackSeconds: 0.045
+  _releaseSeconds: 0.14
