@@ -2021,6 +2021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 315228160}
   - component: {fileID: 315228161}
+  - component: {fileID: 315228162}
   m_Layer: 0
   m_Name: Voice
   m_TagString: Untagged
@@ -3075,7 +3076,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 33.9
-      value: 0.006
+      value: 0.018
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3083,8 +3084,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 67.7
-      value: 0.006
+      time: 91.10833
+      value: 0.018
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3092,7 +3093,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 68.65
+      time: 92.058334
       value: 0.1
       inSlope: 0
       outSlope: 0
@@ -3101,7 +3102,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 68.799995
+      time: 92.20833
       value: 0.1
       inSlope: 0
       outSlope: 0
@@ -3110,8 +3111,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 69.3
-      value: 0.006
+      time: 92.708336
+      value: 0.018
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3119,8 +3120,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 70.8
-      value: 0.006
+      time: 96.06184
+      value: 0.018
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3128,7 +3129,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 71.9
+      time: 97.161835
       value: 0.1
       inSlope: 0
       outSlope: 0
@@ -3137,7 +3138,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 75.25
+      time: 100.51183
       value: 0.1
       inSlope: 0
       outSlope: 0
@@ -3146,8 +3147,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 75.9
-      value: 0.006
+      time: 101.161835
+      value: 0.018
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3155,8 +3156,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 82.5
-      value: 0.006
+      time: 110.99516
+      value: 0.018
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3164,7 +3165,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 83.6
+      time: 112.09516
       value: 0.1
       inSlope: 0
       outSlope: 0
@@ -3173,7 +3174,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 87
+      time: 115.49516
       value: 0.1
       inSlope: 0
       outSlope: 0
@@ -3182,7 +3183,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 87.6
+      time: 116.09516
       value: 0
       inSlope: 0
       outSlope: 0
@@ -5071,6 +5072,10 @@ PlayableDirector:
     value: {fileID: 638631228}
   - key: {fileID: -5663873236202616181, guid: df6ef0e610ff3f54eab63045be221b74, type: 2}
     value: {fileID: 1773471502}
+  - key: {fileID: 7338091700687232891, guid: df6ef0e610ff3f54eab63045be221b74, type: 2}
+    value: {fileID: 315228161}
+  - key: {fileID: -7900067867296957873, guid: df6ef0e610ff3f54eab63045be221b74, type: 2}
+    value: {fileID: 1289422685}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &901789092
@@ -7300,6 +7305,7 @@ Transform:
   - {fileID: 638631227}
   - {fileID: 315228160}
   - {fileID: 1112714944}
+  - {fileID: 1289422687}
   m_Father: {fileID: 901789094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1462580979
@@ -23971,3 +23977,159 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1596749618}
+--- !u!114 &315228162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315228159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6831119311db342a52f9edce4dea4f, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tikal.Cinematics.IntroVoiceSettings
+  _director: {fileID: 901789091}
+--- !u!1 &1289422684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1289422687}
+  - component: {fileID: 1289422685}
+  - component: {fileID: 1289422686}
+  m_Layer: 0
+  m_Name: VO_Elder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1289422685
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289422684}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1289422686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289422684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6831119311db342a52f9edce4dea4f, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tikal.Cinematics.IntroVoiceSettings
+  _director: {fileID: 901789091}
+--- !u!4 &1289422687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289422684}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1449172129}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
